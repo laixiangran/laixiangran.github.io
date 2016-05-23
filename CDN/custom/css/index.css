@@ -1,0 +1,188 @@
+body, div, h1 {
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+body {
+    font-family: Arial,"Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+h1 {
+    font-size: 6em;
+    font-weight: normal;
+}
+p {
+    font-size: 2em;
+    margin:0.5em 0 2em 0;
+}
+#musicFrame {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 86px;
+    animation: rotatey-change 5s linear 0s infinite alternate;
+}
+#musicFrame:hover {
+    animation-iteration-count: 1;
+}
+#section {
+    position: relative;
+    color: #fff;
+    text-shadow: 1px 1px 1px #666;
+    background-color: #000;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+#section {
+    background-image: url(../img/bg1.jpg);
+}
+.intro {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+#myAvatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    box-shadow: 0 0 5px 5px #e8e8e8;
+}
+#myAvatar span {
+    display: block;
+    margin-top: 10px;
+    color: rgb(200, 200, 200);
+    font-size: 20px;
+    text-shadow: 2px 5px 2px rgb(120, 120, 120);
+}
+#toBlog {
+    position: relative;
+    width: 100%;
+}
+#toBlog .blog_a:hover::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    background-color: rgba(0, 153, 153, 0.5);
+    animation: bg-change 0.5s linear forwards;
+}
+#toBlog .blog_a {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    color: #ffffff;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 100px;
+}
+#sns {
+    position: relative;
+    z-index: -1;
+    padding-top: 85px;
+}
+#sns img {
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    margin-right: -30px;
+    border-radius: 30px;
+}
+#sns a:nth-child(1) img {
+    animation: img-in 1s ease-in-out 1.2s forwards;
+}
+#sns a:nth-child(2) img {
+    animation: img-in 1s ease-in-out 1.4s forwards;
+}
+#sns a:nth-child(3) img {
+    animation: img-in 1s ease-in-out 1.8s forwards;
+}
+#sns a:nth-child(4) img {
+    animation: img-in 1s ease-in-out 2s forwards;
+}
+#sns a:nth-child(5) img {
+    animation: img-in 1s ease-in-out 2.2s forwards;
+}
+#sns a:nth-child(5):hover::after {
+    content: url("../img/subscription.jpg");
+    position: absolute;
+    top: 50px;
+    width: 50px;
+    height: 50px;
+}
+.ps-v-page.ps-active .title {
+    transform: translateX(-100%);
+    animation: sectitle-v 1s ease-in-out 0.1s forwards;
+}
+.ps-v-page.ps-active p{
+    transform: translateX(100%);
+    animation: sec-v 1s ease-in-out 0.1s forwards;
+}
+@keyframes img-in {
+    0%{
+        opacity: 0;
+        margin-right: -30px;
+    }
+    100%{
+        opacity: 1;
+        margin-right: 20px;
+    }
+}
+@keyframes sectitle-v {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes sec-v{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes rotatey-change {
+    0% {
+        transform: rotatey(0deg);
+    }
+    25% {
+        transform: rotatey(90deg);
+    }
+    50% {
+        transform: rotatey(180deg);
+    }
+    75% {
+        transform: rotatey(270deg);
+    }
+    100% {
+        transform: rotatey(360deg);
+    }
+}
+@keyframes bg-change {
+    0% {
+        width: 50px;
+        border-radius: 25px;
+    }
+    50% {
+        width: 100px;
+        border-radius: 50px;
+    }
+    100% {
+        width: 200px;
+        border-radius: 100px;
+    }
+}

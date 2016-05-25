@@ -294,7 +294,85 @@
                 var safariVersion = 1;
                 if(engine.webkit < 100){
                     safariVersion = 1;
-                }else if(engine.webkit <312){ safariversion="1.2;" }else="" if(engine.webkit="" <="" 412){="" }else{="" }="" browser.ver="browser.safari" =="" safariversion;="" 检测khtml="" 用于konqueror3.1及更早版本中不包含khtml的版本，故而就要使用konqueror的版本来代替="" else="" if(="" khtml\="" (\s+)="" .test(ua)="" ||="" konqueror\="" .test(ua)){="" engine.ver="browser.ver" regexp["$1"];="" engine.khtml="browser.konq" parsefloat(engine.ver);="" 检测gecko="" 其版本号在字符串"rv:"的后面="" rv:([^\)]+)\)="" gecko\="" \d{8}="" engine.gecko="parseFloat(engine.ver);" 确定firefox="" firefox\="" browser.firefox="parseFloat(browser.ver);" 检测ie="" msie="" ([^;]+)="" like="" gecko="" engine.ie="browser.ie" 获取平台或者操作系统信息,可能的值：win32、win64、macppc、macintel、xll、linux="" i686="" var="" p="window.navigator.platform;" 检测平台="" system.win="p.indexOf("Win")" system.mac="p.indexOf("Mac")" system.unix="(p" )="" (p.indexof("linux")="=" 0);="" 检测windows操作系统="" if(system.win){="" win(?:dows="" )?([^do]{2})\s?(\d+\.\d+)?="" if(regexp["$1"]="=" "nt"){="" switch(regexp["$2"]){="" case="" "5.0":="" ;="" break;="" "5.1":="" "6.0":="" "7":="" "8":="" "8.1":="" "10.0":="" default:="" 移动设备="" system.iphone="ua.indexOf("iPhone")"> -1;
+                }else if(engine.webkit <312){
+                    safariVersion = 1.2;
+                }else if(engine.webkit < 412){
+                    safariVersion = 1.3;
+                }else{
+                    safariVersion = 2;
+                }
+                browser.ver = browser.safari = safariVersion;
+            }
+        }
+
+        // 检测KHTML 用于Konqueror3.1及更早版本中不包含KHTML的版本，故而就要使用Konqueror的版本来代替
+        else if(/KHTML\/(\S+)/.test(ua) || /Konqueror\/(\S+)/.test(ua)){
+            engine.ver = browser.ver = RegExp["$1"];
+            engine.khtml = browser.konq = parseFloat(engine.ver);
+        }
+
+        // 检测Gecko 其版本号在字符串"rv:"的后面
+        else if(/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)){
+            engine.ver = RegExp["$1"];
+            engine.gecko = parseFloat(engine.ver);
+
+            // 确定Firefox
+            if(/Firefox\/(\S+)/.test(ua)){
+                browser.ver = RegExp["$1"];
+                browser.firefox = parseFloat(browser.ver);
+            }
+        }
+
+        // 检测IE
+        else if(/MSIE ([^;]+)/.test(ua) || /rv:([^\)]+)\) like Gecko/.test(ua)){
+            engine.ver = browser.ver = RegExp["$1"];
+            engine.ie = browser.ie = parseFloat(engine.ver);
+        }
+
+        // 获取平台或者操作系统信息,可能的值：win32、win64、MacPPC、MacIntel、Xll、Linux i686
+        var p = window.navigator.platform;
+
+        // 检测平台
+        system.win = p.indexOf("Win") == 0;
+        system.mac = p.indexOf("Mac") == 0;
+        system.unix = (p == "Xll'") || (p.indexOf("Linux") == 0);
+
+        // 检测Windows操作系统
+        if(system.win){
+            if(/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.test(ua)){
+                if(RegExp["$1"] == "NT"){
+                    switch(RegExp["$2"]){
+                        case "5.0":
+                            system.win = "2000";
+                            break;
+                        case "5.1":
+                            system.win = "XP";
+                            break;
+                        case "6.0":
+                            system.win = "Vista";
+                            break;
+                        case "7":
+                            system.win = "7";
+                            break;
+                        case "8":
+                            system.win = "8";
+                            break;
+                        case "8.1":
+                            system.win = "8.1";
+                            break;
+                        case "10.0":
+                            system.win = "10.0";
+                            break;
+                        default:
+                            system.win = "NT";
+                            break;
+                    }
+                }
+            }
+        }
+
+        // 移动设备
+        system.iphone = ua.indexOf("iPhone") > -1;
         system.ipod = ua.indexOf("iPod") > -1;
         system.ipad = ua.indexOf("iPad") > -1;
         system.nokiaN = ua.indexOf("NokiaN") > -1;
@@ -839,8 +917,8 @@
          * @author laixiangran@163.com
          * @description 根据id查找元素
          * @param {String} id 元素id
-         * @param {Element} context 查找的范围元素
-         * @return {Element}
+         * @param {HTMLElement} context 查找的范围元素
+         * @return {HTMLElement}
          */
         byId: function(id, context) {
             var ctx = context || document;
@@ -851,7 +929,7 @@
          * @author laixiangran@163.com
          * @description 根据类名查找元素
          * @param {String} className 元素类名
-         * @param {Element} context 查找的范围元素
+         * @param {HTMLElement} context 查找的范围元素
          * @return {HTMLCollection}
          */
         byClassName: function(className, context) {
@@ -863,7 +941,7 @@
          * @author laixiangran@163.com
          * @description 根据标签名查找
          * @param {String} tagName 元素名
-         * @param {Element} context 查找的范围元素
+         * @param {HTMLElement} context 查找的范围元素
          * @return {HTMLCollection}
          */
         byTagName: function(tagName, context) {
@@ -874,7 +952,7 @@
         /**
          * @author laixiangran@163.com
          * @description 元素添加class
-         * @param {Element} element 元素
+         * @param {HTMLElement} element 元素
          * @param {*} className 添加的类，可以单个添加也可多个一起添加
          */
         addClass: function(element, className) {
@@ -897,7 +975,7 @@
         /**
          * @author laixiangran@163.com
          * @description 元素删除class
-         * @param {Element} element 元素
+         * @param {HTMLElement} element 元素
          * @param {*} className 删除的类，可以单个删除也可多个一起删除
          */
         removeClass: function(element, className) {
@@ -921,7 +999,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取当前元素的子元素
-         * @param {Element} element 元素
+         * @param {HTMLElement} element 元素
          * @param {Boolean} isSelf 是否返回自身，默认为false
          * @return {String}
          */
@@ -933,7 +1011,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取当前元素包含的所有文本（包含所有子节点的文本）
-         * @param {Element} element 元素
+         * @param {HTMLElement} element 元素
          * @return {String}
          */
         getText: function(element) {
@@ -943,7 +1021,7 @@
         /**
          * @author laixiangran@163.com
          * @description 在当前元素插入子元素
-         * @param {Element} element 元素
+         * @param {HTMLElement} element 元素
          * @param {String} elemStr 插入的元素
          * @param {String} type 设置方式，默认"inner"
          * type可取的值：
@@ -965,7 +1043,7 @@
         /**
          * @author laixiangran@163.com
          * @description 【废弃】 元素插入子节点，建议使用inserHtml方法
-         * @param {Element} parentElem 父元素
+         * @param {HTMLElement} parentElem 父元素
          * @param {String,Node} node 插入的节点
          */
         append: function(parentElem, node) {
@@ -1008,7 +1086,7 @@
         /**
          * @author laixiangran@163.com
          * @description 拖拽元素
-         * @param {Element} elem 拖拽的元素
+         * @param {HTMLElement} elem 拖拽的元素
          * @param {Function} callback 拖拽结束之后的回调函数
          */
         drag: function(elem, callback) {
@@ -1059,7 +1137,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素被窗口卷去的上部分高度
-         * @param {Element} elem
+         * @param {HTMLElement} elem
          * @return {Number}
          */
         getScrollTop: function(elem) {
@@ -1070,7 +1148,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素被窗口卷去的左部分宽度
-         * @param {Element} elem
+         * @param {HTMLElement} elem
          * @return {Number}
          */
         getScrollLeft: function(elem) {
@@ -1081,7 +1159,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素的左偏移量
-         * @param {Element} elem
+         * @param {HTMLElement} elem
          * @return {Number}
          */
         getElementLeft: function(elem) {
@@ -1097,7 +1175,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素的上偏移量
-         * @param {Element} elem
+         * @param {HTMLElement} elem
          * @return {Number}
          */
         getElementTop: function(elem) {
@@ -1113,7 +1191,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素的范围（包括窗口不可见的部分）
-         * @param {Element} elem
+         * @param {HTMLElement} elem
          * @return {Object}
          */
         getRect: function(elem) {
@@ -1146,7 +1224,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素在窗口可见的范围
-         * @param {Element} elem
+         * @param {HTMLElement} elem
          * @return {Object}
          */
         getClientRect: function(elem) {
@@ -1182,8 +1260,8 @@
         /**
          * @author laixiangran@163.com
          * @description 元素是否包含某元素
-         * @parma {Element} elemA 包含元素
-         * @param {Element} elemB 被包含元素
+         * @parma {HTMLElement} elemA 包含元素
+         * @param {HTMLElement} elemB 被包含元素
          * @return {Boolean}
          */
         contains: function(elemA, elemB) {
@@ -1207,7 +1285,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素所有css属性
-         * @parma {Element} elem
+         * @parma {HTMLElement} elem
          * @return {CSSStyleDeclaration}
          */
         getCurStyle: function(elem) {
@@ -1221,7 +1299,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素指定的css属性的值
-         * @param {Element} elem 当前元素
+         * @param {HTMLElement} elem 当前元素
          * @parma {String} name css属性名
          * @return {*}
          */
@@ -1264,7 +1342,7 @@
         /**
          * @author laixiangran@163.com
          * @description 设置元素指定的css属性的值
-         * @param {Array,Element} elems 设置的元素
+         * @param {Array,HTMLElement} elems 设置的元素
          * @parma {String,Object} style css属性名
          * @param {*} value css属性的指（可选）
          */
@@ -1296,7 +1374,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取元素大小
-         * @param {Element} elem
+         * @param {HTMLElement} elem
          * @return {Object}
          */
         getSize: function(elem) {
@@ -1341,7 +1419,7 @@
         /**
          * @author laixiangran@163.com
          * @description 选择文本框中的文本
-         * @param {Element} textbox 文本框
+         * @param {HTMLInputElement} textbox 文本框
          * @param {Number} startIndex 开始点
          * @param {Number} stopIndex 结束点
          */
@@ -1361,7 +1439,7 @@
         /**
          * @author laixiangran@163.com
          * @description 获取文本框中选择的文本
-         * @param {Element} textbox 文本框
+         * @param {HTMLInputElement} textbox 文本框
          * @return {String}
          */
         getSelectedText: function(textbox) {
@@ -1372,6 +1450,57 @@
                 // 在与select事件一起使用的时候，可以假定是用户选择了文本框中的文本，因而触发了该事件，故可实现获取文本框中选择的文本
                 return document.selection.createRange().text;
             }
+        },
+
+        /**
+         * @author laixiangran@163.com
+         * @description 图片灰度化
+         * 原理：设置像素点的R、G、B三个分量的值某个灰度值，该灰度值有两种算法：
+         * 1、求出每个像素点的R、G、B三个分量的平均值，然后将这个平均值赋予给这个像素的三个分量。
+         * 2、（默认使用）根据YUV颜色空间，Y分量的物理意义是点的亮度，由该值反映亮度等级。根据RGB和YUV颜色空间的变化关系可建立亮度Y与R、G、B三个颜色分量的对应：Y = 0.3R+0.59G+0.11B，以这个亮度值表达图像的灰度值。
+         * @param {HTMLImageElement} img 图片
+         * @param {Boolean} isAvg 是采用平均值算法还是采用YUV与RGB变化关系算法
+         * @return {HTMLImageElement}
+         */
+        removeImageColors: function(img, isAvg) {
+            var oCanvas = document.createElement("canvas"),
+                oCtx = oCanvas.getContext("2d"),
+                nWidth = img.offsetWidth,
+                nHeight = img.offsetHeight,
+                oImgData = null,
+                aPix = null,
+                nPixLen = 0,
+                nPixel = 0,
+                oGrayImg = new Image(),
+                ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase(),
+                calFunc = null;
+            oCanvas.width = nWidth;
+            oCanvas.height = nHeight;
+            oCtx.drawImage(img, 0, 0);
+            oImgData = oCtx.getImageData(0, 0, nWidth, nHeight);
+            aPix = oImgData.data;
+            nPixLen = aPix.length;
+
+            calFunc = (function() {
+                if (isAvg) {
+                    return function(r, g ,b) {
+                        return Math.round((r + g + b) / 3);
+                    };
+                } else {
+                    return function(r, g ,b) {
+                        return Math.round((0.3 * r + 0.59 * g + 0.11 * b));
+                    };
+                }
+            }());
+
+            for (nPixel = 0; nPixel < nPixLen; nPixel += 4) {
+                aPix[nPixel + 2] = aPix[nPixel + 1] = aPix[nPixel] = calFunc(aPix[nPixel], aPix[nPixel + 1], aPix[nPixel + 2]);
+            }
+
+            oCtx.putImageData(oImgData, 0, 0);
+            oGrayImg.src = oCanvas.toDataURL("image/" + ext);
+            oCanvas = null;
+            return oGrayImg;
         }
     };
 }(window));
@@ -1597,6 +1726,106 @@
                 var args = slice.call(arguments, 2);
                 return function() {
                     return fun.apply(thisp, args.concat(slice.call(arguments)));
+                };
+            },
+
+            /**
+             * @author laixiangran@163.com
+             * @description 函数柯里化（function currying 部分求值）。被柯里化的函数带参数时缓存参数，不带参数时开始求值
+             * @param {Function} fun 函数
+             * @return {Function}
+             */
+            currying: function(fun) {
+                var args = [];
+                return function() {
+                    if (arguments.length === 0) {
+                        return fun.apply(this, args);
+                    } else {
+                        [].push.apply(args, arguments);
+                    }
+                };
+            },
+
+            /**
+             * @author laixiangran@163.com
+             * @description 对象借用不属于自己的方法，这是uncurrying的目的
+             * @param {Function} fun 函数
+             * @return {Function}
+             */
+            uncurrying: function(fun) {
+                return function() {
+                    return Function.prototype.call.apply(fun, arguments);
+                };
+            },
+
+            /**
+             * @author laixiangran@163.com
+             * @description 函数节流，目的是降低调用函数的频率
+             * @param {Function} fun 函数
+             * @param {Number} interval 延迟执行的时间
+             */
+            throttle: function(fun, interval) {
+                var _self = fun, // 保存需要被延迟执行的函数引用
+                    timer = null, // 定时器
+                    firstTime = true; // 是否第一次调用
+                return function() {
+                    var args = arguments,
+                        _me = this;
+
+                    // 第一次执行不需要延迟执行
+                    if (firstTime) {
+                        _self.apply(_me, args);
+                        return firstTime = false;
+                    }
+
+                    // 如果定时器还在，说明前一次延迟执行还没有完成
+                    if (timer) {
+                        return false;
+                    }
+
+                    timer = setTimeout(function() {
+                        clearTimeout(timer);
+                        timer = null;
+                        _self.apply(_me, args);
+                    }, interval || 500);
+                };
+            },
+
+            /**
+             * @author laixiangran@163.com
+             * @description 函数分时，目的是让函数的工作分时进行
+             * @param {Array} datas
+             * @param {Function} fun 处理数据的函数
+             * @param {Number} count 一次处理的数据量
+             * @param {Number} interval 每次处理的时间间隔
+             */
+            timeChunk: function(datas, fun, count, interval) {
+                var start = function() {
+                    for (var i = 0; i < Math.min(count || 1, datas.length); i++) {
+                        var obj = datas.shift();
+                        fun(obj);
+                    }
+                };
+                var timer = setInterval(function() {
+                    if (datas.length === 0) {
+                        clearInterval(timer);
+                    }
+                    start();
+                }, interval || 100);
+            },
+
+            /**
+             * @author laixiangran@163.com
+             * @description 函数AOP（面向切面编程）
+             * @param {Function} fun 主函数
+             * @param {Function} beforeFun 主函数执行之前的运行程序
+             * @param {Function} afterFun 主函数执行之后的运行程序
+             */
+            aop: function(fun, beforeFun, afterFun) {
+                return function() {
+                    beforeFun.apply(this, arguments); // 修正this
+                    fun.apply(this, arguments);
+                    afterFun.apply(this, arguments);
                 }
             }
         };
@@ -1824,55 +2053,26 @@
 
         /**
          * @author laixiangran@163.com
-         * @description 将图片转换为base64编码
-         * @param {Element} img
+         * @description 将图片（图片url）转换为base64编码
+         * @param {String} url
+         * @param {Function} callback 回调函数
          * @return {String}
          */
-        imgToBase64: function(img) {
-            // 生成canvas
-            function getCanvas(w, h) {
-                var c = document.createElement("canvas");
-                c.width = w;
-                c.height = h;
-                return c;
-            }
-
-            // 获取图片像素数据
-            function getPixels(img) {
-                var c = getCanvas(img.width, img.height);
-                var ctx = c.getContext("2d");
-                ctx.drawImage(img, 0, 0);
-                return ctx.getImageData(0, 0, c.width, c.height);
-            }
-
-            var imgData = getPixels(img).data;
-            var imgWidth = getPixels(img).width;
-            var imgHeight = getPixels(img).height;
-
-            var bin = "";
-            for (var i = 0, len = imgData.length; i < len; i++) {
-                bin += this.strToBin("" + imgData[i]);
-            }
-            bin += this.strToBin("$$" + imgWidth + "," + imgHeight + "$$");
-            return this.binToBase64(bin);
-        },
-
-        /**
-         * @author laixiangran@163.com
-         * @description 将base64编码转换为图片
-         * @param {String} data
-         * @return {Object}
-         */
-        base64Toimg: function(data) {
-            var str = this.binToStr(this.base64ToBin(data));
-            var imgWidth = str.match(/\$\$(\d+),(\d+)\$\$$/, "")[1];
-            var imgHeight = str.match(/\$\$(\d+),(\d+)\$\$$/, "")[2];
-            var imgData = this.base64ToBin(data).replace(this.strToBin("$$" + imgWidth + "," + imgHeight + "$$"), "");
-            var imageDataArray = new Uint8ClampedArray(imgWidth * imgHeight * 4);
-            for (var i = 0, len = imageDataArray.length; i < len; i++) {
-                imageDataArray[i] = parseInt(imgData.substr(i * 8, 8), 2);
-            }
-            return new ImageData(imageDataArray, imgWidth, imgHeight);
+        imgToBase64: function(url, callback) {
+            var image = new Image();
+            image.crossOrigin = "anonymous"; // 引用其他服务器下的图片，不发送凭证
+            image.src = url;
+            image.onload = function() {
+                var canvas = document.createElement("canvas");
+                canvas.width = image.width;
+                canvas.height = image.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(image, 0, 0);
+                var ext = image.src.substring(image.src.lastIndexOf(".") + 1).toLowerCase();
+                var base64 = canvas.toDataURL("image/" + ext);
+                callback(base64);
+                canvas = null;
+            };
         },
 
         /**
@@ -2131,4 +2331,4 @@
             return func;
         }())
     };
-}(window));</312){>
+}(window));

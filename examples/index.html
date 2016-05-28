@@ -8,21 +8,21 @@
     <link rel="stylesheet" href="styles/page.css"/>
     <title>laixiangran - 前端技术实验室</title>
     <style>
-        html, body, div, ul, li, h1 {
+        html, body, div, ul, li, h1, h2 {
             margin: 0;
             padding: 0;
+        }
+        span {
+            font-size: 18px;
         }
         a {
             text-decoration: none;
             color: #151497;
+            font-weight: bold;
         }
         a:hover {
             text-decoration: underline;
             color: #da2b31;
-        }
-        #main {
-            margin: 50px auto;
-            width: 60%;
         }
         li {
             list-style: none;
@@ -38,27 +38,32 @@
             border: 1px solid #ffc423;
             box-shadow: 0 0 5px #ffc423;
         }
-        h1 {
+        h2 {
             padding-left: 10px;
             background-color: rgb(200, 200, 200);
         }
-        .h1_css {
+        .h2_css {
             border-left: 4px solid #016CBB;
         }
-        .h1_js {
+        .h2_js {
             border-left: 4px solid #ffc423;
         }
     </style>
 </head>
 <body>
     <div class="page_box">
-        <h1 class="h1_css">HTML & CSS</h1>
+        <h1>
+            前端技术实验室
+            <span>by <a target="_blank" href="http://www.laixiangran.cn">laixiangran</a></span>
+        </h1>
+        <hr/>
+        <h2 class="h2_css">HTML & CSS</h2>
         <ul class="ul_css">
             <li>
                 <a href="CSS/filter.html" target="_blank">了解CSS3属性 - filter</a>
             </li>
         </ul>
-        <h1 class="h1_js">JavaScript</h1>
+        <h2 class="h2_js">JavaScript</h2>
         <ul class="ul_js">
             <li>
                 <a href="JS/imageViewer/index.html" target="_blank">图片查看器，可缩放（滚轮）、旋转（中键）、平移（左键）、翻转</a>

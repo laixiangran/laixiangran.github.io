@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"/>
+    <title>俄罗斯方块</title>
+    <style type="text/css">
+        .c {
+            margin: 1px;
+            width: 19px;
+            height: 19px;
+            background: red;
+            position: absolute;
+        }
+
+        .d {
+            margin: 1px;
+            width: 19px;
+            height: 19px;
+            background: gray;
+            position: absolute;
+        }
+
+        .f {
+            top: 0;
+            left: 0;
+            background: black;
+            position: absolute;
+        }
+
+        #main {
+            top: 0;
+            left: 300px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <h1>俄罗斯方块游戏</h1>
+    <p>操作方式：按键盘方向键控制方块</p>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var over = false,
+        shapes = ("0,1,1,1,2,1,3,1;1,0,1,1,1,2,2,2;2,0,2,1,2,2,1,2;0,1,1,1,1,2,2,2;1,2,2,2,2,1,3,1;1,1,2,1,1,2,2,2;0,2,1,2,1,1,2,2").split(";"); // shapes 中的每一个元素的各个数字任意两个一组，分别指该层移动的X，Y轴
+
+    // 创建tag
+    function create(tag, css) {
+        var elm = document.createElement(tag);
+        elm.className = css;
+        document.body.appendChild(elm);
+        return elm;
+    }
+
+    // Field整个游戏界面的对象，每跳动一次，就是一次刷新
+    function Field(w, h) {
+        this.width = w ? w : 10;
+        this.height = h ? h : 20;
+
+        // 创建一个底层，游戏界面
+        this.show = function () {
+            var f = create("div", "f");
+            f.style.width = this.width * 20 + 'px';
+            f.style.height = this.height * 20 + 'px';
+        };
+
+        // 判断是否到了边缘
+        this.check = function (shape, x, y, d) {
+            var r1 = 0, //每一次所生成的4个层绝对不会存在超出左边的同时又超出右边，故r1只有一个
+                r2 = 'GO';
+            for (var i = 0; i < 8; i += 2) {
+                //循环横坐标，查看是否超过边距
+                if (parseInt(shape[i]) + x < 0 && parseInt(shape[i]) + x < r1) {
+                    // 若向左边移动会超出边界
+                    r1 = parseInt(shape[i]) + x;
+                }
+                else if (parseInt(shape[i]) + x >= this.width && parseInt(shape[i]) + x > r1) {
+                    // 若向右移动会超出边界
+                    r1 = parseInt(shape[i]) + x;
+                }
+                if (parseInt(shape[i + 1]) + y >= this.height || this[parseInt(shape[i]) + x + (parseInt(shape[i + 1]) + y) * this.width]) {
+                    r2 = "NO";
+                }
+            }
+            if (d == "move" && r2 == "GO") {   //当此次操作是左右移动的话，就返回移动后的横坐标，只要没有超出边界，r1就肯定不为0
+                return r1;
+            } else if (d == "upchange" && r2 == "GO") {  //当此次操作是变换形状时
+                return r1 > 0 ? r1 - this.width + 1 : r1;   //其实每次移动的都是该层的很坐标，以左边为准移动的
+            } else {
+                return r2;
+            }
+        };
+
+        // 判断该行是否已经满了
+        this.findFull = function () {
+            for (var h = 0; h < this.height; h++) { //循环底层的纵坐标
+                var s = 0;
+                for (var w = 0; w < this.width; w++) {     //循环行坐标
+                    s += this[w + h * this.width] ? 1 : 0;   //确定每个坐标点上时候有元素，以便于确定改行是否满了
+                }
+                if (s == this.width) {     //若改行满了，则调用removeLine方法，一处该行的每一个元素
+                    this.removeLine(h);
+                }
+            }
+        };
+
+        // 清除已经填满的行
+        this.removeLine = function (line) {
+            for (var w = 0; w < this.width; w++) {   //因为每个元素都是根据对象的横纵坐标在存储，所以需要重新循环横坐标，以便于取出每一个元素
+                document.body.removeChild(this[w + line * this.width]);   //每个元素都是在body上存在着
+            }
+            //移除该行之后需要让其上的每行都向下移动一行
+            for (var l = line; l > 0; l--) {
+                for (var i = 0; i < this.width; i++) {
+                    this[i + l * this.width] = this[i + (l - 1) * this.width]; //把上一行的元素付给下一行的元素()
+                    if (this[i + l * this.width]) {
+                        this[i + l * this.width].style.top = l * 20 + 'px'; //移动
+                    }
+                }
+            }
+        };
+
+        // 生成落地的方块
+        this.fixShape = function (shape, x, y) {
+            var d = new Tetris("d", shape, x, y);
+            d.show();
+            for (var i = 0; i < 8; i += 2) { // 记录每个变灰色的div层，只有成功到底底层的时候才记录
+                // parseInt(shape[i]) + x   记录的为该层的横坐标
+                // parseInt(shape[i + 1]) + y    记录的为纵坐标
+                // 这样是为了this[…]是唯一。
+                this[parseInt(shape[i]) + x + (parseInt(shape[i + 1]) + y) * this.width] = d.divs[i / 2];
+            }
+        }
+    }
+
+    function Tetris(c, t, x, y) {
+        c = c ? c : "c";    //若C存在，则为C，不存在，则赋值
+        this.field = null;
+        this.divs = [create("div", c), create("div", c), create("div", c), create("div", c)];  //调用create方法创建元素
+        var ttt = t;
+        this.reset = function () {                  //创建一个方块
+            this.x = typeof x != 'undefined' ? x : 3;
+            this.y = typeof y != 'undefined' ? y : 0;
+            this.shape = t ? t : (shapes[Math.floor(Math.random() * (shapes.length - 0.00001))].split(","));
+            this.show();
+            //当刚生的方块就不能再向下移动的时候，游戏结束
+            if (this.field && this.field.check(this.shape, this.x, this.y, "down") == "NO") {
+                over = true;
+                this.field.fixShape(this.shape, this.x, this.y);
+                alert('game over');
+            }
+        };
+
+        // 根据生成的方案，初始化方块。
+        this.show = function () {
+            for (var i = 0; i < this.divs.length; i++) {
+                this.divs[i].style.left = (this.shape[i * 2] * 1 + this.x) * 20 + 'px';
+                this.divs[i].style.top = (this.shape[i * 2 + 1] * 1 + this.y) * 20 + 'px';
+            }
+        };
+
+        // 该方法使方块向下移动
+        this.vMove = function () {
+            if (this.field.check(this.shape, this.x, this.y + 1, "down") == "GO") {  //若还能向下移动就执行
+                this.y++;
+                this.show();
+            } else {
+                this.field.fixShape(this.shape, this.x, this.y);   //不能向下移动了，就生成固定的块。
+                this.field.findFull();
+                this.reset();
+            }
+        };
+
+        // 该方法使方块左右移动
+        this.hMove = function (moveNo) {
+            var r = this.field.check(this.shape, parseInt(this.x) + moveNo, this.y, 'move');
+            if (r != 'GO' && r == 0) {
+                this.x += moveNo;
+                this.show();
+            }
+        };
+
+        // 当按动上键时，改变方块的排列方向
+        this.rotate = function () {
+            var s = this.shape;
+            var newShape = [3 - s[1], s[0], 3 - s[3], s[2], 3 - s[5], s[4], 3 - s[7], s[6]];  //先把坐标循环180度，然后纵横坐标互换。
+            var r = this.field.check(newShape, this.x, this.y, 'upchange');   //调用check方法，确定时候可以改变
+            if (r == "NO") {
+                return;
+            }
+            if (r == 0) {    //若为0 ，则说明改变后的块并没有超出范围，继续执行
+                this.shape = newShape;
+                this.show();
+            } else if (this.field.check(newShape, this.x - r, this.y, 'move') == 0) {  //超出后，根据返回值，让其向相应的方向移动。以保证并不会超出范围
+                this.x -= r;
+                this.shape = newShape;
+                this.show();
+            }
+        };
+        this.reset();
+    }
+
+    // 初始化
+    var f = new Field();
+    f.show();
+    var t = new Tetris();
+    t.field = f;
+    t.reset();
+    window.setInterval(function () {
+        !over && t.vMove(); // 调用向下移动的方法
+    }, 500);
+
+    // 注册键盘事件，当按上下左右键时，触发
+    document.onkeydown = function (e) {
+        if (over) return;
+        e = window.event ? window.event : e;
+        switch (e.keyCode) {
+            case 38: // up  当按下上键时
+                t.rotate();
+                break;
+            case 40: // down
+                t.vMove();
+                break;
+            case 37: // left
+                t.hMove(-1);
+                break;
+            case 39: // right
+                t.hMove(1);
+                break;
+        }
+    }
+</script>

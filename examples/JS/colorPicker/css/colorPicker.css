@@ -1,0 +1,31 @@
+div.colorpicker, div.colorpicker table, div.colorpicker table td {
+    margin: 0!important;
+    padding: 0!important;
+}
+div.colorpicker {
+    display: none;
+    position: absolute;
+    border: 1px solid #c3c9cf;
+    background-color: #f8f8f8;
+    z-index:999;
+}
+div.colorpicker .cell {
+    cursor: pointer;
+}
+div.colorpicker table {
+    border-collapse: collapse;
+    width: 100%;
+}
+div.colorpicker .cell td {
+    height: 12px;
+}
+#color_result {
+    width: 100%;
+}
+#color_view {
+    width: 50%;
+    height: 20px;
+}
+#color_code {
+    text-align: center;
+}

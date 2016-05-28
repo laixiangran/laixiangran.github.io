@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/colorPicker.css">
+    <script src="js/colorPicker.js"></script>
+    <script>
+        window.onload = function(){
+            new ColorPicker({
+                textInput_id: "user_color"
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="user_color" class="col-sm-2 control-label">颜色</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="user_color" id="user_color" placeholder="点击选择颜色">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+</body>
+</html>

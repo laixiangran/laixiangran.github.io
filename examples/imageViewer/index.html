@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8"/>
+	<title>图片查看器</title>
+    <link rel="stylesheet" href="../../CDN/imageViewer/css/imageViewer.css" />
+    <style>
+        #imageViewer {
+            margin: 0 auto;
+            border: 1px solid #000;
+            width: 800px;
+            height: 600px;
+            background: #ffffff no-repeat center;
+        }
+    </style>
+    <script src="../../CDN/common/common.js"></script>
+	<script src="../../CDN/imageViewer/js/imageViewer.js"></script>
+    <script>
+        COM.$W.domReady(function() {
+            var container = COM.$D.byId("imageViewer");
+            var imgs = [];
+            for (var i = 0; i < 12; i++) {
+                imgs.push("img/img_" + (i + 1) +".jpg");
+            }
+            var iv = new imageViewer("imageViewer", {
+                sources: imgs,
+                onPreLoad: function() {
+                    container.style.backgroundImage = "url('img/loading.gif')";
+                },
+                onLoad: function() {
+                    container.style.backgroundImage = "";
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="imageViewer"></div>
+    <p>GitHub：<a href="https://github.com/laixiangran/imageViewer">https://github.com/laixiangran/imageViewer</a></p>
+</body>
+</html>

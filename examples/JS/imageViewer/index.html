@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>图片查看器</title>
-    <link rel="stylesheet" href="../../CDN/imageViewer/css/imageViewer.css" />
+    <link rel="stylesheet" href="../../../CDN/imageViewer/css/imageViewer.css" />
+    <link rel="stylesheet" href="../../styles/page.css"/>
     <style>
         #imageViewer {
             margin: 0 auto;
@@ -13,8 +14,8 @@
             background: #ffffff no-repeat center;
         }
     </style>
-    <script src="../../CDN/common/common.js"></script>
-	<script src="../../CDN/imageViewer/js/imageViewer.js"></script>
+    <script src="../../../CDN/common/common.js"></script>
+	<script src="../../../CDN/imageViewer/js/imageViewer.js"></script>
     <script>
         COM.$W.domReady(function() {
             var container = COM.$D.byId("imageViewer");
@@ -36,6 +37,6 @@
 </head>
 <body>
     <div id="imageViewer"></div>
-    <p>GitHub：<a href="https://github.com/laixiangran/imageViewer">https://github.com/laixiangran/imageViewer</a></p>
+    <a id="sources" target="_blank" title="前往GitHub" href="https://github.com/laixiangran/imageViewer">GitHub</a>
 </body>
 </html>

@@ -10,3 +10,25 @@ html, body {
     border: 1px solid #eee;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
+#sources {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 28px;
+    background-color: #333333;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 28px;
+    text-align: center;
+    text-decoration: none;
+    transform: translate(-40px,45px) rotate(-45deg);
+    box-shadow: 0 0 5px rgba(0,0,0,.5),inset 0 0 2px #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+}
+#sources:hover {
+    background-color: darkred;
+}

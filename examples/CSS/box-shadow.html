@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn" />
+    <title>box-shadow</title>
+    <link rel="stylesheet" href="../styles/page.css"/>
+    <style>
+        .tip {
+            color: red;
+            font-weight: bold;
+        }
+        .code {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 5px;
+            color: #fff;
+            font-weight: bold;
+            background-color: #000;
+        }
+        .simple {
+            width: 300px;
+            height: 100px;
+            border: 1px solid #b3b3b3;
+            line-height: 100px;
+            background-color: #c9c9c9;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .input-enter {
+            padding: 4px 3px 5px;
+            border: 1px solid #999;
+            border-radius: 2px;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            color: #666;
+        }
+        .input-enter:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .shadow-cave {
+            position: relative;
+            width: 256px;
+            height: 160px;
+            padding: 10px;
+            border: 1px solid #bbb;
+            text-align: center;
+            line-height: 2em;
+            box-shadow: 0 10px 5px rgba(0, 0, 0, 0.3);
+        }
+        .shadow-cave:after {
+            position: absolute;
+            bottom: -29px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 15px;
+            content: '';
+            border-radius: 50%;
+            box-shadow: 0 -10px 5px #fff;
+        }
+
+        .ball {
+            background: rgba(100, 100, 100, 0.2);
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border-radius:50%;
+            box-shadow:-14px 8px 100px #333 inset, 0 0 2px #888, 3px -1px 4px #444;
+        }
+
+        .curved_box {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+            height: 248px;
+            margin: 20px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+        }
+
+        .curved_box:before {
+            left: 15px;
+            transform: skew(-15deg) rotate(-6deg);
+        }
+
+        .curved_box:after {
+            right: 15px;
+            transform: skew(15deg) rotate(6deg);
+        }
+
+        .curved_box:before, .curved_box:after {
+            position: absolute;
+            bottom: 10px;
+            width: 70%;
+            height: 55%;
+            content: ' ';
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+<div class="page_box">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow">box-shadow</a></h1>
+
+    <h2>概述</h2>
+    <p>
+        box-shadow以逗号分割列表来描述一个或多个阴影效果，可以用到几乎任何元素上。 如果元素同时设置了<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius"> border-radius </a> ，阴影也会有圆角效果。多个阴影的 z-ordering 和多个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow"> text-shadows </a>规则相同(第一个阴影在最上面)。
+    </p>
+    <p>
+        box-shadow可以设置6个值。其中4个可选；2个必须指定：分别是x轴偏移量和y轴偏移量，这2个值可以是正值，可以是负值，也可以是0，但不可以省略不写
+    </p>
+
+    <h2>兼容性</h2>
+    <iframe width="100%" height="380" src="http://caniuse.com/css-boxshadow/embed" frameborder="0"></iframe>
+
+    <h2>基本应用</h2>
+    <h3>外部阴影偏移（正值）</h3>
+    <div class="simple" style="box-shadow: 5px 5px #888">
+        box-shadow: 5px 5px #888
+    </div>
+    <h3>内部阴影偏移（正值）</h3>
+    <div class="simple" style="box-shadow: inset 5px 5px #888">
+        box-shadow: inset 5px 5px #888
+    </div>
+    <h3>外部阴影偏移（负值）</h3>
+    <div class="simple" style="box-shadow: -5px -5px #888">
+        box-shadow: -5px -5px #888
+    </div>
+    <h3>内部阴影偏移（负值）</h3>
+    <div class="simple" style="box-shadow: inset -5px -5px #888">
+        box-shadow: inset -5px -5px #888
+    </div>
+    <h3>外部阴影模糊</h3>
+    <div class="simple" style="box-shadow: 0 0 10px #888">
+        box-shadow: 0 0 10px #888
+    </div>
+    <h3>内部阴影模糊</h3>
+    <div class="simple" style="box-shadow: inset 0 0 10px #888">
+        box-shadow: inset 0 0 10px #888
+    </div>
+    <h3>外部阴影扩展</h3>
+    <div class="simple" style="box-shadow: 0 0 0 10px #888">
+        box-shadow: 0 0 0 10px #888
+    </div>
+    <h3>外部阴影扩展</h3>
+    <div class="simple" style="box-shadow: inset 0 0 0 10px #888">
+        box-shadow: inset 0 0 0 10px #888
+    </div>
+
+    <h2>进阶应用</h2>
+    <h3>文本聚焦效果</h3>
+    <input class="input-enter" type="text" placeholder="点击我试试"/>
+    <h3>凹陷阴影效果</h3>
+    <div class="shadow-cave">
+        <img width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    </div>
+    <h3>3D小球</h3>
+    <div class="ball"></div>
+    <h3>纸张仿真效果</h3>
+    <div class="curved_box"></div>
+</div>
+<a id="sources" target="_blank" title="前往 技术之旅" href="http://www.laixiangran.cn/home">技术之旅</a>
+</body>
+</html>

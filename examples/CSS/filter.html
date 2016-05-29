@@ -9,99 +9,49 @@
     <title>filter</title>
     <style>
         .blur {
-            -webkit-filter: blur(0);
-            filter: blur(0);
-        }
-        .blur:hover {
             -webkit-filter: blur(5px);
             filter: blur(5px);
         }
-
         .brightness {
-            -webkit-filter: brightness(1);
-            filter: brightness(1);
-        }
-        .brightness:hover {
             -webkit-filter: brightness(0.5);
             filter: brightness(0.5);
         }
-
         .contrast {
-            -webkit-filter: contrast(1);
-            filter: contrast(1);
-        }
-        .contrast:hover {
             -webkit-filter: contrast(0.5);
             filter: contrast(0.5);
         }
-
         .drop-shadow {
-            -webkit-filter: drop-shadow(0 0 0 #000);
-            filter: drop-shadow(0 0 0 #000);
-        }
-        .drop-shadow:hover {
             -webkit-filter: drop-shadow(16px 16px 10px #000);
             filter: drop-shadow(16px 16px 10px #000);
         }
-
         .grayscale {
-            -webkit-filter: grayscale(0);
-            filter: grayscale(0);
-        }
-        .grayscale:hover {
             -webkit-filter: grayscale(1);
             filter: grayscale(1);
         }
-
         .hue-rotate {
-            -webkit-filter: hue-rotate(0deg);
-            filter: hue-rotate(0deg);
-        }
-        .hue-rotate:hover {
             -webkit-filter: hue-rotate(90deg);
             filter: hue-rotate(90deg);
         }
-
         .invert {
-            -webkit-filter: invert(0);
-            filter: invert(0);
-        }
-        .invert:hover {
             -webkit-filter: invert(1);
             filter: invert(1);
         }
-
         .opacity {
-            -webkit-filter: opacity(1);
-            filter: opacity(1);
-        }
-        .opacity:hover {
             -webkit-filter: opacity(0.2);
             filter: opacity(0.2);
         }
-
         .saturate {
-            -webkit-filter: saturate(1);
-            filter: saturate(1);
-        }
-        .saturate:hover {
             -webkit-filter: saturate(0);
             filter: saturate(0);
         }
-
         .sepia {
-            -webkit-filter: sepia(0);
-            filter: sepia(0);
-        }
-        .sepia:hover {
             -webkit-filter: sepia(1);
             filter: sepia(1);
         }
-
         .box {
             margin: 40px;
             padding: 50px;
-            width: 200px;
+            width: 20%;
             background-color: #fff;
             position: relative;
             font-size: 24px;
@@ -119,7 +69,6 @@
             -webkit-filter: drop-shadow(5px 5px 10px black);
             filter: drop-shadow(5px 5px 10px black);
         }
-
         .dashed-drop-shadow {
             width: 50px;
             height: 50px;
@@ -128,32 +77,33 @@
             filter: drop-shadow(5px 5px 10px black);
             margin-top: 30px;
         }
-
         .old-photo {
             -webkit-filter: sepia(1);
             filter: sepia(1);
         }
-
-        .old-photo:hover {
-            -webkit-filter: sepia(0);
-            filter: sepia(0);
-        }
-
         .camera-film {
             -webkit-filter: invert(1);
             filter: invert(1);
         }
-
-        .camera-film:hover {
-            -webkit-filter: invert(0);
-            filter: invert(0);
+        .tip {
+            color: red;
+            font-weight: bold;
+        }
+        .code {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 5px;
+            color: #fff;
+            font-weight: bold;
+            background-color: #000;
         }
     </style>
 </head>
 <body>
 <div class="page_box">
-    <span style="color: red;">说明：默认为原图，鼠标移上图片之后看效果</span>
-    <h1>filter</h1>
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter">filter</a></h1>
+
+    <h2>概述</h2>
     <p>
         CSS滤镜（filter）属性，可以在元素呈现之前，为元素的渲染提供一些效果，如模糊、颜色转移之类的。滤镜常用于调整图像、背景、边框的渲染。
     </p>
@@ -163,9 +113,16 @@
     <p>
         你可以组合任意数量的函数来控制渲染。
     </p>
+    <h2>兼容性</h2>
+    <iframe width="100%" height="380" src="http://caniuse.com/css-filters/embed" frameborder="0"></iframe>
+
+    <h1>函数及应用</h1>
+    <p>
+        <span class="tip">原图：</span><img width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    </p>
     <h2>url()</h2>
     <p>
-        URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素.
+        URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。
     </p>
     <hr/>
 
@@ -174,6 +131,7 @@
         给图像设置高斯模糊。“radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起，所以值越大越模糊；如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。
     </p>
     <img class="blur" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: blur(5px);</span>
     <hr/>
 
     <h2>brightness()</h2>
@@ -181,6 +139,7 @@
         给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0，图像会全黑。值是1，则图像无变化。其他的值对应线性乘数效果。值超过1也是可以的，图像会比原来更亮。如果没有设定值，默认是1。
     </p>
     <img class="brightness" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: brightness(0.5);</span>
     <hr/>
 
     <h2>contrast()</h2>
@@ -191,6 +150,7 @@
         通俗来说，该滤镜是对图片最亮的地方和最暗的地方进行调整，从而改变图片的均衡感。
     </p>
     <img class="contrast" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: contrast(0.5);</span>
     <hr/>
 
     <h2>drop-shadow()</h2>
@@ -198,6 +158,7 @@
         给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受shadow（在CSS3背景中定义）类型的值，除了“inset”关键字是不允许的。该函数与已有的box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。
     </p>
     <img class="drop-shadow" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: drop-shadow(16px 16px 10px #000);</span>
     <hr/>
 
     <h2>grayscale()</h2>
@@ -205,6 +166,7 @@
         将图像转换为灰度图像。值定义转换的比例。值为1则完全转为灰度图像，值为0图像无变化。值在0到1之间，则是效果的线性乘子。若未设置，值默认是0。
     </p>
     <img class="grayscale" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: grayscale(1);</span>
     <hr/>
 
     <h2>hue-rotate()</h2>
@@ -212,6 +174,7 @@
         给图像应用色相旋转。“angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。
     </p>
     <img class="hue-rotate" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: hue-rotate(90deg);</span>
     <hr/>
 
     <h2>invert()</h2>
@@ -219,6 +182,7 @@
         反转输入图像。值定义转换的比例。1的价值是完全反转。值为0则图像无变化。值在0和1之间，则是效果的线性乘子。 若值未设置，值默认是0。
     </p>
     <img class="invert" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: invert(1);</span>
     <hr/>
 
     <h2>opacity()</h2>
@@ -226,6 +190,7 @@
         转化图像的透明程度。值定义转换的比例。值为0则是完全透明，值为1则图像无变化。值在0和1之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。
     </p>
     <img class="opacity" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: opacity(0.2);</span>
     <hr/>
 
     <h2>saturate()</h2>
@@ -233,6 +198,7 @@
         转换图像饱和度。值定义转换的比例。值为0则是完全不饱和，值为1则图像无变化。其他值，则是效果的线性乘子。超过1的值是允许的，则有更高的饱和度。若值未设置，值默认是1。
     </p>
     <img class="saturate" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: saturate(0);</span>
     <hr/>
 
     <h2>sepia()</h2>
@@ -240,6 +206,7 @@
         将图像转换为深褐色。值定义转换的比例。值为1则完全是深褐色的，值为0图像无变化。值在0到1之间，则是效果的线性乘子。若未设置，值默认是0。
     </p>
     <img class="sepia" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
+    <span class="code">filter: sepia(1);</span>
     <hr/>
 
     <h2>示例</h2>
@@ -258,5 +225,6 @@
     <h3>4、相机底片效果</h3>
     <img class="camera-film" width="256" height="160" src="../JS/imageViewer/img/img_02.jpg"/>
 </div>
+<a id="sources" target="_blank" title="前往 技术之旅" href="http://www.laixiangran.cn/home">技术之旅</a>
 </body>
 </html>

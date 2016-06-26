@@ -1,0 +1,962 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,设计模式," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="概述观察者模式又叫发布 - 订阅模式（Publish/Subscribe），它定义了一种一对多的关系，让多个观察者对象同时监听某一个目标对象（为了方便理解，以下将观察者对象叫做订阅者，将目标对象叫做发布者）。发布者的状态发生变化时就会通知所有的订阅者，使得它们能够自动更新自己。
+观察者模式的使用场合就是：当一个对象的改变需要同时改变其它对象，并且它不知道具体有多少对象需要改变的时候，就应该考虑使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript设计模式与开发实践 - 观察者模式">
+<meta property="og:url" content="http://laixiangran.cn/2016/06/26/JavaScript设计模式与开发实践 - 观察者模式/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="概述观察者模式又叫发布 - 订阅模式（Publish/Subscribe），它定义了一种一对多的关系，让多个观察者对象同时监听某一个目标对象（为了方便理解，以下将观察者对象叫做订阅者，将目标对象叫做发布者）。发布者的状态发生变化时就会通知所有的订阅者，使得它们能够自动更新自己。
+观察者模式的使用场合就是：当一个对象的改变需要同时改变其它对象，并且它不知道具体有多少对象需要改变的时候，就应该考虑使用">
+<meta property="og:updated_time" content="2016-06-26T11:05:06.915Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript设计模式与开发实践 - 观察者模式">
+<meta name="twitter:description" content="概述观察者模式又叫发布 - 订阅模式（Publish/Subscribe），它定义了一种一对多的关系，让多个观察者对象同时监听某一个目标对象（为了方便理解，以下将观察者对象叫做订阅者，将目标对象叫做发布者）。发布者的状态发生变化时就会通知所有的订阅者，使得它们能够自动更新自己。
+观察者模式的使用场合就是：当一个对象的改变需要同时改变其它对象，并且它不知道具体有多少对象需要改变的时候，就应该考虑使用">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript设计模式与开发实践 - 观察者模式 | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript设计模式与开发实践 - 观察者模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-26T19:04:00+08:00" content="2016-06-26">
+              2016-06-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/26/JavaScript设计模式与开发实践 - 观察者模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/26/JavaScript设计模式与开发实践 - 观察者模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/26/JavaScript设计模式与开发实践 - 观察者模式/" class="leancloud_visitors" data-flag-title="JavaScript设计模式与开发实践 - 观察者模式">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>观察者模式又叫发布 - 订阅模式（Publish/Subscribe），它定义了一种一对多的关系，让多个观察者对象同时监听某一个目标对象（为了方便理解，以下将观察者对象叫做订阅者，将目标对象叫做发布者）。发布者的状态发生变化时就会通知所有的订阅者，使得它们能够自动更新自己。</p>
+<p>观察者模式的使用场合就是：当一个对象的改变需要同时改变其它对象，并且它不知道具体有多少对象需要改变的时候，就应该考虑使用观察者模式。</p>
+<p>观察者模式的中心思想就是促进松散耦合，一为时间上的解耦，二为对象之间的解耦。让耦合的双方都依赖于抽象，而不是依赖于具体，从而使得各自的变化都不会影响到另一边的变化。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _subscribe = <span class="literal">null</span>,</span><br><span class="line">        _publish = <span class="literal">null</span>,</span><br><span class="line">        _unsubscribe = <span class="literal">null</span>,</span><br><span class="line">        _shift = <span class="built_in">Array</span>.prototype.shift, <span class="comment">// 删除数组的第一个 元素，并返回这个元素</span></span><br><span class="line">        _unshift = <span class="built_in">Array</span>.prototype.unshift, <span class="comment">// 在数组的开头添加一个或者多个元素，并返回数组新的length值</span></span><br><span class="line">        namespaceCache = &#123;&#125;,</span><br><span class="line">        _create = <span class="literal">null</span>,</span><br><span class="line">        each = <span class="function"><span class="keyword">function</span> (<span class="params">ary, fn</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> ret = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = ary.length; i &lt; len; i++) &#123;</span><br><span class="line">                <span class="keyword">var</span> n = ary[i];</span><br><span class="line">                ret = fn.call(n, i, n);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 订阅消息</span></span><br><span class="line">    _subscribe = <span class="function"><span class="keyword">function</span> (<span class="params">key, fn, cache</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!cache[key]) &#123;</span><br><span class="line">            cache[key] = [];</span><br><span class="line">        &#125;</span><br><span class="line">        cache[key].push(fn);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取消订阅（取消全部或者指定消息）</span></span><br><span class="line">    _unsubscribe = <span class="function"><span class="keyword">function</span> (<span class="params">key, cache, fn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cache[key]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (fn) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = cache[key].length; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (cache[key][i] === fn) &#123;</span><br><span class="line">                        cache[key].splice(i, <span class="number">1</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cache[key] = [];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发布消息</span></span><br><span class="line">    _publish = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cache = _shift.call(<span class="built_in">arguments</span>),</span><br><span class="line">            key = _shift.call(<span class="built_in">arguments</span>),</span><br><span class="line">            args = <span class="built_in">arguments</span>,</span><br><span class="line">            _self = <span class="keyword">this</span>,</span><br><span class="line">            ret = <span class="literal">null</span>,</span><br><span class="line">            stack = cache[key];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!stack || !stack.length) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> each(stack, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.apply(_self, args);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建命名空间</span></span><br><span class="line">    _create = <span class="function"><span class="keyword">function</span> (<span class="params">namespace</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> namespace = namespace || <span class="string">"default"</span>;</span><br><span class="line">        <span class="keyword">var</span> cache = &#123;&#125;,</span><br><span class="line">            offlineStack = &#123;&#125;,    <span class="comment">// 离线事件，用于先发布后订阅，只执行一次</span></span><br><span class="line">            ret = &#123;</span><br><span class="line">                subscribe: <span class="function"><span class="keyword">function</span> (<span class="params">key, fn, last</span>) </span>&#123;</span><br><span class="line">                    _subscribe(key, fn, cache);</span><br><span class="line">                    <span class="keyword">if</span> (!offlineStack[key]) &#123;</span><br><span class="line">                        offlineStack[key] = <span class="literal">null</span>;</span><br><span class="line">                        <span class="keyword">return</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (last === <span class="string">"last"</span>) &#123; <span class="comment">// 指定执行离线队列的最后一个函数，执行完成之后删除</span></span><br><span class="line">                        offlineStack[key].length &amp;&amp; offlineStack[key].pop()();  <span class="comment">// [].pop =&gt; 删除一个数组中的最后的一个元素，并且返回这个元素</span></span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        each(offlineStack[key], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                            <span class="keyword">this</span>();</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                    offlineStack[key] = <span class="literal">null</span>;</span><br><span class="line">                &#125;,</span><br><span class="line">                one: <span class="function"><span class="keyword">function</span> (<span class="params">key, fn, last</span>) </span>&#123;</span><br><span class="line">                    _unsubscribe(key, cache);</span><br><span class="line">                    <span class="keyword">this</span>.subscribe(key, fn, last);</span><br><span class="line">                &#125;,</span><br><span class="line">                unsubscribe: <span class="function"><span class="keyword">function</span> (<span class="params">key, fn</span>) </span>&#123;</span><br><span class="line">                    _unsubscribe(key, cache, fn);</span><br><span class="line">                &#125;,</span><br><span class="line">                publish: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> fn = <span class="literal">null</span>,</span><br><span class="line">                        args = <span class="literal">null</span>,</span><br><span class="line">                        key = _shift.call(<span class="built_in">arguments</span>),</span><br><span class="line">                        _self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">                    _unshift.call(<span class="built_in">arguments</span>, cache, key);</span><br><span class="line">                    args = <span class="built_in">arguments</span>;</span><br><span class="line">                    fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> _publish.apply(_self, args);</span><br><span class="line">                    &#125;;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (offlineStack &amp;&amp; offlineStack[key] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">                        offlineStack[key] = [];</span><br><span class="line">                        <span class="keyword">return</span> offlineStack[key].push(fn);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> fn();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> namespace ? (namespaceCache[namespace] ? namespaceCache[namespace] : namespaceCache[namespace] = ret) : ret;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">window</span>.pubsub = &#123;</span><br><span class="line">        create: _create, <span class="comment">// 创建命名空间</span></span><br><span class="line">        one: <span class="function"><span class="keyword">function</span> (<span class="params">key, fn, last</span>) </span>&#123; <span class="comment">// 订阅消息，只能单一对象订阅</span></span><br><span class="line">            <span class="keyword">var</span> pubsub = <span class="keyword">this</span>.create();</span><br><span class="line">            pubsub.one(key, fn, last);</span><br><span class="line">        &#125;,</span><br><span class="line">        subscribe: <span class="function"><span class="keyword">function</span> (<span class="params">key, fn, last</span>) </span>&#123; <span class="comment">// 订阅消息，可多对象同时订阅</span></span><br><span class="line">            <span class="keyword">var</span> pubsub = <span class="keyword">this</span>.create();</span><br><span class="line">            pubsub.subscribe(key, fn, last);</span><br><span class="line">        &#125;,</span><br><span class="line">        unsubscribe: <span class="function"><span class="keyword">function</span> (<span class="params">key, fn</span>) </span>&#123; <span class="comment">// 取消订阅，（取消全部或指定消息）</span></span><br><span class="line">            <span class="keyword">var</span> pubsub = <span class="keyword">this</span>.create();</span><br><span class="line">            pubsub.unsubscribe(key, fn);</span><br><span class="line">        &#125;,</span><br><span class="line">        publish: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 发布消息</span></span><br><span class="line">            <span class="keyword">var</span> pubsub = <span class="keyword">this</span>.create();</span><br><span class="line">            pubsub.publish.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(<span class="built_in">window</span>, <span class="literal">undefined</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>假如我们正在开发一个商城网站，网站里有header头部、nav导航、消息列表、购物车等模块。这几个模块的渲染有一个共同的前提条件，就是必须先用ajax异步请求获取用户的登录信息。</p>
+<p>至于ajax请求什么时候能成功返回用户信息，这点我们没有办法确定。更重要的一点是，我们不知道除了header头部、nav导航、消息列表、购物车之外，将来还有哪些模块需要使用这些用户信息。如果它们和用户信息模块产生了强耦合，比如下面这样的形式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">login.succ(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    header.setAvatar(data.avatar); <span class="comment">// 设置header模块的头像</span></span><br><span class="line">    nav.setAvatar(data.avatar); <span class="comment">// 设置导航模块的头像</span></span><br><span class="line">    message.refresh(); <span class="comment">// 刷新消息列表</span></span><br><span class="line">    cart.refresh(); <span class="comment">// 刷新购物车列表</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>现在登录模块是由你负责编写的，但我们还必须了解header模块里设置头像的方法叫setAvatar、购物车模块里刷新的方法叫refresh，这种耦合性会使程序变得僵硬，header模块不能随意再改变setAvatar的方法名。<strong>这是针对具体实现编程的典型例子，针对具体实现编程是不被赞同的。</strong></p>
+<p>等到有一天，项目中又新增了一个收货地址管理的模块，这个模块是由另一个同事所写的，此时他就必须找到你，让你登录之后刷新一下收货地址列表。于是你又翻开你3个月前写的登录模块，在最后部分加上这行代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">login.succ(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    header.setAvatar(data.avatar);</span><br><span class="line">    nav.setAvatar(data.avatar);</span><br><span class="line">    message.refresh();</span><br><span class="line">    cart.refresh();</span><br><span class="line">    address.refresh(); <span class="comment">// 增加这行代码</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>我们就会越来越疲于应付这些突如其来的业务要求，不停地重构这些代码。</p>
+<p>用观察者模式重写之后，对用户信息感兴趣的业务模块将自行订阅登录成功的消息事件。当登录成功时，登录模块只需要发布登录成功的消息，而业务方接受到消息之后，就会开始进行各自的业务处理，登录模块并不关心业务方究竟要做什么，也不想去了解它们的内部细节。改善后的代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(<span class="string">'http:// xxx.com?login'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123; <span class="comment">// 登录成功</span></span><br><span class="line">    pubsub.publish(<span class="string">'loginSucc'</span>, data); <span class="comment">// 发布登录成功的消息</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 各模块监听登录成功的消息：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> header = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// header模块</span></span><br><span class="line">    pubsub.subscribe(<span class="string">'loginSucc'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        header.setAvatar(data.avatar);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        setAvatar: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'设置header模块的头像'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> nav = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// nav模块</span></span><br><span class="line">    pubsub.subscribe(<span class="string">'loginSucc'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        nav.setAvatar(data.avatar);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        setAvatar: <span class="function"><span class="keyword">function</span>(<span class="params">avatar</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'设置nav模块的头像'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>如上所述，我们随时可以把setAvatar的方法名改成setTouxiang。如果有一天在登录完成之后，又增加一个刷新收货地址列表的行为，那么只要在收货地址模块里加上监听消息的方法即可，而这可以让开发该模块的同事自己完成，你作为登录模块的开发者，永远不用再关心这些行为了。代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> address = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 地址模块</span></span><br><span class="line">    pubsub.subscribe(<span class="string">'loginSucc'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">        address.refresh(obj);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        refresh: <span class="function"><span class="keyword">function</span>(<span class="params">avatar</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'刷新收货地址列表'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>支持简单的广播通信，自动通知所有已经订阅过的对象；</li>
+<li>页面载入后发布者很容易与订阅者存在一种动态关联，增加了灵活性；</li>
+<li>发布者与订阅者之间的抽象耦合关系能够单独扩展以及重用。</li>
+</ol>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>创建订阅者本身要消耗一定的时间和内存，而且当你订阅一个消息后，也许此消息最后都未发生，但这个订阅者会始终存在于内存中；</li>
+<li>虽然可以弱化对象之间的联系，但如果过度使用的话，对象和对象之间的必要联系也将被深埋在背后，会导致程序难以跟踪维护和理解。</li>
+</ol>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>《JavaScript设计模式与开发实践》 第 8 章 发布—订阅模式</li>
+<li>《JavaScript设计模式》 第 9 章 第 5 节 Observer（观察者）模式</li>
+<li><a href="http://www.cnblogs.com/TomXu/archive/2012/03/02/2355128.html" target="_blank" rel="external">http://www.cnblogs.com/TomXu/archive/2012/03/02/2355128.html</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/25/JavaScript设计模式与开发实践 - 策略模式/" rel="next" title="JavaScript设计模式与开发实践 - 策略模式">
+                <i class="fa fa-chevron-left"></i> JavaScript设计模式与开发实践 - 策略模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/26/JavaScript设计模式与开发实践 - 观察者模式/"
+     data-title="JavaScript设计模式与开发实践 - 观察者模式"
+     data-content=""
+     data-url="http://laixiangran.cn/2016/06/26/JavaScript设计模式与开发实践 - 观察者模式/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/26/JavaScript设计模式与开发实践 - 观察者模式/"
+           data-title="JavaScript设计模式与开发实践 - 观察者模式" data-url="http://laixiangran.cn/2016/06/26/JavaScript设计模式与开发实践 - 观察者模式/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优缺点"><span class="nav-number">4.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">4.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">4.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"laixiangran"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

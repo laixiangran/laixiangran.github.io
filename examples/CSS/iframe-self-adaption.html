@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran"/>
+    <title>响应式web布局中iframe的自适应</title>
+    <link rel="stylesheet" href="../styles/page.css"/>
+    <style>
+        .wrap {
+            width: 400px;
+            margin: auto;
+            border: 5px solid greenyellow;
+        }
+
+        .iframe-container {
+            height: 0;
+            padding-bottom: 97.6%;
+            position: relative;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media screen and (max-width: 500px) {
+            .wrap {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page_box">
+    <div class="wrap">
+        <div class="iframe-container">
+            <iframe height="498" width="510" src="http://player.youku.com/embed/XOTE0MjkyODgw" frameborder="0"
+                    allowfullscreen=""></iframe>
+        </div>
+    </div>
+    <div>
+        <h1>原理说明：</h1>
+        <p>
+            iframe元素本身并无法伸缩，除非通过js显示的设置其宽度。但是我们可通过一个iframe-container元素来包裹iframe，同时让iframe-container元素的宽度充满包含块的宽度，并且根据iframe的高度与宽度比，设置iframe-container元素的padding-bottom百分比。
+        </p>
+        <p>
+            其实，这种方式的精髓就在于设置iframe-container元素的padding-bottom属性。<strong>设置该属性的目的在于变相的设置元素的高度，因为给padding-bottom设置百分比，在水平（默认）书写模式下，是相对于父元素的width计算值的，如果对height属性设置百分比，则相对于父元素的height，而父元素的height值我们通常使用默认的auto，因此会出现子元素height也为0。</strong>因此，我们只能通过设置padding-bottom属性来设置iframe-container元素的高度。这样，只需让iframe元素充满iframe-container即可。
+        </p>
+    </div>
+</div>
+<a id="sources" target="_blank" title="前往 技术之旅" href="http://www.laixiangran.cn/home">技术之旅</a>
+</body>
+</html>

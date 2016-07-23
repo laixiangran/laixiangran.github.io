@@ -5,16 +5,127 @@
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"/>
-    <title>图片替换</title>
+    <title>图文替换的多种方法</title>
     <link rel="stylesheet" href="../styles/page.css"/>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/darkula.min.css">
+    <link rel="stylesheet" href="../JS/highlight/darkula.css">
+    <style>
+        .replace-normal {
+            width: 250px;
+            height: 250px;
+            background: url("../images/avatar.jpg") top right no-repeat;
+        }
+        .replace-text-indent {
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .replace-margin {
+            width: 2250px;
+            margin: 0 0 0 -2000px
+        }
+        .replace-padding {
+            height: 0;
+            padding: 250px 0 0 0;
+            overflow: hidden;
+        }
+        .replace-color {
+            color: rgba(0, 0, 0, 0);
+        }
+    </style>
 </head>
 <body>
 <div class="page_box">
-    
+    <h1>概述</h1>
+    <p>
+        不论是对浏览者还是对搜索引擎，文字都是最佳的页面内容展示方式。
+        <br>但是，由于字体等原因的限制，纯文字的展示渐渐无法满足现代网页的要求。
+        <br>于是，出现了通过CSS来实现用图片替换文字的方法，这种方式既能实现页面上各种丰富的效果，又能满足搜索引擎优化的需要，而且也对屏幕阅读器友好。
+        <br>本文将介绍了实现图文替换技术的多种方法。
+    </p>
+    <h1>方法</h1>
+    <h2>正常情况（文字在图片上方）</h2>
+    <p>
+        <div class="replace-normal" title="www.laixiangran.cn">www.laixiangran.cn</div>
+    </p>
+    <h2>使用文本缩进 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent" title="MDN" target="_blank">text-indent</a></h2>
+    <p>
+        <div class="replace-normal replace-text-indent" title="www.laixiangran.cn">www.laixiangran.cn</div>
+        <p>
+            这里设置text-indent为100%，而没有设置一个很大的负text-indent，是因为后者在浏览器中会创建一个很大的盒子，这在一些很老旧的设备中可能会产生问题，而且性能也不好。
+            <h3>CSS：</h3>
+            <pre>
+                <code>
+                    .replace-text-indent {
+                        width: 250px;
+                        height: 250px;
+                        background: url("../images/avatar.jpg");
+                        text-indent: 100%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                </code>
+            </pre>
+            设置overflow为hidden可以隐藏文本，whitespace:nowrap可以阻止换行。
+        </p>
+    </p>
+    <h2>使用外边距 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin" title="MDN" target="_blank">margin</a></h2>
+    <p>
+        <div class="replace-normal replace-margin" title="www.laixiangran.cn">www.laixiangran.cn</div>
+        <p>
+            <h3>CSS：</h3>
+            <pre>
+                <code>
+                    .replace-margin {
+                        width: 2250px;
+                        height: 250px;
+                        background: url("../images/avatar.jpg") top right no-repeat;
+                        margin: 0 0 0 -2000px
+                    }
+                </code>
+            </pre>
+            这项技术利用一个很大的负左边距强制文本在浏览器窗口之外,然后给div一个相对大的宽度补偿外边距。记住，这种方法对于浏览器执行来说并不高效，因为浏览器不得不画一个非常大的盒子。
+        </p>
+    </p>
+    <h2>使用内边距 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding" title="MDN" target="_blank">padding</a></h2>
+    <p>
+        <div class="replace-normal replace-padding" title="www.laixiangran.cn">www.laixiangran.cn</div>
+        <p>
+            <h3>CSS：</h3>
+            <pre>
+                <code>
+                    .replace-padding {
+                        width: 250px;
+                        height: 0;
+                        background: url("../images/avatar.jpg") top right no-repeat;
+                        padding: 250px 0 0 0;
+                        overflow: hidden;
+                    }
+                </code>
+            </pre>
+            这项技术是设置div的height为0，然后设置上内边距将文本推出div外面，再设置overflow: hidden进行隐藏。
+        </p>
+    </p>
+    <h2>使用color</h2>
+    <p>
+        <div class="replace-normal replace-color" title="www.laixiangran.cn">www.laixiangran.cn</div>
+        <p>
+            <h3>CSS：</h3>
+            <pre>
+                <code>
+                    .replace-color {
+                        width: 250px;
+                        height: 0;
+                        background: url("../images/avatar.jpg") top right no-repeat;
+                        color: rgba(0, 0, 0, 0);
+                    }
+                </code>
+            </pre>
+            这项技术是将字体的颜色设置为透明。
+        </p>
+    </p>
 </div>
 <a id="sources" target="_blank" title="前往 技术之旅" href="http://www.laixiangran.cn/home">技术之旅</a>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+<script src="../JS/highlight/highlight.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
 </script>

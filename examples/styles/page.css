@@ -11,6 +11,15 @@ html, body {
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
 
+.page_box a[title="MDN"] {
+    padding-right: 20px;
+    background: url("../images/mdn_logo.png") no-repeat 100% 100%;
+}
+
+.page_box p {
+    line-height: 1.5em;
+}
+
 #sources {
     display: block;
     position: fixed;

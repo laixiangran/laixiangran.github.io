@@ -1,0 +1,941 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Sass,less,Stylus," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="本文根据Johnathan Croom的《Sass vs. less vs. Stylus: Preprocessor Shootout》所译，整个译文带有我们自己的理解与思想，如果译得不好或不对之处还请同行朋友指点。如需转载此译文，需注明英文出处：http://net.tutsplus.com/tutorials/html-css-techniques/sass-vs-less-vs-styl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS预处理器的对比 — Sass、less和Stylus">
+<meta property="og:url" content="http://laixiangran.cn/2017/01/14/CSS预处理器的对比 — Sass、Less和Stylus/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="本文根据Johnathan Croom的《Sass vs. less vs. Stylus: Preprocessor Shootout》所译，整个译文带有我们自己的理解与思想，如果译得不好或不对之处还请同行朋友指点。如需转载此译文，需注明英文出处：http://net.tutsplus.com/tutorials/html-css-techniques/sass-vs-less-vs-styl">
+<meta property="og:updated_time" content="2017-01-14T09:26:32.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS预处理器的对比 — Sass、less和Stylus">
+<meta name="twitter:description" content="本文根据Johnathan Croom的《Sass vs. less vs. Stylus: Preprocessor Shootout》所译，整个译文带有我们自己的理解与思想，如果译得不好或不对之处还请同行朋友指点。如需转载此译文，需注明英文出处：http://net.tutsplus.com/tutorials/html-css-techniques/sass-vs-less-vs-styl">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> CSS预处理器的对比 — Sass、less和Stylus | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS预处理器的对比 — Sass、less和Stylus
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-14T16:55:30+08:00" content="2017-01-14">
+              2017-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/14/CSS预处理器的对比 — Sass、Less和Stylus/" class="leancloud_visitors" data-flag-title="CSS预处理器的对比 — Sass、less和Stylus">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文根据Johnathan Croom的《Sass vs. less vs. Stylus: Preprocessor Shootout》所译，整个译文带有我们自己的理解与思想，如果译得不好或不对之处还请同行朋友指点。如需转载此译文，需注明英文出处：<a href="http://net.tutsplus.com/tutorials/html-css-techniques/sass-vs-less-vs-stylus-a-preprocessor-shootout/，以及作者相关信息" target="_blank" rel="external">http://net.tutsplus.com/tutorials/html-css-techniques/sass-vs-less-vs-stylus-a-preprocessor-shootout/，以及作者相关信息</a><br>——作者：Johnathan Croom<br>——译者：大漠</p>
+</blockquote>
+<p>发挥CSS预处器的作用是一种很有挑战性的事情。CSS预处器有不同的语言，有不同的语法和功能。</p>
+<p>在这篇文章中,我们将介绍三种不同CSS预处器的蛮量、功能以及他们的好处—— <a href="http://sass-lang.com/" target="_blank" rel="external">Sass</a> 、 <a href="http://lesscss.org/" target="_blank" rel="external">less</a> 和 <a href="http://learnboost.github.com/stylus/" target="_blank" rel="external">Stylus</a>。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>CSS预处理器是一种语言，用来编写一些CSS的特性,而且无需考虑浏览器兼容性的问题。他们通过编译的代码编写成一般的CSS,不要在停留在石器时代了。CSS预处器有成千上万的特性,在本文中我们将一一介绍。让我们开始。</p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>在使用CSS预处器之前最重要的是对语法的理解，幸运的是，这三种CSS预处器的语法和CSS都差不多。</p>
+<h2 id="Sass和less"><a href="#Sass和less" class="headerlink" title="Sass和less"></a>Sass和less</h2><p>Sass和less都使用的是标准的CSS语法。这使用CSS预处器非常容易的将预处器代码转换成CSS代码。默认Sass使用<code>.scss</code>扩展名，而less使用<code>.less</code>扩展名。Sass和less基本设置可以像下面所示：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* style.scss 或者 style.less */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#0982C1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正如你所看到的，在Sass和less样式中，这样的代码是在简单不过的了。</p>
+<p>重要的一点是，Sass也同时支持老的语法,就是不使用花括号和分号，而且文件使用<code>.sass</code>扩展名，他的语法类似于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/* style.sass */</span><br><span class="line">h1</span><br><span class="line">  color: #0982c1</span><br></pre></td></tr></table></figure>
+<h2 id="Stylus"><a href="#Stylus" class="headerlink" title="Stylus"></a>Stylus</h2><p>Stylus的语法花样多一些，它使用<code>.styl</code>的扩展名，Stylus也接受标准的CSS语法，但是他也接受不带花括号和分号的语法，如下所示：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* style.styl */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#0982C1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 省略花括号 */</span></span><br><span class="line"><span class="selector-tag">h1</span></span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#0982C1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 省略花括号和分号 */</span></span><br><span class="line"><span class="selector-tag">h1</span></span><br><span class="line">  <span class="attribute">color</span> <span class="number">#0982C1</span></span><br></pre></td></tr></table></figure>
+<p>你也可以在同一个样式单中使用不同的变量，例如下面的写法也不会报错：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">  color #0982c1</span><br><span class="line">&#125;</span><br><span class="line">h2</span><br><span class="line">  font-size: 1.2em</span><br></pre></td></tr></table></figure>
+<h1 id="变量-Variables"><a href="#变量-Variables" class="headerlink" title="变量(Variables)"></a>变量(Variables)</h1><p>你可以在CSS预处理器中声明变量,并在整个样式表中使用。CSS预处理器支持任何变量（例如：颜色、数值（不管是否包括单位）、文本）。然后你可以在任意地方引用变量。</p>
+<h2 id="Sass"><a href="#Sass" class="headerlink" title="Sass"></a>Sass</h2><p>Sass声明变量必须是<code>$</code>开头，后面紧跟变量名和变量值，而且变量名和变量值需要使用冒号<code>:</code>隔开，就像CSS属性一样：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$mainColor: #0982c1;</span><br><span class="line">$siteWidth: 1024px;</span><br><span class="line">$borderStyle: dotted;</span><br><span class="line">body &#123;</span><br><span class="line">  color: $mainColor;</span><br><span class="line">  border: 1px $borderStyle $mainColor;</span><br><span class="line">  max-width: $siteWidth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="less"><a href="#less" class="headerlink" title="less"></a>less</h2><p>less声明变量和Sass声明变量一样，唯一区别是变量名前面使用是的<code>@</code>字符：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mainColor:</span> #<span class="number">0982</span>c1;</span><br><span class="line">@<span class="keyword">siteWidth:</span> <span class="number">1024px</span>;</span><br><span class="line">@<span class="keyword">borderStyle:</span> dotted;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: @mainColor;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> @borderStyle @mainColor;</span><br><span class="line">  <span class="attribute">max-width</span>: @siteWidth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Stylus-1"><a href="#Stylus-1" class="headerlink" title="Stylus"></a>Stylus</h2><p>Stylus声明变量没有任何限定，你可以使用<code>$</code>符号开始，结尾的分号<code>;</code>可有可无，但变量名和变量值之间的等号<code>=</code>是需要的。有一点需要注意的是，如果我们使用<code>@</code>符号开头来声明（0.22.4）变量，Stylus会进行编译，但其对应的值并不会赋值给变量。换句话说，在Stylus中不要使用<code>@</code>符号开头声明变量。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mainColor = #0982c1</span><br><span class="line">siteWidth = 1024px</span><br><span class="line">$borderStyle = dotted</span><br><span class="line">body</span><br><span class="line">  color mainColor</span><br><span class="line">  border 1px $borderStyle mainColor</span><br><span class="line">  max-width siteWidth</span><br></pre></td></tr></table></figure>
+<h2 id="转译出来的CSS"><a href="#转译出来的CSS" class="headerlink" title="转译出来的CSS"></a>转译出来的CSS</h2><p>上面的代码都将转译成相同的CSS。你可以想像一下，变量的作用有多大。我们不需要为了修改一个颜色而输入许多次，也不需要为了修改一个宽度去到处寻找他。(我们只需要修改定义好的变量，修改一次就足够。下面是转译过来的CSS代码:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#0982c1</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> dotted <span class="number">#0982c1</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">1024px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="嵌套（Nesting）"><a href="#嵌套（Nesting）" class="headerlink" title="嵌套（Nesting）"></a>嵌套（Nesting）</h1><p>如果我们在CSS中多个元素有一个相同的父元素，那么写样式会变得很乏味，我们需要一遍一遍的在每个元素前写这个父元素.<br>section{  margin:10px;}sectionnav{  height:25px;}sectionnava{  color:#0982C1;}sectionnava:hover{  text-decoration: underline;}<br>相反，使用CSS预处理器，我们可以在父元素的花括号({})写这些元素。同时可以使用“&amp;”符号来引用父选择器。<br>Sass、less和Stylus<br>对于嵌套选择器来说，三个CSS预处器都具有相同的语法：<br>section {  margin:10px;  nav {    height:25px;    a {      color:#0982C1;      &amp;:hover {        text-decoration: underline;      }    }  }}<br>转译出来的CSS<br>上面的预处器转译出来的CSS代码。和我们开始展示的CSS代码是相同的。非常的方便吧！<br>section{  margin:10px;}sectionnav{  height:25px;}sectionnava{  color:#0982C1;}sectionnava:hover{  text-decoration: underline;}<br>混合（Mixins）</p>
+<p>Mixins是预处器中的函数。平时你在写样式时肯定有碰到过，某段CSS样式经常要用到多个元素中，这样你就需要重复的写多次。在CSS预处器中，你可以为这些公用的CSS样式定义一个Mixin，然后在你CSS需要使用这些样式的地方，直接调用你定义好的Mixin。这是一个非常有用的特性。Mixins是一个公认的选择器，还可以在Mixins中定义变量或者是默认参数。<br>Sass<br>/<em> Sass定义了一个名叫error的mixin，这个error设置了一个参数“$borderWidth”,在没特别定义外，这个参数的值是默认值2px</em>/@mixin error($borderWidth: 2px) {  border: $borderWidth solid #F00;  color: #F00;}.generic-error {  padding: 20px;  margin: 4px;  @include error(); /<em> 调用error mixins </em>/}.login-error {  left: 12px;  position: absolute;  top: 20px;  @include error(5px); /<em> 调用error mixins，并将参数$borderWidth的值指定为5px</em>/}<br>less<br> /<em> less 定义了一个名叫error的mixin，这个error设置了一个参数“$borderWidth”,在没特别定义外，这个参数的值是默认值2px </em>/.error(@borderWidth: 2px) {  border: @borderWidth solid #F00;  color: #F00;}.generic-error {  padding: 20px;  margin: 4px;  .error(); /<em> 调用error mixins </em>/}.login-error {  left: 12px;  position: absolute;  top: 20px;  .error(5px); /<em> 调用error mixins，并将参数$borderWidth的值指定为5px </em>/}<br>Stylus<br>/<em> Stylus 定义了一个名叫error的mixin，这个error设置了一个参数“$borderWidth”,在没特别定义外，这个参数的值是默认值2px </em>/error(borderWidth= 2px) {  border: borderWidth solid #F00;  color: #F00;}.generic-error {  padding: 20px;  margin: 4px;  error(); /<em> 调用error mixins </em>/}.login-error {  left: 12px;  position: absolute;  top: 20px;  error(5px); /<em> 调用error mixins，并将参数$borderWidth的值指定为5px </em>/}<br>转译出来的CSS<br>上面三种CSS预处器转译出来的CSS代码都是一样的<br>.generic-error{  padding:20px;margin:4px;border:2px solid #f00;color:#f00;}.login-error{  left:12px;position: absolute;top:20px;border:5px solid #f00;color:#f00;}<br>Mixins在三种预处器中都有所不同：<br>Sass：在Sass定义Mixins和less、Stylus有所不同，在声明Mixins时需要使用“@mixin”,然后后面紧跟Mixins的名，他也可以定义参数，同时可以给这个参数设置一个默认值，但参数名是使用“$”符号开始，而且和参数值之间需要使用冒号（：）分开。另外在Sass中调用Mixins需要使用“@include”，然后在其后紧跟你要调用的Mixins名。<br>less：less中声明Mixins和CSS定义样式非常类似，可以将Mixins看成是一个选择器，当然Mixins也可以设置参数，并给参数设置默认值。不过设置参数的变量名是使用“@”开始，同样参数和默认参数值之间需要使用冒号（：）分开。<br>Stylus：Stylus和前两者也略有不同，他可以不使用任何符号，就是直接定义Mixins名，然后在定义参数和默认值之间用等号（=）来连接。<br>上面只是Mixins在三个CSS预处器的简单区别，详细的还可以进入他们的官网了解，或者对比一下上面的三段代码。<br>—— 大漠<br>继承（Inheritance）</p>
+<p>在多个元素应用相同的样式时，我们在CSS通常都是这样写：<br>p,ul,ol{  /<em> 样式写在这 </em>/}<br>这样做非常的好，但往往我们需要给单独元素添加另外的样式，这个时候我们就需要把其中选择器单独出来写样式，这样一回来我们维护样式就相当的麻烦。为了应对这个问题，CSS预处理器可以从一个选择继承另一个选择器下的所有样式。<br>Sass和Stylus<br>.block {  margin: 10px 5px;  padding: 2px;}p {  @extend .block;/<em> 继承.block所有样式 </em>/  border: 1px solid #EEE;}ul, ol {  @extend .block;/<em> 继承.block所有样式 </em>/  color: #333;  text-transform: uppercase;}<br>上面的代码转译成CSS<br>.block, p, ul, ol{  margin:10px 5px;padding:2px;}p{  border:1px solid #EEE;}ul, ol{  color:#333;text-transform: uppercase;}<br>less<br>less支持的继承和Sass与Stylus不一样,他不是在选择器上继承，而是将Mixins中的样式嵌套到每个选择器里面。这种方法的缺点就是在每个选择器中会有重复的样式产生。<br> .block {  margin: 10px 5px;  padding: 2px;}p {  .block;/<em> 继承 ‘.block’中的样式 </em>/  border: 1px solid #EEE;}ul, ol {  .block;/<em>继承’.block’ 中的样式</em>/  color: #333;  text-transform: uppercase;}<br>转译出来的CSS代码<br>.block{  margin:10px 5px;padding:2px;}p{  margin:10px 5px;padding:2px;border:1px solid #EEE;}ul,ol{  margin:10px 5px;padding:2px;color:#333;text-transform: uppercase;}<br>正如所看到的，上面的代码“.block”的样式将会被插入到相应的你要继承的选择器中，但需要注意是的优先级的问题。<br>导入（import）</p>
+<p>在CSS中，并不喜欢用@import来导入样式，因为这样的做法会增加HTTP的请求。但是在CSS预处理器中的导入（@import）规则和CSS的有所不同，它只是在语义上导入不同的文件，但最终结果是生成一个CSS文件。如果你是通过“@import ‘file.css’”导入“file.css”样式文件，那效果跟普通CSS导入样式文件一样。注意：导入文件中定义了变量、混合等信息也将会被引入到主样式文件中，因此需要避免他们的相互冲突。<br>Sass、less和Stylus<br>/<em> file.{type} </em>/body{  background:#EEE;}<br>@import”reset.css”;@import”file.{type}”;p{  background:#0982C1;}<br>转译出来的CSS<br>@import”reset.css”;body{  background:#EEE;}p{  background:#0982C1;}<br>颜色函数</p>
+<p>颜色函数是CSS预处里器中内置的颜色函数功能，这些功能可以对颜色值进行处理，例如颜色的变亮、变暗、渐变颜色等处理十分的方便。<br>Sass<br>lighten($color, 10%); /<em> 返回的颜色在$color基础上变亮10% </em>/darken($color, 10%);  /<em> 返回的颜色在$color基础上变暗10% </em>/saturate($color, 10%);   /<em> 返回的颜色在$color基础上饱和度增加10% </em>/desaturate($color, 10%); /<em> 返回的颜色在$color基础上饱和度减少10% </em>/grayscale($color);  /<em> 返回$color的灰度色</em>/complement($color); /<em> returns complement color of $color </em>/invert($color);     /<em> 返回$color的反相色 </em>/mix($color1, $color2, 50%); /<em> mix $color1 with $color2 with a weight of 50% </em>/<br>这只是Sass中颜色函数的一个简单列表,更多详细的介绍你可以阅读Sass文档。<br>颜色函数何以运用到任何一个元素上都是一个有颜色的CSS属性，下面是一个简单的例子：<br>$color: #0982C1;h1{  background: $color;border:3px solid darken($color, 50%);/<em>边框颜色在$color的基础上变暗50%</em>/}<br>less<br>lighten(@color, 10%); /<em> 返回的颜色在@color基础上变亮10% </em>/darken(@color, 10%);  /<em> 返回的颜色在@color基础上变暗10%</em>/saturate(@color, 10%);   /<em> 返回的颜色在@color基础上饱和度增加10% </em>/desaturate(@color, 10%); /<em> 返回的颜色在@color基础上饱和度降低10%</em>/spin(@color, 10);  /<em> 返回的颜色在@color基础上色调增加10 </em>/spin(@color, -10); /<em> 返回的颜色在@color基础上色调减少10 </em>/mix(@color1, @color2); /<em> 返回的颜色是@color1和@color2两者的混合色 </em>/<br>less的完整颜色函数功能，请阅读less 文档<br>下面是less中如何使用一个颜色函数的简单例子<br>@color: #0982C1;h1{  background: @color;border:3px solid darken(@color, 50%);}<br>Stylus<br>lighten(color, 10%); /<em> 返回的颜色在’color’基础上变亮10% </em>/darken(color, 10%);  /<em> 返回的颜色在’color’基础上变暗10% </em>/saturate(color, 10%);   /<em> 返回的颜色在’color’基础上饱和度增加10% </em>/desaturate(color, 10%); /<em> 返回的颜色在’color’基础上饱和度降低10% </em>/<br>有关于Stylus的颜色函数介绍，请阅读Stylus文档<br>下面是Stylus颜色函数的一个简单实例<br>color = #0982C1h1  background color  border 3px solid darken(color, 50%)<br>运算符（Operations）</p>
+<p>我们都向往在CSS做一些运算，但是无法实现。但是在CSS预处器中对样式做一些运算是一点问题都没有了，例如：<br>Sass、less和Stylus<br>body{  margin: (14px/2);top:50px + 100px;right:100px - 50px;left:10 * 10;}<br>实际运用</p>
+<p>我们介绍了CSS预处理器各方面的特性，但我们还没有实战过。下面是CSS预处理器应用的一些例子。<br>属性前缀<br>这是宣传CSS预处理器的原因之一，并且是一个很好的理由，这样可以节省大量的时间和汗水。创建一个minxin来处理浏览器的前缀问题是一个很简单的，并且能节省大量的重复工作和痛苦的代码编辑，我们来看一个例子。<br>Sass<br>@mixin border-radius($values) {  -webkit-border-radius:$values;     -moz-border-radius:$values;          border-radius:$values;}div {  @include border-radius(10px);}<br>less<br>.border-radius(@values) {  -webkit-border-radius:@values;     -moz-border-radius:@values;          border-radius:@values;}div {  .border-radius(10px);}<br>Stylus<br>border-radius(values) {  -webkit-border-radius: values;     -moz-border-radius: values;          border-radius: values;}div {  border-radius(10px);}<br>转译出来的CSS<br>div{  -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}<br>浏览器前缀的问题，主要是针对于CSS3属性的运用，众所周知，CSS3的属性有并不是所有浏览器都支持属性的标准语法，因此在实际运用中时，不得不加上各浏览器的前缀来识别，这对于我们前端人员来说是多么苦逼的一件事情。虽然有prefix这样的js脚本帮我们解决，但对于怎么说也需要额外添加一个脚本文件，这对于追求完美的同学来说可能完法接受。<br>现在多了一种解决方案，就是使用CSS预处理器，如上面圆角的实现方法，这样减轻了我们很多工作量。如果你对这一部分实现方法感兴趣，不仿花时间阅读一下以下源码：<br>cssmixins：由 Matthew Wagerfield整理的CSS3属性在三种预处理器中的Mixins的定义： less、 Sass (还有 SCSS)和 Stylus<br>less-Prefixer<br>Custom User @mixins<br>—— 大漠<br>3D文本</p>
+<p>使用text-shadow的多重属性制作 3D文本效果是一个很好的方法。唯一麻烦的问题就是修改文本阴影的颜色。如果我们使用Mixin和颜色函数的话，实现3D文本效果就非常的轻松了，我们来尝试一下。<br>Sass<br>@mixin text3d($color) {  color: $color;  text-shadow: 1px 1px 0px darken($color, 5%),               2px 2px 0px darken($color, 10%),               3px 3px 0px darken($color, 15%),               4px 4px 0px darken($color, 20%),               4px 4px 2px #000;}h1 {  font-size: 32pt;  @include text3d(#0982c1);}<br>less<br>.text3d(@color) {  color: @color;  text-shadow: 1px 1px 0px darken(@color, 5%),               2px 2px 0px darken(@color, 10%),               3px 3px 0px darken(@color, 15%),               4px 4px 0px darken(@color, 20%),               4px 4px 2px #000;}span {  font-size: 32pt;  .text3d(#0982c1);}<br>Stylus<br>text3d(color)  color: color  text-shadow: 1px 1px 0px darken(color, 5%), 2px 2px 0px darken(color, 10%), 3px 3px 0px darken(color, 15%), 4px 4px 0px darken(color, 20%), 4px 4px 2px #000span  font-size: 32pt  text3d(#0982c1)<br>在Stylus中text-shadow的样式写在一行，是因为stylus中省略了花括号（｛｝）和分号（;）。<br>上面三种方法实现的效果都是一样的：<br>less vs Sass<br>列（Columns）</p>
+<p>我第一次接触CSS预处理器的时候，我就想着使用数字或者变量进行运算。使用数值和变量运算，可以很方便的实现适应屏幕大小的布局处理。只需要定义宽度的变量，我们就可以很方便的根据需求实现布局。下面的例子就是这么做的。<br>Sass<br>$siteWidth: 1024px;$gutterWidth: 20px;$sidebarWidth: 300px;body{  margin:0 auto;width: $siteWidth;}.content{  float: left;width: $siteWidth - ($sidebarWidth+$gutterWidth);}.sidebar{  float: left;margin-left: $gutterWidth;width: $sidebarWidth;}<br>less<br>@siteWidth: 1024px;@gutterWidth: 20px;@sidebarWidth: 300px;body{  margin:0 auto;width: @siteWidth;}.content{  float: left;width: @siteWidth - (@sidebarWidth+@gutterWidth);}.sidebar{  float: left;margin-left: @gutterWidth;width: @sidebarWidth;}<br>Stylus<br>siteWidth = 1024px;gutterWidth = 20px;sidebarWidth = 300px;body {  margin: 0auto;  width: siteWidth;}.content {  float: left;  width: siteWidth - (sidebarWidth+gutterWidth);}.sidebar {  float: left;  margin-left: gutterWidth;  width: sidebarWidth;}<br>转译出来的CSS<br>body{  margin:0 auto;width:1024px;}.content{  float: left;width:704px;}.sidebar{  float: left;margin-left:20px;width:300px;}<br>明显的怪癖</p>
+<p>使用CSS预处器都是有些怪癖的，我需要去寻找一些这样的人，如果你真的对这些感兴趣，你可以去搜索他们以及相关的文档，因为在你使用CSS预处理器非常有帮助。<br>错误报告<br>如果你经常使用CSS，你会发现很难找到CSS中出错的地方。也许你也会像我一样，花一下午的时间，发了疯的注解每行样式代码来寻找这个CSS错误。<br>CSS预处理器就轻松多了，他会给你报告错误。你可以阅读这篇文章，学习如何让CSS预处理器报告错误。<br>注释(Comments)<br>CSS预处理器支持“/<em> </em>/”这样的多行注释方式（类似于CSS的注释方式），也支持“//”单行注释方式（类似于Javascript的注释方式）。<br>需要注意，如果你要压缩文件，你需要把所有注释都删除。<br>总结</p>
+<p>三个预处理器我们都覆盖了（Sass、less和Stylus）,都以他们独特的特性完成了相同的效果。这样让开发人员更好的选择适合自己的CSS预处理器，从而更好的维护自己的代码，提高开发效率。<br>虽然不是开发的要求,但CSS预处理器可以节省大量的时间，并且有一些非常有用的功能。<br>我鼓励大家尽可能的尝试使用CSS预处理器，这样就可以有效的让你选择一个你最喜欢的和知道他为什么是受人青睐的。如果你还没有尝试过使用CSS预处理器来写你的CSS样式，我强烈建议你尝试一下。<br>如果你有最喜欢的CSS预处理器的功能，我并没有提到的，希望在下面的评论中与我们分享。<br>译者手语：整个翻译依照原文线路进行，并在翻译过程略加了个人对技术的理解。如果翻译有不对之处，还烦请同行朋友指点。谢谢！<br>如需转载烦请注明出处：<br>英文原文：<a href="http://net.tutsplus.com/tutorials/html-css-techniques/sass-vs-less-vs-stylus-a-preprocessor-shootout" target="_blank" rel="external">http://net.tutsplus.com/tutorials/html-css-techniques/sass-vs-less-vs-stylus-a-preprocessor-shootout</a><br>中文译文：<a href="http://www.w3cplus.com/css/sass-vs-less-vs-stylus-a-preprocessor-shootout.html" target="_blank" rel="external">http://www.w3cplus.com/css/sass-vs-less-vs-stylus-a-preprocessor-shootout.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sass/" rel="tag">#Sass</a>
+          
+            <a href="/tags/less/" rel="tag">#less</a>
+          
+            <a href="/tags/Stylus/" rel="tag">#Stylus</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/14/ES6新特性概览/" rel="next" title="ES6新特性概览">
+                <i class="fa fa-chevron-left"></i> ES6新特性概览
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass和less"><span class="nav-number">2.1.</span> <span class="nav-text">Sass和less</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stylus"><span class="nav-number">2.2.</span> <span class="nav-text">Stylus</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量-Variables"><span class="nav-number">3.</span> <span class="nav-text">变量(Variables)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass"><span class="nav-number">3.1.</span> <span class="nav-text">Sass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less"><span class="nav-number">3.2.</span> <span class="nav-text">less</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stylus-1"><span class="nav-number">3.3.</span> <span class="nav-text">Stylus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转译出来的CSS"><span class="nav-number">3.4.</span> <span class="nav-text">转译出来的CSS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#嵌套（Nesting）"><span class="nav-number">4.</span> <span class="nav-text">嵌套（Nesting）</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

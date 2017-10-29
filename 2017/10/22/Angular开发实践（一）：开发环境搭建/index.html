@@ -59,16 +59,70 @@
 
 
 
-<meta name="description" content="摆脱懒惰，实现价值！">
+<meta name="description" content="引言在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。
+介绍之前，我假定你了解或者熟悉：
+
+NodeJs
+
+Npm
+
+Git
+
+Sass
+
+TypeScript
+
+angular-cli
+
+
+环境准备
+全局安">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Angular开发实践（一）：开发环境搭建">
+<meta property="og:title" content="Angular开发实践（一）：环境准备及框架搭建">
 <meta property="og:url" content="http://laixiangran.cn/2017/10/22/Angular开发实践（一）：开发环境搭建/index.html">
 <meta property="og:site_name" content="技术之旅">
-<meta property="og:description" content="摆脱懒惰，实现价值！">
-<meta property="og:updated_time" content="2017-10-22T13:47:09.856Z">
+<meta property="og:description" content="引言在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。
+介绍之前，我假定你了解或者熟悉：
+
+NodeJs
+
+Npm
+
+Git
+
+Sass
+
+TypeScript
+
+angular-cli
+
+
+环境准备
+全局安">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/1.png">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/2.png">
+<meta property="og:updated_time" content="2017-10-29T13:59:58.137Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angular开发实践（一）：开发环境搭建">
-<meta name="twitter:description" content="摆脱懒惰，实现价值！">
+<meta name="twitter:title" content="Angular开发实践（一）：环境准备及框架搭建">
+<meta name="twitter:description" content="引言在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。
+介绍之前，我假定你了解或者熟悉：
+
+NodeJs
+
+Npm
+
+Git
+
+Sass
+
+TypeScript
+
+angular-cli
+
+
+环境准备
+全局安">
+<meta name="twitter:image" content="http://www.laixiangran.cn/images/angular/1.png">
 
 
 
@@ -86,7 +140,7 @@
   };
 </script>
 
-  <title> Angular开发实践（一）：开发环境搭建 | 技术之旅 </title>
+  <title> Angular开发实践（一）：环境准备及框架搭建 | 技术之旅 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -226,7 +280,7 @@
             
             
               
-                Angular开发实践（一）：开发环境搭建
+                Angular开发实践（一）：环境准备及框架搭建
               
             
           </h1>
@@ -272,7 +326,7 @@
 
           
           
-             <span id="/2017/10/22/Angular开发实践（一）：开发环境搭建/" class="leancloud_visitors" data-flag-title="Angular开发实践（一）：开发环境搭建">
+             <span id="/2017/10/22/Angular开发实践（一）：开发环境搭建/" class="leancloud_visitors" data-flag-title="Angular开发实践（一）：环境准备及框架搭建">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -293,7 +347,39 @@
       
 
       
-        
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。</p>
+<p>介绍之前，我假定你了解或者熟悉：</p>
+<ul>
+<li><p><a href="https://nodejs.org/en/" target="_blank" rel="external">NodeJs</a></p>
+</li>
+<li><p><a href="https://docs.npmjs.com/" target="_blank" rel="external">Npm</a></p>
+</li>
+<li><p><a href="https://git-scm.com/" target="_blank" rel="external">Git</a></p>
+</li>
+<li><p><a href="http://sass-lang.com/" target="_blank" rel="external">Sass</a></p>
+</li>
+<li><p><a href="http://www.typescriptlang.org/" target="_blank" rel="external">TypeScript</a></p>
+</li>
+<li><p><a href="https://github.com/angular/angular-cli/wiki" target="_blank" rel="external">angular-cli</a></p>
+</li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><ul>
+<li><p>全局安装NodeJs（&gt;6.9.x），包含npm（&gt;3.x.x）</p>
+</li>
+<li><p>全局安装angular-cli</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @angular/cli</span><br></pre></td></tr></table></figure>
+<ul>
+<li>IDE推荐使用<a href="https://www.jetbrains.com/webstorm/" target="_blank" rel="external">WebStorm</a></li>
+</ul>
+<h1 id="框架搭建"><a href="#框架搭建" class="headerlink" title="框架搭建"></a>框架搭建</h1><p><a href="https://github.com/laixiangran/angular-start" target="_blank" rel="external">angular-start</a>是我在GitHub上维护的一个起步项目，你可以直接下载作为基础开发框架来使用。</p>
+<p>你可以通过以下几步快速启动并进行开发：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/laixiangran/angular-start.git</span><br><span class="line">cd angular-start</span><br><span class="line">npm install（等待依赖包安装完成，再进行下一步）</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p><strong>为了启动方便，在<code>package.json</code>的<code>scripts</code>配置了<code>&quot;start&quot;: &quot;ng serve --hmr -o --proxy-config proxy.config.json&quot;</code>，可以看到这条命令分别配置了–hmr（启动模块热更新）、-o（自动打开浏览器）、–proxy-config（代理配置）</strong></p>
+<p>控制台信息：<br><img src="http://www.laixiangran.cn/images/angular/1.png" alt="控制台信息"></p>
+<p>浏览器界面：<br><img src="http://www.laixiangran.cn/images/angular/2.png" alt="浏览器界面"></p>
+
       
     </div>
 
@@ -504,7 +590,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">2.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#框架搭建"><span class="nav-number">3.</span> <span class="nav-text">框架搭建</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

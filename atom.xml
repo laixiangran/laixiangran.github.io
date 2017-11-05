@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://laixiangran.cn/"/>
-  <updated>2017-11-05T09:37:01.359Z</updated>
+  <updated>2017-11-05T10:37:05.820Z</updated>
   <id>http://laixiangran.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://laixiangran.cn/2017/10/22/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://laixiangran.cn/2017/10/22/Angular开发实践（一）：开发环境搭建/</id>
     <published>2017-10-22T13:45:30.000Z</published>
-    <updated>2017-11-05T09:37:01.359Z</updated>
+    <updated>2017-11-05T10:37:05.820Z</updated>
     
     <content type="html">&lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。&lt;/p&gt;
 &lt;p&gt;介绍之前，我假定你了解或者熟悉：&lt;/p&gt;
@@ -74,13 +74,144 @@
 &lt;td&gt;定义&lt;code&gt;AppModule&lt;/code&gt;，这个根模块会告诉Angular如何组装该应用&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;components/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;app/app.routes.ts&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;该模块配置了应用的根路由&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;app/components/*&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;这个文件夹下放置应用级通用组件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;app/models/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这个文件夹下放置应用级数据模型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;app/pages/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这个文件夹下放置应用中的各个页面，这里面的目录结构和&lt;code&gt;app/&lt;/code&gt;一致&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;app/services/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这个文件夹下放置应用级通用服务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;assets/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这个文件夹下你可以放字体、图片等任何静态文件，在构建应用时，它们全都会拷贝到发布包中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;environments/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这个文件夹中包括为各个目标环境准备的文件，它们导出了一些应用中要用到的配置变量。这些文件会在构建应用时被替换。比如你可能在开发环境、测试环境及生产环境中使用不同的后端API地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;favicon.ico&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示在书签栏中的网站图标&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;hmr.ts&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/angular/angular-cli/wiki/stories-configure-hmr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HMR（模块热更新）&lt;/a&gt;的启动器，将在&lt;code&gt;main.ts&lt;/code&gt;中用来起动应用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;index.html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;网站的主页面。大多数情况下你都不用编辑它。在构建应用时，CLI会自动把所有js和css文件添加进去，所以你不必在这里手动添加任何&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;或&lt;code&gt;&amp;lt;link&amp;gt;&lt;/code&gt;标签&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;main.ts&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这是应用的主要入口点。使用&lt;a href=&quot;https://angular.cn/guide/glossary#jit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JIT compiler&lt;/a&gt;或者&lt;a href=&quot;https://angular.cn/guide/glossary#ahead-of-time-aot-compilation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AOT compiler&lt;/a&gt;编译器编译本应用，并启动应用的根模块AppModule（启用HMR时，将使用&lt;code&gt;hmr.ts&lt;/code&gt;定义的启动器启动），使其运行在浏览器中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;polyfills.ts&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;不同的浏览器对Web标准的支持程度也不同。填充库（polyfill）能帮我们把这些不同点进行标准化。 你只要使用core-js 和 zone.js通常就够了，不过你也可以查看&lt;a href=&quot;https://angular.cn/guide/browser-support&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;浏览器支持指南&lt;/a&gt;以了解更多信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;styles.scss&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这里是你的全局样式。大多数情况下，你会希望在组件中使用局部样式，以利于维护，不过那些会影响你整个应用的样式你还是需要集中存放在这里&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;test.ts&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这是单元测试的主要入口点。它有一些你不熟悉的自定义配置，不过你并不需要编辑这里的任何东西&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;`tsconfig.{app&lt;/td&gt;
+&lt;td&gt;spec}.json`&lt;/td&gt;
+&lt;td&gt;TypeScript编译器的配置文件。&lt;code&gt;tsconfig.app.json&lt;/code&gt;是为Angular应用准备的，而&lt;code&gt;tsconfig.spec.json&lt;/code&gt;是为单元测试准备的&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;typings.d.ts&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;引用的第三方插件TypeScript编译器可能不识别，需要通过下载&lt;code&gt;@types/xxx&lt;/code&gt;获取该库的类型定义文件，如果&lt;code&gt;@types&lt;/code&gt;没有那么就需要在该文件中定义，如&lt;code&gt;declare var $: any;&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&quot;根目录&quot;&gt;&lt;a href=&quot;#根目录&quot; class=&quot;headerlink&quot; title=&quot;根目录&quot;&gt;&lt;/a&gt;根目录&lt;/h2&gt;&lt;p&gt;&lt;code&gt;src/&lt;/code&gt;文件夹是项目的根文件夹之一。其它文件是用来帮助我们构建、测试、维护、文档化和发布应用的。它们放在根目录下，和&lt;code&gt;src/&lt;/code&gt;平级。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/root.png&quot; alt=&quot;根目录&quot;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;文件&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;e2e/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在&lt;code&gt;e2e/&lt;/code&gt;下是端到端（end-to-end）测试。它们不在&lt;code&gt;src/&lt;/code&gt;下，是因为端到端测试实际上和应用是相互独立的，它只适用于测试你的应用而已。这也就是为什么它会拥有自己的&lt;code&gt;tsconfig.json&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;node_modules/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Node.js&lt;/code&gt;创建了这个文件夹，并且把&lt;code&gt;package.json&lt;/code&gt;中列举的所有第三方模块都放在其中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.angular-cli.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Angular CLI的配置文件。在这个文件中，我们可以设置一系列默认值，还可以配置项目编译时要包含的那些文件。要了解更多，请参阅它的&lt;a href=&quot;https://github.com/angular/angular-cli/wiki&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.editorconfig&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;用来确保参与你项目的每个人都具有基本的编辑器配置。大多数的编辑器都支持&lt;code&gt;.editorconfig&lt;/code&gt;文件，详情参见 &lt;a href=&quot;http://editorconfig.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://editorconfig.org&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;..gitignore&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Git的配置文件，用来确保某些自动生成的文件不会被提交到源码控制系统中（GitHub）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.stylelintrc.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;css代码规范检测的配置文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CHANGELOG.md&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;项目的日志文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;karma.conf.js&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://karma-runner.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Karma&lt;/a&gt;的单元测试配置，当运行&lt;code&gt;ng test&lt;/code&gt;时会用到它&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;LICENSE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;版权文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;package.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;npm&lt;/code&gt;配置文件，其中列出了项目使用到的第三方依赖包。你还可以在这里添加自己的&lt;a href=&quot;https://docs.npmjs.com/misc/scripts&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;自定义脚本&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;protractor.conf.js&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.protractortest.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Protractor&lt;/a&gt;的端到端测试配置文件，当运行&lt;code&gt;ng e2e&lt;/code&gt;的时候会用到它&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;proxy.config.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ng serve&lt;/code&gt;的&lt;a href=&quot;https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代理配置文件&lt;/a&gt;，主要用在开发时前后端分离出现的跨域问题&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;项目的基础说明文档，包括项目基本信息、如何启动、构建项目等等信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tsconfig.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TypeScript编译器的配置，你的IDE会借助它来给你提供更好的帮助&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tslint.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://palantir.github.io/tslint/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TSLint&lt;/a&gt;和&lt;a href=&quot;http://codelyzer.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Codelyzer&lt;/a&gt;的配置信息，当运行&lt;code&gt;ng lint&lt;/code&gt;时会用到。Lint功能可以帮你保持代码风格的统一&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </content>
     
     <summary type="html">
@@ -1593,7 +1724,7 @@ equivalent of &amp;lt;code&amp;gt;&amp;amp;amp;mdash;&amp;lt;/code&amp;gt;.&amp;
 &amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
 &amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#x3a;&amp;#x61;&amp;#x64;&amp;#100;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#112;&amp;#108;&amp;#x65;&amp;#46;&amp;#x63;&amp;#111;&amp;#109;&quot;&gt;&amp;#x61;&amp;#x64;&amp;#100;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#112;&amp;#108;&amp;#x65;&amp;#46;&amp;#x63;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&amp;#109;&amp;#97;&amp;#x69;&amp;#108;&amp;#x74;&amp;#x6f;&amp;#x3a;&amp;#97;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#64;&amp;#x65;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&quot;&gt;&amp;#97;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#64;&amp;#x65;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在浏览器里面，这段字串（其实是 &lt;code&gt;&amp;lt;a href=&amp;quot;mailto:address@example.com&amp;quot;&amp;gt;address@example.com&amp;lt;/a&amp;gt;&lt;/code&gt; ）会变成一个可以点击的「 &lt;code&gt;address@example.com&lt;/code&gt; 」链接。&lt;/p&gt;
 &lt;p&gt;（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）&lt;/p&gt;
 &lt;h2 id=&quot;反斜杠&quot;&gt;&lt;a href=&quot;#反斜杠&quot; class=&quot;headerlink&quot; title=&quot;反斜杠&quot;&gt;&lt;/a&gt;反斜杠&lt;/h2&gt;&lt;p&gt;Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签），你可以在星号的前面加上反斜杠：&lt;/p&gt;

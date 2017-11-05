@@ -101,7 +101,9 @@ angular-cli
 全局安">
 <meta property="og:image" content="http://www.laixiangran.cn/images/angular/1.png">
 <meta property="og:image" content="http://www.laixiangran.cn/images/angular/2.png">
-<meta property="og:updated_time" content="2017-10-29T14:06:20.316Z">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/src.png">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/root.png">
+<meta property="og:updated_time" content="2017-11-05T09:37:01.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular开发实践（一）：环境准备及框架搭建">
 <meta name="twitter:description" content="引言在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。
@@ -379,6 +381,33 @@ angular-cli
 <p><strong>为了启动方便，在<code>package.json</code>的<code>scripts</code>配置了<code>&quot;start&quot;: &quot;ng serve --hmr -o --proxy-config proxy.config.json&quot;</code>，可以看到这条命令分别配置了<a href="https://github.com/angular/angular-cli/wiki/stories-configure-hmr" target="_blank" rel="external">–hmr（启动模块热更新）</a>、-o（自动打开浏览器）、<a href="https://github.com/angular/angular-cli/wiki/stories-proxy" target="_blank" rel="external">–proxy-config（代理配置）</a></strong></p>
 <p>控制台信息：<br><img src="http://www.laixiangran.cn/images/angular/1.png" alt="控制台信息"></p>
 <p>浏览器界面：<br><img src="http://www.laixiangran.cn/images/angular/2.png" alt="浏览器界面"></p>
+<p>项目启动成功了，你可以进行下面的开发了。可能你还想了解下该项目中的文件都是干什么用的，那么我们就来了解下。</p>
+<h1 id="项目文件概览"><a href="#项目文件概览" class="headerlink" title="项目文件概览"></a>项目文件概览</h1><h2 id="src文件夹"><a href="#src文件夹" class="headerlink" title="src文件夹"></a>src文件夹</h2><p>应用代码位于<code>src</code>文件夹中。所有的Angular组件、模板、样式、图片以及应用所需的任何东西都在这里。这个文件夹之外的文件都是为构建应用提供支持用的。</p>
+<p><img src="http://www.laixiangran.cn/images/angular/src.png" alt="src目录"></p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app/app.component.{ts,html,css,spec.ts}</code></td>
+<td>使用HTML模板、CSS样式和单元测试定义<code>AppComponent</code>组件。 它是根组件，随着应用的成长它会成为一棵组件树的根节点。</td>
+</tr>
+<tr>
+<td><code>app/app.module.ts</code></td>
+<td>定义<code>AppModule</code>，这个根模块会告诉Angular如何组装该应用</td>
+</tr>
+<tr>
+<td><code>components/*</code></td>
+<td>这个文件夹下放置应用级通用组件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h2><p><code>src/</code>文件夹是项目的根文件夹之一。其它文件是用来帮助我们构建、测试、维护、文档化和发布应用的。它们放在根目录下，和<code>src/</code>平级。</p>
+<p><img src="http://www.laixiangran.cn/images/angular/root.png" alt="根目录"></p>
 
       
     </div>
@@ -590,7 +619,7 @@ angular-cli
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">2.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#框架搭建"><span class="nav-number">3.</span> <span class="nav-text">框架搭建</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">2.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#框架搭建"><span class="nav-number">3.</span> <span class="nav-text">框架搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目文件概览"><span class="nav-number">4.</span> <span class="nav-text">项目文件概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#src文件夹"><span class="nav-number">4.1.</span> <span class="nav-text">src文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根目录"><span class="nav-number">4.2.</span> <span class="nav-text">根目录</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

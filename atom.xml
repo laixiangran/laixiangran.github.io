@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://laixiangran.cn/"/>
-  <updated>2017-10-29T14:06:20.316Z</updated>
+  <updated>2017-11-05T09:37:01.359Z</updated>
   <id>http://laixiangran.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://laixiangran.cn/2017/10/22/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://laixiangran.cn/2017/10/22/Angular开发实践（一）：开发环境搭建/</id>
     <published>2017-10-22T13:45:30.000Z</published>
-    <updated>2017-10-29T14:06:20.316Z</updated>
+    <updated>2017-11-05T09:37:01.359Z</updated>
     
     <content type="html">&lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。&lt;/p&gt;
 &lt;p&gt;介绍之前，我假定你了解或者熟悉：&lt;/p&gt;
@@ -54,6 +54,33 @@
 &lt;p&gt;&lt;strong&gt;为了启动方便，在&lt;code&gt;package.json&lt;/code&gt;的&lt;code&gt;scripts&lt;/code&gt;配置了&lt;code&gt;&amp;quot;start&amp;quot;: &amp;quot;ng serve --hmr -o --proxy-config proxy.config.json&amp;quot;&lt;/code&gt;，可以看到这条命令分别配置了&lt;a href=&quot;https://github.com/angular/angular-cli/wiki/stories-configure-hmr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;–hmr（启动模块热更新）&lt;/a&gt;、-o（自动打开浏览器）、&lt;a href=&quot;https://github.com/angular/angular-cli/wiki/stories-proxy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;–proxy-config（代理配置）&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;控制台信息：&lt;br&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/1.png&quot; alt=&quot;控制台信息&quot;&gt;&lt;/p&gt;
 &lt;p&gt;浏览器界面：&lt;br&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/2.png&quot; alt=&quot;浏览器界面&quot;&gt;&lt;/p&gt;
+&lt;p&gt;项目启动成功了，你可以进行下面的开发了。可能你还想了解下该项目中的文件都是干什么用的，那么我们就来了解下。&lt;/p&gt;
+&lt;h1 id=&quot;项目文件概览&quot;&gt;&lt;a href=&quot;#项目文件概览&quot; class=&quot;headerlink&quot; title=&quot;项目文件概览&quot;&gt;&lt;/a&gt;项目文件概览&lt;/h1&gt;&lt;h2 id=&quot;src文件夹&quot;&gt;&lt;a href=&quot;#src文件夹&quot; class=&quot;headerlink&quot; title=&quot;src文件夹&quot;&gt;&lt;/a&gt;src文件夹&lt;/h2&gt;&lt;p&gt;应用代码位于&lt;code&gt;src&lt;/code&gt;文件夹中。所有的Angular组件、模板、样式、图片以及应用所需的任何东西都在这里。这个文件夹之外的文件都是为构建应用提供支持用的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/src.png&quot; alt=&quot;src目录&quot;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;文件&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;app/app.component.{ts,html,css,spec.ts}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;使用HTML模板、CSS样式和单元测试定义&lt;code&gt;AppComponent&lt;/code&gt;组件。 它是根组件，随着应用的成长它会成为一棵组件树的根节点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;app/app.module.ts&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;定义&lt;code&gt;AppModule&lt;/code&gt;，这个根模块会告诉Angular如何组装该应用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;components/*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这个文件夹下放置应用级通用组件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;根目录&quot;&gt;&lt;a href=&quot;#根目录&quot; class=&quot;headerlink&quot; title=&quot;根目录&quot;&gt;&lt;/a&gt;根目录&lt;/h2&gt;&lt;p&gt;&lt;code&gt;src/&lt;/code&gt;文件夹是项目的根文件夹之一。其它文件是用来帮助我们构建、测试、维护、文档化和发布应用的。它们放在根目录下，和&lt;code&gt;src/&lt;/code&gt;平级。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/root.png&quot; alt=&quot;根目录&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1036,9 +1063,9 @@
       <category term="HTML" scheme="http://laixiangran.cn/categories/HTML/"/>
     
     
-      <category term="HTML" scheme="http://laixiangran.cn/tags/HTML/"/>
-    
       <category term="Emmet" scheme="http://laixiangran.cn/tags/Emmet/"/>
+    
+      <category term="HTML" scheme="http://laixiangran.cn/tags/HTML/"/>
     
   </entry>
   
@@ -1566,7 +1593,7 @@ equivalent of &amp;lt;code&amp;gt;&amp;amp;amp;mdash;&amp;lt;/code&amp;gt;.&amp;
 &amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
 &amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#x6f;&amp;#x3a;&amp;#x61;&amp;#x64;&amp;#100;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#x40;&amp;#101;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#108;&amp;#101;&amp;#46;&amp;#x63;&amp;#111;&amp;#109;&quot;&gt;&amp;#x61;&amp;#x64;&amp;#100;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#x40;&amp;#101;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#108;&amp;#101;&amp;#46;&amp;#x63;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#x3a;&amp;#x61;&amp;#x64;&amp;#100;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#112;&amp;#108;&amp;#x65;&amp;#46;&amp;#x63;&amp;#111;&amp;#109;&quot;&gt;&amp;#x61;&amp;#x64;&amp;#100;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#112;&amp;#108;&amp;#x65;&amp;#46;&amp;#x63;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在浏览器里面，这段字串（其实是 &lt;code&gt;&amp;lt;a href=&amp;quot;mailto:address@example.com&amp;quot;&amp;gt;address@example.com&amp;lt;/a&amp;gt;&lt;/code&gt; ）会变成一个可以点击的「 &lt;code&gt;address@example.com&lt;/code&gt; 」链接。&lt;/p&gt;
 &lt;p&gt;（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）&lt;/p&gt;
 &lt;h2 id=&quot;反斜杠&quot;&gt;&lt;a href=&quot;#反斜杠&quot; class=&quot;headerlink&quot; title=&quot;反斜杠&quot;&gt;&lt;/a&gt;反斜杠&lt;/h2&gt;&lt;p&gt;Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签），你可以在星号的前面加上反斜杠：&lt;/p&gt;

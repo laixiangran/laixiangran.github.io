@@ -81,7 +81,7 @@
     <link href="http://laixiangran.cn/2017/10/22/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://laixiangran.cn/2017/10/22/Angular开发实践（一）：开发环境搭建/</id>
     <published>2017-10-22T13:45:30.000Z</published>
-    <updated>2017-11-05T10:41:10.831Z</updated>
+    <updated>2017-11-06T12:56:36.714Z</updated>
     
     <content type="html">&lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。&lt;/p&gt;
 &lt;p&gt;介绍之前，我假定你了解或者熟悉：&lt;/p&gt;
@@ -112,7 +112,7 @@
 &lt;h1 id=&quot;框架搭建&quot;&gt;&lt;a href=&quot;#框架搭建&quot; class=&quot;headerlink&quot; title=&quot;框架搭建&quot;&gt;&lt;/a&gt;框架搭建&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/laixiangran/angular-start&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;angular-start&lt;/a&gt;是我在GitHub上维护的一个起步项目，你可以直接下载作为基础开发框架来使用。&lt;/p&gt;
 &lt;p&gt;你可以通过以下几步快速启动并进行开发：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone https://github.com/laixiangran/angular-start.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cd angular-start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install（等待依赖包安装完成，再进行下一步）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm start&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;strong&gt;为了启动方便，在&lt;code&gt;package.json&lt;/code&gt;的&lt;code&gt;scripts&lt;/code&gt;配置了&lt;code&gt;&amp;quot;start&amp;quot;: &amp;quot;ng serve --hmr -o --proxy-config proxy.config.json&amp;quot;&lt;/code&gt;，可以看到这条命令分别配置了&lt;a href=&quot;https://github.com/angular/angular-cli/wiki/stories-configure-hmr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;–hmr（启动模块热更新）&lt;/a&gt;、-o（自动打开浏览器）、&lt;a href=&quot;https://github.com/angular/angular-cli/wiki/stories-proxy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;–proxy-config（代理配置）&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;为了启动方便，在&lt;code&gt;package.json&lt;/code&gt;的&lt;code&gt;scripts&lt;/code&gt;配置了&lt;code&gt;&amp;quot;start&amp;quot;: &amp;quot;ng serve --hmr -o --proxy-config proxy.config.json&amp;quot;&lt;/code&gt;，可以看到这条命令分别配置了&lt;a href=&quot;http://www.laixiangran.cn/2017/11/06/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHot%20Module%20Replacement%EF%BC%88%E6%A8%A1%E5%9D%97%E7%83%AD%E6%9B%BF%E6%8D%A2%EF%BC%89%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;–hmr（启动模块热更新）&lt;/a&gt;、-o（自动打开浏览器）、&lt;a href=&quot;https://github.com/angular/angular-cli/wiki/stories-proxy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;–proxy-config（代理配置）&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;控制台信息：&lt;br&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/1.png&quot; alt=&quot;控制台信息&quot;&gt;&lt;/p&gt;
 &lt;p&gt;浏览器界面：&lt;br&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/2.png&quot; alt=&quot;浏览器界面&quot;&gt;&lt;/p&gt;
 &lt;p&gt;项目启动成功了，你可以进行下面的开发了。可能你还想了解下该项目中的文件都是干什么用的，那么我们就来了解下。&lt;/p&gt;
@@ -168,7 +168,7 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;hmr.ts&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;a href=&quot;https://github.com/angular/angular-cli/wiki/stories-configure-hmr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HMR（模块热更新）&lt;/a&gt;的启动器，将在&lt;code&gt;main.ts&lt;/code&gt;中用来起动应用&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;http://www.laixiangran.cn/2017/11/06/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHot%20Module%20Replacement%EF%BC%88%E6%A8%A1%E5%9D%97%E7%83%AD%E6%9B%BF%E6%8D%A2%EF%BC%89%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HMR&lt;/a&gt;的启动器，将在&lt;code&gt;main.ts&lt;/code&gt;中用来起动应用&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;index.html&lt;/code&gt;&lt;/td&gt;
@@ -1784,7 +1784,7 @@ equivalent of &amp;lt;code&amp;gt;&amp;amp;amp;mdash;&amp;lt;/code&amp;gt;.&amp;
 &amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
 &amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&quot;&gt;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#x6f;&amp;#x3a;&amp;#x61;&amp;#100;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#x73;&amp;#x40;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#101;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&quot;&gt;&amp;#x61;&amp;#100;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#x73;&amp;#x40;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#101;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在浏览器里面，这段字串（其实是 &lt;code&gt;&amp;lt;a href=&amp;quot;mailto:address@example.com&amp;quot;&amp;gt;address@example.com&amp;lt;/a&amp;gt;&lt;/code&gt; ）会变成一个可以点击的「 &lt;code&gt;address@example.com&lt;/code&gt; 」链接。&lt;/p&gt;
 &lt;p&gt;（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）&lt;/p&gt;
 &lt;h2 id=&quot;反斜杠&quot;&gt;&lt;a href=&quot;#反斜杠&quot; class=&quot;headerlink&quot; title=&quot;反斜杠&quot;&gt;&lt;/a&gt;反斜杠&lt;/h2&gt;&lt;p&gt;Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签），你可以在星号的前面加上反斜杠：&lt;/p&gt;

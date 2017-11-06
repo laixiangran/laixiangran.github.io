@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript,Base64," />
+  <meta name="keywords" content="Angular,webpack," />
 
 
 
@@ -59,19 +59,32 @@
 
 
 
-<meta name="description" content="简介Base64是一种基于64个可打印字符来表示二进制数据的表示方法。由于2的6次方等于64，所以每6个比特为一个单元，对应某个可打印字符。三个字节有24个比特，对应于4个Base64单元，即3个字节需要用4个可打印字符来表示。它可用来作为电子邮件的传输编码。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9，这样共有62个字符，此外的两个可打印符号在不同的系统中而不同，一般为+和/。">
+<meta name="description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
+那HMR是个什么东西呢？
+HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
+
+保留">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript实现Base64">
-<meta property="og:url" content="http://laixiangran.cn/2016/04/22/JavaScript实现Base64/index.html">
+<meta property="og:title" content="Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制">
+<meta property="og:url" content="http://laixiangran.cn/2017/11/06/Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制/index.html">
 <meta property="og:site_name" content="技术之旅">
-<meta property="og:description" content="简介Base64是一种基于64个可打印字符来表示二进制数据的表示方法。由于2的6次方等于64，所以每6个比特为一个单元，对应某个可打印字符。三个字节有24个比特，对应于4个Base64单元，即3个字节需要用4个可打印字符来表示。它可用来作为电子邮件的传输编码。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9，这样共有62个字符，此外的两个可打印符号在不同的系统中而不同，一般为+和/。">
-<meta property="og:image" content="http://www.laixiangran.cn/images/转换表.png">
-<meta property="og:image" content="http://www.laixiangran.cn/images/参考表.png">
-<meta property="og:updated_time" content="2016-05-05T13:09:29.717Z">
+<meta property="og:description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
+那HMR是个什么东西呢？
+HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
+
+保留">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr1.png">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr2.png">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr3.png">
+<meta property="og:updated_time" content="2017-11-06T12:51:14.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript实现Base64">
-<meta name="twitter:description" content="简介Base64是一种基于64个可打印字符来表示二进制数据的表示方法。由于2的6次方等于64，所以每6个比特为一个单元，对应某个可打印字符。三个字节有24个比特，对应于4个Base64单元，即3个字节需要用4个可打印字符来表示。它可用来作为电子邮件的传输编码。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9，这样共有62个字符，此外的两个可打印符号在不同的系统中而不同，一般为+和/。">
-<meta name="twitter:image" content="http://www.laixiangran.cn/images/转换表.png">
+<meta name="twitter:title" content="Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制">
+<meta name="twitter:description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
+那HMR是个什么东西呢？
+HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
+
+保留">
+<meta name="twitter:image" content="http://www.laixiangran.cn/images/angular/hmr1.png">
 
 
 
@@ -89,7 +102,7 @@
   };
 </script>
 
-  <title> JavaScript实现Base64 | 技术之旅 </title>
+  <title> Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制 | 技术之旅 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -229,7 +242,7 @@
             
             
               
-                JavaScript实现Base64
+                Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制
               
             
           </h1>
@@ -241,8 +254,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-22T22:56:32+08:00" content="2016-04-22">
-              2016-04-22
+            <time itemprop="dateCreated" datetime="2017-11-06T20:30:30+08:00" content="2017-11-06">
+              2017-11-06
             </time>
           </span>
 
@@ -255,8 +268,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
                   </a>
                 </span>
 
@@ -275,7 +288,7 @@
 
           
           
-             <span id="/2016/04/22/JavaScript实现Base64/" class="leancloud_visitors" data-flag-title="JavaScript实现Base64">
+             <span id="/2017/11/06/Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制/" class="leancloud_visitors" data-flag-title="Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -296,14 +309,44 @@
       
 
       
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Base64是一种基于64个可打印字符来表示二进制数据的表示方法。由于2的6次方等于64，所以每6个比特为一个单元，对应某个可打印字符。三个字节有24个比特，对应于4个Base64单元，即3个字节需要用4个可打印字符来表示。它可用来作为电子邮件的传输编码。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9，这样共有62个字符，此外的两个可打印符号在不同的系统中而不同，一般为+和/。</p>
-<h1 id="转换原理"><a href="#转换原理" class="headerlink" title="转换原理"></a>转换原理</h1><p>Base64的直接数据源是二进制序列(Binary Sequence)。当然，你也可以将图片、文本和音视频转换成二进制序列，再然后转换为Base64编码。我们这里讨论的是如何将二进制转换为Base64编码，对于如何将图片，文本和音视频转换为二进制序列敬请期待。</p>
-<p>在转换前，先定义一张索引表，这张表规定了如何转换：</p>
-<p><img src="http://www.laixiangran.cn/images/转换表.png" alt="Base64转换表"></p>
-<p>转换的时候我们先将二进制序列分组，每6个比特为一组。但是如果编码的字节数不能被3整除，那么最后就会多出1个或两个字节，可以使用下面的方法进行处理：先使用0字节值在末尾补足，使其能够被3整除，然后再进行base64的编码。在编码后的base64文本后加上一个或两个’=’号，代表补足的字节数。也就是说，当最后剩余一个八位字节（一个byte）时，最后一个6位的base64字节块有四位是0值，最后附加上两个等号；如果最后剩余两个八位字节（2个byte）时，最后一个6位的base字节块有两位是0值，最后附加一个等号。 参考下表：</p>
-<p><img src="http://www.laixiangran.cn/images/参考表.png" alt="Base64参考表"></p>
-<h1 id="JavaScript实现Base64"><a href="#JavaScript实现Base64" class="headerlink" title="JavaScript实现Base64"></a>JavaScript实现Base64</h1><p>原理明白了以后，实现起来就很容易了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">var</span> code = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>.split(<span class="string">""</span>); <span class="comment">//索引表</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * @author laixiangran@163.com</span><br><span class="line">     * @description 将二进制序列转换为Base64编码</span><br><span class="line">     * @param  &#123;String&#125;</span><br><span class="line">     * @return &#123;String&#125;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">binToBase64</span>(<span class="params">bitString</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">var</span> tail = bitString.length % <span class="number">6</span>;</span><br><span class="line">        <span class="keyword">var</span> bitStringTemp1 = bitString.substr(<span class="number">0</span>, bitString.length - tail);</span><br><span class="line">        <span class="keyword">var</span> bitStringTemp2 = bitString.substr(bitString.length - tail, tail);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; bitStringTemp1.length; i += <span class="number">6</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> index = <span class="built_in">parseInt</span>(bitStringTemp1.substr(i, <span class="number">6</span>), <span class="number">2</span>);</span><br><span class="line">            result += code[index];</span><br><span class="line">        &#125;</span><br><span class="line">        bitStringTemp2 += <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">7</span> - tail).join(<span class="string">"0"</span>);</span><br><span class="line">        <span class="keyword">if</span> (tail) &#123;</span><br><span class="line">            result += code[<span class="built_in">parseInt</span>(bitStringTemp2, <span class="number">2</span>)];</span><br><span class="line">            result += <span class="keyword">new</span> <span class="built_in">Array</span>((<span class="number">6</span> - tail) / <span class="number">2</span> + <span class="number">1</span>).join(<span class="string">"="</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * @author laixiangran@163.com</span><br><span class="line">     * @description 将base64编码转换为二进制序列</span><br><span class="line">     * @param  &#123;String&#125;</span><br><span class="line">     * @return &#123;String&#125;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">base64ToBin</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> bitString = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">var</span> tail = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; str.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (str[i] != <span class="string">"="</span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> decode = code.indexOf(str[i]).toString(<span class="number">2</span>);</span><br><span class="line">                bitString += (<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">7</span> - decode.length)).join(<span class="string">"0"</span>) + decode;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                tail++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bitString.substr(<span class="number">0</span>, bitString.length - tail * <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">	 * @author laixiangran@163.com</span><br><span class="line">     * @description 将字符转换为二进制序列</span><br><span class="line">     * @param  &#123;String&#125; str</span><br><span class="line">     * @return &#123;String&#125;    </span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">stringToBin</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; str.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> charCode = str.charCodeAt(i).toString(<span class="number">2</span>);</span><br><span class="line">            result += (<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">9</span> - charCode.length).join(<span class="string">"0"</span>) + charCode);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">	 * @author laixiangran@163.com</span><br><span class="line">     * @description 将二进制序列转换为字符串</span><br><span class="line">     * @param &#123;String&#125; Bin</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">BinToStr</span>(<span class="params">Bin</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; Bin.length; i += <span class="number">8</span>) &#123;</span><br><span class="line">            result += <span class="built_in">String</span>.fromCharCode(<span class="built_in">parseInt</span>(Bin.substr(i, <span class="number">8</span>), <span class="number">2</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    exports.base64 = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> binToBase64(stringToBin(str));</span><br><span class="line">    &#125;</span><br><span class="line">    exports.decodeBase64 = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BinToStr(base64ToBin(str));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在<a href="https://github.com/laixiangran/angular-start" target="_blank" rel="external">angular-start</a>项目中启用了<code>模块热替换(HMR - Hot Module Replacement)</code>功能，关于如何在<code>angular-cli</code>启用<code>HRM</code>，请查看<a href="https://github.com/angular/angular-cli/wiki/stories-configure-hmr" target="_blank" rel="external">HRM配置</a></p>
+<p>那<code>HMR</code>是个什么东西呢？</p>
+<p><code>HMR</code>是<code>webpack</code>提供的一个功能，<code>angular-cli</code>使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：</p>
+<ul>
+<li>保留在完全重新加载页面时丢失的应用程序状态</li>
+<li>只更新变更内容，以节省宝贵的开发时间</li>
+<li>调整样式更加快速 - 几乎相当于在浏览器调试器中更改样式</li>
+</ul>
+<h1 id="这一切是如何运行的？"><a href="#这一切是如何运行的？" class="headerlink" title="这一切是如何运行的？"></a>这一切是如何运行的？</h1><p>我们先看看具体的效果：</p>
+<p>1、启动<code>angular-start</code>项目，在控制台你可以看到<code>HRM</code>已经启用的消息：</p>
+<p><img src="http://www.laixiangran.cn/images/angular/hmr1.png" alt="image"></p>
+<p>2、然后通过浏览器控制台可以看到，第一次加载请求了所有的资源：</p>
+<p><img src="http://www.laixiangran.cn/images/angular/hmr2.png" alt="image"></p>
+<p>3、此时，修改一处代码保存，浏览器并未刷新就自动显示修改之后的效果，再看浏览器控制台只请求了新修改的js：</p>
+<p><img src="http://www.laixiangran.cn/images/angular/hmr3.png" alt="image"></p>
+<p>下面让我们从一些不同的角度观察，以了解<code>HMR</code>的工作原理……</p>
+<h1 id="在应用程序中"><a href="#在应用程序中" class="headerlink" title="在应用程序中"></a>在应用程序中</h1><p>通过以下步骤，可以做到在应用程序中置换(<code>swap in and out</code>)模块：</p>
+<ul>
+<li>应用程序代码要求 HMR runtime 检查更新</li>
+<li>HMR runtime（异步）下载更新，然后通知应用程序代码</li>
+<li>应用程序代码要求 HMR runtime 应用更新</li>
+<li>HMR runtime（异步）应用更新</li>
+</ul>
+<h1 id="在编译器中"><a href="#在编译器中" class="headerlink" title="在编译器中"></a>在编译器中</h1><p>除了普通资源，编译器(<code>compiler</code>)需要发出<code>update</code>，以允许更新之前的版本到新的版本。<code>update</code>由两部分组成：</p>
+<ul>
+<li>更新后的<code>manifest (JSON)</code></li>
+<li>一个或多个更新后的<code>chunk (JavaScript)</code></li>
+</ul>
+<p><code>manifest</code>包括新的编译<code>hash</code>和所有的待更新<code>chunk</code>目录。每个更新<code>chunk</code>都含有对应于此<code>chunk</code>的全部更新模块（或一个<code>flag</code>用于表明此模块要被移除）的代码。</p>
+<p>编译器确保模块<code>ID</code>和<code>chunk ID</code>在这些构建之间保持一致。通常将这些<code>ID</code>存储在内存中（例如，使用<code>webpack-dev-server</code>时），但是也可能将它们存储在一个<code>JSON</code>文件中。</p>
+<h1 id="在模块中"><a href="#在模块中" class="headerlink" title="在模块中"></a>在模块中</h1><p><code>HMR</code>是可选功能，只会影响包含<code>HMR</code>代码的模块。举个例子，通过<code>style-loader</code>为<code>style</code>样式追加补丁。为了运行追加补丁，<code>style-loader</code>实现了<code>HMR</code>接口；当它通过<code>HMR</code>接收到更新，它会使用新的样式替换旧的样式。</p>
+<p>类似的，当在一个模块中实现了<code>HMR</code>接口，你可以描述出当模块被更新后发生了什么。然而在多数情况下，不需要强制在每个模块中写入<code>HMR</code>代码。如果一个模块没<code>HMR</code>处理函数，更新就会冒泡。这意味着一个简单的处理函数能够对整个模块树<code>(complete module tree)</code>进行更新。如果在这个模块树中，一个单独的模块被更新，那么整组依赖模块都会被重新加载。</p>
+<p>有关 module.hot 接口的详细信息，请查看<a href="http://www.css88.com/doc/webpack/api/hot-module-replacement" target="_blank" rel="external">HMR API页面</a>。</p>
+<h1 id="在HMR-Runtime中"><a href="#在HMR-Runtime中" class="headerlink" title="在HMR Runtime中"></a>在HMR Runtime中</h1><p>对于模块系统的<code>runtime</code>，附加的代码被发送到<code>parents</code>和<code>children</code>跟踪模块。在管理方面，<code>runtime</code>支持两个方法<code>check</code>和<code>apply</code>。</p>
+<p><code>check</code>发送<code>HTTP</code>请求来更新<code>manifest</code>。如果请求失败，说明没有可用更新。如果请求成功，待更新<code>chunk</code>会和当前加载过的<code>chunk</code>进行比较。对每个加载过的<code>chunk</code>，会下载相对应的待更新<code>chunk</code>。当所有待更新<code>chunk</code>完成下载，就会准备切换到<code>ready</code>状态。</p>
+<p><code>apply</code>方法将所有被更新模块标记为无效。对于每个无效模块，都需要在模块中有一个更新处理函数，或者在它的父级模块们中有更新处理函数。否则，无效标记冒泡，并也使父级无效。每个冒泡继续直到到达应用程序入口起点，或者到达带有更新处理函数的模块（以最先到达为准）。如果它从入口起点开始冒泡，则此过程失败。</p>
+<p>之后，所有无效模块都被（通过<code>dispose</code>处理函数）处理和解除加载。然后更新当前<code>hash</code>，并且调用所有<code>accept</code>处理函数。<code>runtime</code>切换回闲置状态，一切照常继续。</p>
+
       
     </div>
 
@@ -317,9 +360,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+            <a href="/tags/Angular/" rel="tag">#Angular</a>
           
-            <a href="/tags/Base64/" rel="tag">#Base64</a>
+            <a href="/tags/webpack/" rel="tag">#webpack</a>
           
         </div>
       
@@ -328,17 +371,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/20/前端开发必备 - Emmet/" rel="next" title="前端开发必备 - Emmet">
-                <i class="fa fa-chevron-left"></i> 前端开发必备 - Emmet
+              <a href="/2017/10/22/Angular开发实践（一）：开发环境搭建/" rel="next" title="Angular开发实践（一）：环境准备及框架搭建">
+                <i class="fa fa-chevron-left"></i> Angular开发实践（一）：环境准备及框架搭建
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/22/图解javascript中this指向/" rel="prev" title="图解javascript中this指向">
-                图解javascript中this指向 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -518,7 +557,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转换原理"><span class="nav-number">2.</span> <span class="nav-text">转换原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript实现Base64"><span class="nav-number">3.</span> <span class="nav-text">JavaScript实现Base64</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#这一切是如何运行的？"><span class="nav-number">2.</span> <span class="nav-text">这一切是如何运行的？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在应用程序中"><span class="nav-number">3.</span> <span class="nav-text">在应用程序中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在编译器中"><span class="nav-number">4.</span> <span class="nav-text">在编译器中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在模块中"><span class="nav-number">5.</span> <span class="nav-text">在模块中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在HMR-Runtime中"><span class="nav-number">6.</span> <span class="nav-text">在HMR Runtime中</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

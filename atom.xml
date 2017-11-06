@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://laixiangran.cn/"/>
-  <updated>2017-11-05T10:41:10.831Z</updated>
+  <updated>2017-11-06T12:51:14.676Z</updated>
   <id>http://laixiangran.cn/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制</title>
+    <link href="http://laixiangran.cn/2017/11/06/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHot%20Module%20Replacement%EF%BC%88%E6%A8%A1%E5%9D%97%E7%83%AD%E6%9B%BF%E6%8D%A2%EF%BC%89%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/"/>
+    <id>http://laixiangran.cn/2017/11/06/Angular开发实践（二）：Hot Module Replacement（模块热替换）运行机制/</id>
+    <published>2017-11-06T12:30:30.000Z</published>
+    <updated>2017-11-06T12:51:14.676Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在&lt;a href=&quot;https://github.com/laixiangran/angular-start&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;angular-start&lt;/a&gt;项目中启用了&lt;code&gt;模块热替换(HMR - Hot Module Replacement)&lt;/code&gt;功能，关于如何在&lt;code&gt;angular-cli&lt;/code&gt;启用&lt;code&gt;HRM&lt;/code&gt;，请查看&lt;a href=&quot;https://github.com/angular/angular-cli/wiki/stories-configure-hmr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HRM配置&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;那&lt;code&gt;HMR&lt;/code&gt;是个什么东西呢？&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HMR&lt;/code&gt;是&lt;code&gt;webpack&lt;/code&gt;提供的一个功能，&lt;code&gt;angular-cli&lt;/code&gt;使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;保留在完全重新加载页面时丢失的应用程序状态&lt;/li&gt;
+&lt;li&gt;只更新变更内容，以节省宝贵的开发时间&lt;/li&gt;
+&lt;li&gt;调整样式更加快速 - 几乎相当于在浏览器调试器中更改样式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;这一切是如何运行的？&quot;&gt;&lt;a href=&quot;#这一切是如何运行的？&quot; class=&quot;headerlink&quot; title=&quot;这一切是如何运行的？&quot;&gt;&lt;/a&gt;这一切是如何运行的？&lt;/h1&gt;&lt;p&gt;我们先看看具体的效果：&lt;/p&gt;
+&lt;p&gt;1、启动&lt;code&gt;angular-start&lt;/code&gt;项目，在控制台你可以看到&lt;code&gt;HRM&lt;/code&gt;已经启用的消息：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/hmr1.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2、然后通过浏览器控制台可以看到，第一次加载请求了所有的资源：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/hmr2.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3、此时，修改一处代码保存，浏览器并未刷新就自动显示修改之后的效果，再看浏览器控制台只请求了新修改的js：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.laixiangran.cn/images/angular/hmr3.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下面让我们从一些不同的角度观察，以了解&lt;code&gt;HMR&lt;/code&gt;的工作原理……&lt;/p&gt;
+&lt;h1 id=&quot;在应用程序中&quot;&gt;&lt;a href=&quot;#在应用程序中&quot; class=&quot;headerlink&quot; title=&quot;在应用程序中&quot;&gt;&lt;/a&gt;在应用程序中&lt;/h1&gt;&lt;p&gt;通过以下步骤，可以做到在应用程序中置换(&lt;code&gt;swap in and out&lt;/code&gt;)模块：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用程序代码要求 HMR runtime 检查更新&lt;/li&gt;
+&lt;li&gt;HMR runtime（异步）下载更新，然后通知应用程序代码&lt;/li&gt;
+&lt;li&gt;应用程序代码要求 HMR runtime 应用更新&lt;/li&gt;
+&lt;li&gt;HMR runtime（异步）应用更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;在编译器中&quot;&gt;&lt;a href=&quot;#在编译器中&quot; class=&quot;headerlink&quot; title=&quot;在编译器中&quot;&gt;&lt;/a&gt;在编译器中&lt;/h1&gt;&lt;p&gt;除了普通资源，编译器(&lt;code&gt;compiler&lt;/code&gt;)需要发出&lt;code&gt;update&lt;/code&gt;，以允许更新之前的版本到新的版本。&lt;code&gt;update&lt;/code&gt;由两部分组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更新后的&lt;code&gt;manifest (JSON)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;一个或多个更新后的&lt;code&gt;chunk (JavaScript)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;manifest&lt;/code&gt;包括新的编译&lt;code&gt;hash&lt;/code&gt;和所有的待更新&lt;code&gt;chunk&lt;/code&gt;目录。每个更新&lt;code&gt;chunk&lt;/code&gt;都含有对应于此&lt;code&gt;chunk&lt;/code&gt;的全部更新模块（或一个&lt;code&gt;flag&lt;/code&gt;用于表明此模块要被移除）的代码。&lt;/p&gt;
+&lt;p&gt;编译器确保模块&lt;code&gt;ID&lt;/code&gt;和&lt;code&gt;chunk ID&lt;/code&gt;在这些构建之间保持一致。通常将这些&lt;code&gt;ID&lt;/code&gt;存储在内存中（例如，使用&lt;code&gt;webpack-dev-server&lt;/code&gt;时），但是也可能将它们存储在一个&lt;code&gt;JSON&lt;/code&gt;文件中。&lt;/p&gt;
+&lt;h1 id=&quot;在模块中&quot;&gt;&lt;a href=&quot;#在模块中&quot; class=&quot;headerlink&quot; title=&quot;在模块中&quot;&gt;&lt;/a&gt;在模块中&lt;/h1&gt;&lt;p&gt;&lt;code&gt;HMR&lt;/code&gt;是可选功能，只会影响包含&lt;code&gt;HMR&lt;/code&gt;代码的模块。举个例子，通过&lt;code&gt;style-loader&lt;/code&gt;为&lt;code&gt;style&lt;/code&gt;样式追加补丁。为了运行追加补丁，&lt;code&gt;style-loader&lt;/code&gt;实现了&lt;code&gt;HMR&lt;/code&gt;接口；当它通过&lt;code&gt;HMR&lt;/code&gt;接收到更新，它会使用新的样式替换旧的样式。&lt;/p&gt;
+&lt;p&gt;类似的，当在一个模块中实现了&lt;code&gt;HMR&lt;/code&gt;接口，你可以描述出当模块被更新后发生了什么。然而在多数情况下，不需要强制在每个模块中写入&lt;code&gt;HMR&lt;/code&gt;代码。如果一个模块没&lt;code&gt;HMR&lt;/code&gt;处理函数，更新就会冒泡。这意味着一个简单的处理函数能够对整个模块树&lt;code&gt;(complete module tree)&lt;/code&gt;进行更新。如果在这个模块树中，一个单独的模块被更新，那么整组依赖模块都会被重新加载。&lt;/p&gt;
+&lt;p&gt;有关 module.hot 接口的详细信息，请查看&lt;a href=&quot;http://www.css88.com/doc/webpack/api/hot-module-replacement&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HMR API页面&lt;/a&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;在HMR-Runtime中&quot;&gt;&lt;a href=&quot;#在HMR-Runtime中&quot; class=&quot;headerlink&quot; title=&quot;在HMR Runtime中&quot;&gt;&lt;/a&gt;在HMR Runtime中&lt;/h1&gt;&lt;p&gt;对于模块系统的&lt;code&gt;runtime&lt;/code&gt;，附加的代码被发送到&lt;code&gt;parents&lt;/code&gt;和&lt;code&gt;children&lt;/code&gt;跟踪模块。在管理方面，&lt;code&gt;runtime&lt;/code&gt;支持两个方法&lt;code&gt;check&lt;/code&gt;和&lt;code&gt;apply&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;check&lt;/code&gt;发送&lt;code&gt;HTTP&lt;/code&gt;请求来更新&lt;code&gt;manifest&lt;/code&gt;。如果请求失败，说明没有可用更新。如果请求成功，待更新&lt;code&gt;chunk&lt;/code&gt;会和当前加载过的&lt;code&gt;chunk&lt;/code&gt;进行比较。对每个加载过的&lt;code&gt;chunk&lt;/code&gt;，会下载相对应的待更新&lt;code&gt;chunk&lt;/code&gt;。当所有待更新&lt;code&gt;chunk&lt;/code&gt;完成下载，就会准备切换到&lt;code&gt;ready&lt;/code&gt;状态。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;apply&lt;/code&gt;方法将所有被更新模块标记为无效。对于每个无效模块，都需要在模块中有一个更新处理函数，或者在它的父级模块们中有更新处理函数。否则，无效标记冒泡，并也使父级无效。每个冒泡继续直到到达应用程序入口起点，或者到达带有更新处理函数的模块（以最先到达为准）。如果它从入口起点开始冒泡，则此过程失败。&lt;/p&gt;
+&lt;p&gt;之后，所有无效模块都被（通过&lt;code&gt;dispose&lt;/code&gt;处理函数）处理和解除加载。然后更新当前&lt;code&gt;hash&lt;/code&gt;，并且调用所有&lt;code&gt;accept&lt;/code&gt;处理函数。&lt;code&gt;runtime&lt;/code&gt;切换回闲置状态，一切照常继续。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在&lt;a href=&quot;https://github.com/laixiangran/angular-start&quot; target=&quot;_blank
+    
+    </summary>
+    
+      <category term="Angular" scheme="http://laixiangran.cn/categories/Angular/"/>
+    
+    
+      <category term="Angular" scheme="http://laixiangran.cn/tags/Angular/"/>
+    
+      <category term="webpack" scheme="http://laixiangran.cn/tags/webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>Angular开发实践（一）：环境准备及框架搭建</title>
@@ -1723,7 +1784,7 @@ equivalent of &amp;lt;code&amp;gt;&amp;amp;amp;mdash;&amp;lt;/code&amp;gt;.&amp;
 &amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
 &amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#58;&amp;#97;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&quot;&gt;&amp;#97;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&quot;&gt;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#x65;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#x78;&amp;#x61;&amp;#x6d;&amp;#112;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在浏览器里面，这段字串（其实是 &lt;code&gt;&amp;lt;a href=&amp;quot;mailto:address@example.com&amp;quot;&amp;gt;address@example.com&amp;lt;/a&amp;gt;&lt;/code&gt; ）会变成一个可以点击的「 &lt;code&gt;address@example.com&lt;/code&gt; 」链接。&lt;/p&gt;
 &lt;p&gt;（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）&lt;/p&gt;
 &lt;h2 id=&quot;反斜杠&quot;&gt;&lt;a href=&quot;#反斜杠&quot; class=&quot;headerlink&quot; title=&quot;反斜杠&quot;&gt;&lt;/a&gt;反斜杠&lt;/h2&gt;&lt;p&gt;Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签），你可以在星号的前面加上反斜杠：&lt;/p&gt;

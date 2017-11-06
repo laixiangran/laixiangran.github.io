@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Angular,JavaScript," />
+  <meta name="keywords" content="Angular,webpack," />
 
 
 
@@ -59,72 +59,32 @@
 
 
 
-<meta name="description" content="引言在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。
-介绍之前，我假定你了解或者熟悉：
+<meta name="description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
+那HMR是个什么东西呢？
+HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
 
-NodeJs
-
-Npm
-
-Git
-
-Sass
-
-TypeScript
-
-angular-cli
-
-
-环境准备
-全局安">
+保留">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Angular开发实践（一）：环境准备及框架搭建">
-<meta property="og:url" content="http://laixiangran.cn/2017/10/22/Angular开发实践（一）：开发环境搭建/index.html">
+<meta property="og:title" content="Angular开发实践（二）：HRM运行机制">
+<meta property="og:url" content="http://laixiangran.cn/2017/11/06/Angular开发实践（二）：HRM运行机制/index.html">
 <meta property="og:site_name" content="技术之旅">
-<meta property="og:description" content="引言在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。
-介绍之前，我假定你了解或者熟悉：
+<meta property="og:description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
+那HMR是个什么东西呢？
+HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
 
-NodeJs
-
-Npm
-
-Git
-
-Sass
-
-TypeScript
-
-angular-cli
-
-
-环境准备
-全局安">
-<meta property="og:image" content="http://www.laixiangran.cn/images/angular/1.png">
-<meta property="og:image" content="http://www.laixiangran.cn/images/angular/2.png">
-<meta property="og:image" content="http://www.laixiangran.cn/images/angular/src.png">
-<meta property="og:image" content="http://www.laixiangran.cn/images/angular/root.png">
-<meta property="og:updated_time" content="2017-11-06T12:56:36.714Z">
+保留">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr1.png">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr2.png">
+<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr3.png">
+<meta property="og:updated_time" content="2017-11-06T12:58:48.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angular开发实践（一）：环境准备及框架搭建">
-<meta name="twitter:description" content="引言在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。
-介绍之前，我假定你了解或者熟悉：
+<meta name="twitter:title" content="Angular开发实践（二）：HRM运行机制">
+<meta name="twitter:description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
+那HMR是个什么东西呢？
+HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
 
-NodeJs
-
-Npm
-
-Git
-
-Sass
-
-TypeScript
-
-angular-cli
-
-
-环境准备
-全局安">
-<meta name="twitter:image" content="http://www.laixiangran.cn/images/angular/1.png">
+保留">
+<meta name="twitter:image" content="http://www.laixiangran.cn/images/angular/hmr1.png">
 
 
 
@@ -142,7 +102,7 @@ angular-cli
   };
 </script>
 
-  <title> Angular开发实践（一）：环境准备及框架搭建 | 技术之旅 </title>
+  <title> Angular开发实践（二）：HRM运行机制 | 技术之旅 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +242,7 @@ angular-cli
             
             
               
-                Angular开发实践（一）：环境准备及框架搭建
+                Angular开发实践（二）：HRM运行机制
               
             
           </h1>
@@ -294,8 +254,8 @@ angular-cli
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-10-22T21:45:30+08:00" content="2017-10-22">
-              2017-10-22
+            <time itemprop="dateCreated" datetime="2017-11-06T20:30:30+08:00" content="2017-11-06">
+              2017-11-06
             </time>
           </span>
 
@@ -328,7 +288,7 @@ angular-cli
 
           
           
-             <span id="/2017/10/22/Angular开发实践（一）：开发环境搭建/" class="leancloud_visitors" data-flag-title="Angular开发实践（一）：环境准备及框架搭建">
+             <span id="/2017/11/06/Angular开发实践（二）：HRM运行机制/" class="leancloud_visitors" data-flag-title="Angular开发实践（二）：HRM运行机制">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -349,195 +309,43 @@ angular-cli
       
 
       
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在工作中引入Angular框架将近一年了，在这一年中不断的踩坑和填坑，当然也学习和积累了很多的知识，包括MVVM框架、前后端分离、前端工程化、SPA优化等等。因此想通过Angular开发实践这系列的文章分享下自己的所学，达到交流和分享的目的。</p>
-<p>介绍之前，我假定你了解或者熟悉：</p>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在<a href="https://github.com/laixiangran/angular-start" target="_blank" rel="external">angular-start</a>项目中启用了<code>模块热替换(HMR - Hot Module Replacement)</code>功能，关于如何在<code>angular-cli</code>启用<code>HRM</code>，请查看<a href="https://github.com/angular/angular-cli/wiki/stories-configure-hmr" target="_blank" rel="external">HRM配置</a></p>
+<p>那<code>HMR</code>是个什么东西呢？</p>
+<p><code>HMR</code>是<code>webpack</code>提供的一个功能，<code>angular-cli</code>使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：</p>
 <ul>
-<li><p><a href="https://nodejs.org/en/" target="_blank" rel="external">NodeJs</a></p>
-</li>
-<li><p><a href="https://docs.npmjs.com/" target="_blank" rel="external">Npm</a></p>
-</li>
-<li><p><a href="https://git-scm.com/" target="_blank" rel="external">Git</a></p>
-</li>
-<li><p><a href="http://sass-lang.com/" target="_blank" rel="external">Sass</a></p>
-</li>
-<li><p><a href="http://www.typescriptlang.org/" target="_blank" rel="external">TypeScript</a></p>
-</li>
-<li><p><a href="https://github.com/angular/angular-cli/wiki" target="_blank" rel="external">angular-cli</a></p>
-</li>
+<li>保留在完全重新加载页面时丢失的应用程序状态</li>
+<li>只更新变更内容，以节省宝贵的开发时间</li>
+<li>调整样式更加快速 - 几乎相当于在浏览器调试器中更改样式</li>
 </ul>
-<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><ul>
-<li><p>全局安装NodeJs（&gt;6.9.x），包含npm（&gt;3.x.x）</p>
-</li>
-<li><p>全局安装angular-cli</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @angular/cli</span><br></pre></td></tr></table></figure>
+<h1 id="这一切是如何运行的？"><a href="#这一切是如何运行的？" class="headerlink" title="这一切是如何运行的？"></a>这一切是如何运行的？</h1><p>我们先看看具体的效果：</p>
+<p>1、启动<code>angular-start</code>项目，在控制台你可以看到<code>HRM</code>已经启用的消息：</p>
+<p><img src="http://www.laixiangran.cn/images/angular/hmr1.png" alt="image"></p>
+<p>2、然后通过浏览器控制台可以看到，第一次加载请求了所有的资源：</p>
+<p><img src="http://www.laixiangran.cn/images/angular/hmr2.png" alt="image"></p>
+<p>3、此时，修改一处代码保存，浏览器并未刷新就自动显示修改之后的效果，再看浏览器控制台只请求了新修改的js：</p>
+<p><img src="http://www.laixiangran.cn/images/angular/hmr3.png" alt="image"></p>
+<p>下面让我们从一些不同的角度观察，以了解<code>HMR</code>的工作原理……</p>
+<h1 id="在应用程序中"><a href="#在应用程序中" class="headerlink" title="在应用程序中"></a>在应用程序中</h1><p>通过以下步骤，可以做到在应用程序中置换(<code>swap in and out</code>)模块：</p>
 <ul>
-<li>IDE推荐使用<a href="https://www.jetbrains.com/webstorm/" target="_blank" rel="external">WebStorm</a></li>
+<li>应用程序代码要求 HMR runtime 检查更新</li>
+<li>HMR runtime（异步）下载更新，然后通知应用程序代码</li>
+<li>应用程序代码要求 HMR runtime 应用更新</li>
+<li>HMR runtime（异步）应用更新</li>
 </ul>
-<h1 id="框架搭建"><a href="#框架搭建" class="headerlink" title="框架搭建"></a>框架搭建</h1><p><a href="https://github.com/laixiangran/angular-start" target="_blank" rel="external">angular-start</a>是我在GitHub上维护的一个起步项目，你可以直接下载作为基础开发框架来使用。</p>
-<p>你可以通过以下几步快速启动并进行开发：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/laixiangran/angular-start.git</span><br><span class="line">cd angular-start</span><br><span class="line">npm install（等待依赖包安装完成，再进行下一步）</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
-<p><strong>为了启动方便，在<code>package.json</code>的<code>scripts</code>配置了<code>&quot;start&quot;: &quot;ng serve --hmr -o --proxy-config proxy.config.json&quot;</code>，可以看到这条命令分别配置了<a href="http://www.laixiangran.cn/2017/11/06/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHot%20Module%20Replacement%EF%BC%88%E6%A8%A1%E5%9D%97%E7%83%AD%E6%9B%BF%E6%8D%A2%EF%BC%89%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/" target="_blank" rel="external">–hmr（启动模块热更新）</a>、-o（自动打开浏览器）、<a href="https://github.com/angular/angular-cli/wiki/stories-proxy" target="_blank" rel="external">–proxy-config（代理配置）</a></strong></p>
-<p>控制台信息：<br><img src="http://www.laixiangran.cn/images/angular/1.png" alt="控制台信息"></p>
-<p>浏览器界面：<br><img src="http://www.laixiangran.cn/images/angular/2.png" alt="浏览器界面"></p>
-<p>项目启动成功了，你可以进行下面的开发了。可能你还想了解下该项目中的文件都是干什么用的，那么我们就来了解下。</p>
-<h1 id="项目文件概览"><a href="#项目文件概览" class="headerlink" title="项目文件概览"></a>项目文件概览</h1><h2 id="src文件夹"><a href="#src文件夹" class="headerlink" title="src文件夹"></a>src文件夹</h2><p>应用代码位于<code>src</code>文件夹中。所有的Angular组件、模板、样式、图片以及应用所需的任何东西都在这里。这个文件夹之外的文件都是为构建应用提供支持用的。</p>
-<p><img src="http://www.laixiangran.cn/images/angular/src.png" alt="src目录"></p>
-<table>
-<thead>
-<tr>
-<th>文件</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>app/app.component.{ts,html,css,spec.ts}</code></td>
-<td>使用HTML模板、CSS样式和单元测试定义<code>AppComponent</code>组件。 它是根组件，随着应用的成长它会成为一棵组件树的根节点。</td>
-</tr>
-<tr>
-<td><code>app/app.module.ts</code></td>
-<td>定义<code>AppModule</code>，这个根模块会告诉Angular如何组装该应用</td>
-</tr>
-<tr>
-<td><code>app/app.routes.ts</code></td>
-<td>该模块配置了应用的根路由</td>
-</tr>
-<tr>
-<td><code>app/components/*</code></td>
-<td>这个文件夹下放置应用级通用组件</td>
-</tr>
-<tr>
-<td><code>app/models/*</code></td>
-<td>这个文件夹下放置应用级数据模型</td>
-</tr>
-<tr>
-<td><code>app/pages/*</code></td>
-<td>这个文件夹下放置应用中的各个页面，这里面的目录结构和<code>app/</code>一致</td>
-</tr>
-<tr>
-<td><code>app/services/*</code></td>
-<td>这个文件夹下放置应用级通用服务</td>
-</tr>
-<tr>
-<td><code>assets/*</code></td>
-<td>这个文件夹下你可以放字体、图片等任何静态文件，在构建应用时，它们全都会拷贝到发布包中</td>
-</tr>
-<tr>
-<td><code>environments/*</code></td>
-<td>这个文件夹中包括为各个目标环境准备的文件，它们导出了一些应用中要用到的配置变量。这些文件会在构建应用时被替换。比如你可能在开发环境、测试环境及生产环境中使用不同的后端API地址</td>
-</tr>
-<tr>
-<td><code>favicon.ico</code></td>
-<td>显示在书签栏中的网站图标</td>
-</tr>
-<tr>
-<td><code>hmr.ts</code></td>
-<td><a href="http://www.laixiangran.cn/2017/11/06/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHot%20Module%20Replacement%EF%BC%88%E6%A8%A1%E5%9D%97%E7%83%AD%E6%9B%BF%E6%8D%A2%EF%BC%89%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/" target="_blank" rel="external">HMR</a>的启动器，将在<code>main.ts</code>中用来起动应用</td>
-</tr>
-<tr>
-<td><code>index.html</code></td>
-<td>网站的主页面。大多数情况下你都不用编辑它。在构建应用时，CLI会自动把所有js和css文件添加进去，所以你不必在这里手动添加任何<code>&lt;script&gt;</code>或<code>&lt;link&gt;</code>标签</td>
-</tr>
-<tr>
-<td><code>main.ts</code></td>
-<td>这是应用的主要入口点。使用<a href="https://angular.cn/guide/glossary#jit" target="_blank" rel="external">JIT compiler</a>或者<a href="https://angular.cn/guide/glossary#ahead-of-time-aot-compilation" target="_blank" rel="external">AOT compiler</a>编译器编译本应用，并启动应用的根模块AppModule（启用HMR时，将使用<code>hmr.ts</code>定义的启动器启动），使其运行在浏览器中</td>
-</tr>
-<tr>
-<td><code>polyfills.ts</code></td>
-<td>不同的浏览器对Web标准的支持程度也不同。填充库（polyfill）能帮我们把这些不同点进行标准化。 你只要使用core-js 和 zone.js通常就够了，不过你也可以查看<a href="https://angular.cn/guide/browser-support" target="_blank" rel="external">浏览器支持指南</a>以了解更多信息</td>
-</tr>
-<tr>
-<td><code>styles.scss</code></td>
-<td>这里是你的全局样式。大多数情况下，你会希望在组件中使用局部样式，以利于维护，不过那些会影响你整个应用的样式你还是需要集中存放在这里</td>
-</tr>
-<tr>
-<td><code>test.ts</code></td>
-<td>这是单元测试的主要入口点。它有一些你不熟悉的自定义配置，不过你并不需要编辑这里的任何东西</td>
-</tr>
-<tr>
-<td><code>tsconfig.{app、spec}.json</code></td>
-<td>TypeScript编译器的配置文件。<code>tsconfig.app.json</code>是为Angular应用准备的，而<code>tsconfig.spec.json</code>是为单元测试准备的</td>
-</tr>
-<tr>
-<td><code>typings.d.ts</code></td>
-<td>引用的第三方插件TypeScript编译器可能不识别，需要通过下载<code>@types/xxx</code>获取该库的类型定义文件，如果<code>@types</code>没有那么就需要在该文件中定义，如<code>declare var $: any;</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h2><p><code>src/</code>文件夹是项目的根文件夹之一。其它文件是用来帮助我们构建、测试、维护、文档化和发布应用的。它们放在根目录下，和<code>src/</code>平级。</p>
-<p><img src="http://www.laixiangran.cn/images/angular/root.png" alt="根目录"></p>
-<table>
-<thead>
-<tr>
-<th>文件</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>e2e/*</code></td>
-<td>在<code>e2e/</code>下是端到端（end-to-end）测试。它们不在<code>src/</code>下，是因为端到端测试实际上和应用是相互独立的，它只适用于测试你的应用而已。这也就是为什么它会拥有自己的<code>tsconfig.json</code></td>
-</tr>
-<tr>
-<td><code>node_modules/*</code></td>
-<td><code>Node.js</code>创建了这个文件夹，并且把<code>package.json</code>中列举的所有第三方模块都放在其中</td>
-</tr>
-<tr>
-<td><code>.angular-cli.json</code></td>
-<td>Angular CLI的配置文件。在这个文件中，我们可以设置一系列默认值，还可以配置项目编译时要包含的那些文件。要了解更多，请参阅它的<a href="https://github.com/angular/angular-cli/wiki" target="_blank" rel="external">官方文档</a></td>
-</tr>
-<tr>
-<td><code>.editorconfig</code></td>
-<td>用来确保参与你项目的每个人都具有基本的编辑器配置。大多数的编辑器都支持<code>.editorconfig</code>文件，详情参见 <a href="http://editorconfig.org" target="_blank" rel="external">http://editorconfig.org</a></td>
-</tr>
-<tr>
-<td><code>..gitignore</code></td>
-<td>Git的配置文件，用来确保某些自动生成的文件不会被提交到源码控制系统中（GitHub）</td>
-</tr>
-<tr>
-<td><code>.stylelintrc.json</code></td>
-<td>css代码规范检测的配置文件</td>
-</tr>
-<tr>
-<td><code>CHANGELOG.md</code></td>
-<td>项目的日志文件</td>
-</tr>
-<tr>
-<td><code>karma.conf.js</code></td>
-<td><a href="https://karma-runner.github.io/" target="_blank" rel="external">Karma</a>的单元测试配置，当运行<code>ng test</code>时会用到它</td>
-</tr>
-<tr>
-<td><code>LICENSE</code></td>
-<td>版权文件</td>
-</tr>
-<tr>
-<td><code>package.json</code></td>
-<td><code>npm</code>配置文件，其中列出了项目使用到的第三方依赖包。你还可以在这里添加自己的<a href="https://docs.npmjs.com/misc/scripts" target="_blank" rel="external">自定义脚本</a></td>
-</tr>
-<tr>
-<td><code>protractor.conf.js</code></td>
-<td><a href="http://www.protractortest.org/" target="_blank" rel="external">Protractor</a>的端到端测试配置文件，当运行<code>ng e2e</code>的时候会用到它</td>
-</tr>
-<tr>
-<td><code>proxy.config.json</code></td>
-<td><code>ng serve</code>的<a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md" target="_blank" rel="external">代理配置文件</a>，主要用在开发时前后端分离出现的跨域问题</td>
-</tr>
-<tr>
-<td><code>README.md</code></td>
-<td>项目的基础说明文档，包括项目基本信息、如何启动、构建项目等等信息</td>
-</tr>
-<tr>
-<td><code>tsconfig.json</code></td>
-<td>TypeScript编译器的配置，你的IDE会借助它来给你提供更好的帮助</td>
-</tr>
-<tr>
-<td><code>tslint.json</code></td>
-<td><a href="https://palantir.github.io/tslint/" target="_blank" rel="external">TSLint</a>和<a href="http://codelyzer.com/" target="_blank" rel="external">Codelyzer</a>的配置信息，当运行<code>ng lint</code>时会用到。Lint功能可以帮你保持代码风格的统一</td>
-</tr>
-</tbody>
-</table>
+<h1 id="在编译器中"><a href="#在编译器中" class="headerlink" title="在编译器中"></a>在编译器中</h1><p>除了普通资源，编译器(<code>compiler</code>)需要发出<code>update</code>，以允许更新之前的版本到新的版本。<code>update</code>由两部分组成：</p>
+<ul>
+<li>更新后的<code>manifest (JSON)</code></li>
+<li>一个或多个更新后的<code>chunk (JavaScript)</code></li>
+</ul>
+<p><code>manifest</code>包括新的编译<code>hash</code>和所有的待更新<code>chunk</code>目录。每个更新<code>chunk</code>都含有对应于此<code>chunk</code>的全部更新模块（或一个<code>flag</code>用于表明此模块要被移除）的代码。</p>
+<p>编译器确保模块<code>ID</code>和<code>chunk ID</code>在这些构建之间保持一致。通常将这些<code>ID</code>存储在内存中（例如，使用<code>webpack-dev-server</code>时），但是也可能将它们存储在一个<code>JSON</code>文件中。</p>
+<h1 id="在模块中"><a href="#在模块中" class="headerlink" title="在模块中"></a>在模块中</h1><p><code>HMR</code>是可选功能，只会影响包含<code>HMR</code>代码的模块。举个例子，通过<code>style-loader</code>为<code>style</code>样式追加补丁。为了运行追加补丁，<code>style-loader</code>实现了<code>HMR</code>接口；当它通过<code>HMR</code>接收到更新，它会使用新的样式替换旧的样式。</p>
+<p>类似的，当在一个模块中实现了<code>HMR</code>接口，你可以描述出当模块被更新后发生了什么。然而在多数情况下，不需要强制在每个模块中写入<code>HMR</code>代码。如果一个模块没<code>HMR</code>处理函数，更新就会冒泡。这意味着一个简单的处理函数能够对整个模块树<code>(complete module tree)</code>进行更新。如果在这个模块树中，一个单独的模块被更新，那么整组依赖模块都会被重新加载。</p>
+<p>有关 module.hot 接口的详细信息，请查看<a href="http://www.css88.com/doc/webpack/api/hot-module-replacement" target="_blank" rel="external">HMR API页面</a>。</p>
+<h1 id="在HMR-Runtime中"><a href="#在HMR-Runtime中" class="headerlink" title="在HMR Runtime中"></a>在HMR Runtime中</h1><p>对于模块系统的<code>runtime</code>，附加的代码被发送到<code>parents</code>和<code>children</code>跟踪模块。在管理方面，<code>runtime</code>支持两个方法<code>check</code>和<code>apply</code>。</p>
+<p><code>check</code>发送<code>HTTP</code>请求来更新<code>manifest</code>。如果请求失败，说明没有可用更新。如果请求成功，待更新<code>chunk</code>会和当前加载过的<code>chunk</code>进行比较。对每个加载过的<code>chunk</code>，会下载相对应的待更新<code>chunk</code>。当所有待更新<code>chunk</code>完成下载，就会准备切换到<code>ready</code>状态。</p>
+<p><code>apply</code>方法将所有被更新模块标记为无效。对于每个无效模块，都需要在模块中有一个更新处理函数，或者在它的父级模块们中有更新处理函数。否则，无效标记冒泡，并也使父级无效。每个冒泡继续直到到达应用程序入口起点，或者到达带有更新处理函数的模块（以最先到达为准）。如果它从入口起点开始冒泡，则此过程失败。</p>
+<p>之后，所有无效模块都被（通过<code>dispose</code>处理函数）处理和解除加载。然后更新当前<code>hash</code>，并且调用所有<code>accept</code>处理函数。<code>runtime</code>切换回闲置状态，一切照常继续。</p>
 
       
     </div>
@@ -554,7 +362,7 @@ angular-cli
           
             <a href="/tags/Angular/" rel="tag">#Angular</a>
           
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+            <a href="/tags/webpack/" rel="tag">#webpack</a>
           
         </div>
       
@@ -563,17 +371,13 @@ angular-cli
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/14/CSS预处理器的对比 — Sass、Less和Stylus/" rel="next" title="CSS预处理器的对比 — sass、less和stylus">
-                <i class="fa fa-chevron-left"></i> CSS预处理器的对比 — sass、less和stylus
+              <a href="/2017/10/22/Angular开发实践（一）：开发环境搭建/" rel="next" title="Angular开发实践（一）：环境准备及框架搭建">
+                <i class="fa fa-chevron-left"></i> Angular开发实践（一）：环境准备及框架搭建
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/06/Angular开发实践（二）：HRM运行机制/" rel="prev" title="Angular开发实践（二）：HRM运行机制">
-                Angular开发实践（二）：HRM运行机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -753,7 +557,7 @@ angular-cli
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">2.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#框架搭建"><span class="nav-number">3.</span> <span class="nav-text">框架搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目文件概览"><span class="nav-number">4.</span> <span class="nav-text">项目文件概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#src文件夹"><span class="nav-number">4.1.</span> <span class="nav-text">src文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根目录"><span class="nav-number">4.2.</span> <span class="nav-text">根目录</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#这一切是如何运行的？"><span class="nav-number">2.</span> <span class="nav-text">这一切是如何运行的？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在应用程序中"><span class="nav-number">3.</span> <span class="nav-text">在应用程序中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在编译器中"><span class="nav-number">4.</span> <span class="nav-text">在编译器中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在模块中"><span class="nav-number">5.</span> <span class="nav-text">在模块中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在HMR-Runtime中"><span class="nav-number">6.</span> <span class="nav-text">在HMR Runtime中</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

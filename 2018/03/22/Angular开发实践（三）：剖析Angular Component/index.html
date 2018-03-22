@@ -1,0 +1,1153 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Angular,JavaScript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Web Component在介绍Angular Component之前，我们先简单了解下W3C Web Components
+定义
+W3C为统一组件化标准方式，提出Web Component的标准。
+每个组件包含自己的html、css、js代码。
+Web Component标准包括以下四个重要的概念：
+
+
+Custom Elements（自定义标签）：可以创建自定义 HTML 标记和元素；
+HTM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular开发实践（三）：剖析Angular Component">
+<meta property="og:url" content="http://laixiangran.cn/2018/03/22/Angular开发实践（三）：剖析Angular Component/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="Web Component在介绍Angular Component之前，我们先简单了解下W3C Web Components
+定义
+W3C为统一组件化标准方式，提出Web Component的标准。
+每个组件包含自己的html、css、js代码。
+Web Component标准包括以下四个重要的概念：
+
+
+Custom Elements（自定义标签）：可以创建自定义 HTML 标记和元素；
+HTM">
+<meta property="og:updated_time" content="2018-03-22T09:40:25.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular开发实践（三）：剖析Angular Component">
+<meta name="twitter:description" content="Web Component在介绍Angular Component之前，我们先简单了解下W3C Web Components
+定义
+W3C为统一组件化标准方式，提出Web Component的标准。
+每个组件包含自己的html、css、js代码。
+Web Component标准包括以下四个重要的概念：
+
+
+Custom Elements（自定义标签）：可以创建自定义 HTML 标记和元素；
+HTM">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Angular开发实践（三）：剖析Angular Component | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular开发实践（三）：剖析Angular Component
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-22T16:30:30+08:00" content="2018-03-22">
+              2018-03-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/03/22/Angular开发实践（三）：剖析Angular Component/" class="leancloud_visitors" data-flag-title="Angular开发实践（三）：剖析Angular Component">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Web-Component"><a href="#Web-Component" class="headerlink" title="Web Component"></a>Web Component</h1><p>在介绍Angular Component之前，我们先简单了解下<a href="https://github.com/w3c/webcomponents" target="_blank" rel="external">W3C Web Components</a></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>W3C为统一组件化标准方式，提出Web Component的标准。</li>
+<li>每个组件包含自己的html、css、js代码。</li>
+<li>Web Component标准包括以下四个重要的概念：</li>
+</ul>
+<ol>
+<li>Custom Elements（自定义标签）：可以创建自定义 HTML 标记和元素；</li>
+<li>HTML Templates（HTML模版）：使用 <code>&lt;template&gt;</code> 标签去预定义一些内容，但并不加载至页面，而是使用 JS 代码去初始化它；</li>
+<li>Shadow DOM（虚拟DOM）：可以创建完全独立与其他元素的DOM子树；</li>
+<li>HTML Imports（HTML导入）：一种在 HTML 文档中引入其他 HTML 文档的方法，<code>&lt;link rel=&quot;import&quot; href=&quot;example.html&quot; /&gt;</code>。</li>
+</ol>
+<p>概括来说就是，可以创建自定义标签来引入组件是前端组件化的基础，在页面引用 HTML 文件和 HTML 模板是用于支撑编写组件视图和组件资源管理，而 Shadow DOM 则是隔离组件间代码的冲突和影响。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>定义hello-component</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"hello-template"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><br><span class="line">        h1 &#123;</span><br><span class="line">            color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Web Component!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line"></span><br><span class="line">    // 指向导入文档，即本例的index.html</span><br><span class="line">    var indexDoc = document;</span><br><span class="line"></span><br><span class="line">    // 指向被导入文档，即当前文档hello.html</span><br><span class="line">    var helloDoc = (indexDoc._currentScript || indexDoc.currentScript).ownerDocument;</span><br><span class="line"></span><br><span class="line">    // 获得上面的模板</span><br><span class="line">    var tmpl = helloDoc.querySelector('#hello-template');</span><br><span class="line"></span><br><span class="line">    // 创建一个新元素的原型，继承自HTMLElement</span><br><span class="line">    var HelloProto = Object.create(HTMLElement.prototype);</span><br><span class="line"></span><br><span class="line">    // 设置 Shadow DOM 并将模板的内容克隆进去</span><br><span class="line">    HelloProto.createdCallback = function() &#123;</span><br><span class="line">        var root = this.createShadowRoot();</span><br><span class="line">        root.appendChild(indexDoc.importNode(tmpl.content, true));</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    // 注册新元素</span><br><span class="line">    var hello = indexDoc.registerElement('hello-component', &#123;</span><br><span class="line">        prototype: HelloProto</span><br><span class="line">    &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用hello-component</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-cn"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-COMPATIBLE"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">"赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Web Component<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--导入自定义组件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"hello.html"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--自定义标签--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hello-component</span>&gt;</span><span class="tag">&lt;/<span class="name">hello-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>从以上代码可看到，hello.html 为按标准定义的组件（名称为 hello-component ），在这个组件中有自己的结构、样式及逻辑，然后在 index.html 中引入该组件文件，即可像普通标签一样使用。</p>
+<h1 id="Angular-Component"><a href="#Angular-Component" class="headerlink" title="Angular Component"></a>Angular Component</h1><p>Angular Component属于指令的一种，可以理解为拥有模板的指令。其它两种是<a href="https://angular.cn/guide/attribute-directives" target="_blank" rel="external">属性型指令</a>和<a href="https://angular.cn/guide/structural-directives" target="_blank" rel="external">结构型指令</a>。</p>
+<h2 id="基本组成"><a href="#基本组成" class="headerlink" title="基本组成"></a>基本组成</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span>,</span><br><span class="line">    template: <span class="string">'Demo Component'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>组件装饰器：每个组件类必须用<code>@component</code>进行装饰才能成为Angular组件。</li>
+<li>组件元数据：组件元数据：<code>selector</code>、<code>template</code>等，下文将着重讲解每个元数据的含义。</li>
+<li>组件类：组件实际上也是一个普通的类，组件的逻辑都在组件类里定义并实现。</li>
+<li>组件模板：每个组件都会关联一个模板，这个模板最终会渲染到页面上，页面上这个<code>DOM</code>元素就是此组件实例的宿主元素。</li>
+</ul>
+<h2 id="组件元数据"><a href="#组件元数据" class="headerlink" title="组件元数据"></a>组件元数据</h2><h3 id="自身元数据属性"><a href="#自身元数据属性" class="headerlink" title="自身元数据属性"></a>自身元数据属性</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>animations</td>
+<td><code>AnimationEntryMetadata[]</code></td>
+<td>设置组件的动画</td>
+</tr>
+<tr>
+<td>changeDetection</td>
+<td><code>ChangeDetectionStrategy</code></td>
+<td>设置组件的变化监测策略</td>
+</tr>
+<tr>
+<td>encapsulation</td>
+<td><code>ViewEncapsulation</code></td>
+<td>设置组件的视图包装选项</td>
+</tr>
+<tr>
+<td>entryComponents</td>
+<td><code>any[]</code></td>
+<td>设置将被动态插入到该组件视图中的组件列表</td>
+</tr>
+<tr>
+<td>interpolation</td>
+<td><code>[string, string]</code></td>
+<td>自定义组件的插值标记，默认是双大括号</td>
+</tr>
+<tr>
+<td>moduleId</td>
+<td><code>string</code></td>
+<td>设置该组件在 ES/CommonJS 规范下的模块id，它被用于解析模板样式的相对路径</td>
+</tr>
+<tr>
+<td>styleUrls</td>
+<td><code>string[]</code></td>
+<td>设置组件引用的外部样式文件</td>
+</tr>
+<tr>
+<td>styles</td>
+<td><code>string[]</code></td>
+<td>设置组件使用的内联样式</td>
+</tr>
+<tr>
+<td>template</td>
+<td><code>string</code></td>
+<td>设置组件的内联模板</td>
+</tr>
+<tr>
+<td>templateUrl</td>
+<td><code>string</code></td>
+<td>设置组件模板所在路径</td>
+</tr>
+<tr>
+<td>viewProviders</td>
+<td><code>Provider[]</code></td>
+<td>设置组件及其所有子组件（不含ContentChildren）可用的服务</td>
+</tr>
+</tbody>
+</table>
+<h3 id="从-core-Directive-继承"><a href="#从-core-Directive-继承" class="headerlink" title="从 core/Directive 继承"></a>从 core/Directive 继承</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exportAs</td>
+<td><code>string</code></td>
+<td>设置组件实例在模板中的别名，使得可以在模板中调用</td>
+</tr>
+<tr>
+<td>host</td>
+<td><code>{[key: string]: string}</code></td>
+<td>设置组件的事件、动作和属性等</td>
+</tr>
+<tr>
+<td>inputs</td>
+<td><code>string[]</code></td>
+<td>设置组件的输入属性</td>
+</tr>
+<tr>
+<td>outputs</td>
+<td><code>string[]</code></td>
+<td>设置组件的输出属性</td>
+</tr>
+<tr>
+<td>providers</td>
+<td><code>Provider[]</code></td>
+<td>设置组件及其所有子组件（含ContentChildren）可用的服务（依赖注入）</td>
+</tr>
+<tr>
+<td>queries</td>
+<td><code>{[key: string]: any}</code></td>
+<td>设置需要被注入到组件的查询</td>
+</tr>
+<tr>
+<td>selector</td>
+<td><code>string</code></td>
+<td>设置用于在模板中识别该组件的css选择器（组件的自定义标签）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="几种元数据详解"><a href="#几种元数据详解" class="headerlink" title="几种元数据详解"></a>几种元数据详解</h3><blockquote>
+<p>以下几种元数据的等价写法会比元数据设置更简洁易懂，所以一般推荐的是等价写法。</p>
+</blockquote>
+<h4 id="inputs"><a href="#inputs" class="headerlink" title="inputs"></a>inputs</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span>,</span><br><span class="line">    inputs: [<span class="string">'param'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;</span><br><span class="line">    param: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价于：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;</span><br><span class="line">    @Input() param: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="outputs"><a href="#outputs" class="headerlink" title="outputs"></a>outputs</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span>,</span><br><span class="line">    outputs: [<span class="string">'ready'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;</span><br><span class="line">    ready = <span class="keyword">new</span> eventEmitter&lt;<span class="literal">false</span>&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价于：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;</span><br><span class="line">    @Output() ready = <span class="keyword">new</span> eventEmitter&lt;<span class="literal">false</span>&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="host"><a href="#host" class="headerlink" title="host"></a>host</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span>,</span><br><span class="line">    host: &#123;</span><br><span class="line">        <span class="string">'(click)'</span>: <span class="string">'onClick($event.target)'</span>, <span class="comment">// 事件</span></span><br><span class="line">        <span class="string">'role'</span>: <span class="string">'nav'</span>, <span class="comment">// 属性</span></span><br><span class="line">        <span class="string">'[class.pressed]'</span>: <span class="string">'isPressed'</span>, <span class="comment">// 类</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;</span><br><span class="line">    isPressed: <span class="built_in">boolean</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    onClick(elem: HTMLElement) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(elem);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价于：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;</span><br><span class="line">    @HostBinding(<span class="string">'attr.role'</span>) role = <span class="string">'nav'</span>;</span><br><span class="line">    @HostBinding(<span class="string">'class.pressed'</span>) isPressed: <span class="built_in">boolean</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    @HostListener(<span class="string">'click'</span>, [<span class="string">'$event.target'</span>])</span><br><span class="line">    onClick(elem: HTMLElement) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(elem);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="queries-视图查询"><a href="#queries-视图查询" class="headerlink" title="queries - 视图查询"></a>queries - 视图查询</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span>,</span><br><span class="line">    template: <span class="string">`</span><br><span class="line">        &lt;input #theInput type='text' /&gt;</span><br><span class="line">        &lt;div&gt;Demo Component&lt;/div&gt;</span><br><span class="line">    `</span>,</span><br><span class="line">    queries: &#123;</span><br><span class="line">        theInput: <span class="keyword">new</span> ViewChild(<span class="string">'theInput'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;</span><br><span class="line">    theInput: ElementRef;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价于：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'demo-component'</span>,</span><br><span class="line">    template: <span class="string">`</span><br><span class="line">        &lt;input #theInput type='text' /&gt;</span><br><span class="line">        &lt;div&gt;Demo Component&lt;/div&gt;</span><br><span class="line">    `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DemoComponent &#123;</span><br><span class="line">    @ViewChild(<span class="string">'theInput'</span>) theInput: ElementRef;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="queries-内容查询"><a href="#queries-内容查询" class="headerlink" title="queries - 内容查询"></a>queries - 内容查询</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">my-list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> *<span class="attr">ngFor</span>=<span class="string">"let item of items;"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">my-list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Directive(&#123;</span><br><span class="line">    selector: <span class="string">'li'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ListItem &#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'my-list'</span>,</span><br><span class="line">    template: <span class="string">`</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;ng-content&gt;&lt;/ng-content&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    `</span>,</span><br><span class="line">    queries: &#123;</span><br><span class="line">        items: <span class="keyword">new</span> ContentChild(ListItem)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> MyListComponent &#123;</span><br><span class="line">    items: QueryList&lt;ListItem&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价于：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'my-list'</span>,</span><br><span class="line">    template: <span class="string">`</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;ng-content&gt;&lt;/ng-content&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> MyListComponent &#123;</span><br><span class="line">    @ContentChild(ListItem) items: QueryList&lt;ListItem&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="styleUrls、styles"><a href="#styleUrls、styles" class="headerlink" title="styleUrls、styles"></a>styleUrls、styles</h4><ul>
+<li><p>styleUrls和styles允许同时指定。</p>
+</li>
+<li><p>优先级：模板内联样式 &gt; styleUrls &gt; styles。</p>
+</li>
+<li><p>建议：使用styleUrls引用外部样式表文件，这样代码结构相比styles更清晰、更易于管理。同理，模板推荐使用templateUrl引用模板文件。</p>
+</li>
+</ul>
+<h4 id="changeDetection"><a href="#changeDetection" class="headerlink" title="changeDetection"></a>changeDetection</h4><ul>
+<li><p>ChangeDetectionStrategy.Default：组件的每次变化监测都会检查其内部的所有数据（引用对象也会深度遍历），以此得到前后的数据变化。</p>
+</li>
+<li><p>ChangeDetectionStrategy.OnPush：组件的变化监测只检查输入属性（即@Input修饰的变量）的值是否发生变化，当这个值为引用类型（Object，Array等）时，则只对比该值的引用。</p>
+</li>
+<li><p>显然，OnPush策略相比Default降低了变化监测的复杂度，很好地提升了变化监测的性能。如果组件的更新只依赖输入属性的值，那么在该组件上使用OnPush策略是一个很好的选择。</p>
+</li>
+</ul>
+<h4 id="encapsulation"><a href="#encapsulation" class="headerlink" title="encapsulation"></a>encapsulation</h4><ul>
+<li><p>ViewEncapsulation.None：无 Shadow DOM，并且也无样式包装。</p>
+</li>
+<li><p>ViewEncapsulation.Emulated：无 Shadow DOM，但是通过Angular提供的样式包装机制来模拟组件的独立性，使得组件的样式不受外部影响，这是Angular的默认设置。</p>
+</li>
+<li><p>ViewEncapsulation.Native：使用原生的 Shadow DOM 特性。</p>
+</li>
+</ul>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>当Angular使用构造函数新建组件后，就会按下面的顺序在特定时刻调用这些生命周期钩子方法：</p>
+<table>
+<thead>
+<tr>
+<th>生命周期钩子</th>
+<th>调用时机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ngOnChanges</td>
+<td>在ngOnInit之前调用，或者当组件输入数据（通过@Input装饰器显式指定的那些变量）变化时调用。</td>
+</tr>
+<tr>
+<td>ngOnInit</td>
+<td>第一次ngOnChanges之后调用。<strong>建议此时获取数据，不要在构造函数中获取</strong>。</td>
+</tr>
+<tr>
+<td>ngDoCheck</td>
+<td>每次变化监测发生时被调用。</td>
+</tr>
+<tr>
+<td>ngAfterContentInit</td>
+<td>使用<ng-content>将外部内容嵌入到组件视图后被调用，第一次ngDoCheck之后调用且只执行一次（只适用组件）。</ng-content></td>
+</tr>
+<tr>
+<td>ngAfterContentChecked</td>
+<td>ngAfterContentInit后被调用，或者每次变化监测发生时被调用（只适用组件）。</td>
+</tr>
+<tr>
+<td>ngAfterViewInit</td>
+<td>创建了组件的视图及其子视图之后被调用（只适用组件）。</td>
+</tr>
+<tr>
+<td>ngAfterViewChecked</td>
+<td>ngAfterViewInit，或者每次子组件变化监测时被调用（只适用组件）。</td>
+</tr>
+<tr>
+<td>ngOnDestroy</td>
+<td>销毁指令/组件之前触发。此时应将不会被垃圾回收器自动回收的资源（<strong>比如已订阅的观察者事件、绑定过的DOM事件、通过setTimeout或setInterval设置过的计时器等等</strong>）手动销毁掉。</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular/" rel="tag">#Angular</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/06/Angular开发实践（二）：HRM运行机制/" rel="next" title="Angular开发实践（二）：HRM运行机制">
+                <i class="fa fa-chevron-left"></i> Angular开发实践（二）：HRM运行机制
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-Component"><span class="nav-number">1.</span> <span class="nav-text">Web Component</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">1.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Angular-Component"><span class="nav-number">2.</span> <span class="nav-text">Angular Component</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本组成"><span class="nav-number">2.1.</span> <span class="nav-text">基本组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件元数据"><span class="nav-number">2.2.</span> <span class="nav-text">组件元数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自身元数据属性"><span class="nav-number">2.2.1.</span> <span class="nav-text">自身元数据属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从-core-Directive-继承"><span class="nav-number">2.2.2.</span> <span class="nav-text">从 core/Directive 继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几种元数据详解"><span class="nav-number">2.2.3.</span> <span class="nav-text">几种元数据详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#inputs"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">inputs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#outputs"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">outputs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#host"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">host</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#queries-视图查询"><span class="nav-number">2.2.3.4.</span> <span class="nav-text">queries - 视图查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#queries-内容查询"><span class="nav-number">2.2.3.5.</span> <span class="nav-text">queries - 内容查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#styleUrls、styles"><span class="nav-number">2.2.3.6.</span> <span class="nav-text">styleUrls、styles</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#changeDetection"><span class="nav-number">2.2.3.7.</span> <span class="nav-text">changeDetection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#encapsulation"><span class="nav-number">2.2.3.8.</span> <span class="nav-text">encapsulation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">生命周期</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

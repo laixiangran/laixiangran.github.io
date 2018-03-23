@@ -81,7 +81,7 @@ Web Component标准包括以下四个重要的概念：
 
 Custom Elements（自定义标签）：可以创建自定义 HTML 标记和元素；
 HTM">
-<meta property="og:updated_time" content="2018-03-22T09:40:25.912Z">
+<meta property="og:updated_time" content="2018-03-22T09:45:29.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular开发实践（三）：剖析Angular Component">
 <meta name="twitter:description" content="Web Component在介绍Angular Component之前，我们先简单了解下W3C Web Components
@@ -486,7 +486,7 @@ HTM">
 <h4 id="changeDetection"><a href="#changeDetection" class="headerlink" title="changeDetection"></a>changeDetection</h4><ul>
 <li><p>ChangeDetectionStrategy.Default：组件的每次变化监测都会检查其内部的所有数据（引用对象也会深度遍历），以此得到前后的数据变化。</p>
 </li>
-<li><p>ChangeDetectionStrategy.OnPush：组件的变化监测只检查输入属性（即@Input修饰的变量）的值是否发生变化，当这个值为引用类型（Object，Array等）时，则只对比该值的引用。</p>
+<li><p>ChangeDetectionStrategy.OnPush：组件的变化监测只检查输入属性（即<code>@Input</code>修饰的变量）的值是否发生变化，当这个值为引用类型（Object，Array等）时，则只对比该值的引用。</p>
 </li>
 <li><p>显然，OnPush策略相比Default降低了变化监测的复杂度，很好地提升了变化监测的性能。如果组件的更新只依赖输入属性的值，那么在该组件上使用OnPush策略是一个很好的选择。</p>
 </li>
@@ -510,7 +510,7 @@ HTM">
 <tbody>
 <tr>
 <td>ngOnChanges</td>
-<td>在ngOnInit之前调用，或者当组件输入数据（通过@Input装饰器显式指定的那些变量）变化时调用。</td>
+<td>在ngOnInit之前调用，或者当组件输入数据（通过<code>@Input</code>装饰器显式指定的那些变量）变化时调用。</td>
 </tr>
 <tr>
 <td>ngOnInit</td>
@@ -574,6 +574,10 @@ HTM">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/23/ECMAScript 6入门 - 变量的解构赋值/" rel="prev" title="ECMAScript 6入门 - 变量的解构赋值">
+                ECMAScript 6入门 - 变量的解构赋值 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -664,7 +668,7 @@ HTM">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -1,0 +1,1031 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Angular,JavaScript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Angular UniversalAngular在服务端渲染方面提供一套前后端同构解决方案，它就是 Angular Universal（统一平台），一项在服务端运行 Angular 应用的技术。
+标准的 Angular 应用会执行在浏览器中，它会在 DOM 中渲染页面，以响应用户的操作。
+而 Angular Universal 会在服务端通过一个被称为服务端渲染（server-side rende">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular开发实践（六）：服务端渲染">
+<meta property="og:url" content="http://laixiangran.cn/2018/03/28/Angular开发实践（六）：服务端渲染/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="Angular UniversalAngular在服务端渲染方面提供一套前后端同构解决方案，它就是 Angular Universal（统一平台），一项在服务端运行 Angular 应用的技术。
+标准的 Angular 应用会执行在浏览器中，它会在 DOM 中渲染页面，以响应用户的操作。
+而 Angular Universal 会在服务端通过一个被称为服务端渲染（server-side rende">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/AAFA14CAEE824DFA9520D66FCB7A475C?method=download&shareKey=a77b72e4bb1b46c54e6ee936bdb28f54">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/2691E9A7B2C44C7887A9C98C30B9AE7F?method=download&shareKey=40fa2ec608b09b3fe19bd4da4cf2c7e0">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/407787BC74164ACC9E1BD62DB28202CB?method=download&shareKey=d6c22ebac72adc14870d4276d6798f2e">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/D4EA7C4BC5784939A34325B759E8FE74?method=download&shareKey=594a48f4211ad9e2df3c16d27ffb01e1">
+<meta property="og:updated_time" content="2018-03-28T08:14:52.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular开发实践（六）：服务端渲染">
+<meta name="twitter:description" content="Angular UniversalAngular在服务端渲染方面提供一套前后端同构解决方案，它就是 Angular Universal（统一平台），一项在服务端运行 Angular 应用的技术。
+标准的 Angular 应用会执行在浏览器中，它会在 DOM 中渲染页面，以响应用户的操作。
+而 Angular Universal 会在服务端通过一个被称为服务端渲染（server-side rende">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/AAFA14CAEE824DFA9520D66FCB7A475C?method=download&shareKey=a77b72e4bb1b46c54e6ee936bdb28f54">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Angular开发实践（六）：服务端渲染 | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular开发实践（六）：服务端渲染
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-28T16:10:30+08:00" content="2018-03-28">
+              2018-03-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/03/28/Angular开发实践（六）：服务端渲染/" class="leancloud_visitors" data-flag-title="Angular开发实践（六）：服务端渲染">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Angular-Universal"><a href="#Angular-Universal" class="headerlink" title="Angular Universal"></a>Angular Universal</h2><p>Angular在服务端渲染方面提供一套前后端同构解决方案，它就是 <a href="https://github.com/angular/universal" target="_blank" rel="external">Angular Universal</a>（统一平台），一项在服务端运行 Angular 应用的技术。</p>
+<p>标准的 Angular 应用会执行在浏览器中，它会在 DOM 中渲染页面，以响应用户的操作。</p>
+<p>而 Angular Universal 会在服务端通过一个被称为服务端渲染（server-side rendering - SSR）的过程生成静态的应用页面。</p>
+<p>它可以生成这些页面，并在浏览器请求时直接用它们给出响应。 它也可以把页面预先生成为 HTML 文件，然后把它们作为静态文件供服务器使用。</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>要制作一个 Universal 应用，就要安装 <code>platform-server</code> 包。 platform-server 包提供了服务端的 DOM 实现、XMLHttpRequest 和其它底层特性，但不再依赖浏览器。</p>
+<p>你要使用 <code>platform-server</code> 模块而不是 <code>platform-browser</code> 模块来编译这个客户端应用，并且在一个 Web 服务器上运行这个 Universal 应用。</p>
+<p>服务器（下面的示例中使用的是 Node Express 服务器）会把客户端对应用页面的请求传给 <code>renderModuleFactory</code> 函数。</p>
+<p>renderModuleFactory 函数接受一个模板 HTML 页面（通常是 index.html）、一个包含组件的 Angular 模块和一个用于决定该显示哪些组件的路由作为输入。</p>
+<p>该路由从客户端的请求中传给服务器。 每次请求都会给出所请求路由的一个适当的视图。</p>
+<p>renderModuleFactory 在模板中的 <code>&lt;app&gt;</code> 标记中渲染出哪个视图，并为客户端创建一个完成的 HTML 页面。</p>
+<p>最后，服务器就会把渲染好的页面返回给客户端。</p>
+<h2 id="为什么要服务端渲染"><a href="#为什么要服务端渲染" class="headerlink" title="为什么要服务端渲染"></a>为什么要服务端渲染</h2><p>三个主要原因：</p>
+<ol>
+<li><p>帮助网络爬虫（SEO）</p>
+</li>
+<li><p>提升在手机和低功耗设备上的性能</p>
+</li>
+<li><p>迅速显示出第一个页面</p>
+</li>
+</ol>
+<h3 id="帮助网络爬虫（SEO）"><a href="#帮助网络爬虫（SEO）" class="headerlink" title="帮助网络爬虫（SEO）"></a>帮助网络爬虫（SEO）</h3><p>Google、Bing、百度、Facebook、Twitter 和其它搜索引擎或社交媒体网站都依赖网络爬虫去索引你的应用内容，并且让它的内容可以通过网络搜索到。</p>
+<p>这些网络爬虫可能不会像人类那样导航到你的具有高度交互性的 Angular 应用，并为其建立索引。</p>
+<p>Angular Universal 可以为你生成应用的静态版本，它易搜索、可链接，浏览时也不必借助 JavaScript。它也让站点可以被预览，因为每个 URL 返回的都是一个完全渲染好的页面。</p>
+<p>启用网络爬虫通常被称为<a href="https://baike.baidu.com/item/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/3132" target="_blank" rel="external">搜索引擎优化 (SEO)</a>。</p>
+<h3 id="提升手机和低功耗设备上的性能"><a href="#提升手机和低功耗设备上的性能" class="headerlink" title="提升手机和低功耗设备上的性能"></a>提升手机和低功耗设备上的性能</h3><p>有些设备不支持 JavaScript 或 JavaScript 执行得很差，导致用户体验不可接受。 对于这些情况，你可能会需要该应用的服务端渲染、无 JavaScript 的版本。 虽然有一些限制，不过这个版本可能是那些完全没办法使用该应用的人的唯一选择。</p>
+<h3 id="快速显示首页"><a href="#快速显示首页" class="headerlink" title="快速显示首页"></a>快速显示首页</h3><p>快速显示首页对于吸引用户是至关重要的。</p>
+<p>如果页面加载超过了三秒中，那么 53% 的移动网站会被放弃。 你的应用需要启动的更快一点，以便在用户决定做别的事情之前吸引他们的注意力。</p>
+<p>使用 Angular Universal，你可以为应用生成“着陆页”，它们看起来就和完整的应用一样。 这些着陆页是纯 HTML，并且即使 JavaScript 被禁用了也能显示。 这些页面不会处理浏览器事件，不过它们可以用 routerLink 在这个网站中导航。</p>
+<p>在实践中，你可能要使用一个着陆页的静态版本来保持用户的注意力。 同时，你也会在幕后加载完整的 Angular 应用。 用户会认为着陆页几乎是立即出现的，而当完整的应用加载完之后，又可以获得完全的交互体验。</p>
+<h2 id="示例解析"><a href="#示例解析" class="headerlink" title="示例解析"></a>示例解析</h2><p>下面将基于我在GitHub上的示例项目 <a href="https://github.com/laixiangran/angular-universal-starter" target="_blank" rel="external">angular-universal-starter</a> 来进行讲解。</p>
+<p>这个项目与第一篇的示例项目一样，都是基于 Angular CLI进行开发构建的，因此它们的区别只在于服务端渲染所需的那些配置上。</p>
+<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>在开始之前，下列包是必须安装的（示例项目均已配置好，只需 <code>npm install</code> 即可）：</p>
+<ul>
+<li><code>@angular/platform-server</code> - Universal 的服务端元件。</li>
+<li><code>@nguniversal/module-map-ngfactory-loader</code> - 用于处理服务端渲染环境下的惰性加载。</li>
+<li><code>@nguniversal/express-engine</code> - Universal 应用的 Express 引擎。</li>
+<li><code>ts-loader</code> - 用于对服务端应用进行转译。</li>
+<li><code>express</code> - Node Express 服务器</li>
+</ul>
+<p>使用下列命令安装它们：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save @angular/platform-server @nguniversal/module-map-ngfactory-loader ts-loader @nguniversal/express-engine express</span><br></pre></td></tr></table></figure>
+<h3 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h3><p>配置工作有：</p>
+<ol>
+<li>创建服务端应用模块：<code>src/app/app.server.module.ts</code></li>
+<li>修改客户端应用模块：<code>src/app/app.module.ts</code></li>
+<li>创建服务端应用的引导程序文件：<code>src/main.server.ts</code></li>
+<li>修改客户端应用的引导程序文件：<code>src/main.ts</code></li>
+<li>创建 TypeScript 的服务端配置：<code>src/tsconfig.server.json</code></li>
+<li>修改 @angular/cli 的配置文件：<code>.angular-cli.json</code></li>
+<li>创建 Node Express 的服务程序：<code>server.ts</code></li>
+<li>创建服务端预渲染的程序：<code>prerender.ts</code></li>
+<li>创建 Webpack 的服务端配置：<code>webpack.server.config.js</code></li>
+</ol>
+<h4 id="1、创建服务端应用模块：src-app-app-server-module-ts"><a href="#1、创建服务端应用模块：src-app-app-server-module-ts" class="headerlink" title="1、创建服务端应用模块：src/app/app.server.module.ts"></a>1、创建服务端应用模块：<code>src/app/app.server.module.ts</code></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ServerModule, ServerTransferStateModule &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-server'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ModuleMapLoaderModule &#125; <span class="keyword">from</span> <span class="string">'@nguniversal/module-map-ngfactory-loader'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; AppBrowserModule &#125; <span class="keyword">from</span> <span class="string">'./app.module'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AppComponent &#125; <span class="keyword">from</span> <span class="string">'./app.component'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以注册那些在 Universal 环境下运行应用时特有的服务提供商</span></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">	imports: [</span><br><span class="line">		AppBrowserModule, <span class="comment">// 客户端应用的 AppModule</span></span><br><span class="line">		ServerModule, <span class="comment">// 服务端的 Angular 模块</span></span><br><span class="line">		ModuleMapLoaderModule, <span class="comment">// 用于实现服务端的路由的惰性加载</span></span><br><span class="line">		ServerTransferStateModule, <span class="comment">// 在服务端导入，用于实现将状态从服务器传输到客户端</span></span><br><span class="line">	],</span><br><span class="line">	bootstrap: [AppComponent],</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AppServerModule</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>服务端应用模块（习惯上叫作 AppServerModule）是一个 Angular 模块，它包装了应用的根模块 AppModule，以便 Universal 可以在你的应用和服务器之间进行协调。 AppServerModule 还会告诉 Angular 再把你的应用以 Universal 方式运行时，该如何引导它。</p>
+<h4 id="2、修改客户端应用模块：src-app-app-module-ts"><a href="#2、修改客户端应用模块：src-app-app-module-ts" class="headerlink" title="2、修改客户端应用模块：src/app/app.module.ts"></a>2、修改客户端应用模块：<code>src/app/app.module.ts</code></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; BrowserModule, BrowserTransferStateModule &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; HttpClientModule &#125; <span class="keyword">from</span> <span class="string">'@angular/common/http'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; APP_ID, Inject, NgModule, PLATFORM_ID &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AppComponent &#125; <span class="keyword">from</span> <span class="string">'./app.component'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; HomeComponent &#125; <span class="keyword">from</span> <span class="string">'./home/home.component'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; TransferHttpCacheModule &#125; <span class="keyword">from</span> <span class="string">'@nguniversal/common'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; isPlatformBrowser &#125; <span class="keyword">from</span> <span class="string">'@angular/common'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AppRoutingModule &#125; <span class="keyword">from</span> <span class="string">'./app.routes'</span>;</span><br><span class="line"></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">	imports: [</span><br><span class="line">		AppRoutingModule,</span><br><span class="line">		BrowserModule.withServerTransition(&#123;appId: <span class="string">'my-app'</span>&#125;),</span><br><span class="line">		TransferHttpCacheModule, <span class="comment">// 用于实现服务器到客户端的请求传输缓存，防止客户端重复请求服务端已完成的请求</span></span><br><span class="line">		BrowserTransferStateModule, <span class="comment">// 在客户端导入，用于实现将状态从服务器传输到客户端</span></span><br><span class="line">		HttpClientModule</span><br><span class="line">	],</span><br><span class="line">	declarations: [</span><br><span class="line">		AppComponent,</span><br><span class="line">		HomeComponent</span><br><span class="line">	],</span><br><span class="line">	providers: [],</span><br><span class="line">	bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AppBrowserModule</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>(@Inject(PLATFORM_ID) private platformId: Object,</span><br><span class="line">				@Inject(APP_ID) private appId: string) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 判断运行环境为客户端还是服务端</span></span><br><span class="line">		<span class="keyword">const</span> platform = isPlatformBrowser(platformId) ? <span class="string">'in the browser'</span> : <span class="string">'on the server'</span>;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">`Running <span class="subst">$&#123;platform&#125;</span> with appId=<span class="subst">$&#123;appId&#125;</span>`</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将 <code>NgModule</code> 的元数据中 BrowserModule 的导入改成 BrowserModule.withServerTransition({appId: ‘my-app’})，Angular 会把 appId 值（它可以是任何字符串）添加到服务端渲染页面的样式名中，以便它们在客户端应用启动时可以被找到并移除。</p>
+<p>此时，我们可以通过依赖注入（<code>@Inject(PLATFORM_ID)</code> 及 <code>@Inject(APP_ID)</code>）取得关于当前平台和 appId 的运行时信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(@Inject(PLATFORM_ID) private platformId: Object,</span><br><span class="line">			@Inject(APP_ID) private appId: string) &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 判断运行环境为客户端还是服务端</span></span><br><span class="line">	<span class="keyword">const</span> platform = isPlatformBrowser(platformId) ? <span class="string">'in the browser'</span> : <span class="string">'on the server'</span>;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`Running <span class="subst">$&#123;platform&#125;</span> with appId=<span class="subst">$&#123;appId&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、创建服务端应用的引导程序文件：src-main-server-ts"><a href="#3、创建服务端应用的引导程序文件：src-main-server-ts" class="headerlink" title="3、创建服务端应用的引导程序文件：src/main.server.ts"></a>3、创建服务端应用的引导程序文件：<code>src/main.server.ts</code></h4><p>该文件导出服务端模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; AppServerModule &#125; <span class="keyword">from</span> <span class="string">'./app/app.server.module'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="4、修改客户端应用的引导程序文件：src-main-ts"><a href="#4、修改客户端应用的引导程序文件：src-main-ts" class="headerlink" title="4、修改客户端应用的引导程序文件：src/main.ts"></a>4、修改客户端应用的引导程序文件：<code>src/main.ts</code></h4><p>监听 DOMContentLoaded 事件，在发生 DOMContentLoaded 事件时运行我们的代码，以使 TransferState 正常工作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; enableProdMode &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; platformBrowserDynamic &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-browser-dynamic'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; AppBrowserModule &#125; <span class="keyword">from</span> <span class="string">'./app/app.module'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; environment &#125; <span class="keyword">from</span> <span class="string">'./environments/environment'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (environment.production) &#123;</span><br><span class="line">	enableProdMode();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 DOMContentLoaded 时运行我们的代码，以使 TransferState 正常工作</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, () =&gt; &#123;</span><br><span class="line">	platformBrowserDynamic().bootstrapModule(AppBrowserModule);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="5、创建-TypeScript-的服务端配置：src-tsconfig-server-json"><a href="#5、创建-TypeScript-的服务端配置：src-tsconfig-server-json" class="headerlink" title="5、创建 TypeScript 的服务端配置：src/tsconfig.server.json"></a>5、创建 TypeScript 的服务端配置：<code>src/tsconfig.server.json</code></h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"../tsconfig.json"</span>,</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"../out-tsc/app"</span>,</span><br><span class="line">    <span class="attr">"baseUrl"</span>: <span class="string">"./"</span>,</span><br><span class="line">    <span class="attr">"module"</span>: <span class="string">"commonjs"</span>,</span><br><span class="line">    <span class="attr">"types"</span>: [</span><br><span class="line">      <span class="string">"node"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"exclude"</span>: [</span><br><span class="line">    <span class="string">"test.ts"</span>,</span><br><span class="line">    <span class="string">"**/*.spec.ts"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"angularCompilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"entryModule"</span>: <span class="string">"app/app.server.module#AppServerModule"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与 <code>tsconfig.app.json</code> 的差异在于：</p>
+<ul>
+<li><p>module 属性必须是 commonjs，这样它才能被 require() 方法导入你的服务端应用。</p>
+</li>
+<li><p>angularCompilerOptions 部分有一些面向 AOT 编译器的选项：</p>
+<ul>
+<li>entryModule - 服务端应用的根模块，其格式为 path/to/file#ClassName。</li>
+</ul>
+</li>
+</ul>
+<h4 id="6、修改-angular-cli-的配置文件：-angular-cli-json"><a href="#6、修改-angular-cli-的配置文件：-angular-cli-json" class="headerlink" title="6、修改 @angular/cli 的配置文件：.angular-cli.json"></a>6、修改 @angular/cli 的配置文件：<code>.angular-cli.json</code></h4><p>在 <code>apps</code> 下添加：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"platform"</span>: <span class="string">"server"</span>,</span><br><span class="line">    <span class="attr">"root"</span>: <span class="string">"src"</span>,</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"dist/server"</span>,</span><br><span class="line">    <span class="attr">"assets"</span>: [</span><br><span class="line">      <span class="string">"assets"</span>,</span><br><span class="line">      <span class="string">"favicon.ico"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"index.html"</span>,</span><br><span class="line">    <span class="attr">"main"</span>: <span class="string">"main.server.ts"</span>,</span><br><span class="line">    <span class="attr">"test"</span>: <span class="string">"test.ts"</span>,</span><br><span class="line">    <span class="attr">"tsconfig"</span>: <span class="string">"tsconfig.server.json"</span>,</span><br><span class="line">    <span class="attr">"testTsconfig"</span>: <span class="string">"tsconfig.spec.json"</span>,</span><br><span class="line">    <span class="attr">"prefix"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"styles"</span>: [</span><br><span class="line">      <span class="string">"styles.scss"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"scripts"</span>: [],</span><br><span class="line">    <span class="attr">"environmentSource"</span>: <span class="string">"environments/environment.ts"</span>,</span><br><span class="line">    <span class="attr">"environments"</span>: &#123;</span><br><span class="line">      <span class="attr">"dev"</span>: <span class="string">"environments/environment.ts"</span>,</span><br><span class="line">      <span class="attr">"prod"</span>: <span class="string">"environments/environment.prod.ts"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="7、创建-Node-Express-的服务程序：server-ts"><a href="#7、创建-Node-Express-的服务程序：server-ts" class="headerlink" title="7、创建 Node Express 的服务程序：server.ts"></a>7、创建 Node Express 的服务程序：<code>server.ts</code></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'zone.js/dist/zone-node'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'reflect-metadata'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; enableProdMode &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> express <span class="keyword">from</span> <span class="string">'express'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; join &#125; <span class="keyword">from</span> <span class="string">'path'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; readFileSync &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Faster server renders w/ Prod mode (dev mode never needed)</span></span><br><span class="line">enableProdMode();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Express server</span></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> PORT = process.env.PORT || <span class="number">4000</span>;</span><br><span class="line"><span class="keyword">const</span> DIST_FOLDER = join(process.cwd(), <span class="string">'dist'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Our index.html we'll use as our template</span></span><br><span class="line"><span class="keyword">const</span> template = readFileSync(join(DIST_FOLDER, <span class="string">'browser'</span>, <span class="string">'index.html'</span>)).toString();</span><br><span class="line"></span><br><span class="line"><span class="comment">// * NOTE :: leave this as require() since this file is built Dynamically from webpack</span></span><br><span class="line"><span class="keyword">const</span> &#123;AppServerModuleNgFactory, LAZY_MODULE_MAP&#125; = <span class="built_in">require</span>(<span class="string">'./dist/server/main.bundle'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Express Engine</span></span><br><span class="line"><span class="keyword">import</span> &#123; ngExpressEngine &#125; <span class="keyword">from</span> <span class="string">'@nguniversal/express-engine'</span>;</span><br><span class="line"><span class="comment">// Import module map for lazy loading</span></span><br><span class="line"><span class="keyword">import</span> &#123; provideModuleMap &#125; <span class="keyword">from</span> <span class="string">'@nguniversal/module-map-ngfactory-loader'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)</span></span><br><span class="line">app.engine(<span class="string">'html'</span>, ngExpressEngine(&#123;</span><br><span class="line">	bootstrap: AppServerModuleNgFactory,</span><br><span class="line">	providers: [</span><br><span class="line">		provideModuleMap(LAZY_MODULE_MAP)</span><br><span class="line">	]</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'html'</span>);</span><br><span class="line">app.set(<span class="string">'views'</span>, join(DIST_FOLDER, <span class="string">'browser'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* - Example Express Rest API endpoints -</span><br><span class="line">  app.get('/api/**', (req, res) =&gt; &#123; &#125;);</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Server static files from /browser</span></span><br><span class="line">app.get(<span class="string">'*.*'</span>, express.static(join(DIST_FOLDER, <span class="string">'browser'</span>), &#123;</span><br><span class="line">	maxAge: <span class="string">'1y'</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// ALl regular routes use the Universal engine</span></span><br><span class="line">app.get(<span class="string">'*'</span>, (req, res) =&gt; &#123;</span><br><span class="line">	res.render(<span class="string">'index'</span>, &#123;req&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start up the Node server</span></span><br><span class="line">app.listen(PORT, () =&gt; &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`Node Express server listening on http://localhost:<span class="subst">$&#123;PORT&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="8、创建服务端预渲染的程序：prerender-ts"><a href="#8、创建服务端预渲染的程序：prerender-ts" class="headerlink" title="8、创建服务端预渲染的程序：prerender.ts"></a>8、创建服务端预渲染的程序：<code>prerender.ts</code></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Load zone.js for the server.</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'zone.js/dist/zone-node'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'reflect-metadata'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; readFileSync, writeFileSync, existsSync, mkdirSync &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; join &#125; <span class="keyword">from</span> <span class="string">'path'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; enableProdMode &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="comment">// Faster server renders w/ Prod mode (dev mode never needed)</span></span><br><span class="line">enableProdMode();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Import module map for lazy loading</span></span><br><span class="line"><span class="keyword">import</span> &#123; provideModuleMap &#125; <span class="keyword">from</span> <span class="string">'@nguniversal/module-map-ngfactory-loader'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; renderModuleFactory &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-server'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ROUTES &#125; <span class="keyword">from</span> <span class="string">'./static.paths'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// * NOTE :: leave this as require() since this file is built Dynamically from webpack</span></span><br><span class="line"><span class="keyword">const</span> &#123;AppServerModuleNgFactory, LAZY_MODULE_MAP&#125; = <span class="built_in">require</span>(<span class="string">'./dist/server/main.bundle'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> BROWSER_FOLDER = join(process.cwd(), <span class="string">'browser'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Load the index.html file containing referances to your application bundle.</span></span><br><span class="line"><span class="keyword">const</span> index = readFileSync(join(<span class="string">'browser'</span>, <span class="string">'index.html'</span>), <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> previousRender = <span class="built_in">Promise</span>.resolve();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Iterate each route path</span></span><br><span class="line">ROUTES.forEach(route =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> fullPath = join(BROWSER_FOLDER, route);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Make sure the directory structure is there</span></span><br><span class="line">	<span class="keyword">if</span> (!existsSync(fullPath)) &#123;</span><br><span class="line">		mkdirSync(fullPath);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Writes rendered HTML to index.html, replacing the file if it already exists.</span></span><br><span class="line">	previousRender = previousRender.then(_ =&gt; renderModuleFactory(AppServerModuleNgFactory, &#123;</span><br><span class="line">		<span class="built_in">document</span>: index,</span><br><span class="line">		url: route,</span><br><span class="line">		extraProviders: [</span><br><span class="line">			provideModuleMap(LAZY_MODULE_MAP)</span><br><span class="line">		]</span><br><span class="line">	&#125;)).then(html =&gt; writeFileSync(join(fullPath, <span class="string">'index.html'</span>), html));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="9、创建-Webpack-的服务端配置：webpack-server-config-js"><a href="#9、创建-Webpack-的服务端配置：webpack-server-config-js" class="headerlink" title="9、创建 Webpack 的服务端配置：webpack.server.config.js"></a>9、创建 Webpack 的服务端配置：<code>webpack.server.config.js</code></h4><p>Universal 应用不需要任何额外的 Webpack 配置，Angular CLI 会帮我们处理它们。但是由于本例子的 Node Express 的服务程序是 TypeScript 应用（server.ts及prerender.ts），所以要使用 Webpack 来转译它。这里不讨论 Webpack 的配置，需要了解的移步 <a href="http://webpack.github.io/" target="_blank" rel="external">Webpack官网</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Work around for https://github.com/angular/angular-cli/issues/7200</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        server: <span class="string">'./server.ts'</span>, <span class="comment">// This is our Express server for Dynamic universal</span></span><br><span class="line">        prerender: <span class="string">'./prerender.ts'</span> <span class="comment">// This is an example of Static prerendering (generative)</span></span><br><span class="line">    &#125;,</span><br><span class="line">    target: <span class="string">'node'</span>,</span><br><span class="line">    resolve: &#123;extensions: [<span class="string">'.ts'</span>, <span class="string">'.js'</span>]&#125;,</span><br><span class="line">    externals: [<span class="regexp">/(node_modules|main\..*\.js)/</span>,], <span class="comment">// Make sure we include all node_modules etc</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.join(__dirname, <span class="string">'dist'</span>), <span class="comment">// Puts the output at the root of the dist folder</span></span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;test: <span class="regexp">/\.ts$/</span>, loader: <span class="string">'ts-loader'</span>&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.ContextReplacementPlugin(</span><br><span class="line">            <span class="regexp">/(.+)?angular(\\|\/)core(.+)?/</span>, <span class="comment">// fixes WARNING Critical dependency: the request of a dependency is an expression</span></span><br><span class="line">            path.join(__dirname, <span class="string">'src'</span>), <span class="comment">// location of your src</span></span><br><span class="line">            &#123;&#125; <span class="comment">// a map of your routes</span></span><br><span class="line">        ),</span><br><span class="line">        <span class="keyword">new</span> webpack.ContextReplacementPlugin(</span><br><span class="line">            <span class="regexp">/(.+)?express(\\|\/)(.+)?/</span>, <span class="comment">// fixes WARNING Critical dependency: the request of a dependency is an expression</span></span><br><span class="line">            path.join(__dirname, <span class="string">'src'</span>),</span><br><span class="line">            &#123;&#125;</span><br><span class="line">        )</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="测试配置"><a href="#测试配置" class="headerlink" title="测试配置"></a>测试配置</h3><p>通过上面的配置，我们就制作完成一个可在服务端渲染的 Angular Universal 应用。</p>
+<p>在 package.json 的 scripts 区配置 build 和 serve 有关的命令：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    	<span class="attr">"ng"</span>: <span class="string">"ng"</span>,</span><br><span class="line">    	<span class="attr">"start"</span>: <span class="string">"ng serve -o"</span>,</span><br><span class="line">    	<span class="attr">"ssr"</span>: <span class="string">"npm run build:ssr &amp;&amp; npm run serve:ssr"</span>,</span><br><span class="line">    	<span class="attr">"prerender"</span>: <span class="string">"npm run build:prerender &amp;&amp; npm run serve:prerender"</span>,</span><br><span class="line">    	<span class="attr">"build"</span>: <span class="string">"ng build"</span>,</span><br><span class="line">    	<span class="attr">"build:client-and-server-bundles"</span>: <span class="string">"ng build --prod &amp;&amp; ng build --prod --app 1 --output-hashing=false"</span>,</span><br><span class="line">    	<span class="attr">"build:prerender"</span>: <span class="string">"npm run build:client-and-server-bundles &amp;&amp; npm run webpack:server &amp;&amp; npm run generate:prerender"</span>,</span><br><span class="line">    	<span class="attr">"build:ssr"</span>: <span class="string">"npm run build:client-and-server-bundles &amp;&amp; npm run webpack:server"</span>,</span><br><span class="line">    	<span class="attr">"generate:prerender"</span>: <span class="string">"cd dist &amp;&amp; node prerender"</span>,</span><br><span class="line">    	<span class="attr">"webpack:server"</span>: <span class="string">"webpack --config webpack.server.config.js --progress --colors"</span>,</span><br><span class="line">    	<span class="attr">"serve:prerender"</span>: <span class="string">"cd dist/browser &amp;&amp; http-server"</span>,</span><br><span class="line">    	<span class="attr">"serve:ssr"</span>: <span class="string">"node dist/server"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="开发只需运行-npm-run-start"><a href="#开发只需运行-npm-run-start" class="headerlink" title="开发只需运行 npm run start"></a>开发只需运行 <code>npm run start</code></h4><h4 id="执行-npm-run-ssr-编译应用程序，并启动一个Node-Express来为应用程序提供服务-http-localhost-4000"><a href="#执行-npm-run-ssr-编译应用程序，并启动一个Node-Express来为应用程序提供服务-http-localhost-4000" class="headerlink" title="执行 npm run ssr 编译应用程序，并启动一个Node Express来为应用程序提供服务 http://localhost:4000"></a>执行 <code>npm run ssr</code> 编译应用程序，并启动一个Node Express来为应用程序提供服务 <code>http://localhost:4000</code></h4><p>dist目录：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/AAFA14CAEE824DFA9520D66FCB7A475C?method=download&amp;shareKey=a77b72e4bb1b46c54e6ee936bdb28f54" alt=""></p>
+<h4 id="执行npm-run-prerender-编译应用程序并预渲染应用程序文件，启动一个演示http服务器，以便您可以查看它-http-localhost-8080"><a href="#执行npm-run-prerender-编译应用程序并预渲染应用程序文件，启动一个演示http服务器，以便您可以查看它-http-localhost-8080" class="headerlink" title="执行npm run prerender - 编译应用程序并预渲染应用程序文件，启动一个演示http服务器，以便您可以查看它 http://localhost:8080"></a>执行npm run prerender - 编译应用程序并预渲染应用程序文件，启动一个演示http服务器，以便您可以查看它 <code>http://localhost:8080</code></h4><p><strong>注意：</strong> 要将静态网站部署到静态托管平台，您必须部署dist/browser文件夹, 而不是dist文件夹</p>
+<p>dist目录：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/2691E9A7B2C44C7887A9C98C30B9AE7F?method=download&amp;shareKey=40fa2ec608b09b3fe19bd4da4cf2c7e0" alt=""></p>
+<p>根据项目实际的路由信息并在根目录的 <code>static.paths.ts</code> 中配置，提供给 prerender.ts 解析使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ROUTES = [</span><br><span class="line">	<span class="string">'/'</span>,</span><br><span class="line">	<span class="string">'/lazy'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>因此，从dist目录可以看到，服务端预渲染会根据配置好的路由在 browser 生成对应的静态index.html。如 <code>/</code> 对应 <code>/index.html</code>，<code>/lazy</code> 对应 <code>/lazy/index.html</code>。</p>
+<h2 id="服务器到客户端的状态传输"><a href="#服务器到客户端的状态传输" class="headerlink" title="服务器到客户端的状态传输"></a>服务器到客户端的状态传输</h2><p>在前面的介绍中，我们在 <code>app.server.module.ts</code> 中导入了 <code>ServerTransferStateModule</code>，在 <code>app.module.ts</code> 中导入了 <code>BrowserTransferStateModule</code> 和 <code>TransferHttpCacheModule</code>。</p>
+<p>这三个模块都与服务器到客户端的状态传输有关：</p>
+<ul>
+<li><code>ServerTransferStateModule</code>：在服务端导入，用于实现将状态从服务器传输到客户端</li>
+<li><code>BrowserTransferStateModule</code>：在客户端导入，用于实现将状态从服务器传输到客户端</li>
+<li><code>TransferHttpCacheModule</code>：用于实现服务器到客户端的请求传输缓存，防止客户端重复请求服务端已完成的请求</li>
+</ul>
+<p>使用这几个模块，可以解决 <strong>http请求在服务端和客户端分别请求一次</strong> 的问题。</p>
+<p>比如在 <code>home.component.ts</code> 中有如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnDestroy, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">'@angular/common/http'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Observable &#125; <span class="keyword">from</span> <span class="string">'rxjs/Observable'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">	selector: <span class="string">'app-home'</span>,</span><br><span class="line">	templateUrl: <span class="string">'./home.component.html'</span>,</span><br><span class="line">	styleUrls: [<span class="string">'./home.component.scss'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeComponent</span> <span class="title">implements</span> <span class="title">OnInit</span>, <span class="title">OnDestroy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(public http: HttpClient) &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    ngOnInit() &#123;</span><br><span class="line">    	<span class="keyword">this</span>.poiSearch(<span class="keyword">this</span>.keyword, <span class="string">'北京市'</span>).subscribe((data: any) =&gt; &#123;</span><br><span class="line">    		<span class="built_in">console</span>.log(data);</span><br><span class="line">    	&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ngOnDestroy() &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    poiSearch(text: string, city?: string): Observable&lt;any&gt; &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="keyword">this</span>.http.get(<span class="built_in">encodeURI</span>(<span class="string">`http://restapi.amap.com/v3/place/text?keywords=<span class="subst">$&#123;text&#125;</span>&amp;city=<span class="subst">$&#123;city&#125;</span>&amp;offset=20&amp;key=55f909211b9950837fba2c71d0488db9&amp;extensions=all`</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码运行之后，</p>
+<p>服务端请求并打印：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/407787BC74164ACC9E1BD62DB28202CB?method=download&amp;shareKey=d6c22ebac72adc14870d4276d6798f2e" alt=""></p>
+<p>客户端再一次请求并打印：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/D4EA7C4BC5784939A34325B759E8FE74?method=download&amp;shareKey=594a48f4211ad9e2df3c16d27ffb01e1" alt=""></p>
+<h3 id="方法1：使用-TransferHttpCacheModule"><a href="#方法1：使用-TransferHttpCacheModule" class="headerlink" title="方法1：使用 TransferHttpCacheModule"></a>方法1：使用 <code>TransferHttpCacheModule</code></h3><p>使用 <code>TransferHttpCacheModule</code> 很简单，代码不需要改动。在 <code>app.module.ts</code> 中导入之后，Angular自动会将服务端请求缓存到客户端，换句话说就是服务端请求到数据会自动传输到客户端，客户端接收到数据之后就不会再发送请求了。</p>
+<h3 id="方法2：使用-BrowserTransferStateModule"><a href="#方法2：使用-BrowserTransferStateModule" class="headerlink" title="方法2：使用 BrowserTransferStateModule"></a>方法2：使用 <code>BrowserTransferStateModule</code></h3><p>该方法稍微复杂一些，需要改动一些代码。</p>
+<p>调整 <code>home.component.ts</code> 代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnDestroy, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; makeStateKey, TransferState &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">'@angular/common/http'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Observable &#125; <span class="keyword">from</span> <span class="string">'rxjs/Observable'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> KFCLIST_KEY = makeStateKey(<span class="string">'kfcList'</span>);</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">	selector: <span class="string">'app-home'</span>,</span><br><span class="line">	templateUrl: <span class="string">'./home.component.html'</span>,</span><br><span class="line">	styleUrls: [<span class="string">'./home.component.scss'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeComponent</span> <span class="title">implements</span> <span class="title">OnInit</span>, <span class="title">OnDestroy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(public http: HttpClient,</span><br><span class="line">				private state: TransferState) &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    ngOnInit() &#123;</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// 采用一个标记来区分服务端是否已经拿到了数据，如果没拿到数据就在客户端请求，如果已经拿到数据就不发请求</span></span><br><span class="line">		<span class="keyword">const</span> kfcList：any[] = <span class="keyword">this</span>.state.get(KFCLIST_KEY, <span class="literal">null</span> <span class="keyword">as</span> any);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (!<span class="keyword">this</span>.kfcList) &#123;</span><br><span class="line">			<span class="keyword">this</span>.poiSearch(<span class="keyword">this</span>.keyword, <span class="string">'北京市'</span>).subscribe((data: any) =&gt; &#123;</span><br><span class="line">				<span class="built_in">console</span>.log(data);</span><br><span class="line">				<span class="keyword">this</span>.state.set(KFCLIST_KEY, data <span class="keyword">as</span> any); <span class="comment">// 存储数据</span></span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ngOnDestroy() &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> === <span class="string">'object'</span>) &#123;</span><br><span class="line">			<span class="keyword">this</span>.state.set(KFCLIST_KEY, <span class="literal">null</span> <span class="keyword">as</span> any); <span class="comment">// 删除数据</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    poiSearch(text: string, city?: string): Observable&lt;any&gt; &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="keyword">this</span>.http.get(<span class="built_in">encodeURI</span>(<span class="string">`http://restapi.amap.com/v3/place/text?keywords=<span class="subst">$&#123;text&#125;</span>&amp;city=<span class="subst">$&#123;city&#125;</span>&amp;offset=20&amp;key=55f909211b9950837fba2c71d0488db9&amp;extensions=all`</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 <code>const KFCLIST_KEY = makeStateKey(&#39;kfcList&#39;)</code> 创建储存传输数据的 StateKey</li>
+<li>在 <code>HomeComponent</code> 的构造函数中注入 <code>TransferState</code></li>
+<li>在 <code>ngOnInit</code> 中根据 <code>this.state.get(KFCLIST_KEY, null as any)</code> 判断数据是否存在（不管是服务端还是客户端），存在就不再请求，不存在则请求数据并通过 <code>this.state.set(KFCLIST_KEY, data as any)</code> 存储传输数据</li>
+<li>在 <code>ngOnDestroy</code> 中根据当前是否客户端来决定是否将存储的数据进行删除</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular/" rel="tag">#Angular</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/26/Angular开发实践（五）：深入解析变化监测/" rel="next" title="Angular开发实践（五）：深入解析变化监测">
+                <i class="fa fa-chevron-left"></i> Angular开发实践（五）：深入解析变化监测
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Angular-Universal"><span class="nav-number">1.</span> <span class="nav-text">Angular Universal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理"><span class="nav-number">1.1.</span> <span class="nav-text">工作原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要服务端渲染"><span class="nav-number">2.</span> <span class="nav-text">为什么要服务端渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#帮助网络爬虫（SEO）"><span class="nav-number">2.1.</span> <span class="nav-text">帮助网络爬虫（SEO）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升手机和低功耗设备上的性能"><span class="nav-number">2.2.</span> <span class="nav-text">提升手机和低功耗设备上的性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速显示首页"><span class="nav-number">2.3.</span> <span class="nav-text">快速显示首页</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例解析"><span class="nav-number">3.</span> <span class="nav-text">示例解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装工具"><span class="nav-number">3.1.</span> <span class="nav-text">安装工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目配置"><span class="nav-number">3.2.</span> <span class="nav-text">项目配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、创建服务端应用模块：src-app-app-server-module-ts"><span class="nav-number">3.2.1.</span> <span class="nav-text">1、创建服务端应用模块：src/app/app.server.module.ts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、修改客户端应用模块：src-app-app-module-ts"><span class="nav-number">3.2.2.</span> <span class="nav-text">2、修改客户端应用模块：src/app/app.module.ts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、创建服务端应用的引导程序文件：src-main-server-ts"><span class="nav-number">3.2.3.</span> <span class="nav-text">3、创建服务端应用的引导程序文件：src/main.server.ts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、修改客户端应用的引导程序文件：src-main-ts"><span class="nav-number">3.2.4.</span> <span class="nav-text">4、修改客户端应用的引导程序文件：src/main.ts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、创建-TypeScript-的服务端配置：src-tsconfig-server-json"><span class="nav-number">3.2.5.</span> <span class="nav-text">5、创建 TypeScript 的服务端配置：src/tsconfig.server.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、修改-angular-cli-的配置文件：-angular-cli-json"><span class="nav-number">3.2.6.</span> <span class="nav-text">6、修改 @angular/cli 的配置文件：.angular-cli.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、创建-Node-Express-的服务程序：server-ts"><span class="nav-number">3.2.7.</span> <span class="nav-text">7、创建 Node Express 的服务程序：server.ts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、创建服务端预渲染的程序：prerender-ts"><span class="nav-number">3.2.8.</span> <span class="nav-text">8、创建服务端预渲染的程序：prerender.ts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9、创建-Webpack-的服务端配置：webpack-server-config-js"><span class="nav-number">3.2.9.</span> <span class="nav-text">9、创建 Webpack 的服务端配置：webpack.server.config.js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试配置"><span class="nav-number">3.3.</span> <span class="nav-text">测试配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开发只需运行-npm-run-start"><span class="nav-number">3.3.1.</span> <span class="nav-text">开发只需运行 npm run start</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行-npm-run-ssr-编译应用程序，并启动一个Node-Express来为应用程序提供服务-http-localhost-4000"><span class="nav-number">3.3.2.</span> <span class="nav-text">执行 npm run ssr 编译应用程序，并启动一个Node Express来为应用程序提供服务 http://localhost:4000</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行npm-run-prerender-编译应用程序并预渲染应用程序文件，启动一个演示http服务器，以便您可以查看它-http-localhost-8080"><span class="nav-number">3.3.3.</span> <span class="nav-text">执行npm run prerender - 编译应用程序并预渲染应用程序文件，启动一个演示http服务器，以便您可以查看它 http://localhost:8080</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器到客户端的状态传输"><span class="nav-number">4.</span> <span class="nav-text">服务器到客户端的状态传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法1：使用-TransferHttpCacheModule"><span class="nav-number">4.1.</span> <span class="nav-text">方法1：使用 TransferHttpCacheModule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法2：使用-BrowserTransferStateModule"><span class="nav-number">4.2.</span> <span class="nav-text">方法2：使用 BrowserTransferStateModule</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

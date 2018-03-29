@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://laixiangran.cn/"/>
-  <updated>2018-03-28T11:26:50.905Z</updated>
+  <updated>2018-03-29T13:53:02.252Z</updated>
   <id>http://laixiangran.cn/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Angular开发实践（六）：服务端渲染</title>
-    <link href="http://laixiangran.cn/2018/03/28/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/"/>
-    <id>http://laixiangran.cn/2018/03/28/Angular开发实践（六）：服务端渲染/</id>
-    <published>2018-03-28T08:10:30.000Z</published>
-    <updated>2018-03-28T11:26:50.905Z</updated>
+    <link href="http://laixiangran.cn/2018/03/29/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/"/>
+    <id>http://laixiangran.cn/2018/03/29/Angular开发实践（六）：服务端渲染/</id>
+    <published>2018-03-29T13:10:30.000Z</published>
+    <updated>2018-03-29T13:53:02.252Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Angular-Universal&quot;&gt;&lt;a href=&quot;#Angular-Universal&quot; class=&quot;headerlink&quot; title=&quot;Angular Universal&quot;&gt;&lt;/a&gt;Angular Universal&lt;/h2&gt;&lt;p&gt;Angular在服务端渲染方面提供一套前后端同构解决方案，它就是 &lt;a href=&quot;https://github.com/angular/universal&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Angular Universal&lt;/a&gt;（统一平台），一项在服务端运行 Angular 应用的技术。&lt;/p&gt;
 &lt;p&gt;标准的 Angular 应用会执行在浏览器中，它会在 DOM 中渲染页面，以响应用户的操作。&lt;/p&gt;
@@ -39,7 +39,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;提升在手机和低功耗设备上的性能&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;迅速显示出第一个页面&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;迅速显示出第首页&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&quot;帮助网络爬虫（SEO）&quot;&gt;&lt;a href=&quot;#帮助网络爬虫（SEO）&quot; class=&quot;headerlink&quot; title=&quot;帮助网络爬虫（SEO）&quot;&gt;&lt;/a&gt;帮助网络爬虫（SEO）&lt;/h3&gt;&lt;p&gt;Google、Bing、百度、Facebook、Twitter 和其它搜索引擎或社交媒体网站都依赖网络爬虫去索引你的应用内容，并且让它的内容可以通过网络搜索到。&lt;/p&gt;
@@ -151,6 +151,26 @@
 &lt;li&gt;在 &lt;code&gt;ngOnInit&lt;/code&gt; 中根据 &lt;code&gt;this.state.get(KFCLIST_KEY, null as any)&lt;/code&gt; 判断数据是否存在（不管是服务端还是客户端），存在就不再请求，不存在则请求数据并通过 &lt;code&gt;this.state.set(KFCLIST_KEY, data as any)&lt;/code&gt; 存储传输数据&lt;/li&gt;
 &lt;li&gt;在 &lt;code&gt;ngOnDestroy&lt;/code&gt; 中根据当前是否客户端来决定是否将存储的数据进行删除&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&quot;客户端与服务端渲染对比&quot;&gt;&lt;a href=&quot;#客户端与服务端渲染对比&quot; class=&quot;headerlink&quot; title=&quot;客户端与服务端渲染对比&quot;&gt;&lt;/a&gt;客户端与服务端渲染对比&lt;/h2&gt;&lt;p&gt;最后，我们分别通过这三个原因来进行对比：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;帮助网络爬虫（SEO）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;提升在手机和低功耗设备上的性能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;迅速显示出首页&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;帮助网络爬虫（SEO）-1&quot;&gt;&lt;a href=&quot;#帮助网络爬虫（SEO）-1&quot; class=&quot;headerlink&quot; title=&quot;帮助网络爬虫（SEO）&quot;&gt;&lt;/a&gt;帮助网络爬虫（SEO）&lt;/h3&gt;&lt;p&gt;客户端渲染：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/5ED5C4F962C548FBB2169B7F33DF2BB7?method=download&amp;amp;shareKey=abc2046eb5f3f44cc3ef3bf04ef81644&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;服务端渲染：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/3ED0BB65D25C414AA1C6DCCB81C276DC?method=download&amp;amp;shareKey=2532ad7e720286120a4812a3f028ad05&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;从上面可以看到，服务端提前将信息渲染到返回的页面上，这样网络爬虫就能直接获取到信息了（网络爬虫基本不会解析javascript的）。&lt;/p&gt;
+&lt;h3 id=&quot;提升在手机和低功耗设备上的性能&quot;&gt;&lt;a href=&quot;#提升在手机和低功耗设备上的性能&quot; class=&quot;headerlink&quot; title=&quot;提升在手机和低功耗设备上的性能&quot;&gt;&lt;/a&gt;提升在手机和低功耗设备上的性能&lt;/h3&gt;&lt;p&gt;这个原因通过上面就可以看出，对于一些低端的设备，直接显示页面总比要解析javascript性能高的多。&lt;/p&gt;
+&lt;h3 id=&quot;迅速显示出首页&quot;&gt;&lt;a href=&quot;#迅速显示出首页&quot; class=&quot;headerlink&quot; title=&quot;迅速显示出首页&quot;&gt;&lt;/a&gt;迅速显示出首页&lt;/h3&gt;&lt;p&gt;同样在 Fast 3G 网络条件下进行测试&lt;/p&gt;
+&lt;p&gt;客户端渲染：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/2FBFEABC2BF346D7A734662AFFAC6C70?method=download&amp;amp;shareKey=ea1e4ff1fbe754417398a07ac0ae9a78&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;服务端渲染：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/44DD5F1E08E54DE88ED63FDE351F8CFA?method=download&amp;amp;shareKey=b0f40607c6e4250df2fbb1d8d404c950&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -2482,7 +2502,7 @@ equivalent of &amp;lt;code&amp;gt;&amp;amp;amp;mdash;&amp;lt;/code&amp;gt;.&amp;
 &amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
 &amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#x6f;&amp;#58;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#x65;&amp;#115;&amp;#x73;&amp;#x40;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#x6c;&amp;#101;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&quot;&gt;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#x65;&amp;#115;&amp;#x73;&amp;#x40;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#x6c;&amp;#101;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#x3a;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#101;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&quot;&gt;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#101;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在浏览器里面，这段字串（其实是 &lt;code&gt;&amp;lt;a href=&amp;quot;mailto:address@example.com&amp;quot;&amp;gt;address@example.com&amp;lt;/a&amp;gt;&lt;/code&gt; ）会变成一个可以点击的「 &lt;code&gt;address@example.com&lt;/code&gt; 」链接。&lt;/p&gt;
 &lt;p&gt;（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）&lt;/p&gt;
 &lt;h2 id=&quot;反斜杠&quot;&gt;&lt;a href=&quot;#反斜杠&quot; class=&quot;headerlink&quot; title=&quot;反斜杠&quot;&gt;&lt;/a&gt;反斜杠&lt;/h2&gt;&lt;p&gt;Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签），你可以在星号的前面加上反斜杠：&lt;/p&gt;

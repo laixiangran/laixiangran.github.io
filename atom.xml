@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://laixiangran.cn/"/>
-  <updated>2018-03-29T13:53:02.252Z</updated>
+  <updated>2018-04-01T09:34:27.301Z</updated>
   <id>http://laixiangran.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://laixiangran.cn/2018/03/29/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/"/>
     <id>http://laixiangran.cn/2018/03/29/Angular开发实践（六）：服务端渲染/</id>
     <published>2018-03-29T13:10:30.000Z</published>
-    <updated>2018-03-29T13:53:02.252Z</updated>
+    <updated>2018-04-01T09:34:27.301Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Angular-Universal&quot;&gt;&lt;a href=&quot;#Angular-Universal&quot; class=&quot;headerlink&quot; title=&quot;Angular Universal&quot;&gt;&lt;/a&gt;Angular Universal&lt;/h2&gt;&lt;p&gt;Angular在服务端渲染方面提供一套前后端同构解决方案，它就是 &lt;a href=&quot;https://github.com/angular/universal&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Angular Universal&lt;/a&gt;（统一平台），一项在服务端运行 Angular 应用的技术。&lt;/p&gt;
 &lt;p&gt;标准的 Angular 应用会执行在浏览器中，它会在 DOM 中渲染页面，以响应用户的操作。&lt;/p&gt;
@@ -171,6 +171,34 @@
 &lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/2FBFEABC2BF346D7A734662AFFAC6C70?method=download&amp;amp;shareKey=ea1e4ff1fbe754417398a07ac0ae9a78&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;服务端渲染：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/44DD5F1E08E54DE88ED63FDE351F8CFA?method=download&amp;amp;shareKey=b0f40607c6e4250df2fbb1d8d404c950&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;牢记几件事情&quot;&gt;&lt;a href=&quot;#牢记几件事情&quot; class=&quot;headerlink&quot; title=&quot;牢记几件事情&quot;&gt;&lt;/a&gt;牢记几件事情&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;对于服务器软件包，您可能需要将第三方模块包含到&lt;code&gt;nodeExternals&lt;/code&gt;白名单中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;window&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;document&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;navigator&lt;/code&gt;&lt;/strong&gt; 以及其它的浏览器类型 - &lt;em&gt;不存在于服务端&lt;/em&gt; - 如果你直接使用，在服务端将无法正常工作。 以下几种方法可以让你的代码正常工作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可以通过&lt;code&gt;PLATFORM_ID&lt;/code&gt;标记注入的&lt;code&gt;Object&lt;/code&gt;来检查当前平台是浏览器还是服务器，然后使用浏览器端特有的类型&lt;/p&gt;
+&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &amp;#123; PLATFORM_ID &amp;#125; from &lt;span class=&quot;string&quot;&gt;&#39;@angular/core&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &amp;#123; isPlatformBrowser, isPlatformServer &amp;#125; from &lt;span class=&quot;string&quot;&gt;&#39;@angular/common&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;constructor&lt;/span&gt;(@Inject(PLATFORM_ID) private platformId: Object) &amp;#123; ... &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ngOnInit() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (isPlatformBrowser(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.platformId)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;comment&quot;&gt;// 仅运行在浏览器端的代码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (isPlatformServer(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.platformId)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 仅运行在服务端的代码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;尽量&lt;strong&gt;限制&lt;/strong&gt;或&lt;strong&gt;避免&lt;/strong&gt;使用&lt;code&gt;setTimeout&lt;/code&gt;。它会减慢服务器端的渲染过程。确保在组件的&lt;code&gt;ngOnDestroy&lt;/code&gt;中删除它们&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对于RxJs超时，请确保在成功时 &lt;em&gt;取消&lt;/em&gt; 它们的流，因为它们也会降低渲染速度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;不要直接操作nativeElement&lt;/strong&gt;，使用&lt;a href=&quot;https://angular.io/api/core/Renderer2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Renderer2&lt;/a&gt;，从而可以跨平台改变应用视图。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;constructor&lt;/span&gt;(element: ElementRef, renderer: Renderer2) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.renderer.setStyle(element.nativeElement, &lt;span class=&quot;string&quot;&gt;&#39;font-size&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;x-large&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;解决应用程序在服务器上运行XHR请求，并在客户端再次运行的问题&lt;ul&gt;
+&lt;li&gt;使用从服务器传输到客户端的缓存（TransferState）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;清楚了解与DOM相关的属性和属性之间的差异&lt;/li&gt;
+&lt;li&gt;尽量让指令无状态。对于有状态指令，您可能需要提供一个属性，以反映相应属性的初始字符串值，例如img标签中的url。对于我们的native元素，src属性被反映为元素类型HTMLImageElement的src属性&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     
     <summary type="html">
@@ -1972,9 +2000,9 @@
       <category term="HTML" scheme="http://laixiangran.cn/categories/HTML/"/>
     
     
-      <category term="Emmet" scheme="http://laixiangran.cn/tags/Emmet/"/>
-    
       <category term="HTML" scheme="http://laixiangran.cn/tags/HTML/"/>
+    
+      <category term="Emmet" scheme="http://laixiangran.cn/tags/Emmet/"/>
     
   </entry>
   
@@ -2502,7 +2530,7 @@ equivalent of &amp;lt;code&amp;gt;&amp;amp;amp;mdash;&amp;lt;/code&amp;gt;.&amp;
 &amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
 &amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#x3a;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#101;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&quot;&gt;&amp;#x61;&amp;#100;&amp;#100;&amp;#x72;&amp;#101;&amp;#x73;&amp;#115;&amp;#x40;&amp;#x65;&amp;#120;&amp;#97;&amp;#109;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#46;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#116;&amp;#x6f;&amp;#x3a;&amp;#97;&amp;#x64;&amp;#x64;&amp;#114;&amp;#101;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#x78;&amp;#97;&amp;#109;&amp;#112;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#x6d;&quot;&gt;&amp;#97;&amp;#x64;&amp;#x64;&amp;#114;&amp;#101;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#x78;&amp;#97;&amp;#109;&amp;#112;&amp;#x6c;&amp;#101;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#x6d;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在浏览器里面，这段字串（其实是 &lt;code&gt;&amp;lt;a href=&amp;quot;mailto:address@example.com&amp;quot;&amp;gt;address@example.com&amp;lt;/a&amp;gt;&lt;/code&gt; ）会变成一个可以点击的「 &lt;code&gt;address@example.com&lt;/code&gt; 」链接。&lt;/p&gt;
 &lt;p&gt;（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）&lt;/p&gt;
 &lt;h2 id=&quot;反斜杠&quot;&gt;&lt;a href=&quot;#反斜杠&quot; class=&quot;headerlink&quot; title=&quot;反斜杠&quot;&gt;&lt;/a&gt;反斜杠&lt;/h2&gt;&lt;p&gt;Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签），你可以在星号的前面加上反斜杠：&lt;/p&gt;

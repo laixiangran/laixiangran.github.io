@@ -1,0 +1,996 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Angular,JavaScript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="在Angular中，组件属于特殊的指令，它的特殊之处在于它有自己的模板（html）和样式（css）。因此使用组件可以使我们的代码具有强解耦、可复用、易扩展等特性。通常的组件定义如下：
+demo.component.ts：
+123456789101112131415import &amp;#123; Component, OnInit &amp;#125; from &apos;@angular/core&apos;;@Compone">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular开发实践（八）： 使用ng-content进行组件内容投射">
+<meta property="og:url" content="http://laixiangran.cn/2018/04/05/Angular开发实践（八）： 使用ng-content进行组件内容投射/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="在Angular中，组件属于特殊的指令，它的特殊之处在于它有自己的模板（html）和样式（css）。因此使用组件可以使我们的代码具有强解耦、可复用、易扩展等特性。通常的组件定义如下：
+demo.component.ts：
+123456789101112131415import &amp;#123; Component, OnInit &amp;#125; from &apos;@angular/core&apos;;@Compone">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/6308E4AE99A340DCBD5C035F8C154447?method=download&shareKey=3510d54d1483461cb413b0c89d34d9c0">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/08C14FD7AFD549D99A2088EAC6C64096?method=download&shareKey=59de843cadfdc1263028cd8a87473022">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/6D64AA1D21EA4A4EBC89DC6FCEC765F0?method=download&shareKey=129aaac822431f0d99abefcbef393f59">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/81C71B4EDEEF45E59F3DFA564AF8AC86?method=download&shareKey=349e49d6c0a2d87e1ad31f7c323fb08a">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/D8AA2353165B46518E03A6E167C03E11?method=download&shareKey=03b5352c408edfdff0fa457d5e409c96">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5D5F25A6B4E74A7FAB9BDE305F1B481C?method=download&shareKey=55edf66c2c9ea4d88f57866b90f848d7">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/653EFC5051FB4FBB98D24D8893D9347C?method=download&shareKey=0676a9e4a7dcbc59d86b1206ece9cdf1">
+<meta property="og:updated_time" content="2018-04-05T08:35:59.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular开发实践（八）： 使用ng-content进行组件内容投射">
+<meta name="twitter:description" content="在Angular中，组件属于特殊的指令，它的特殊之处在于它有自己的模板（html）和样式（css）。因此使用组件可以使我们的代码具有强解耦、可复用、易扩展等特性。通常的组件定义如下：
+demo.component.ts：
+123456789101112131415import &amp;#123; Component, OnInit &amp;#125; from &apos;@angular/core&apos;;@Compone">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/6308E4AE99A340DCBD5C035F8C154447?method=download&shareKey=3510d54d1483461cb413b0c89d34d9c0">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Angular开发实践（八）： 使用ng-content进行组件内容投射 | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular开发实践（八）： 使用ng-content进行组件内容投射
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-05T16:22:30+08:00" content="2018-04-05">
+              2018-04-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/04/05/Angular开发实践（八）： 使用ng-content进行组件内容投射/" class="leancloud_visitors" data-flag-title="Angular开发实践（八）： 使用ng-content进行组件内容投射">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Angular中，组件属于特殊的指令，它的特殊之处在于它有自己的模板（html）和样式（css）。因此使用组件可以使我们的代码具有强解耦、可复用、易扩展等特性。通常的组件定义如下：</p>
+<p>demo.component.ts：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">	selector: <span class="string">'demo-component'</span>,</span><br><span class="line">	templateUrl: <span class="string">'./demo.component.html'</span>,</span><br><span class="line">	styleUrls: [<span class="string">'./demo.component.scss'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoComponent</span> <span class="title">implements</span> <span class="title">OnInit</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ngOnInit() &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>demo.component.html：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><br><span class="line">		demo-component - 我是一个简单的组件</span><br><span class="line">	<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>demo.component.scss：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.demo &#123;</span><br><span class="line">	padding: 10px;</span><br><span class="line">	border: 2px solid red;</span><br><span class="line"></span><br><span class="line">	h2 &#123;</span><br><span class="line">		margin: 0;</span><br><span class="line">		color: #262626;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时我们引用该组件，就会呈现该组件解析之后的内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/6308E4AE99A340DCBD5C035F8C154447?method=download&amp;shareKey=3510d54d1483461cb413b0c89d34d9c0" alt=""></p>
+<p>假设现在有这样的需求，这个组件能够接受外部投射进来的内容，也就是说组件最终呈现的内容不仅仅是本身定义的那些，那该怎么做呢？这时就要请出本文的主角 <code>ng-content</code>。</p>
+<h2 id="简单投射"><a href="#简单投射" class="headerlink" title="简单投射"></a>简单投射</h2><p>我们先从最简单开始，在 demo.component.html 中添加 <ng-content></ng-content>，修改后的 demo.component.html 和 demo.component.scss 如下：</p>
+<p>demo.component.html：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><br><span class="line">		demo-component - 可嵌入外部内容的组件</span><br><span class="line">	<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ng-content</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>demo.component.scss：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.demo &#123;</span><br><span class="line">	padding: 10px;</span><br><span class="line">	border: 2px solid red;</span><br><span class="line"></span><br><span class="line">	h2 &#123;</span><br><span class="line">		margin: 0;</span><br><span class="line">		color: #262626;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	.content &#123;</span><br><span class="line">		padding: 10px;</span><br><span class="line">		margin-top: 10px;</span><br><span class="line">		line-height: 20px;</span><br><span class="line">		color: #FFFFFF;</span><br><span class="line">		background-color: #de7d28;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了效果展示特意将 <ng-content></ng-content> 所在的容器背景色定义为橙色。</p>
+<p>这时我们在引用该组件时可以从外部投射内容，外部内容将在橙色区域显示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span></span><br><span class="line">	我是外部嵌入的内容</span><br><span class="line"><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/08C14FD7AFD549D99A2088EAC6C64096?method=download&amp;shareKey=59de843cadfdc1263028cd8a87473022" alt=""></p>
+<h2 id="针对性投射"><a href="#针对性投射" class="headerlink" title="针对性投射"></a>针对性投射</h2><p>如果同时存在几个 <ng-content></ng-content>，那外部内容将如何进行投射呢？</p>
+<p>我们先看个示例，为了区别，我再新增一个蓝色区域的 <ng-content></ng-content>，修改后的 demo.component.html 和 demo.component.scss 如下：</p>
+<p>demo.component.html：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><br><span class="line">		demo-component - 可嵌入外部内容的组件</span><br><span class="line">	<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ng-content</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content blue"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ng-content</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>demo.component.scss：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.demo &#123;</span><br><span class="line">	padding: 10px;</span><br><span class="line">	border: 2px solid red;</span><br><span class="line"></span><br><span class="line">	h2 &#123;</span><br><span class="line">		margin: 0;</span><br><span class="line">		color: #262626;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	.content &#123;</span><br><span class="line">		padding: 10px;</span><br><span class="line">		margin-top: 10px;</span><br><span class="line">		line-height: 20px;</span><br><span class="line">		color: #FFFFFF;</span><br><span class="line">		background-color: #de7d28;</span><br><span class="line"></span><br><span class="line">		&amp;.blue &#123;</span><br><span class="line">			background-color: blue;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>引用该组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span></span><br><span class="line">	我是外部嵌入的内容</span><br><span class="line"><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此时，我们将看到外部内容投射到了蓝色区域：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/6D64AA1D21EA4A4EBC89DC6FCEC765F0?method=download&amp;shareKey=129aaac822431f0d99abefcbef393f59" alt=""></p>
+<p>当然，如果你将橙色区域代码放在蓝色区域代码的后面，那么外部内容就会投射到橙色区域：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/81C71B4EDEEF45E59F3DFA564AF8AC86?method=download&amp;shareKey=349e49d6c0a2d87e1ad31f7c323fb08a" alt=""></p>
+<p>所以从上面的示例我们可以看出，如果同时存在简单的 <ng-content></ng-content> ，那么外部内容将投射在组件模板最后的那个 <ng-content></ng-content> 中。</p>
+<p>那么知道这个问题，我们可能会想，能不能将外部内容有针对性的投射相应的 <ng-content></ng-content> 中呢？答案显然是可以的。</p>
+<p>为了处理这个问题，<ng-content> 支持一个 <code>select</code> 属性，可以让你在特定的地方投射具体的内容。该属性支持 CSS 选择器（标签选择器、类选择器、属性选择器、…）来匹配你想要的内容。如果 ng-content 上没有设置 <code>select</code> 属性，它将接收全部内容，或接收不匹配任何其他 ng-content 元素的内容。</ng-content></p>
+<p>直接看例子，修改后的 demo.component.html 和 demo.component.scss 如下：</p>
+<p>demo.component.html：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><br><span class="line">		demo-component - 可嵌入外部内容的组件</span><br><span class="line">	<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ng-content</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content blue"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ng-content</span> <span class="attr">select</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content red"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ng-content</span> <span class="attr">select</span>=<span class="string">".demo2"</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content green"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ng-content</span> <span class="attr">select</span>=<span class="string">"[name=demo3]"</span>&gt;</span><span class="tag">&lt;/<span class="name">ng-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>demo.component.scss：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">.demo &#123;</span><br><span class="line">	padding: 10px;</span><br><span class="line">	border: 2px solid red;</span><br><span class="line"></span><br><span class="line">	h2 &#123;</span><br><span class="line">		margin: 0;</span><br><span class="line">		color: #262626;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	.content &#123;</span><br><span class="line">		padding: 10px;</span><br><span class="line">		margin-top: 10px;</span><br><span class="line">		line-height: 20px;</span><br><span class="line">		color: #FFFFFF;</span><br><span class="line">		background-color: #de7d28;</span><br><span class="line"></span><br><span class="line">		&amp;.blue &#123;</span><br><span class="line">			background-color: blue;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		&amp;.red &#123;</span><br><span class="line">			background-color: red;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		&amp;.green &#123;</span><br><span class="line">			background-color: green;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上面代码可以看到，蓝色区域将接收 <code>标签 header</code> 那部分内容，红色区域将接收 <code>class为&quot;demo2&quot;的div</code> 的那部分内容，绿色区域将接收 <code>属性name为&quot;demo3&quot;的div</code> 的那部分内容，橙色区域将接收其余的外部内容（<code>开始，我是外部嵌入的内容，结束</code>）。</p>
+<p>引用该组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span></span><br><span class="line">	开始，我是外部嵌入的内容，</span><br><span class="line">	<span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">		我是外部嵌入的内容，我在header中</span><br><span class="line">	<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo2"</span>&gt;</span></span><br><span class="line">		我是外部嵌入的内容，我所在div的class为"demo2"</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">name</span>=<span class="string">"demo3"</span>&gt;</span></span><br><span class="line">		我是外部嵌入的内容demo，我所在div的属性name为"demo3"</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	结束</span><br><span class="line"><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/D8AA2353165B46518E03A6E167C03E11?method=download&amp;shareKey=03b5352c408edfdff0fa457d5e409c96" alt=""></p>
+<p>此时，我们将看到外部内容投射到了指定的 <ng-content></ng-content> 中。</p>
+<h2 id="扩展知识"><a href="#扩展知识" class="headerlink" title="扩展知识"></a>扩展知识</h2><h3 id="ngProjectAs"><a href="#ngProjectAs" class="headerlink" title="ngProjectAs"></a>ngProjectAs</h3><p>现在我们知道通过 ng-content 的 <code>select</code> 属性可以指定外部内容投射到指定的 <ng-content></ng-content> 中。</p>
+<p>而要能正确的根据 <code>select</code> 属性投射内容，<strong>有个限制就是</strong> - 不管是 <code>标签 header</code>、<code>class为&quot;demo2&quot;的div</code>还是 <code>属性name为&quot;demo3&quot;的div</code>，这几个标签都是作为 组件标签 <demo-component></demo-component> 的<code>直接子节点</code>。</p>
+<p>那如果不是作为直接子节点，会是什么情况呢？我们简单修改下引用 demo-component 组件的代码，将 <code>标签header</code> 放在一个div中，修改如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span></span><br><span class="line">	开始，我是外部嵌入的内容，</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">			我是外部嵌入的内容，我在header中</span><br><span class="line">		<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo2"</span>&gt;</span></span><br><span class="line">		我是外部嵌入的内容，我所在div的class为"demo2"</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">name</span>=<span class="string">"demo3"</span>&gt;</span></span><br><span class="line">		我是外部嵌入的内容demo，我所在div的属性name为"demo3"</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	结束</span><br><span class="line"><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/5D5F25A6B4E74A7FAB9BDE305F1B481C?method=download&amp;shareKey=55edf66c2c9ea4d88f57866b90f848d7" alt=""></p>
+<p>此时，我们看到 <code>标签 header</code> 那部分内容不再投射到蓝色区域中了，而是投射到橙色区域中了。原因就是 <code>&lt;ng-content select=&quot;header&quot;&gt;&lt;/ng-content&gt;</code> 无法匹配到之前的 <code>标签 header</code>，故而将这部分内容投射到了橙色区域的 <code>&lt;ng-content&gt;&lt;/ng-content&gt;</code> 中了。</p>
+<p>为了解决这个问题，我们必须使用 <code>ngProjectAs</code> 属性，它可以应用于任何元素上。具体如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span></span><br><span class="line">	开始，我是外部嵌入的内容，</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">ngProjectAs</span>=<span class="string">"header"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">			我是外部嵌入的内容，我在header中</span><br><span class="line">		<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo2"</span>&gt;</span></span><br><span class="line">		我是外部嵌入的内容，我所在div的class为"demo2"</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">name</span>=<span class="string">"demo3"</span>&gt;</span></span><br><span class="line">		我是外部嵌入的内容demo，我所在div的属性name为"demo3"</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	结束</span><br><span class="line"><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通过设置 <code>ngProjectAs</code> 属性，让 <code>标签header</code> 所在的 div 指向了 <code>select=&quot;header&quot;</code>，此时 <code>标签 header</code> 那部分内容有投射到蓝色区域了：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/653EFC5051FB4FBB98D24D8893D9347C?method=download&amp;shareKey=0676a9e4a7dcbc59d86b1206ece9cdf1" alt=""></p>
+<h3 id="不“产生”内容"><a href="#不“产生”内容" class="headerlink" title=" 不“产生”内容"></a><ng-content> 不“产生”内容</ng-content></h3><h4 id="做个试验"><a href="#做个试验" class="headerlink" title="做个试验"></a>做个试验</h4><p>做个试验，先定义一个 demo-child-component 组件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">	selector: <span class="string">'demo-child-component'</span>,</span><br><span class="line">	template: <span class="string">'&lt;h3&gt;我是demo-child-component组件&lt;/h3&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoChildComponent</span> <span class="title">implements</span> <span class="title">OnInit</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ngOnInit() &#123;</span><br><span class="line">	    <span class="built_in">console</span>.log(<span class="string">'demo-child-component初始化完成！'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>demo-component 组件修改为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">	selector: <span class="string">'demo-component'</span>,</span><br><span class="line">	template: <span class="string">`</span><br><span class="line">    	&lt;button (click)="show = !show"&gt;</span><br><span class="line">            &#123;&#123; show ? 'Hide' : 'Show' &#125;&#125;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">        &lt;div class="content" *ngIf="show"&gt;</span><br><span class="line">            &lt;ng-content&gt;&lt;/ng-content&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">	`</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoComponent</span> <span class="title">implements</span> <span class="title">OnInit</span> </span>&#123;</span><br><span class="line">    show = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ngOnInit() &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在 demo-component 中 投射 demo-child-component：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">demo-child-component</span>&gt;</span><span class="tag">&lt;/<span class="name">demo-child-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此时，在控制台我们看到打印出 <code>demo-child-component初始化完成！</code> 这些文字。但是当我们点击按钮进行切换操作时，<code>demo-child-component初始化完成！</code> 就不再打印了，这意味着我们的 demo-child-component 组件只被实例化了一次 - 从未被销毁和重新创建。</p>
+<p>为什么会出现这样的情况呢？</p>
+<h4 id="出现原因"><a href="#出现原因" class="headerlink" title="出现原因"></a>出现原因</h4><p><code>&lt;ng-content&gt;</code> 不会 “产生” 内容，它只是投影现有的内容。你可以认为它等价于 <code>node.appendChild(el)</code> 或 jQuery 中的 <code>$(node).append(el)</code> 方法：使用这些方法，节点不被克隆，它被简单地移动到它的新位置。因此，投影内容的生命周期将被绑定到它被声明的地方，而不是显示在地方。</p>
+<p>这也从原理解释了前面那个问题：<strong>如果同时存在几个 <ng-content></ng-content>，那外部内容将如何进行投射呢？</strong></p>
+<p>这种行为有两个原因：期望一致性和性能。什么 “期望的一致性” 意味着作为开发人员，可以基于应用程序的代码，猜测其行为。假设我写了以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">demo-child-component</span>&gt;</span><span class="tag">&lt;/<span class="name">demo-child-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>很显然 demo-child-component 组件将被实例化一次，但现在假如我们使用第三方库的组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">third-party-wrapper</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">demo-child-component</span>&gt;</span><span class="tag">&lt;/<span class="name">demo-child-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">third-party-wrapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果第三方库能够控制 demo-child-component 组件的生命周期，我将无法知道它被实例化了多少次。其中唯一方法就是查看第三方库的代码，了解它们的内部处理逻辑。将组件的生命周期被绑定到我们的应用程序组件而不是包装器的意义是，开发者可以掌控计数器只被实例化一次，而不用了解第三方库的内部代码。</p>
+<p><strong>性能的原因</strong> 更为重要。因为 ng-content 只是移动元素，所以可以在编译时完成，而不是在运行时，这大大减少了实际应用程序的工作量。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>为了让组件能够控制投射进来的子组件的实例化，我们可以通过两种方式完成：在我们的内容周围使用 <code>&lt;ng-template&gt;</code> 元素及 <a href="https://angular.cn/api/common/NgTemplateOutlet" target="_blank" rel="external">ngTemplateOutlet</a>，或者使用带有 “*” 语法的结构指令。为简单起见，我们将在示例中使用 <code>&lt;ng-template&gt;</code> 语法。</p>
+<p>demo-component 组件修改为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">	selector: <span class="string">'demo-component'</span>,</span><br><span class="line">	template: <span class="string">`</span><br><span class="line">    	&lt;button (click)="show = !show"&gt;</span><br><span class="line">            &#123;&#123; show ? 'Hide' : 'Show' &#125;&#125;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">        &lt;div class="content" *ngIf="show"&gt;</span><br><span class="line">            &lt;ng-container [ngTemplateOutlet]="template"&gt;&lt;/ng-container&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">	`</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoComponent</span> <span class="title">implements</span> <span class="title">OnInit</span> </span>&#123;</span><br><span class="line">    @ContentChild(TemplateRef) template: TemplateRef;</span><br><span class="line">    show = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ngOnInit() &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们将 demo-child-component 包含在 <code>ng-template</code> 中：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">demo-component</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ng-template</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">demo-child-component</span>&gt;</span><span class="tag">&lt;/<span class="name">demo-child-component</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ng-template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">demo-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此时，我们在点击按钮进行切换操作时，控制台都会打印出 <code>demo-child-component初始化完成！</code> 这些文字。</p>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p><a href="https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b" target="_blank" rel="external">ng-content: The hidden docs</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular/" rel="tag">#Angular</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/02/Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2/" rel="next" title="Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2">
+                <i class="fa fa-chevron-left"></i> Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单投射"><span class="nav-number">1.</span> <span class="nav-text">简单投射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针对性投射"><span class="nav-number">2.</span> <span class="nav-text">针对性投射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展知识"><span class="nav-number">3.</span> <span class="nav-text">扩展知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ngProjectAs"><span class="nav-number">3.1.</span> <span class="nav-text">ngProjectAs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不“产生”内容"><span class="nav-number">3.2.</span> <span class="nav-text"> 不“产生”内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#做个试验"><span class="nav-number">3.2.1.</span> <span class="nav-text">做个试验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#出现原因"><span class="nav-number">3.2.2.</span> <span class="nav-text">出现原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法"><span class="nav-number">3.2.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资源"><span class="nav-number">4.</span> <span class="nav-text">参考资源</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript,this," />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -59,20 +59,21 @@
 
 
 
-<meta name="description" content="JavaScript 是一种脚本语言，支持函数式编程、闭包、基于原型的继承等高级功能。JavaScript一开始看起来感觉会很容易入门，但是随着使用的深入，你会发JavaScript其实很难掌握，有些基本概念让人匪夷所思。其中JavaScript 中的 this 关键字，就是一个比较容易混乱的概念，在不同的场景下，this会化身不同的对象。有一种观点认为，只有正确掌握了 JavaScript 中的">
+<meta name="description" content="前言通常我们在设置链接的一些伪类（link，visited，hover，active）样式时，要让不同的状态显示正确的样式，我们需要按一定的顺序设置这些伪类的样式。这里我就按CSS2规范中推荐的顺序进行介绍，即 link-visited-hover-active，可记为 LoVe-HAte 。
+要想弄明白为什么是这个顺序，首先我们需要知道，CSS在确定应当向一个元素应用哪些样式时，这通常不仅需要考">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图解javascript中this指向">
-<meta property="og:url" content="http://laixiangran.cn/2016/04/22/图解javascript中this指向/index.html">
+<meta property="og:title" content="为什么是link-visited-hover-active">
+<meta property="og:url" content="http://laixiangran.cn/2018/04/06/为什么是link-visited-hover-active/index.html">
 <meta property="og:site_name" content="技术之旅">
-<meta property="og:description" content="JavaScript 是一种脚本语言，支持函数式编程、闭包、基于原型的继承等高级功能。JavaScript一开始看起来感觉会很容易入门，但是随着使用的深入，你会发JavaScript其实很难掌握，有些基本概念让人匪夷所思。其中JavaScript 中的 this 关键字，就是一个比较容易混乱的概念，在不同的场景下，this会化身不同的对象。有一种观点认为，只有正确掌握了 JavaScript 中的">
-<meta property="og:image" content="http://www.laixiangran.cn/images/图解this1.jpg">
-<meta property="og:image" content="http://www.laixiangran.cn/images/图解this2.jpg">
-<meta property="og:image" content="http://www.laixiangran.cn/images/图解this3.jpg">
-<meta property="og:updated_time" content="2016-04-30T07:07:19.091Z">
+<meta property="og:description" content="前言通常我们在设置链接的一些伪类（link，visited，hover，active）样式时，要让不同的状态显示正确的样式，我们需要按一定的顺序设置这些伪类的样式。这里我就按CSS2规范中推荐的顺序进行介绍，即 link-visited-hover-active，可记为 LoVe-HAte 。
+要想弄明白为什么是这个顺序，首先我们需要知道，CSS在确定应当向一个元素应用哪些样式时，这通常不仅需要考">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/E0F8C6FF24544C41A28766614D421CA6?method=download&shareKey=3bad257a2c909b2b4f495c37bc0c8206">
+<meta property="og:updated_time" content="2018-04-06T12:37:11.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图解javascript中this指向">
-<meta name="twitter:description" content="JavaScript 是一种脚本语言，支持函数式编程、闭包、基于原型的继承等高级功能。JavaScript一开始看起来感觉会很容易入门，但是随着使用的深入，你会发JavaScript其实很难掌握，有些基本概念让人匪夷所思。其中JavaScript 中的 this 关键字，就是一个比较容易混乱的概念，在不同的场景下，this会化身不同的对象。有一种观点认为，只有正确掌握了 JavaScript 中的">
-<meta name="twitter:image" content="http://www.laixiangran.cn/images/图解this1.jpg">
+<meta name="twitter:title" content="为什么是link-visited-hover-active">
+<meta name="twitter:description" content="前言通常我们在设置链接的一些伪类（link，visited，hover，active）样式时，要让不同的状态显示正确的样式，我们需要按一定的顺序设置这些伪类的样式。这里我就按CSS2规范中推荐的顺序进行介绍，即 link-visited-hover-active，可记为 LoVe-HAte 。
+要想弄明白为什么是这个顺序，首先我们需要知道，CSS在确定应当向一个元素应用哪些样式时，这通常不仅需要考">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/E0F8C6FF24544C41A28766614D421CA6?method=download&shareKey=3bad257a2c909b2b4f495c37bc0c8206">
 
 
 
@@ -90,7 +91,7 @@
   };
 </script>
 
-  <title> 图解javascript中this指向 | 技术之旅 </title>
+  <title> 为什么是link-visited-hover-active | 技术之旅 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +231,7 @@
             
             
               
-                图解javascript中this指向
+                为什么是link-visited-hover-active
               
             
           </h1>
@@ -242,8 +243,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-22T23:38:32+08:00" content="2016-04-22">
-              2016-04-22
+            <time itemprop="dateCreated" datetime="2018-04-06T20:30:30+08:00" content="2018-04-06">
+              2018-04-06
             </time>
           </span>
 
@@ -256,8 +257,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
                   </a>
                 </span>
 
@@ -276,7 +277,7 @@
 
           
           
-             <span id="/2016/04/22/图解javascript中this指向/" class="leancloud_visitors" data-flag-title="图解javascript中this指向">
+             <span id="/2018/04/06/为什么是link-visited-hover-active/" class="leancloud_visitors" data-flag-title="为什么是link-visited-hover-active">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -297,82 +298,193 @@
       
 
       
-        <p>JavaScript 是一种脚本语言，支持函数式编程、闭包、基于原型的继承等高级功能。JavaScript一开始看起来感觉会很容易入门，但是随着使用的深入，你会发JavaScript其实很难掌握，有些基本概念让人匪夷所思。其中JavaScript 中的 this 关键字，就是一个比较容易混乱的概念，在不同的场景下，this会化身不同的对象。有一种观点认为，只有正确掌握了 JavaScript 中的 this 关键字，才算是迈入了 JavaScript 这门语言的门槛。在主流的面向对象的语言中（例如Java,C#等)，this 含义是明确且具体的，即指向当前对象。一般在编译期绑定。而 JavaScript 中this 在运行期进行绑定的，这是JavaScript 中this 关键字具备多重含义的本质原因。</p>
-<p>JavaScript由于其在运行期进行绑定的特性，JavaScript 中的 this 可以是全局对象、当前对象或者任意对象，这完全取决于函数的调用方式。JavaScript 中函数的调用有以下几种方式：</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通常我们在设置链接的一些伪类（<code>link</code>，<code>visited</code>，<code>hover</code>，<code>active</code>）样式时，要让不同的状态显示正确的样式，我们需要按一定的顺序设置这些伪类的样式。这里我就按CSS2规范中推荐的顺序进行介绍，即 <em>link-visited-hover-active</em>，可记为 <code>LoVe-HAte</code> 。</p>
+<p>要想弄明白为什么是这个顺序，首先我们需要知道，CSS在确定应当向一个元素应用哪些样式时，这通常不仅需要考虑 <em>继承</em>，还要考虑声明的 <em>特殊性</em>，另外需要考虑声明本身的来源，这个过程就成为 <em>层叠</em>。下面我们分别来看看 <code>特殊性</code>、<code>继承</code> 和 <code>层叠</code> 这3种机制之间的关联。</p>
+<h2 id="特殊性"><a href="#特殊性" class="headerlink" title="特殊性"></a>特殊性</h2><p>在实际的应用中，我们都知道一个元素可以通过多种选择器来进行选择，如ID选择器、类选择器等等，具体可看<a href="http://www.cnblogs.com/laixiangran/p/4966767.html" target="_blank" rel="external">CSS选择器详解</a>。由不同选择器组成的选择元素的方式暂且称之为 <em>规则</em> 吧。考虑以下3对规则，当然每对规则都选择同样的元素：</p>
+<pre><code>/* 规则1 */
+h1 {
+    color: red;
+}
+body h1 {
+    color: purple;
+}
+
+/* 规则2 */
+h2.grape {
+    color: purple;
+}
+h2 {
+    color: silver;
+}
+
+/* 规则3 */
+html &gt; body table tr[id=&quot;totals&quot;] td ul &gt; li {
+    color: maroon;
+}
+li#answer {
+    color: navy;
+}
+</code></pre><p>显然，每一对规则中只有一个胜出，因为所匹配的元素只能是某一种颜色。那么怎么知道哪一个规则更强呢？</p>
+<p>答案就在于每个选择器的特殊性。通过计算选择器的特殊性值，特殊性最高的规则将会胜出并被利用。 <em>这里先预留一个问题，如果特殊性相等的两个规则将如何确定应用？后面的<code>层叠</code>再介绍。</em></p>
+<h3 id="特殊性值"><a href="#特殊性值" class="headerlink" title="特殊性值"></a>特殊性值</h3><p>特殊性值表述为4个部分，如：0,0,0,0。一个选择器的具体特殊性如下确定：</p>
 <ol>
-<li><p>作为对象方法调用；</p>
-</li>
-<li><p>作为函数调用；</p>
-</li>
-<li><p>作为构造函数调用；</p>
-</li>
-<li><p>使用 apply 或 call 调用。</p>
-</li>
+<li>对于选择器中给定的各个ID属性值，加0,1,0,0。</li>
+<li>对于选择器中给定的各个类属性值、属性选择或者伪类，加0,0,1,0。</li>
+<li>对于选择器中给定的各个元素和伪元素，加0,0,0,1。</li>
+<li>结合符和通配选择器 <code>*</code> 对特殊性没有任何贡献，加0,0,0,0。</li>
+<li>内联样式特殊性为1,0,0,0，因此内联声明的特殊性最高。</li>
+<li>标志为 <code>!important</code> 的声明并没有特殊的特殊性值，此时该声明为重要声明，超过所有非重要声明。</li>
 </ol>
-<p>常言道，字不如表，表不如图。为了让人更好的理解JavaScript this 到底指向什么？下面用一张图来进行解释：</p>
-<p><img src="http://www.laixiangran.cn/images/图解this1.jpg" alt="图解this"></p>
-<p>上图我称之为”JavaScript this决策树”（非严格模式下）。下面通过例子来说明这个图如何来帮助我们对this进行判断：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123; </span><br><span class="line">    x: <span class="number">0</span>, </span><br><span class="line">    y: <span class="number">0</span>, </span><br><span class="line">    moveTo: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = <span class="keyword">this</span>.x + x;</span><br><span class="line">        <span class="keyword">this</span>.y = <span class="keyword">this</span>.y + y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 决策树解释：point.moveTo(1,1)函数不是new进行调用，进入否决策，</span></span><br><span class="line"><span class="comment">// 是用dot(.)进行调用，则指向.moveTo之前的调用对象，即point</span></span><br><span class="line">point.moveTo(<span class="number">1</span>,<span class="number">1</span>); <span class="comment">// this 绑定到当前对象,即point对象</span></span><br></pre></td></tr></table></figure>
-<p>point.moveTo（）函数在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
+<p>通过以上的介绍，我们就可以计算出本节刚开始介绍的3组规则的特殊性值及被应用的规则：</p>
+<pre><code>/* 规则1 */
+h1 { /* 0,0,0,1 */
+    color: red;
+}
+body h1 { /* 0,0,0,2 （元素应用该规则） */
+    color: purple;
+}
+
+/* 规则2 */
+h2.grape { /* 0,0,1,1 （元素应用该规则） */
+    color: purple;
+}
+h2 { /* 0,0,0,1 */
+    color: silver;
+}
+
+/* 规则3 */
+html &gt; body table tr[id=&quot;totals&quot;] td ul &gt; li { /* 0,0,1,7 */
+    color: maroon;
+}
+li#answer { /* 0,1,0,1 （元素应用该规则） */
+    color: navy;
+}
+</code></pre><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>基于继承机制，样式不仅应用到指定的元素，还会应用到它的后代元素。下面的例子帮你了解继承是如何工作的：</p>
+<pre><code>// CSS
+ul {
+    color: red;
+}
+
+// html
+&lt;div&gt;
+   &lt;ul&gt;
+       &lt;li&gt;ul下的第一个li&lt;/li&gt;
+       &lt;li&gt;ul下的第二个li&lt;/li&gt;
+       &lt;li&gt;ul下的第三个li&lt;/li&gt;
+   &lt;/ul&gt;
+   &lt;ol&gt;
+       &lt;li&gt;ol下的第一个li&lt;/li&gt;
+       &lt;li&gt;ol下的第二个li&lt;/li&gt;
+       &lt;li&gt;ol下的第三个li&lt;/li&gt;
+   &lt;/ol&gt;
+&lt;/div&gt;
+</code></pre><p><strong>效果：</strong></p>
+<div><br>   <ul style="color: red"><br>       <li>ul下的第一个li</li><br>       <li>ul下的第二个li</li><br>       <li>ul下的第三个li</li><br>   </ul><br>   <ol><br>       <li>ol下的第一个li</li><br>       <li>ol下的第二个li</li><br>       <li>ol下的第三个li</li><br>   </ol><br></div>
+
+<p>原理就是将声明 <code>color: red;</code> 应用到 <code>ul</code> 元素时，这个元素会采用该声明。然后将这个值再沿着文档树向下传播到后代元素，并一直继承，直到再没有更多的后代元素继承这个值为止。值绝对不会向上传播，也就是说，元素不会把值向上传递到其祖先。</p>
+<p><strong>重要：继承值是完全没有特殊性的，因此特殊性值为0,0,0,0的特殊性也比其高，说明继承值很容易被其他方式中的声明取代。</strong></p>
+<h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><p>在 <code>特殊性</code> 一节中我们预留了一个问题：如果特殊性相等的两个规则将如何确定应用？假设有以下规则：</p>
+<pre><code>h1 {
+    color: red;
+}
+h1 {
+    color: blue;
+}
+</code></pre><p>哪一个会占上风？这两个规则的特殊性都是0,0,0,1，所以它们的权重相等，都应当应用到元素，但这是不可能的，因为一个元素不可能既是红色又是蓝色（实际是蓝色）。因此这里 <code>层叠</code> 就出场了，先看看层叠规则：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/E0F8C6FF24544C41A28766614D421CA6?method=download&amp;shareKey=3bad257a2c909b2b4f495c37bc0c8206" alt=""></p>
+<p>下面分别介绍规则中后三条规则。</p>
+<h3 id="按权重和来源排序"><a href="#按权重和来源排序" class="headerlink" title="按权重和来源排序"></a>按权重和来源排序</h3><p>根据第二条规则，如果两个样式规则应用到同一个元素，而且其中一个规则有 <code>!important</code> 标志，这个重要规则将胜出。</p>
+<pre><code>p {
+    color: gray !important;
+}
+
+&lt;p style=&quot;color: black;&quot;&gt;Well, &lt;em&gt;hello&lt;em&gt; there!&lt;/p&gt;
+</code></pre><p><strong>效果：</strong></p>
+<p style="color: gray;">Well, hello there!</p>
+
+
+<p>另外，还要考虑规则的来源。来源权重由大到小的顺序依次为：</p>
 <ol>
-<li><p>point.moveTo函数调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>point.moveTo函数是用dot(.)进行调用的，即进入“是”分支，即这里的this指向point.moveTo中.之前的对象point。</p>
-</li>
+<li>读者的重要声明（有 <code>!important</code>）</li>
+<li>创作人员的重要声明（有 <code>!important</code>）</li>
+<li>创作人员的正常声明</li>
+<li>读者的正常声明</li>
+<li>用户代理声明</li>
 </ol>
-<p>图解point.moveTo函数的this指向什么的解析图如下图所示：</p>
-<p><img src="http://www.laixiangran.cn/images/图解this2.jpg" alt="图解this"></p>
-<p>再举例，看下面的代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; </span><br><span class="line">&#125; </span><br><span class="line">func(<span class="number">5</span>); <span class="comment">// this是全局对象window，x为全局变量</span></span><br><span class="line"><span class="comment">//决策树解析：func()函数是用new进行调用的么？为否，进入func()函数是用dot进行调用的么？为否，则 this指向全局对象window</span></span><br><span class="line">x; <span class="comment">// x =&gt; 5</span></span><br></pre></td></tr></table></figure>
-<p>func（）函数在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>func(5)函数调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>func(5)函数不是用dot(.)进行调用的，即进入“否”分支，即这里的this指向全局变量window，那么this.x实际上就是window.x。</p>
-</li>
-</ol>
-<p>图解func函数的this指向什么的解析图如下图所示：</p>
-<p><img src="http://www.laixiangran.cn/images/图解this3.jpg" alt="图解this"></p>
-<p>针对作为函数直接调用的方式，下面看一个复杂的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123; </span><br><span class="line">    x: <span class="number">0</span>, </span><br><span class="line">    y: <span class="number">0</span>, </span><br><span class="line">    moveTo: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">        <span class="comment">// 内部函数</span></span><br><span class="line">        <span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">            <span class="keyword">this</span>.x = x; <span class="comment">// this 指向什么？window</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 内部函数</span></span><br><span class="line">        <span class="keyword">var</span> moveY = <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123; </span><br><span class="line">            <span class="keyword">this</span>.y = y; <span class="comment">//this 指向什么？window</span></span><br><span class="line">        &#125;;</span><br><span class="line">         </span><br><span class="line">        moveX(x); </span><br><span class="line">        moveY(y); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">point.moveTo(<span class="number">1</span>,<span class="number">1</span>); </span><br><span class="line">point.x; <span class="comment">// =&gt;0 </span></span><br><span class="line">point.y; <span class="comment">// =&gt;0 </span></span><br><span class="line">x; <span class="comment">// =&gt;1 </span></span><br><span class="line">y; <span class="comment">// =&gt;1</span></span><br></pre></td></tr></table></figure>
-<p>point.moveTo(1,1)函数实际内部调用的是moveX()和moveY()函数, moveX()函数内部的this在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>moveX(1)函数调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>moveX(1)函数不是用dot(.)进行调用的，即进入“否”分支，即这里的this指向全局变量window，那么this.x实际上就是window.x。</p>
-</li>
-</ol>
-<p>下面看一下作为构造函数调用的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x,y</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; <span class="comment">// this ?</span></span><br><span class="line">    <span class="keyword">this</span>.y = y; <span class="comment">// this ?</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> np = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">np.x; <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">var</span> p = Point(<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">p.x; <span class="comment">// error, p是一个空对象undefined</span></span><br><span class="line"><span class="built_in">window</span>.x; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<p>Point(1,1)函数在var np=new Point(1,1)中的this在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>var np=new Point(1,1)调用是用new进行调用的么？这个明显是，进入“是”分支，即this指向np；</p>
-</li>
-<li><p>那么this.x=1，即np.x=1；</p>
-</li>
-</ol>
-<p>Point(2,2)函数在var p= Point(2,2)中的this在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>var p= Point(2,2)调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>Point(2,2)函数不是用dot(.)进行调用的？判定为否，即进入“否”分支，即这里的this指向全局变量window，那么this.x实际上就是window.x；</p>
-</li>
-<li><p>this.x=2即window.x=2。</p>
-</li>
-</ol>
-<p>最后看一下函数用 call 和 apply 进行调用的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; </span><br><span class="line">    <span class="keyword">this</span>.y = y; </span><br><span class="line">    <span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">        <span class="keyword">this</span>.x = x; </span><br><span class="line">        <span class="keyword">this</span>.y = y; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = &#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;;</span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]); <span class="comment">// apply 实际上为 p2.moveTo(10,10)</span></span><br><span class="line">p2.x <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
-<p>p1.moveTo.apply(p2,[10,10])函数在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<p>我们知道，apply 和 call 这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。p1.moveTo.apply(p2,[10,10])实际上是p2.moveTo(10,10)。那么p2.moveTo(10,10)可解释为：</p>
-<ol>
-<li><p>p2.moveTo(10,10)函数调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>p2.moveTo(10,10)函数是用dot(.)进行调用的，即进入“是”分支，即这里的this指向p2.moveTo(10,10)中.之前的对象p2,所以p2.x=10。</p>
-</li>
-</ol>
-<p>关于JavaScript函数执行环境的过程，IBM developerworks文档库中的一段描述感觉很不错，摘抄如下：</p>
-<p><strong>“JavaScript 中的函数既可以被当作普通函数执行，也可以作为对象的方法执行，这是导致 this 含义如此丰富的主要原因。一个函数被执行时，会创建一个执行环境（ExecutionContext），函数的所有的行为均发生在此执行环境中，构建该执行环境时，JavaScript 首先会创建 arguments变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，首先初始化函数的形参表，值为 arguments变量中对应的值，如果 arguments变量中没有对应值，则该形参初始化为 undefined。如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ExecutionContext）创建成功后，函数执行时才会执行，这点对于我们理解 JavaScript 中的变量作用域非常重要，鉴于篇幅，我们先不在这里讨论这个话题。最后为 this变量赋值，如前所述，会根据函数调用方式的不同，赋给 this全局对象，当前对象等。至此函数的执行环境（ExecutionContext）创建成功，函数开始逐行执行，所需变量均从之前构建好的执行环境（ExecutionContext）中读取。” </strong></p>
-<p>理解这段话对于理解Javascript函数将大有好处。</p>
+<h3 id="按特殊性排序"><a href="#按特殊性排序" class="headerlink" title="按特殊性排序"></a>按特殊性排序</h3><p>根据第三条规则，如果向一个元素应用多个彼此冲突的声明，而且它们的权重相同，则按特殊性排序，最特殊的声明最优先。</p>
+<pre><code>p#bright {
+    color: silver;
+}
+p {
+    color: black;
+}
+
+&lt;p id=&quot;bright&quot;&gt;Well, hello there!&lt;/p&gt;
+</code></pre><p><strong>效果：</strong></p>
+<p style="color: silver;">Well, hello there!</p>
+
+<h3 id="按顺序排序"><a href="#按顺序排序" class="headerlink" title="按顺序排序"></a>按顺序排序</h3><p>最后，根据第四条规则，如果两个规则的权重、来源和特殊性完全相同，那么在样式表中后出现的一个会胜出。</p>
+<pre><code>h1 {
+    color: red;
+}
+h1 {
+    color: blue;
+}
+
+&lt;h1&gt;我是蓝色的标题1&lt;/h1&gt;
+</code></pre><p><strong>效果：</strong></p>
+<h1 style="color: blue">我是蓝色的标题1</h1>
+
+<h2 id="链接样式顺序"><a href="#链接样式顺序" class="headerlink" title="链接样式顺序"></a>链接样式顺序</h2><p>好了，通过前面的介绍，我想大家应该基本了解CSS是如何确定应当向一个元素应用哪些值的。回到前言说到的链接样式顺序，为了正确的表现所设置的样式，我们必须按一定的顺序进行样式设置。根据CSS2规范中的推荐顺序，即 <em>link-visited-hover-active</em>，声明样式如下：</p>
+<pre><code>:link {
+    color: blue;
+}
+:visited {
+ color: purple;
+}
+:hover {
+    color: red;
+}
+:active {
+    color: orange;
+}
+</code></pre><p>根据之前的介绍，以上这些选择器的特殊性都是一样的：0,0,1,0。因此他们有相同的权重、来源和特殊性，因此与元素匹配的最后一个选择器才会胜出。</p>
+<p>正在 <em>“点击”</em> 的 <em>未访问</em> 链接可以与其中3个规则匹配 —— <code>:link</code>、<code>:hover</code>、<code>:active</code>，所以按照上面的声明顺序，<code>:active</code>将胜出，这可能就是我们所期望的。</p>
+<p>假设我们忽略这种常用的顺序，而是按字母顺序排列链接样式，声明样式如下:</p>
+<pre><code>:active {
+    color: orange;
+}
+:hover {
+    color: red;
+}
+:link {
+    color: blue;
+}
+:visited {
+ color: purple;
+}
+</code></pre><p>按照这种顺序，任何链接都不会显示 <code>:hover</code> 或者 <code>:active</code>，因为 <code>:link</code> 和 <code>:visited</code> 规则后出现。所有链接都必须要么是已访问（<code>:visited</code>），要么是未访问（<code>:link</code>），所以 <code>:link</code> 和 <code>:visited</code> 样式总是会覆盖 <code>:hover</code> 或者 <code>:active</code>。</p>
+<p>当然链接样式也可以根据自己的实际需要设定某一种顺序，比如 <em>link-hover-visited-active</em> 这样的一个顺序，起到的效果是 <strong>只有未访问的链接会有悬停样式，已访问的链接没有悬停样式</strong>。</p>
+<p> 最后，由于可以把伪类链接起来，所以可以不必担心这些问题。以下规则可以任何顺序列出，而不必担心有什么负面影响：</p>
+<pre><code>:link {
+    color: blue;
+}
+:visited {
+ color: purple;
+}
+:link:hover {
+    color: red;
+}
+:visited:hover {
+    color: gray;
+}
+:link:active {
+    color: orange;
+}
+:visited:active {
+    color: silver;
+}
+</code></pre><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>通过对链接样式顺序为什么是 <em>link-visited-hover-active</em> 的解答，我希望帮助大家能加深了解CSS在确定应当向一个元素应用哪些样式时的一些基本原理。</p>
 
       
     </div>
@@ -387,9 +499,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
-          
-            <a href="/tags/this/" rel="tag">#this</a>
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
           
         </div>
       
@@ -398,17 +508,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/22/JavaScript实现Base64/" rel="next" title="JavaScript实现Base64">
-                <i class="fa fa-chevron-left"></i> JavaScript实现Base64
+              <a href="/2018/04/06/Javascript之创建对象/" rel="next" title="Javascript之创建对象">
+                <i class="fa fa-chevron-left"></i> Javascript之创建对象
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/07/JavaScript高阶函数的应用/" rel="prev" title="JavaScript高阶函数的应用">
-                JavaScript高阶函数的应用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -588,7 +694,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊性"><span class="nav-number">2.</span> <span class="nav-text">特殊性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊性值"><span class="nav-number">2.1.</span> <span class="nav-text">特殊性值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层叠"><span class="nav-number">4.</span> <span class="nav-text">层叠</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按权重和来源排序"><span class="nav-number">4.1.</span> <span class="nav-text">按权重和来源排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按特殊性排序"><span class="nav-number">4.2.</span> <span class="nav-text">按特殊性排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按顺序排序"><span class="nav-number">4.3.</span> <span class="nav-text">按顺序排序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">我是蓝色的标题1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接样式顺序"><span class="nav-number">1.</span> <span class="nav-text">链接样式顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">2.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

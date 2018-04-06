@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://laixiangran.cn/"/>
-  <updated>2018-04-05T08:41:33.093Z</updated>
+  <updated>2018-04-06T07:03:21.054Z</updated>
   <id>http://laixiangran.cn/</id>
   
   <author>
@@ -14,6 +14,107 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Javascript之创建对象</title>
+    <link href="http://laixiangran.cn/2018/04/06/Javascript%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://laixiangran.cn/2018/04/06/Javascript之创建对象/</id>
+    <published>2018-04-06T07:00:32.000Z</published>
+    <updated>2018-04-06T07:03:21.054Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Object构造函数&quot;&gt;&lt;a href=&quot;#Object构造函数&quot; class=&quot;headerlink&quot; title=&quot;Object构造函数&quot;&gt;&lt;/a&gt;Object构造函数&lt;/h2&gt;&lt;p&gt;创建自定义对象最简单的方式就是创建一个 Object 的实例，然后再为它添加属性和方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 创建对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 定义属性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person.name = &lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person.age = &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person.job = &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 定义方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;缺点&quot;&gt;&lt;a href=&quot;#缺点&quot; class=&quot;headerlink&quot; title=&quot;缺点&quot;&gt;&lt;/a&gt;缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;代码冗余，会产生大量重复代码&lt;/li&gt;
+&lt;li&gt;无法识别对象（无法知道对象的类型）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;对象字面量&quot;&gt;&lt;a href=&quot;#对象字面量&quot; class=&quot;headerlink&quot; title=&quot;对象字面量&quot;&gt;&lt;/a&gt;对象字面量&lt;/h2&gt;&lt;p&gt;对象字面量相比较于 Object 构造函数，代码会比较直观一些：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name: &lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    age: &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    job: &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sayName:  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;缺点-1&quot;&gt;&lt;a href=&quot;#缺点-1&quot; class=&quot;headerlink&quot; title=&quot;缺点&quot;&gt;&lt;/a&gt;缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;代码冗余，会产生大量重复代码&lt;/li&gt;
+&lt;li&gt;无法识别对象（无法知道对象的类型）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;工厂模式&quot;&gt;&lt;a href=&quot;#工厂模式&quot; class=&quot;headerlink&quot; title=&quot;工厂模式&quot;&gt;&lt;/a&gt;工厂模式&lt;/h2&gt;&lt;p&gt;Object 构造函数或对象字面量这两种方法的缺点就是：使用同一个接口创建很多对象时，会产生大量的重复代码。为解决这个问题，我们将利用工厂模式来创建一个函数，这个函数将创建具体对象的过程进行封装：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;creatPerson&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; o = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; o;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 使用函数creatPerson创建对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = creatPerson(&lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = creatPerson(&lt;span class=&quot;string&quot;&gt;&#39;lai&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Back End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person2.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;通过creatPerson()能够根据参数无数次地创建不同的对象，这样就达到复用的目的，而且创建对象的细节是透明的。&lt;/p&gt;
+&lt;p&gt;工厂模式虽然解决了创建多个相似对象的问题，但是没有解决对象识别的问题（即怎样知道一个对象的类型）。&lt;/p&gt;
+&lt;h3 id=&quot;缺点-2&quot;&gt;&lt;a href=&quot;#缺点-2&quot; class=&quot;headerlink&quot; title=&quot;缺点&quot;&gt;&lt;/a&gt;缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;无法识别对象（无法知道对象的类型）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;构造函数模式&quot;&gt;&lt;a href=&quot;#构造函数模式&quot; class=&quot;headerlink&quot; title=&quot;构造函数模式&quot;&gt;&lt;/a&gt;构造函数模式&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&#39;lai&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Back End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person2.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在这个例子中，Person() 函数取代了 creatPerson() 函数，不同之处在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;没有显式地创建对象&lt;/li&gt;
+&lt;li&gt;直接将属性和方法赋给了 this 对象&lt;/li&gt;
+&lt;li&gt;没有return语句&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此，要创建 Person 的新实例，则必须使用 &lt;code&gt;new&lt;/code&gt; 操作符。以这种方式调用构造函数实际上会经历以下4个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建一个新对象&lt;/li&gt;
+&lt;li&gt;将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）&lt;/li&gt;
+&lt;li&gt;执行构造函数中的代码（为这个新对象添加属性和方法）&lt;/li&gt;
+&lt;li&gt;返回新对象&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以，当我们使用 &lt;code&gt;new&lt;/code&gt; 操作符来调用构造函数时，实际就是隐式地完成 creatPerson() 函数要完成的那些工作。&lt;/p&gt;
+&lt;p&gt;当然，这种模式 &lt;strong&gt;解决了对象识别的问题&lt;/strong&gt; 。在前面的例子中，person1 和 person2 分别保存着 Person 的一个不同的实例。这两个对象都有一个 constructor（构造函数）属性，该属性指向 Person，这样就达到对象识别了（能知道对象的类型）。还有，检测对象类型，我们一般使用 instanceof 操作符。最后，我们知道所有的对象都是继承自 Object 的，因此下面的代码都返回 true：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person1.constructor === Person); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; person1 Person); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; person1 &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person2.constructor === Person); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; person2 Person); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; person2 &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;缺点-3&quot;&gt;&lt;a href=&quot;#缺点-3&quot; class=&quot;headerlink&quot; title=&quot;缺点&quot;&gt;&lt;/a&gt;缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;每个方法都要在每个实例上重新创建一遍&lt;/li&gt;
+&lt;li&gt;如果不想重新创建一遍，函数只能先在全局作用域中定义，但是这样对于自定义对象来说就没有封装性可言了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;原型模式&quot;&gt;&lt;a href=&quot;#原型模式&quot; class=&quot;headerlink&quot; title=&quot;原型模式&quot;&gt;&lt;/a&gt;原型模式&lt;/h2&gt;&lt;p&gt;我们创建的每个函数都有一个 &lt;code&gt;prototype（原型）&lt;/code&gt; 属性，这个属性是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。如果按照字面量意思来理解，那么 &lt;code&gt;prototype&lt;/code&gt; 就是通过 &lt;code&gt;调用构造函数而创建&lt;/code&gt; 的那个 &lt;code&gt;对象实例&lt;/code&gt; 的 &lt;code&gt;原型对象&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不清楚 &lt;code&gt;原型对象&lt;/code&gt; 可以先自行了解下，本文不展开介绍 &lt;code&gt;原型对象&lt;/code&gt;，后面会写文章单独介绍。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用原型对象的好处是可以让所有的对象实例共享它所包含的属性和方法。换句话说，不必在构造函数中定义对象实例的信息，而是可以将这些信息直接添加到原型对象中：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.name = &lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.age = &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.job = &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.friends = [&lt;span class=&quot;string&quot;&gt;&#39;xu&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;song&#39;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.friends.push(&lt;span class=&quot;string&quot;&gt;&#39;chen&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person1.friends); &lt;span class=&quot;comment&quot;&gt;// &#39;xu&#39;, &#39;song&#39;, &#39;chen&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person2.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person2.friends); &lt;span class=&quot;comment&quot;&gt;// &#39;xu&#39;, &#39;song&#39;, &#39;chen&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person1.sayName === person2.sayName); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person1.friends === person2.friends); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;缺点-4&quot;&gt;&lt;a href=&quot;#缺点-4&quot; class=&quot;headerlink&quot; title=&quot;缺点&quot;&gt;&lt;/a&gt;缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;由于是所有实例共享属性和方法，如果修改引用类型值的属性（如对象、数组），那么就会影响所有的对象实例（往往我们都希望每个实例都有自己的属性）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;组合使用构造函数模式和原型模式&quot;&gt;&lt;a href=&quot;#组合使用构造函数模式和原型模式&quot; class=&quot;headerlink&quot; title=&quot;组合使用构造函数模式和原型模式&quot;&gt;&lt;/a&gt;组合使用构造函数模式和原型模式&lt;/h2&gt;&lt;p&gt;创建自定义类型的最常见方式，就是组合使用构造函数模式与原型模式。构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性。这样，每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.friends = [&lt;span class=&quot;string&quot;&gt;&#39;xu&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;song&#39;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&#39;lai&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Back End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.friends.push(&lt;span class=&quot;string&quot;&gt;&#39;chen&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person1.friends); &lt;span class=&quot;comment&quot;&gt;// &#39;xu&#39;, &#39;song&#39;, &#39;chen&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person2.friends); &lt;span class=&quot;comment&quot;&gt;// &#39;xu&#39;, &#39;song&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person1.sayName === person2.sayName); &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person1.friends === person2.friends); &lt;span class=&quot;comment&quot;&gt;// false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这种混成模式集构造函数模式和原型模式这两种模式之长。&lt;/p&gt;
+&lt;h3 id=&quot;缺点-5&quot;&gt;&lt;a href=&quot;#缺点-5&quot; class=&quot;headerlink&quot; title=&quot;缺点&quot;&gt;&lt;/a&gt;缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;构造函数和原型分别独立，代码封装型不强&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;动态原型模式&quot;&gt;&lt;a href=&quot;#动态原型模式&quot; class=&quot;headerlink&quot; title=&quot;动态原型模式&quot;&gt;&lt;/a&gt;动态原型模式&lt;/h2&gt;&lt;p&gt;这种模式是对 &lt;code&gt;组合使用构造函数模式和原型模式&lt;/code&gt; 方法的改进，它将所有信息都封装在了构造函数中，而通过在构造函数中初始化原型（可仅在必要的情况下），又保持了 &lt;code&gt;组合使用构造函数模式和原型模式&lt;/code&gt; 方法的优点。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 检查是否存在sayName方法来决定是否初始化原型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.sayName !== &lt;span class=&quot;string&quot;&gt;&#39;function&#39;&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Person.prototype.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其中，if 语句检查可以是初始化之后应该存在的任何属性和方法，不必对每个方法和属性都判断，只需要判断其中一个即可。&lt;/p&gt;
+&lt;h2 id=&quot;寄生构造函数模式&quot;&gt;&lt;a href=&quot;#寄生构造函数模式&quot; class=&quot;headerlink&quot; title=&quot;寄生构造函数模式&quot;&gt;&lt;/a&gt;寄生构造函数模式&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; o = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; o;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&#39;lai&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Back End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person2.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;除了使用 new 操作符并把使用的包装函数叫做构造函数之外，这种模式其实和 &lt;code&gt;工厂模式&lt;/code&gt; 是一模一样的。构造函数中的 return 语句重写了通过 new 操作符调用构造函数默认返回的新对象实例。&lt;/p&gt;
+&lt;p&gt;这种模式可以在特殊情况下用来为对象创建构造函数。假设我们想创建一个具有额外方法的特殊数组，但又不能直接修改 Array 构造函数：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SpecialArray&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 创建数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; values = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Array&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 添加值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    values.push.apply(values, &lt;span class=&quot;built_in&quot;&gt;arguments&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 添加方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    values.toPipedString = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.join(&lt;span class=&quot;string&quot;&gt;&#39;|&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 返回数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; values;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; colors = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SpecialArray(&lt;span class=&quot;string&quot;&gt;&#39;red&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;blue&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;green&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(colors.toPipedString()); &lt;span class=&quot;comment&quot;&gt;// &#39;red|blue|green&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;缺点-6&quot;&gt;&lt;a href=&quot;#缺点-6&quot; class=&quot;headerlink&quot; title=&quot;缺点&quot;&gt;&lt;/a&gt;缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;由于该模式返回的对象与构造函数或者与构造函数的原型属性之间没有关系，因此，这种模式并不能通过 instanceof 操作符来确定对象类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;稳妥构造函数模式&quot;&gt;&lt;a href=&quot;#稳妥构造函数模式&quot; class=&quot;headerlink&quot; title=&quot;稳妥构造函数模式&quot;&gt;&lt;/a&gt;稳妥构造函数模式&lt;/h2&gt;&lt;p&gt;所谓稳妥对象，指的是没有公共属性，而且其方法也不引用 this 的对象。稳妥对象最适合在一些安全环境中（这些环境中会禁止使用 this 和 new），或者在防止数据被其他应用程序（如 &lt;a href=&quot;https://baike.baidu.com/item/Mashup/4360460?fr=aladdin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mashup 程序&lt;/a&gt;）改动时使用。&lt;/p&gt;
+&lt;p&gt;与 &lt;strong&gt;寄生构造函数模式&lt;/strong&gt; 有两点不同：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新创建对象的实例方法不引用 this&lt;/li&gt;
+&lt;li&gt;不使用 new 操作符调用构造函数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 创建要返回的对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; o = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 可以在这里定义私有变量和方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 添加方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    o.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 返回对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; o;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&#39;laixiangran&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;Front End Software Engineer&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.sayName(); &lt;span class=&quot;comment&quot;&gt;// &#39;laixiangran&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;变量 person1 中保存的是一个稳妥对象，除了调用 sayName() 方法外，没有别的方式可以访问其数据成员。&lt;/p&gt;
+&lt;h3 id=&quot;缺点-7&quot;&gt;&lt;a href=&quot;#缺点-7&quot; class=&quot;headerlink&quot; title=&quot;缺点&quot;&gt;&lt;/a&gt;缺点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;与 &lt;strong&gt;寄生构造函数模式&lt;/strong&gt; 一样，由于该模式返回的对象与构造函数或者与构造函数的原型属性之间没有关系，因此，这种模式并不能通过 instanceof 操作符来确定对象类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考资料：《JavaScript高级程序设计（第3版）》第6.2节 创建对象&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Object构造函数&quot;&gt;&lt;a href=&quot;#Object构造函数&quot; class=&quot;headerlink&quot; title=&quot;Object构造函数&quot;&gt;&lt;/a&gt;Object构造函数&lt;/h2&gt;&lt;p&gt;创建自定义对象最简单的方式就是创建一个 Object 的实例，然后再为它添加
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://laixiangran.cn/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://laixiangran.cn/tags/JavaScript/"/>
+    
+      <category term="Object" scheme="http://laixiangran.cn/tags/Object/"/>
+    
+  </entry>
   
   <entry>
     <title>Angular开发实践（八）： 使用ng-content进行组件内容投射</title>
@@ -2151,574 +2252,6 @@
       <category term="Emmet" scheme="http://laixiangran.cn/tags/Emmet/"/>
     
       <category term="HTML" scheme="http://laixiangran.cn/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>更好的网上书写 — Markdown</title>
-    <link href="http://laixiangran.cn/2016/03/28/%E4%BB%8B%E7%BB%8DMarkdown/"/>
-    <id>http://laixiangran.cn/2016/03/28/介绍Markdown/</id>
-    <published>2016-03-28T15:21:02.000Z</published>
-    <updated>2016-03-28T15:00:21.748Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h2 id=&quot;宗旨&quot;&gt;&lt;a href=&quot;#宗旨&quot; class=&quot;headerlink&quot; title=&quot;宗旨&quot;&gt;&lt;/a&gt;宗旨&lt;/h2&gt;&lt;p&gt;Markdown 的目标是实现「易读易写」。&lt;/p&gt;
-&lt;p&gt;可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 &lt;a href=&quot;http://docutils.sourceforge.net/mirror/setext.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Setext&lt;/a&gt;、&lt;a href=&quot;http://www.aaronsw.com/2002/atx/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;atx&lt;/a&gt;、&lt;a href=&quot;http://textism.com/tools/textile/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Textile&lt;/a&gt;、&lt;a href=&quot;http://docutils.sourceforge.net/rst.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reStructuredText&lt;/a&gt;、&lt;a href=&quot;http://www.triptico.com/software/grutatxt.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Grutatext&lt;/a&gt; 和 &lt;a href=&quot;http://ettext.taint.org/doc/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;EtText&lt;/a&gt;，而最大灵感来源其实是纯文本电子邮件的格式。&lt;/p&gt;
-&lt;p&gt;总之，Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像 &lt;em&gt;强调&lt;/em&gt;。Markdown 的列表看起来就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。&lt;/p&gt;
-&lt;h2 id=&quot;兼容HTML&quot;&gt;&lt;a href=&quot;#兼容HTML&quot; class=&quot;headerlink&quot; title=&quot;兼容HTML&quot;&gt;&lt;/a&gt;兼容HTML&lt;/h2&gt;&lt;p&gt;Markdown 语法的目标是：成为一种 &lt;em&gt;适用于网络的书写语言&lt;/em&gt;。&lt;/p&gt;
-&lt;p&gt;Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法种类很少，只对应 HTML 标记的一小部分。Markdown 的构想不是要使得 HTML 文档更容易书写。在我看来，HTML 已经很容易写了。Markdown 的理念是，能让文档更容易读、写和随意改。HTML 是一种发布的格式，Markdown 是一种书写的格式。就这样，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。&lt;/p&gt;
-&lt;p&gt;不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 HTML 或是 Markdown——只要直接加标签就可以了。&lt;/p&gt;
-&lt;p&gt;要制约的只有一些 HTML 区块元素――比如 &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。Markdown 的生成器有足够智能，不会在 HTML 区块标签外加上不必要的 &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 标签。&lt;/p&gt;
-&lt;p&gt;例子如下，在 Markdown 文件里加上一段 HTML 表格：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;这是一个普通段落。
-
-&amp;lt;table&amp;gt;
-    &amp;lt;tr&amp;gt;
-        &amp;lt;td&amp;gt;Foo&amp;lt;/td&amp;gt;
-    &amp;lt;/tr&amp;gt;
-&amp;lt;/table&amp;gt;
-
-这是另一个普通段落。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这是一个普通段落。&lt;/p&gt;
-&lt;table&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;Foo&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;&lt;/table&gt;
-
-&lt;p&gt;这是另一个普通段落。&lt;/p&gt;
-&lt;p&gt;请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的&lt;code&gt;*强调*&lt;/code&gt;会没有效果。&lt;/p&gt;
-&lt;p&gt;HTML 的区段（行内）标签如 &lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;cite&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;del&amp;gt;&lt;/code&gt; 可以在 Markdown 的段落、列表或是标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的 &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; 或 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图像标签语法。&lt;/p&gt;
-&lt;p&gt;和处在 HTML 区块标签间不同，Markdown 语法在 HTML 区段标签间是有效的。&lt;/p&gt;
-&lt;h2 id=&quot;特殊字符自动转换&quot;&gt;&lt;a href=&quot;#特殊字符自动转换&quot; class=&quot;headerlink&quot; title=&quot;特殊字符自动转换&quot;&gt;&lt;/a&gt;特殊字符自动转换&lt;/h2&gt;&lt;p&gt;在 HTML 文件中，有两个字符需要特殊处理： &lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;amp;&lt;/code&gt; 。 &lt;code&gt;&amp;lt;&lt;/code&gt; 符号用于起始标签，&lt;code&gt;&amp;amp;&lt;/code&gt; 符号则用于标记 HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 &lt;code&gt;&amp;amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;amp;amp;&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;amp;&lt;/code&gt; 字符尤其让网络文档编写者受折磨，如果你要打「&lt;code&gt;AT&amp;amp;T&lt;/code&gt;」 ，你必须要写成「&lt;code&gt;AT&amp;amp;amp;T&lt;/code&gt;」。而网址中的 &lt;code&gt;&amp;amp;&lt;/code&gt; 字符也要转换。比如你要链接到：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;http://images.google.com/images?num=30&amp;amp;q=larry+bird&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;你必须要把网址转换写为：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;http://images.google.com/images?num=30&amp;amp;amp;q=larry+bird&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;才能放到链接标签的 &lt;code&gt;href&lt;/code&gt; 属性里。不用说也知道这很容易忽略，这也可能是 HTML 标准检验所检查到的错误中，数量最多的。&lt;/p&gt;
-&lt;p&gt;Markdown 让你可以自然地书写字符，需要转换的由它来处理好了。如果你使用的 &lt;code&gt;&amp;amp;&lt;/code&gt; 字符是 HTML 字符实体的一部分，它会保留原状，否则它会被转换成 &lt;code&gt;&amp;amp;amp;&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;所以你如果要在文档中插入一个版权符号 &lt;code&gt;©&lt;/code&gt; ，你可以这样写：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;amp;copy;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Markdown 会保留它不动。而若你写：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;AT&amp;amp;T&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Markdown 就会将它转为：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;AT&amp;amp;amp;T&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;类似的状况也会发生在 &lt;code&gt;&amp;lt;&lt;/code&gt; 符号上，因为 Markdown 允许兼容 HTML ，如果你是把 &lt;code&gt;&amp;lt;&lt;/code&gt; 符号作为 HTML 标签的定界符使用，那 Markdown 也不会对它做任何转换，但是如果你写：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;4 &amp;lt; 5&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Markdown 将会把它转换为：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;4 &amp;amp;lt; 5&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;不过需要注意的是，code 范围内，不论是行内还是区块， &lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;amp;&lt;/code&gt; 两个符号都一定会被转换成 HTML 实体，这项特性让你可以很容易地用 Markdown 写 HTML code （和 HTML 相对而言， HTML 语法中，你要把所有的 &lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;amp;&lt;/code&gt; 都转换为 HTML 实体，才能在 HTML 文件里面写出 HTML code。）&lt;/p&gt;
-&lt;h1 id=&quot;区块元素&quot;&gt;&lt;a href=&quot;#区块元素&quot; class=&quot;headerlink&quot; title=&quot;区块元素&quot;&gt;&lt;/a&gt;区块元素&lt;/h1&gt;&lt;h2 id=&quot;段落和换行&quot;&gt;&lt;a href=&quot;#段落和换行&quot; class=&quot;headerlink&quot; title=&quot;段落和换行&quot;&gt;&lt;/a&gt;段落和换行&lt;/h2&gt;&lt;p&gt;一个 Markdown 段落是由一个或多个连续的文本行组成，它的前后要有一个以上的空行（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。&lt;/p&gt;
-&lt;p&gt;「由一个或多个连续的文本行组成」这句话其实暗示了 Markdown 允许段落内的强迫换行（插入换行符），这个特性和其他大部分的 text-to-HTML 格式不一样（包括 Movable Type 的「Convert Line Breaks」选项），其它的格式会把每个换行符都转成 &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt; 标签。&lt;/p&gt;
-&lt;p&gt;如果你确实想要依赖 Markdown 来插入 &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt; 标签的话，在插入处先按入 &lt;strong&gt;两个以上的空格&lt;/strong&gt; 然后回车。&lt;/p&gt;
-&lt;p&gt;的确，需要多费点事（多加空格）来产生 &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt; ，但是简单地「每个换行都转换为 &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt;」的方法在 Markdown 中并不适合， Markdown 中 email 式的 &lt;strong&gt;区块引用&lt;/strong&gt; 和多段落的 &lt;strong&gt;列表&lt;/strong&gt; 在使用换行来排版的时候，不但更好用，还更方便阅读。&lt;/p&gt;
-&lt;h2 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h2&gt;&lt;p&gt;Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。&lt;/p&gt;
-&lt;p&gt;类 Setext 形式是用底线的形式，利用 &lt;code&gt;=&lt;/code&gt;（最高阶标题）和 &lt;code&gt;-&lt;/code&gt; （第二阶标题），例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;This is an H1
-=============
-
-This is an H2
--------------
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;任何数量的 &lt;code&gt;=&lt;/code&gt; 和 &lt;code&gt;-&lt;/code&gt; 都可以有效果。&lt;/p&gt;
-&lt;p&gt;类 Atx 形式则是在行首插入 1 到 6 个 &lt;code&gt;#&lt;/code&gt; ，对应到标题 1 到 6 阶，例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 这是 H1
-
-## 这是 H2
-
-###### 这是 H6
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你可以选择性地「闭合」类 atx 样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，你就可以在行尾加上 &lt;code&gt;#&lt;/code&gt;，而行尾的 &lt;code&gt;#&lt;/code&gt; 数量也不用和开头一样（行首的井字符数量决定标题的阶数）：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 这是 H1 #
-
-## 这是 H2 ##
-
-### 这是 H3 ######
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Markdown 标记区块引用是使用类似 email 中用 &amp;gt; 的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &lt;code&gt;&amp;gt;&lt;/code&gt; ：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-&amp;gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-&amp;gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-&amp;gt; 
-&amp;gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-&amp;gt; id sem consectetuer libero luctus adipiscing.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,&lt;br&gt;consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.&lt;br&gt;Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
-&lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse&lt;br&gt;id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Markdown 也允许你偷懒只在整个段落的第一行最前面加上 &lt;code&gt;&amp;gt;&lt;/code&gt; ：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-&amp;gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-id sem consectetuer libero luctus adipiscing.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,&lt;br&gt;consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.&lt;br&gt;Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
-&lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse&lt;br&gt;id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 &lt;code&gt;&amp;gt;&lt;/code&gt; ：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;gt; This is the first level of quoting.
-&amp;gt;
-&amp;gt; &amp;gt; This is nested blockquote.
-&amp;gt;
-&amp;gt; Back to the first level.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is the first level of quoting.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is nested blockquote.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Back to the first level.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;gt; ## 这是一个标题。
-&amp;gt; 
-&amp;gt; 1.   这是第一行列表项。
-&amp;gt; 2.   这是第二行列表项。
-&amp;gt; 
-&amp;gt; 给出一些例子代码：
-&amp;gt; 
-&amp;gt;     return shell_exec(&amp;quot;echo $input | $markdown_script&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h2 id=&quot;这是一个标题。&quot;&gt;&lt;a href=&quot;#这是一个标题。&quot; class=&quot;headerlink&quot; title=&quot;这是一个标题。&quot;&gt;&lt;/a&gt;这是一个标题。&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;这是第一行列表项。&lt;/li&gt;
-&lt;li&gt;这是第二行列表项。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;给出一些例子代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;return shell_exec(&amp;quot;echo $input | $markdown_script&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
-&lt;p&gt;任何像样的文本编辑器都能轻松地建立 email 型的引用。例如在 BBEdit 中，你可以选取文字后然后从选单中选择 &lt;em&gt;增加引用阶层&lt;/em&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;列表&quot;&gt;&lt;a href=&quot;#列表&quot; class=&quot;headerlink&quot; title=&quot;列表&quot;&gt;&lt;/a&gt;列表&lt;/h2&gt;&lt;p&gt;Markdown 支持有序列表和无序列表。&lt;/p&gt;
-&lt;p&gt;无序列表使用星号、加号或是减号作为列表标记：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*   Red
-*   Green
-*   Blue
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;red&lt;/li&gt;
-&lt;li&gt;green&lt;/li&gt;
-&lt;li&gt;blue&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;等同于：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;+   Red
-+   Green
-+   Blue
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;也等同于：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;-   Red
--   Green
--   Blue
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有序列表则使用数字接着一个英文句点：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1.  Bird
-2.  McHale
-3.  Parish
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Bird&lt;/li&gt;
-&lt;li&gt;McHale&lt;/li&gt;
-&lt;li&gt;Parish&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果，上面的列表所产生的 HTML 标记为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;ol&amp;gt;
-&amp;lt;li&amp;gt;Bird&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;McHale&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;Parish&amp;lt;/li&amp;gt;
-&amp;lt;/ol&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果你的列表标记写成：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1.  Bird
-1.  McHale
-1.  Parish
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或甚至是：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;3. Bird
-1. McHale
-8. Parish
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你都会得到完全相同的 HTML 输出。重点在于，你可以让 Markdown 文件的列表数字和输出的结果相同，或是你懒一点，你可以完全不用在意数字的正确性。&lt;/p&gt;
-&lt;p&gt;如果你使用懒惰的写法，建议第一个项目最好还是从 1. 开始，因为 Markdown 未来可能会支持有序列表的 start 属性。&lt;/p&gt;
-&lt;p&gt;列表项目标记通常是放在最左边，但是其实也可以缩进，最多 3 个空格，项目标记后面则一定要接着至少一个空格或制表符。&lt;/p&gt;
-&lt;p&gt;要让列表看起来更漂亮，你可以把内容用固定的缩进整理好：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
-    viverra nec, fringilla in, laoreet vitae, risus.
-*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
-    Suspendisse id sem consectetuer libero luctus adipiscing.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;br&gt;Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,&lt;br&gt;viverra nec, fringilla in, laoreet vitae, risus.&lt;/li&gt;
-&lt;li&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit.&lt;br&gt;Suspendisse id sem consectetuer libero luctus adipiscing.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;但是如果你懒，这样也可以：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
-viverra nec, fringilla in, laoreet vitae, risus.
-*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
-Suspendisse id sem consectetuer libero luctus adipiscing.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 标签包起来，举例来说：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*   Bird
-*   Magic
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会被转换为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
-&amp;lt;li&amp;gt;Bird&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;Magic&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Bird&lt;/li&gt;
-&lt;li&gt;Magic&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;但是这个：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*   Bird
-
-*   Magic
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会被转换为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;Bird&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;Magic&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Bird&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Magic&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1.  This is a list item with two paragraphs. Lorem ipsum dolor
-    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
-    mi posuere lectus.
-
-    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
-    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
-    sit amet velit.
-
-2.  Suspendisse id sem consectetuer libero luctus adipiscing.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;This is a list item with two paragraphs. Lorem ipsum dolor&lt;br&gt;sit amet, consectetuer adipiscing elit. Aliquam hendrerit&lt;br&gt;mi posuere lectus.&lt;/p&gt;
-&lt;p&gt;Vestibulum enim wisi, viverra nec, fringilla in, laoreet&lt;br&gt;vitae, risus. Donec sit amet nisl. Aliquam semper ipsum&lt;br&gt;sit amet velit.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Suspendisse id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如果你每行都有缩进，看起来会看好很多，当然，再次地，如果你很懒惰，Markdown 也允许：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*   This is a list item with two paragraphs.
-
-    This is the second paragraph in the list item. You&amp;apos;re
-only required to indent the first line. Lorem ipsum dolor
-sit amet, consectetuer adipiscing elit.
-
-*   Another item in the same list.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果要在列表项目内放进引用，那 &lt;code&gt;&amp;gt;&lt;/code&gt; 就需要缩进：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*   A list item with a blockquote:
-
-    &amp;gt; This is a blockquote
-    &amp;gt; inside a list item.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;A list item with a blockquote:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is a blockquote&lt;br&gt;inside a list item.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如果要放代码区块的话，该区块就需要缩进两次，也就是 8 个空格或是 2 个制表符：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*   一列表项包含一个列表区块：
-
-        &amp;lt;代码写在这&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;一列表项包含一个列表区块：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;代码写在这&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;当然，项目列表很可能会不小心产生，像是下面这样的写法：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1986. What a great season.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;What a great season.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;换句话说，也就是在行首出现数字-句点-空白，要避免这样的状况，你可以在句点前面加上反斜杠。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1986\. What a great season.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;1986. What a great season.&lt;/p&gt;
-&lt;h2 id=&quot;代码区块&quot;&gt;&lt;a href=&quot;#代码区块&quot; class=&quot;headerlink&quot; title=&quot;代码区块&quot;&gt;&lt;/a&gt;代码区块&lt;/h2&gt;&lt;p&gt;和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 &lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; 和 &lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; 标签来把代码区块包起来。&lt;/p&gt;
-&lt;p&gt;要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以，例如，下面的输入：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;这是一个普通段落：
-
-    这是一个代码区块。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Markdown 会转换成：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;这是一个普通段落：&amp;lt;/p&amp;gt;
-
-&amp;lt;pre&amp;gt;
-    &amp;lt;code&amp;gt;这是一个代码区块。&amp;lt;/code&amp;gt;
-&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这是一个普通段落：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;这是一个代码区块。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个每行一阶的缩进（4 个空格或是 1 个制表符），都会被移除，例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Here is an example of AppleScript:
-
-    tell application &amp;quot;Foo&amp;quot;
-        beep
-    end tell
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会被转换为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;Here is an example of AppleScript:&amp;lt;/p&amp;gt;
-
-&amp;lt;pre&amp;gt;
-    &amp;lt;code&amp;gt;tell application &amp;quot;Foo&amp;quot;
-        beep
-    end tell
-&amp;lt;/code&amp;gt;
-&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Here is an example of AppleScript:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;tell application &amp;quot;Foo&amp;quot;
-    beep
-end tell
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。&lt;/p&gt;
-&lt;p&gt;在代码区块里面， &lt;code&gt;&amp;amp;&lt;/code&gt; 、 &lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;gt;&lt;/code&gt; 会自动转成 HTML 实体，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始码，只需要复制贴上，再加上缩进就可以了，剩下的 Markdown 都会帮你处理，例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;footer&amp;quot;&amp;gt;
-    &amp;amp;copy; 2004 Foo Corporation
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会被转换为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&amp;amp;lt;div class=&amp;quot;footer&amp;quot;&amp;amp;gt;
-    &amp;amp;amp;copy; 2004 Foo Corporation
-&amp;amp;lt;/div&amp;amp;gt;
-&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;footer&quot;&gt;&lt;br&gt;    &amp;copy; 2004 Foo Corporation&lt;br&gt;&lt;/div&gt;
-
-&lt;p&gt;代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。&lt;/p&gt;
-&lt;h2 id=&quot;分隔线&quot;&gt;&lt;a href=&quot;#分隔线&quot; class=&quot;headerlink&quot; title=&quot;分隔线&quot;&gt;&lt;/a&gt;分隔线&lt;/h2&gt;&lt;p&gt;你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;* * *
-
-***
-
-*****
-
-- - -
-
----------------------------------------
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;区段元素&quot;&gt;&lt;a href=&quot;#区段元素&quot; class=&quot;headerlink&quot; title=&quot;区段元素&quot;&gt;&lt;/a&gt;区段元素&lt;/h1&gt;&lt;h2 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;headerlink&quot; title=&quot;链接&quot;&gt;&lt;/a&gt;链接&lt;/h2&gt;&lt;p&gt;Markdown 支持两种形式的链接语法： &lt;em&gt;行内式&lt;/em&gt;和 &lt;em&gt;参考式&lt;/em&gt;两种形式。&lt;/p&gt;
-&lt;p&gt;不管是哪一种，链接文字都是用方括号 &lt;code&gt;[]&lt;/code&gt; 来标记。&lt;/p&gt;
-&lt;p&gt;要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;This is [an example](http://example.com/ &amp;quot;Title&amp;quot;) inline link.
-
-[This link](http://example.net/) has no title attribute.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会产生：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;This is &amp;lt;a href=&amp;quot;http://example.com/&amp;quot; title=&amp;quot;Title&amp;quot;&amp;gt;
-an example&amp;lt;/a&amp;gt; inline link.&amp;lt;/p&amp;gt;
-
-&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://example.net/&amp;quot;&amp;gt;This link&amp;lt;/a&amp;gt; has no
-title attribute.&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This is &lt;a href=&quot;http://example.com/&quot; title=&quot;Title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;an example&lt;/a&gt; inline link.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://example.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;This link&lt;/a&gt; has no title attribute.&lt;/p&gt;
-&lt;p&gt;如果你是要链接到同样主机的资源，你可以使用相对路径：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;See my [About](/about/) page for details.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考式的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;This is [an example][id] reference-style link.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你也可以选择性地在两个方括号中间加上一个空格：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;This is [an example] [id] reference-style link.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接着，在文件的任意处，你可以把这个标记的链接内容定义出来：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[id]: http://example.com/  &amp;quot;Optional Title Here&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;链接内容定义的形式为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;方括号（前面可以选择性地加上至多三个空格来缩进），里面输入链接文字
-接着一个冒号
-接着一个以上的空格或制表符
-接着链接的网址
-选择性地接着 title 内容，可以用单引号、双引号或是括弧包着
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面这三种链接的定义都是相同：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[foo]: http://example.com/  &amp;quot;Optional Title Here&amp;quot;
-[foo]: http://example.com/  &amp;apos;Optional Title Here&amp;apos;
-[foo]: http://example.com/  (Optional Title Here)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;请注意：有一个已知的问题是 Markdown.pl 1.0.1 会忽略单引号包起来的链接 title。&lt;/p&gt;
-&lt;p&gt;链接网址也可以用尖括号包起来：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[id]: &amp;lt;http://example.com/&amp;gt;  &amp;quot;Optional Title Here&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你也可以把 title 属性放到下一行，也可以加一些缩进，若网址太长的话，这样会比较好看：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[id]: http://example.com/longish/path/to/resource/here
-    &amp;quot;Optional Title Here&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;网址定义只有在产生链接的时候用到，并不会直接出现在文件之中。&lt;/p&gt;
-&lt;p&gt;链接辨别标签可以有字母、数字、空白和标点符号，但是并不区分大小写，因此下面两个链接是一样的：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[link text][a]
-[link text][A]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字，要用隐式链接标记只要在链接文字后面加上一个空的方括号，如果你要让 “Google” 链接到 google.com，你可以简化成：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[Google][]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后定义链接内容：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[Google]: http://google.com/
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;由于链接文字可能包含空白，所以这种简化型的标记内也许包含多个单词：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Visit [Daring Fireball][] for more information.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后接着定义链接：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[Daring Fireball]: http://daringfireball.net/
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;链接的定义可以放在文件中的任何一个地方，我比较偏好直接放在链接出现段落的后面，你也可以把它放在文件最后面，就像是注解一样。&lt;/p&gt;
-&lt;p&gt;下面是一个参考式链接的范例：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;I get 10 times more traffic from [Google] [1] than from
-[Yahoo] [2] or [MSN] [3].
-
-  [1]: http://google.com/        &amp;quot;Google&amp;quot;
-  [2]: http://search.yahoo.com/  &amp;quot;Yahoo Search&amp;quot;
-  [3]: http://search.msn.com/    &amp;quot;MSN Search&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果改成用链接名称的方式写：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;I get 10 times more traffic from [Google][] than from
-[Yahoo][] or [MSN][].
-
-  [google]: http://google.com/        &amp;quot;Google&amp;quot;
-  [yahoo]:  http://search.yahoo.com/  &amp;quot;Yahoo Search&amp;quot;
-  [msn]:    http://search.msn.com/    &amp;quot;MSN Search&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面两种写法都会产生下面的 HTML。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;I get 10 times more traffic from &amp;lt;a href=&amp;quot;http://google.com/&amp;quot;
-title=&amp;quot;Google&amp;quot;&amp;gt;Google&amp;lt;/a&amp;gt; than from
-&amp;lt;a href=&amp;quot;http://search.yahoo.com/&amp;quot; title=&amp;quot;Yahoo Search&amp;quot;&amp;gt;Yahoo&amp;lt;/a&amp;gt;
-or &amp;lt;a href=&amp;quot;http://search.msn.com/&amp;quot; title=&amp;quot;MSN Search&amp;quot;&amp;gt;MSN&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上两种方式的&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot; title=&quot;Google&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google&lt;/a&gt; than from &lt;a href=&quot;http://search.yahoo.com/&quot; title=&quot;Yahoo Search&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot; title=&quot;MSN Search&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;下面是用行内式写的同样一段内容的 Markdown 文件，提供作为比较之用：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;I get 10 times more traffic from [Google](http://google.com/ &amp;quot;Google&amp;quot;)
-than from [Yahoo](http://search.yahoo.com/ &amp;quot;Yahoo Search&amp;quot;) or
-[MSN](http://search.msn.com/ &amp;quot;MSN Search&amp;quot;).
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot; title=&quot;Google&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google&lt;/a&gt;&lt;br&gt;than from &lt;a href=&quot;http://search.yahoo.com/&quot; title=&quot;Yahoo Search&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Yahoo&lt;/a&gt; or&lt;br&gt;&lt;a href=&quot;http://search.msn.com/&quot; title=&quot;MSN Search&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;参考式的链接其实重点不在于它比较好写，而是它比较好读，比较一下上面的范例，使用参考式的文章本身只有 81 个字符，但是用行内形式的却会增加到 176 个字元，如果是用纯 HTML 格式来写，会有 234 个字元，在 HTML 格式中，标签比文本还要多。&lt;/p&gt;
-&lt;p&gt;使用 Markdown 的参考式链接，可以让文件更像是浏览器最后产生的结果，让你可以把一些标记相关的元数据移到段落文字之外，你就可以增加链接而不让文章的阅读感觉被打断。&lt;/p&gt;
-&lt;h2 id=&quot;强调&quot;&gt;&lt;a href=&quot;#强调&quot; class=&quot;headerlink&quot; title=&quot;强调&quot;&gt;&lt;/a&gt;强调&lt;/h2&gt;&lt;p&gt;Markdown 使用星号（ &lt;code&gt;*&lt;/code&gt; ）和底线（ &lt;code&gt;_&lt;/code&gt; ）作为标记强调字词的符号，被 &lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 包围的字词会被转成用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签包围，用两个 &lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 包起来的话，则会被转成 &lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt; ，例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*single asterisks*
-
-_single underscores_
-
-**double asterisks**
-
-__double underscores__
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会转成：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;em&amp;gt;single asterisks&amp;lt;/em&amp;gt;
-
-&amp;lt;em&amp;gt;single underscores&amp;lt;/em&amp;gt;
-
-&amp;lt;strong&amp;gt;double asterisks&amp;lt;/strong&amp;gt;
-
-&amp;lt;strong&amp;gt;double underscores&amp;lt;/strong&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;你可以随便用你喜欢的样式，唯一的限制是，你用什么符号开启标签，就要用什么符号结束。&lt;/p&gt;
-&lt;p&gt;强调也可以直接插在文字中间：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;un *frigging* believable
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;un &lt;em&gt;frigging&lt;/em&gt; believable&lt;/p&gt;
-&lt;p&gt;但是如果你的 &lt;code&gt;*&lt;/code&gt; 和 &lt;code&gt;_&lt;/code&gt; 两边都有空白的话，它们就只会被当成普通的符号。&lt;/p&gt;
-&lt;p&gt;如果要在文字前后直接插入普通的星号或底线，你可以用反斜线：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;\*this text is surrounded by literal asterisks\*
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;*this text is surrounded by literal asterisks*&lt;/p&gt;
-&lt;h2 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h2&gt;&lt;p&gt;如果要标记一小段行内代码，你可以用反引号把它包起来（ ``` ），例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Use the `printf()` function.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会产生：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;Use the &amp;lt;code&amp;gt;printf()&amp;lt;/code&amp;gt; function.&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;
-&lt;p&gt;如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;``There is a literal backtick (`) here.``
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段语法会产生：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;code&amp;gt;There is a literal backtick (`) here.&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;There is a literal backtick (`) here.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;A single backtick in a code span: `` ` ``
-
-A backtick-delimited string in a code span: `` `foo` ``
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会产生：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;A single backtick in a code span: &amp;lt;code&amp;gt;`&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;
-
-&amp;lt;p&amp;gt;A backtick-delimited string in a code span: &amp;lt;code&amp;gt;`foo`&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;A single backtick in a code span: &lt;code&gt;` &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;A backtick-delimited string in a code span: &lt;code&gt;`foo` &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;在代码区段内，&lt;code&gt;&amp;amp;&lt;/code&gt; 和尖括号都会被自动地转成 HTML 实体，这使得插入 HTML 原始码变得很容易，Markdown 会把下面这段：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Please don&amp;apos;t use any `&amp;lt;blink&amp;gt;` tags.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;转为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;Please don&amp;apos;t use any &amp;lt;code&amp;gt;&amp;amp;lt;blink&amp;amp;gt;&amp;lt;/code&amp;gt; tags.&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Please don’t use any &lt;code&gt;&amp;lt;blink&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
-&lt;p&gt;你也可以这样写：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;`&amp;amp;#8212;` is the decimal-encoded equivalent of `&amp;amp;mdash;`.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以产生：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;code&amp;gt;&amp;amp;amp;#8212;&amp;lt;/code&amp;gt; is the decimal-encoded
-equivalent of &amp;lt;code&amp;gt;&amp;amp;amp;mdash;&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;amp;#8212;&lt;/code&gt; is the decimal-encoded equivalent of &lt;code&gt;&amp;amp;mdash;&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;图片&quot;&gt;&lt;a href=&quot;#图片&quot; class=&quot;headerlink&quot; title=&quot;图片&quot;&gt;&lt;/a&gt;图片&lt;/h2&gt;&lt;p&gt;很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。&lt;/p&gt;
-&lt;p&gt;Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： &lt;em&gt;行内式&lt;/em&gt;和 &lt;em&gt;参考式&lt;/em&gt;。&lt;/p&gt;
-&lt;p&gt;行内式的图片语法看起来像是：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;![Alt text](/path/to/img.jpg)
-
-![Alt text](/path/to/img.jpg &amp;quot;Optional title&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;详细叙述如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;一个惊叹号 !
-接着一个方括号，里面放上图片的替代文字
-接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上
-选择性的 ‘title’ 文字。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考式的图片语法则长得像这样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;![Alt text][id]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;「id」是图片参考的名称，图片参考的定义方式则和链接参考一样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[id]: url/to/image  &amp;quot;Optional title attribute&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; 标签。&lt;/p&gt;
-&lt;h1 id=&quot;其它&quot;&gt;&lt;a href=&quot;#其它&quot; class=&quot;headerlink&quot; title=&quot;其它&quot;&gt;&lt;/a&gt;其它&lt;/h1&gt;&lt;h2 id=&quot;自动链接&quot;&gt;&lt;a href=&quot;#自动链接&quot; class=&quot;headerlink&quot; title=&quot;自动链接&quot;&gt;&lt;/a&gt;自动链接&lt;/h2&gt;&lt;p&gt;Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用尖括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;http://example.com/&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Markdown 会转为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;http://example.com/&amp;quot;&amp;gt;http://example.com/&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://example.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://example.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;address@example.com&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Markdown 会转成：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;&amp;amp;#x6D;&amp;amp;#x61;i&amp;amp;#x6C;&amp;amp;#x74;&amp;amp;#x6F;:&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;
-&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;&amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;
-&amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
-&amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#97;&amp;#100;&amp;#100;&amp;#114;&amp;#101;&amp;#115;&amp;#x73;&amp;#64;&amp;#x65;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#111;&amp;#x6d;&quot;&gt;&amp;#97;&amp;#100;&amp;#100;&amp;#114;&amp;#101;&amp;#115;&amp;#x73;&amp;#64;&amp;#x65;&amp;#120;&amp;#x61;&amp;#x6d;&amp;#x70;&amp;#x6c;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#111;&amp;#x6d;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;在浏览器里面，这段字串（其实是 &lt;code&gt;&amp;lt;a href=&amp;quot;mailto:address@example.com&amp;quot;&amp;gt;address@example.com&amp;lt;/a&amp;gt;&lt;/code&gt; ）会变成一个可以点击的「 &lt;code&gt;address@example.com&lt;/code&gt; 」链接。&lt;/p&gt;
-&lt;p&gt;（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）&lt;/p&gt;
-&lt;h2 id=&quot;反斜杠&quot;&gt;&lt;a href=&quot;#反斜杠&quot; class=&quot;headerlink&quot; title=&quot;反斜杠&quot;&gt;&lt;/a&gt;反斜杠&lt;/h2&gt;&lt;p&gt;Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签），你可以在星号的前面加上反斜杠：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;\*literal asterisks\*
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;\   反斜线
-
-`   反引号
-
-*   星号
-
-_   底线
-
-{}  花括号
-
-[]  方括号
-
-()  括弧
-
-#   井字号
-
-+   加号
-
--   减号
-
-.   英文句点
-
-!   惊叹号
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h2 id=&quot;宗旨&quot;&gt;&lt;a href=&quot;#宗旨&quot; class=&quot;headerlink&quot; title=&quot;宗旨&quot;&gt;&lt;/a&gt;宗旨&lt;/h2&gt;&lt;p&gt;Mar
-    
-    </summary>
-    
-      <category term="辅助工具" scheme="http://laixiangran.cn/categories/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Markdown" scheme="http://laixiangran.cn/tags/Markdown/"/>
     
   </entry>
   

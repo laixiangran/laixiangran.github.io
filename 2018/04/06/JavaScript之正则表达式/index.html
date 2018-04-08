@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Angular,JavaScript," />
+  <meta name="keywords" content="JavaScript,正则表达式," />
 
 
 
@@ -59,19 +59,22 @@
 
 
 
-<meta name="description" content="在《Angular开发实践（六）：服务端渲染》这篇文章的最后，我们也提到了在服务端渲染中需要牢记的几件事件，其中就包括不要使用window、 document、 navigator等浏览器特有的类型以及直接操作DOM元素。
-这样就引出了 Angular 主要特性之一：横跨所有平台。通过合适的方法，使用 Angular 构建的应用，可复用在多种不同平台的应用上 —— Web、移动 Web、移动应用、">
+<meta name="description" content="正则表达式 (regular expression) 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。
+构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与运算符可以将小的表达式结合在一起来创建更大的表达式。正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2">
-<meta property="og:url" content="http://laixiangran.cn/2018/04/02/Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2/index.html">
+<meta property="og:title" content="JavaScript之创建对象">
+<meta property="og:url" content="http://laixiangran.cn/2018/04/06/JavaScript之正则表达式/index.html">
 <meta property="og:site_name" content="技术之旅">
-<meta property="og:description" content="在《Angular开发实践（六）：服务端渲染》这篇文章的最后，我们也提到了在服务端渲染中需要牢记的几件事件，其中就包括不要使用window、 document、 navigator等浏览器特有的类型以及直接操作DOM元素。
-这样就引出了 Angular 主要特性之一：横跨所有平台。通过合适的方法，使用 Angular 构建的应用，可复用在多种不同平台的应用上 —— Web、移动 Web、移动应用、">
-<meta property="og:updated_time" content="2018-04-02T04:22:59.550Z">
+<meta property="og:description" content="正则表达式 (regular expression) 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。
+构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与运算符可以将小的表达式结合在一起来创建更大的表达式。正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/64B961BA598C4A7389E10DF8B7E60227?method=download&shareKey=bde4953f7301f4eedbc29d9e9feb8fb8">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/4B6EB93FA452486ABA0EA88EDF8D72BE?method=download&shareKey=c3a31af513efbc05987821e18f495368">
+<meta property="og:updated_time" content="2018-04-08T14:29:37.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2">
-<meta name="twitter:description" content="在《Angular开发实践（六）：服务端渲染》这篇文章的最后，我们也提到了在服务端渲染中需要牢记的几件事件，其中就包括不要使用window、 document、 navigator等浏览器特有的类型以及直接操作DOM元素。
-这样就引出了 Angular 主要特性之一：横跨所有平台。通过合适的方法，使用 Angular 构建的应用，可复用在多种不同平台的应用上 —— Web、移动 Web、移动应用、">
+<meta name="twitter:title" content="JavaScript之创建对象">
+<meta name="twitter:description" content="正则表达式 (regular expression) 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。
+构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与运算符可以将小的表达式结合在一起来创建更大的表达式。正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/64B961BA598C4A7389E10DF8B7E60227?method=download&shareKey=bde4953f7301f4eedbc29d9e9feb8fb8">
 
 
 
@@ -89,7 +92,7 @@
   };
 </script>
 
-  <title> Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2 | 技术之旅 </title>
+  <title> JavaScript之创建对象 | 技术之旅 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -229,7 +232,7 @@
             
             
               
-                Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2
+                JavaScript之创建对象
               
             
           </h1>
@@ -241,8 +244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-04-02T12:22:30+08:00" content="2018-04-02">
-              2018-04-02
+            <time itemprop="dateCreated" datetime="2018-04-06T15:00:32+08:00" content="2018-04-06">
+              2018-04-06
             </time>
           </span>
 
@@ -255,8 +258,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Angular/" itemprop="url" rel="index">
-                    <span itemprop="name">Angular</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -275,7 +278,7 @@
 
           
           
-             <span id="/2018/04/02/Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2/" class="leancloud_visitors" data-flag-title="Angular开发实践（七）： 跨平台操作DOM及渲染器Renderer2">
+             <span id="/2018/04/06/JavaScript之正则表达式/" class="leancloud_visitors" data-flag-title="JavaScript之创建对象">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -296,26 +299,81 @@
       
 
       
-        <p>在<a href="http://www.laixiangran.cn/2018/03/29/Angular%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/" target="_blank" rel="external">《Angular开发实践（六）：服务端渲染》</a>这篇文章的最后，我们也提到了在<code>服务端渲染</code>中需要牢记的几件事件，其中就包括不要使用<code>window</code>、 <code>document</code>、 <code>navigator</code>等浏览器特有的类型以及直接操作DOM元素。</p>
-<p>这样就引出了 Angular 主要特性之一：横跨所有平台。通过合适的方法，使用 Angular 构建的应用，可复用在多种不同平台的应用上 —— Web、移动 Web、移动应用、原生应用和桌面原生应用。</p>
-<p>为了能够支持跨平台，Angular 通过抽象层封装了不同平台的差异。比如定义了抽象类 Renderer2 、抽象类 RootRenderer 等。此外还定义了以下引用类型：ElementRef、TemplateRef、ViewRef 、ComponentRef 和 ViewContainerRef 等。通过 <code>模板变量</code>、<code>@ViewChild</code> 等方法获取DOM元素。</p>
-<p>为了演示，先定义一个组件DemoComponent：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; AfterViewInit, Component, ElementRef, Renderer2, ViewChild &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">	template: <span class="string">`</span><br><span class="line">	    &lt;div id="demoDiv" #demoDiv&gt;this is DIV!&lt;/div&gt;</span><br><span class="line">	    DIV的id：&#123;&#123;demoDiv.id&#125;&#125; &lt;!-- DIV的id：demoDiv --&gt;</span><br><span class="line">	`</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoComponent</span> <span class="title">implements</span> <span class="title">AfterViewInit</span> </span>&#123;</span><br><span class="line">	@ViewChild(<span class="string">'demoDiv'</span>) demoDiv: ElementRef; <span class="comment">// @ViewChild通过模板变量名获取</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">constructor</span>(private renderer: Renderer2) &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ngAfterViewInit() &#123;</span><br><span class="line">	    <span class="built_in">console</span>.log(<span class="string">'DIV的id：'</span> + <span class="keyword">this</span>.demoDiv.nativeElement.id); <span class="comment">// DIV的id：demoDiv</span></span><br><span class="line">		<span class="keyword">this</span>.renderer.setStyle(<span class="keyword">this</span>.demoDiv.nativeElement, <span class="string">'background-color'</span>, <span class="string">'red'</span>); <span class="comment">// 通过Renderer2设置div的css样式background-color</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="获取组件中的div"><a href="#获取组件中的div" class="headerlink" title="获取组件中的div"></a>获取组件中的div</h2><p>在Angular应用中不应该通过原生 API 或者 jQuery 来直接获取DOM元素：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> element1 = <span class="built_in">document</span>.getElementById(<span class="string">"demoDiv"</span>); <span class="comment">// jQuery获取: $('#demoDiv')</span></span><br></pre></td></tr></table></figure>
-<p>而是应该通过Angular提供的方法来获取DOM元素：</p>
-<h3 id="模板变量"><a href="#模板变量" class="headerlink" title="模板变量"></a>模板变量</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demoDiv"</span> #<span class="attr">demoDiv</span>&gt;</span>this is DIV!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">DIV的id：&#123;&#123;demoDiv.id&#125;&#125; <span class="comment">&lt;!-- DIV的id：demoDiv --&gt;</span></span><br></pre></td></tr></table></figure>
-<p>在组件模板中，我们在 div 上定义了 #demoDiv 的模板变量，那么 demoDiv 就等于该 div 的 DOM 对象，因此我们可以通过 <code>demoDiv.id</code> 直接获取 div 的 id。</p>
-<h3 id="ViewChild"><a href="#ViewChild" class="headerlink" title="@ViewChild"></a>@ViewChild</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@ViewChild(<span class="string">'demoDiv'</span>) demoDiv: ElementRef; <span class="comment">// @ViewChild通过模板变量名获取</span></span><br><span class="line"></span><br><span class="line">ngAfterViewInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'DIV的id：'</span> + <span class="keyword">this</span>.demoDiv.nativeElement.id); <span class="comment">// DIV的id：demoDiv</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在组件类中，我们通过 @ViewChild 获取到包装有 div 的 DOM 对象的 ElementRef 对象，ElementRef 定义如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ElementRef</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(nativeElement: T)</span><br><span class="line">  nativeElement: T</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因此我们可以在 ngAfterViewInit 中通过 this.demoDiv.nativeElement 获取到该 div 的 DOM 对象，然后获取元素的id。</p>
-<h2 id="操作组件中的div"><a href="#操作组件中的div" class="headerlink" title="操作组件中的div"></a>操作组件中的div</h2><p>在上面通过几种方式获取到 div 的 DOM 对象，那么我们要如果对它进行操作呢（设置样式、属性、插入子元素等）？通过原始API 或者 jQuery 肯定是不允许的了。</p>
-<p>这样我们就引出Angular抽象类 <code>Renderer2</code> 来对元素进行设置样式、属性、插入子元素等操作。</p>
-<p>Renderer2 的定义如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Renderer2</span> </span>&#123;</span><br><span class="line">    get data: &#123;...&#125;</span><br><span class="line">    destroyNode: ((node: any) =&gt; <span class="keyword">void</span>) | <span class="literal">null</span></span><br><span class="line">    destroy(): <span class="keyword">void</span></span><br><span class="line">    createElement(name: string, namespace?: string | <span class="literal">null</span>): any <span class="comment">// 创建元素</span></span><br><span class="line">    createComment(value: string): any <span class="comment">// 创建注释元素</span></span><br><span class="line">    createText(value: string): any <span class="comment">// 创建文本元素</span></span><br><span class="line">    appendChild(parent: any, newChild: any): <span class="keyword">void</span> <span class="comment">// 添加子元素（在最后）</span></span><br><span class="line">    insertBefore(parent: any, newChild: any, refChild: any): <span class="keyword">void</span> <span class="comment">// 添加子元素（在最前）</span></span><br><span class="line">    removeChild(parent: any, oldChild: any): <span class="keyword">void</span> <span class="comment">// 移除子元素</span></span><br><span class="line">    selectRootElement(selectorOrNode: string | any): any <span class="comment">// 获取根元素</span></span><br><span class="line">    parentNode(node: any): any <span class="comment">// 获取父元素</span></span><br><span class="line">    nextSibling(node: any): any <span class="comment">// 获取下一个兄弟元素</span></span><br><span class="line">    setAttribute(el: any, name: string, value: string, namespace?: string | <span class="literal">null</span>): <span class="keyword">void</span> <span class="comment">// 设置属性</span></span><br><span class="line">    removeAttribute(el: any, name: string, namespace?: string | <span class="literal">null</span>): <span class="keyword">void</span> <span class="comment">// 移除属性</span></span><br><span class="line">    addClass(el: any, name: string): <span class="keyword">void</span> <span class="comment">// 添加样式类</span></span><br><span class="line">    removeClass(el: any, name: string): <span class="keyword">void</span> <span class="comment">// 移除样式类</span></span><br><span class="line">    setStyle(el: any, style: string, value: any, flags?: RendererStyleFlags2): <span class="keyword">void</span> <span class="comment">// 设置样式</span></span><br><span class="line">    removeStyle(el: any, style: string, flags?: RendererStyleFlags2): <span class="keyword">void</span> <span class="comment">// 移除样式</span></span><br><span class="line">    setProperty(el: any, name: string, value: any): <span class="keyword">void</span> <span class="comment">// 设置DOM对象属性，不同于元素属性</span></span><br><span class="line">    setValue(node: any, value: string): <span class="keyword">void</span> <span class="comment">// 设置元素值</span></span><br><span class="line">    listen(target: <span class="string">'window'</span> | <span class="string">'document'</span> | <span class="string">'body'</span> | any, eventName: string, callback: (event: any) =&gt; boolean | <span class="keyword">void</span>): () =&gt; <span class="keyword">void</span> <span class="comment">// 注册事件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因此，我们想改变 div 的背景色，就可以这样做：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ngAfterViewInit() &#123;</span><br><span class="line">	<span class="keyword">this</span>.renderer.setStyle(<span class="keyword">this</span>.demoDiv.nativeElement, <span class="string">'background-color'</span>, <span class="string">'red'</span>); <span class="comment">// 通过Renderer2设置div的css样式background-color</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>正则表达式 (regular expression) 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<p>构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与运算符可以将小的表达式结合在一起来创建更大的表达式。正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合。</p>
+<p>正则表达式是由普通字符（例如字符 a 到 z）以及特殊字符（称为”元字符”）组成的文字模式。模式描述在搜索文本时要匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。</p>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><p><img src="https://note.youdao.com/yws/api/personal/file/64B961BA598C4A7389E10DF8B7E60227?method=download&amp;shareKey=bde4953f7301f4eedbc29d9e9feb8fb8" alt=""></p>
+<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><p>正则表达式从左到右进行计算，并遵循优先级顺序，这与算术表达式非常类似。</p>
+<p>相同优先级的从左到右进行运算，不同优先级的运算先高后低</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/4B6EB93FA452486ABA0EA88EDF8D72BE?method=download&amp;shareKey=c3a31af513efbc05987821e18f495368" alt=""></p>
+<h2 id="RegExp对象"><a href="#RegExp对象" class="headerlink" title="RegExp对象"></a>RegExp对象</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt = <span class="keyword">new</span> <span class="built_in">RegExp</span>(pattern, modifiers);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者更简单的方式:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> patt = <span class="regexp">/pattern/m</span>odifiers;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>pattern（模式） 描述了表达式的模式</li>
+<li>modifiers(修饰符) 用于指定全局匹配、区分大小写的匹配和多行匹配</li>
+</ul>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><p>修饰符用于执行区分大小写和全局匹配</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>执行对大小写不敏感的匹配</td>
+</tr>
+<tr>
+<td>g</td>
+<td>执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）</td>
+</tr>
+<tr>
+<td>m</td>
+<td>执行多行匹配</td>
+</tr>
+</tbody>
+</table>
+<h3 id="对象方法"><a href="#对象方法" class="headerlink" title="对象方法"></a>对象方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compile</td>
+<td>编译正则表达式</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>检索字符串中指定的值。返回找到的值，并确定其位置</td>
+</tr>
+<tr>
+<td>test</td>
+<td>检索字符串中指定的值。返回 true 或 false</td>
+</tr>
+</tbody>
+</table>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是一个用来匹配URL的正则表达式，分组获取不同部分的信息</span></span><br><span class="line"><span class="keyword">var</span> parse_url = <span class="regexp">/^(?:([A-Za-z]+):)?(\/&#123;0,3&#125;)([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/</span>;</span><br><span class="line"><span class="keyword">var</span> url = <span class="string">"http://www.ora.com:80/goodparts?q#fragment"</span>;</span><br><span class="line"><span class="keyword">var</span> result = parse_url.exec(url);</span><br><span class="line"><span class="keyword">var</span> names = [<span class="string">"url"</span>, <span class="string">"scheme"</span>, <span class="string">"slash"</span>, <span class="string">"host"</span>, <span class="string">"port"</span>, <span class="string">"path"</span>, <span class="string">"query"</span>, <span class="string">"hash"</span>];<span class="keyword">var</span> i;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; names.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.writeln(names[i] + <span class="string">": "</span> + result[i] + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这段代码的输出结果如下：</span></span><br><span class="line">url: http:<span class="comment">//www.ora.com:80/goodparts?q#fragment</span></span><br><span class="line">scheme: http</span><br><span class="line">slash: <span class="comment">//</span></span><br><span class="line">host: www.ora.com</span><br><span class="line">port: <span class="number">80</span></span><br><span class="line">path: goodparts</span><br><span class="line">query: q</span><br><span class="line">hash: fragment</span><br></pre></td></tr></table></figure>
+<p>下面让我们分解parse_url的各个部分，看看它是如何工作的：</p>
+<p><code>^</code>：^字符表示此字符串的开始，它是一个锚，指引exec不要跳过那些不像URL的前缀，只匹配那些从开头就像URL一样的字符串。</p>
+<p><code>(?:([A-Za-z]+):)?</code>：这个因子匹配一个协议名，但仅当它后面跟随一个 :（冒号）的时候才匹配。(?: . . .)表示一个非捕获型分组（noncapturing group）。后缀 ? 表示这个分组是可选的，它表示重复0次或1次。( . . .)表示一个捕获型分组。一个捕获型分组会复制它所匹配的文本，并把其放到result数组里。每个捕获型分组都会被指定一个编号。第一个捕获型分组的编号是1，所以该分组所匹配的文本副本会出现在result[1]中。 [ . . .]表示一个字符类。A-Za-z这个字符类包含26个大写字母和26个小写字母。连接字符 - 表示范围从A-Z。后缀 + 表示这个字符类会被匹配一次或多次。这个组后面跟着字符 : ，它会按字面进行匹配。</p>
+<p><code>(\/{0,3})</code>：这个因子是捕获型分组2，匹配//。\ /表示应,该匹配 / （斜杠）。它用 \ （反斜杠）来进行转义，这样它就不会被错误地解释为这个正则表达式的结束符。后缀 {0,3} 表示 / 会匹配0~3次。</p>
+<p><code>([0-9.\-A-Za-z]+)</code>：这个因子是捕获型分组3。它会匹配一个主机名，由一个或多个数字、字母以及 . 或 - 字符组成。- 会被转义为 - 以防止与表示范围的连字符相混淆。</p>
+<p><code>(?::(\d+))?</code>：这个可选的因子匹配端口号，它是由一个前置 : 加上一个或多个数字而组成的序列。\d表示一个数字字符。一个或多个数字组成的数字串会被捕获型分组4捕获。</p>
+<p><code>(?:\/([^?#]*))?</code>：这个因子也是可选的分组，匹配路径。该分组以一个 / 开始。之后的字符类[^?#]以一个^开始，它表示这个类包含除 ? 和 # 之外的所有字符。* 表示这个字符类会被匹配0次或多次。</p>
+<p><strong>注意：</strong> 我在这里的处理是不严谨的。这个类匹配除 ? 和 # 之外的所有字符，其中包括了行结束符、控制字符、以及其他大量不应在此被匹配的字符。大多数情况下，它会按照我们的预期去做，但某些恶意文本可能会有渗漏进来的风险。不严谨的正则表示式是一个常见的安全漏洞发源地。写不严谨的正则表达式比写严谨的正则表示式要容易的多。</p>
+<p><code>(?:\?([^#]*))?</code>：这个因子是一个以一个 ? 开始的可选分组。它包含捕获型分组6，这个分组包含0个或多个非#字符。</p>
+<p><code>(?:#(.*))?</code>：这个因子是以 # 开始的可选分组。. 会匹配除行结束符以外的所有字符。</p>
+<p><code>$</code>：$表示这个字符串的结束。它保证在这个URL的尾部没有其他更多的内容了。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p>《JavaScript语言精粹》</p>
+</li>
+<li><p><a href="http://www.runoob.com/regexp/regexp-tutorial.html" target="_blank" rel="external">http://www.runoob.com/regexp/regexp-tutorial.html</a></p>
+</li>
+</ul>
 
       
     </div>
@@ -330,9 +388,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Angular/" rel="tag">#Angular</a>
-          
             <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/正则表达式/" rel="tag">#正则表达式</a>
           
         </div>
       
@@ -341,16 +399,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/29/Angular开发实践（六）：服务端渲染/" rel="next" title="Angular开发实践（六）：服务端渲染">
-                <i class="fa fa-chevron-left"></i> Angular开发实践（六）：服务端渲染
+              <a href="/2018/04/05/Angular开发实践（八）： 使用ng-content进行组件内容投射/" rel="next" title="Angular开发实践（八）： 使用ng-content进行组件内容投射">
+                <i class="fa fa-chevron-left"></i> Angular开发实践（八）： 使用ng-content进行组件内容投射
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/05/Angular开发实践（八）： 使用ng-content进行组件内容投射/" rel="prev" title="Angular开发实践（八）： 使用ng-content进行组件内容投射">
-                Angular开发实践（八）： 使用ng-content进行组件内容投射 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/06/JavaScript之创建对象/" rel="prev" title="JavaScript之创建对象">
+                JavaScript之创建对象 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -531,7 +589,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取组件中的div"><span class="nav-number">1.</span> <span class="nav-text">获取组件中的div</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模板变量"><span class="nav-number">1.1.</span> <span class="nav-text">模板变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewChild"><span class="nav-number">1.2.</span> <span class="nav-text">@ViewChild</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作组件中的div"><span class="nav-number">2.</span> <span class="nav-text">操作组件中的div</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符"><span class="nav-number">1.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符优先级"><span class="nav-number">2.</span> <span class="nav-text">运算符优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp对象"><span class="nav-number">3.</span> <span class="nav-text">RegExp对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">3.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰符"><span class="nav-number">3.2.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象方法"><span class="nav-number">3.3.</span> <span class="nav-text">对象方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">4.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://laixiangran.cn/"/>
-  <updated>2018-04-07T13:59:46.528Z</updated>
+  <updated>2018-04-08T14:34:53.567Z</updated>
   <id>http://laixiangran.cn/</id>
   
   <author>
@@ -14,6 +14,106 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript之正则表达式</title>
+    <link href="http://laixiangran.cn/2018/04/08/JavaScript%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://laixiangran.cn/2018/04/08/JavaScript之正则表达式/</id>
+    <published>2018-04-08T14:30:32.000Z</published>
+    <updated>2018-04-08T14:34:53.567Z</updated>
+    
+    <content type="html">&lt;p&gt;正则表达式 (regular expression) 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。&lt;/p&gt;
+&lt;p&gt;构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与运算符可以将小的表达式结合在一起来创建更大的表达式。正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合。&lt;/p&gt;
+&lt;p&gt;正则表达式是由普通字符（例如字符 a 到 z）以及特殊字符（称为”元字符”）组成的文字模式。模式描述在搜索文本时要匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。&lt;/p&gt;
+&lt;h2 id=&quot;元字符&quot;&gt;&lt;a href=&quot;#元字符&quot; class=&quot;headerlink&quot; title=&quot;元字符&quot;&gt;&lt;/a&gt;元字符&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/64B961BA598C4A7389E10DF8B7E60227?method=download&amp;amp;shareKey=bde4953f7301f4eedbc29d9e9feb8fb8&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;运算符优先级&quot;&gt;&lt;a href=&quot;#运算符优先级&quot; class=&quot;headerlink&quot; title=&quot;运算符优先级&quot;&gt;&lt;/a&gt;运算符优先级&lt;/h2&gt;&lt;p&gt;正则表达式从左到右进行计算，并遵循优先级顺序，这与算术表达式非常类似。&lt;/p&gt;
+&lt;p&gt;相同优先级的从左到右进行运算，不同优先级的运算先高后低&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/4B6EB93FA452486ABA0EA88EDF8D72BE?method=download&amp;amp;shareKey=c3a31af513efbc05987821e18f495368&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;RegExp对象&quot;&gt;&lt;a href=&quot;#RegExp对象&quot; class=&quot;headerlink&quot; title=&quot;RegExp对象&quot;&gt;&lt;/a&gt;RegExp对象&lt;/h2&gt;&lt;h3 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; patt = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;RegExp&lt;/span&gt;(pattern, modifiers);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 或者更简单的方式:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; patt = &lt;span class=&quot;regexp&quot;&gt;/pattern/m&lt;/span&gt;odifiers;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;pattern（模式） 描述了表达式的模式&lt;/li&gt;
+&lt;li&gt;modifiers(修饰符) 用于指定全局匹配、区分大小写的匹配和多行匹配&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;修饰符&quot;&gt;&lt;a href=&quot;#修饰符&quot; class=&quot;headerlink&quot; title=&quot;修饰符&quot;&gt;&lt;/a&gt;修饰符&lt;/h3&gt;&lt;p&gt;修饰符用于执行区分大小写和全局匹配&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;修饰符&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;i&lt;/td&gt;
+&lt;td&gt;执行对大小写不敏感的匹配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;g&lt;/td&gt;
+&lt;td&gt;执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;执行多行匹配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;对象方法&quot;&gt;&lt;a href=&quot;#对象方法&quot; class=&quot;headerlink&quot; title=&quot;对象方法&quot;&gt;&lt;/a&gt;对象方法&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;compile&lt;/td&gt;
+&lt;td&gt;编译正则表达式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;exec&lt;/td&gt;
+&lt;td&gt;检索字符串中指定的值。返回找到的值，并确定其位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;test&lt;/td&gt;
+&lt;td&gt;检索字符串中指定的值。返回 true 或 false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//这是一个用来匹配URL的正则表达式，分组获取不同部分的信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; parse_url = &lt;span class=&quot;regexp&quot;&gt;/^(?:([A-Za-z]+):)?(\/&amp;#123;0,3&amp;#125;)([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; url = &lt;span class=&quot;string&quot;&gt;&quot;http://www.ora.com:80/goodparts?q#fragment&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = parse_url.exec(url);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; names = [&lt;span class=&quot;string&quot;&gt;&quot;url&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;scheme&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;slash&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;host&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;port&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;path&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;query&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;hash&quot;&lt;/span&gt;];&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; names.length; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.writeln(names[i] + &lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt; + result[i] + &lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br/&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//这段代码的输出结果如下：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;url: http:&lt;span class=&quot;comment&quot;&gt;//www.ora.com:80/goodparts?q#fragment&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;scheme: http&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;slash: &lt;span class=&quot;comment&quot;&gt;//&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;host: www.ora.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;path: goodparts&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;query: q&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hash: fragment&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;下面让我们分解parse_url的各个部分，看看它是如何工作的：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;^&lt;/code&gt;：^字符表示此字符串的开始，它是一个锚，指引exec不要跳过那些不像URL的前缀，只匹配那些从开头就像URL一样的字符串。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(?:([A-Za-z]+):)?&lt;/code&gt;：这个因子匹配一个协议名，但仅当它后面跟随一个 :（冒号）的时候才匹配。(?: . . .)表示一个非捕获型分组（noncapturing group）。后缀 ? 表示这个分组是可选的，它表示重复0次或1次。( . . .)表示一个捕获型分组。一个捕获型分组会复制它所匹配的文本，并把其放到result数组里。每个捕获型分组都会被指定一个编号。第一个捕获型分组的编号是1，所以该分组所匹配的文本副本会出现在result[1]中。 [ . . .]表示一个字符类。A-Za-z这个字符类包含26个大写字母和26个小写字母。连接字符 - 表示范围从A-Z。后缀 + 表示这个字符类会被匹配一次或多次。这个组后面跟着字符 : ，它会按字面进行匹配。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(\/{0,3})&lt;/code&gt;：这个因子是捕获型分组2，匹配//。\ /表示应,该匹配 / （斜杠）。它用 \ （反斜杠）来进行转义，这样它就不会被错误地解释为这个正则表达式的结束符。后缀 {0,3} 表示 / 会匹配0~3次。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;([0-9.\-A-Za-z]+)&lt;/code&gt;：这个因子是捕获型分组3。它会匹配一个主机名，由一个或多个数字、字母以及 . 或 - 字符组成。- 会被转义为 - 以防止与表示范围的连字符相混淆。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(?::(\d+))?&lt;/code&gt;：这个可选的因子匹配端口号，它是由一个前置 : 加上一个或多个数字而组成的序列。\d表示一个数字字符。一个或多个数字组成的数字串会被捕获型分组4捕获。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(?:\/([^?#]*))?&lt;/code&gt;：这个因子也是可选的分组，匹配路径。该分组以一个 / 开始。之后的字符类[^?#]以一个^开始，它表示这个类包含除 ? 和 # 之外的所有字符。* 表示这个字符类会被匹配0次或多次。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 我在这里的处理是不严谨的。这个类匹配除 ? 和 # 之外的所有字符，其中包括了行结束符、控制字符、以及其他大量不应在此被匹配的字符。大多数情况下，它会按照我们的预期去做，但某些恶意文本可能会有渗漏进来的风险。不严谨的正则表示式是一个常见的安全漏洞发源地。写不严谨的正则表达式比写严谨的正则表示式要容易的多。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(?:\?([^#]*))?&lt;/code&gt;：这个因子是一个以一个 ? 开始的可选分组。它包含捕获型分组6，这个分组包含0个或多个非#字符。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(?:#(.*))?&lt;/code&gt;：这个因子是以 # 开始的可选分组。. 会匹配除行结束符以外的所有字符。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$&lt;/code&gt;：$表示这个字符串的结束。它保证在这个URL的尾部没有其他更多的内容了。&lt;/p&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;《JavaScript语言精粹》&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.runoob.com/regexp/regexp-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.runoob.com/regexp/regexp-tutorial.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;正则表达式 (regular expression) 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。&lt;/p&gt;
+&lt;p&gt;构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://laixiangran.cn/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://laixiangran.cn/tags/JavaScript/"/>
+    
+      <category term="正则表达式" scheme="http://laixiangran.cn/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS选择器详解</title>
@@ -495,106 +595,6 @@ h1 {
       <category term="JavaScript" scheme="http://laixiangran.cn/tags/JavaScript/"/>
     
       <category term="Object" scheme="http://laixiangran.cn/tags/Object/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript之创建对象</title>
-    <link href="http://laixiangran.cn/2018/04/06/JavaScript%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>http://laixiangran.cn/2018/04/06/JavaScript之正则表达式/</id>
-    <published>2018-04-06T07:00:32.000Z</published>
-    <updated>2018-04-08T14:29:37.201Z</updated>
-    
-    <content type="html">&lt;p&gt;正则表达式 (regular expression) 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。&lt;/p&gt;
-&lt;p&gt;构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与运算符可以将小的表达式结合在一起来创建更大的表达式。正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合。&lt;/p&gt;
-&lt;p&gt;正则表达式是由普通字符（例如字符 a 到 z）以及特殊字符（称为”元字符”）组成的文字模式。模式描述在搜索文本时要匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。&lt;/p&gt;
-&lt;h2 id=&quot;元字符&quot;&gt;&lt;a href=&quot;#元字符&quot; class=&quot;headerlink&quot; title=&quot;元字符&quot;&gt;&lt;/a&gt;元字符&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/64B961BA598C4A7389E10DF8B7E60227?method=download&amp;amp;shareKey=bde4953f7301f4eedbc29d9e9feb8fb8&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;运算符优先级&quot;&gt;&lt;a href=&quot;#运算符优先级&quot; class=&quot;headerlink&quot; title=&quot;运算符优先级&quot;&gt;&lt;/a&gt;运算符优先级&lt;/h2&gt;&lt;p&gt;正则表达式从左到右进行计算，并遵循优先级顺序，这与算术表达式非常类似。&lt;/p&gt;
-&lt;p&gt;相同优先级的从左到右进行运算，不同优先级的运算先高后低&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/api/personal/file/4B6EB93FA452486ABA0EA88EDF8D72BE?method=download&amp;amp;shareKey=c3a31af513efbc05987821e18f495368&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;RegExp对象&quot;&gt;&lt;a href=&quot;#RegExp对象&quot; class=&quot;headerlink&quot; title=&quot;RegExp对象&quot;&gt;&lt;/a&gt;RegExp对象&lt;/h2&gt;&lt;h3 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; patt = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;RegExp&lt;/span&gt;(pattern, modifiers);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 或者更简单的方式:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; patt = &lt;span class=&quot;regexp&quot;&gt;/pattern/m&lt;/span&gt;odifiers;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;pattern（模式） 描述了表达式的模式&lt;/li&gt;
-&lt;li&gt;modifiers(修饰符) 用于指定全局匹配、区分大小写的匹配和多行匹配&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;修饰符&quot;&gt;&lt;a href=&quot;#修饰符&quot; class=&quot;headerlink&quot; title=&quot;修饰符&quot;&gt;&lt;/a&gt;修饰符&lt;/h3&gt;&lt;p&gt;修饰符用于执行区分大小写和全局匹配&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;修饰符&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;i&lt;/td&gt;
-&lt;td&gt;执行对大小写不敏感的匹配&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;g&lt;/td&gt;
-&lt;td&gt;执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;m&lt;/td&gt;
-&lt;td&gt;执行多行匹配&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&quot;对象方法&quot;&gt;&lt;a href=&quot;#对象方法&quot; class=&quot;headerlink&quot; title=&quot;对象方法&quot;&gt;&lt;/a&gt;对象方法&lt;/h3&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;方法&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;compile&lt;/td&gt;
-&lt;td&gt;编译正则表达式&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;exec&lt;/td&gt;
-&lt;td&gt;检索字符串中指定的值。返回找到的值，并确定其位置&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;test&lt;/td&gt;
-&lt;td&gt;检索字符串中指定的值。返回 true 或 false&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h2&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//这是一个用来匹配URL的正则表达式，分组获取不同部分的信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; parse_url = &lt;span class=&quot;regexp&quot;&gt;/^(?:([A-Za-z]+):)?(\/&amp;#123;0,3&amp;#125;)([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; url = &lt;span class=&quot;string&quot;&gt;&quot;http://www.ora.com:80/goodparts?q#fragment&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = parse_url.exec(url);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; names = [&lt;span class=&quot;string&quot;&gt;&quot;url&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;scheme&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;slash&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;host&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;port&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;path&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;query&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;hash&quot;&lt;/span&gt;];&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; names.length; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.writeln(names[i] + &lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt; + result[i] + &lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br/&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//这段代码的输出结果如下：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;url: http:&lt;span class=&quot;comment&quot;&gt;//www.ora.com:80/goodparts?q#fragment&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;scheme: http&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;slash: &lt;span class=&quot;comment&quot;&gt;//&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;host: www.ora.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port: &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;path: goodparts&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;query: q&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hash: fragment&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;下面让我们分解parse_url的各个部分，看看它是如何工作的：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;^&lt;/code&gt;：^字符表示此字符串的开始，它是一个锚，指引exec不要跳过那些不像URL的前缀，只匹配那些从开头就像URL一样的字符串。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;(?:([A-Za-z]+):)?&lt;/code&gt;：这个因子匹配一个协议名，但仅当它后面跟随一个 :（冒号）的时候才匹配。(?: . . .)表示一个非捕获型分组（noncapturing group）。后缀 ? 表示这个分组是可选的，它表示重复0次或1次。( . . .)表示一个捕获型分组。一个捕获型分组会复制它所匹配的文本，并把其放到result数组里。每个捕获型分组都会被指定一个编号。第一个捕获型分组的编号是1，所以该分组所匹配的文本副本会出现在result[1]中。 [ . . .]表示一个字符类。A-Za-z这个字符类包含26个大写字母和26个小写字母。连接字符 - 表示范围从A-Z。后缀 + 表示这个字符类会被匹配一次或多次。这个组后面跟着字符 : ，它会按字面进行匹配。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;(\/{0,3})&lt;/code&gt;：这个因子是捕获型分组2，匹配//。\ /表示应,该匹配 / （斜杠）。它用 \ （反斜杠）来进行转义，这样它就不会被错误地解释为这个正则表达式的结束符。后缀 {0,3} 表示 / 会匹配0~3次。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;([0-9.\-A-Za-z]+)&lt;/code&gt;：这个因子是捕获型分组3。它会匹配一个主机名，由一个或多个数字、字母以及 . 或 - 字符组成。- 会被转义为 - 以防止与表示范围的连字符相混淆。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;(?::(\d+))?&lt;/code&gt;：这个可选的因子匹配端口号，它是由一个前置 : 加上一个或多个数字而组成的序列。\d表示一个数字字符。一个或多个数字组成的数字串会被捕获型分组4捕获。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;(?:\/([^?#]*))?&lt;/code&gt;：这个因子也是可选的分组，匹配路径。该分组以一个 / 开始。之后的字符类[^?#]以一个^开始，它表示这个类包含除 ? 和 # 之外的所有字符。* 表示这个字符类会被匹配0次或多次。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 我在这里的处理是不严谨的。这个类匹配除 ? 和 # 之外的所有字符，其中包括了行结束符、控制字符、以及其他大量不应在此被匹配的字符。大多数情况下，它会按照我们的预期去做，但某些恶意文本可能会有渗漏进来的风险。不严谨的正则表示式是一个常见的安全漏洞发源地。写不严谨的正则表达式比写严谨的正则表示式要容易的多。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;(?:\?([^#]*))?&lt;/code&gt;：这个因子是一个以一个 ? 开始的可选分组。它包含捕获型分组6，这个分组包含0个或多个非#字符。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;(?:#(.*))?&lt;/code&gt;：这个因子是以 # 开始的可选分组。. 会匹配除行结束符以外的所有字符。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$&lt;/code&gt;：$表示这个字符串的结束。它保证在这个URL的尾部没有其他更多的内容了。&lt;/p&gt;
-&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;《JavaScript语言精粹》&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.runoob.com/regexp/regexp-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.runoob.com/regexp/regexp-tutorial.html&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;正则表达式 (regular expression) 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。&lt;/p&gt;
-&lt;p&gt;构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://laixiangran.cn/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://laixiangran.cn/tags/JavaScript/"/>
-    
-      <category term="正则表达式" scheme="http://laixiangran.cn/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
   </entry>
   

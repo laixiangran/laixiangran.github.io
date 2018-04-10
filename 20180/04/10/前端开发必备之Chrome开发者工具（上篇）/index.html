@@ -1,0 +1,1133 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="开发工具,Chrome DevTools," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="本文介绍的 Chrome 开发者工具基于 Chrome 65版本，如果你的 Chrome 开发者工具没有下文提到的那些内容，请检查下 Chrome 的版本
+
+简介Chrome 开发者工具是一套内置于 Google Chrome 中的Web开发和调试工具，可用来对网站进行迭代、调试和分析
+打开 Chrome 开发者工具的方式有：
+
+在Chrome菜单中选择 更多工具 &amp;gt; 开发者工具
+
+在页面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发必备之Chrome开发者工具（上篇）">
+<meta property="og:url" content="http://laixiangran.cn/20180/04/10/前端开发必备之Chrome开发者工具（上篇）/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="本文介绍的 Chrome 开发者工具基于 Chrome 65版本，如果你的 Chrome 开发者工具没有下文提到的那些内容，请检查下 Chrome 的版本
+
+简介Chrome 开发者工具是一套内置于 Google Chrome 中的Web开发和调试工具，可用来对网站进行迭代、调试和分析
+打开 Chrome 开发者工具的方式有：
+
+在Chrome菜单中选择 更多工具 &amp;gt; 开发者工具
+
+在页面">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/A3507E8156AE42F3B0326A495B226B5A?method=download&shareKey=fb1e25c0af925091ccb34fff8a97b683">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/EDF0931D6DB7423D866BF122F117A639?method=download&shareKey=7688496ec45127c6c8b99fd1f68624c3">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/FB2A0A3B05BA452DB7EB1C95808F1D45?method=download&shareKey=92c69864753b36347c982806a3b6a67e">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/716BF54BAECF40E1BC4DEF2C56F7B978?method=download&shareKey=c7afb145cdb82602ff3bac62a1f6e3fc">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/94824373E3544D3FA75FF9135FA8BE49?method=download&shareKey=eb20502260c81c624a3ae0dca96c332f">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/53E83C3674354D5494A90A386B6D70AF?method=download&shareKey=07dff0cd2fb67a1c0ed9c7b5ac01c648">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/D1B7F21966AE4A1883A3F0BC1DF38B9A?method=download&shareKey=17db9dccd10720dce30cafd97a7384e8">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/E190B24D4A214F79818056B35EC9CAB2?method=download&shareKey=6678a03492902606d711f925ca93a1d1">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/08E4B3CC1CA84D2AA49402B552B3EF37?method=download&shareKey=ff0fbdc635e9006458f207d3d7f257a1">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5BA97054797141AA978CB520E010A9D0?method=download&shareKey=3f13bdd3f365f29bce3f2419b6a53aa2">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/A8C2DF5F0B7F485C853A2B9FB9BDDF4D?method=download&shareKey=a59bf457885410291ba06d7ff3a20ffb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/523DAD97F8B24483973A4FB76521D4FC?method=download&shareKey=f079b4ab7bafb670fa75808fcbcdec75">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/9784C48E065A411A85041341BEF879A7?method=download&shareKey=11efaf78e720f0e52304e542af1e621b">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/514ACB057C6F448E8CF94380FDCEF313?method=download&shareKey=45cb5734bfa539ac34133ef1f453687c">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/AD03280DE3894ABD94DE845804A1E077?method=download&shareKey=70fd7c89a2a987df82e0fadaa47e052f">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/333619DF4A2F45EE81532AEFE1797A64?method=download&shareKey=baa501a6dd8f113f613243dd83e2d4b7">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/7B55FBE6167742ADB8E0E9FA5C336AE8?method=download&shareKey=6e91c61f6de8e96c94f2c938655a209c">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/00A3FA97CED8417EA908D072B7A2A515?method=download&shareKey=752b3aa7d95f84b6ab13b98611d4255e">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/D64ADB0B9ED940FFA6D7908F7C31F184?method=download&shareKey=491d520e0575f8fcf3d03dee7d867762">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/103EFD936A314671B320CB857D2CC91F?method=download&shareKey=5eb272cff672ff0cf9a8119172050019">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/B9691018FD19469EAD6817AF2CD66AA3?method=download&shareKey=a73502c3d57fd2196b5444e90fecdf68">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/CE50541F35F2435485C192B28CE9CD13?method=download&shareKey=e02a38e00d3970514be5b22eb071f012">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/E38D5ADD6B244D5F87E7D1025D34D315?method=download&shareKey=eb47ffc051b5863913638e440471c46b">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/E4E9CA6609B44D559BF670BAF2E44B89?method=download&shareKey=83c6528bbabfc0abd57d3aff4d65eccf">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/505ADA0D26674FD5BE5C762F63CA0DC0?method=download&shareKey=748383eaf1e4c8b3e9a3066b9aeca7c0">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/DE496F99F3F744D385E57DC113013007?method=download&shareKey=9d7a5c51b49dc4a0cb239991b70a6787">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/FAE89F85B4F64E558D014D77CEB878AF?method=download&shareKey=2bd08698f74d1844d5e0b03a112be259">
+<meta property="og:updated_time" content="2018-04-10T12:33:45.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端开发必备之Chrome开发者工具（上篇）">
+<meta name="twitter:description" content="本文介绍的 Chrome 开发者工具基于 Chrome 65版本，如果你的 Chrome 开发者工具没有下文提到的那些内容，请检查下 Chrome 的版本
+
+简介Chrome 开发者工具是一套内置于 Google Chrome 中的Web开发和调试工具，可用来对网站进行迭代、调试和分析
+打开 Chrome 开发者工具的方式有：
+
+在Chrome菜单中选择 更多工具 &amp;gt; 开发者工具
+
+在页面">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/A3507E8156AE42F3B0326A495B226B5A?method=download&shareKey=fb1e25c0af925091ccb34fff8a97b683">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 前端开发必备之Chrome开发者工具（上篇） | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端开发必备之Chrome开发者工具（上篇）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="20180-04-10T20:33:02+08:00" content="20180-04-10">
+              20180-04-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/20180/04/10/前端开发必备之Chrome开发者工具（上篇）/" class="leancloud_visitors" data-flag-title="前端开发必备之Chrome开发者工具（上篇）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文介绍的 Chrome 开发者工具基于 Chrome 65版本，如果你的 Chrome 开发者工具没有下文提到的那些内容，请检查下 Chrome 的版本</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Chrome 开发者工具是一套内置于 Google Chrome 中的Web开发和调试工具，可用来对网站进行迭代、调试和分析</p>
+<p>打开 Chrome 开发者工具的方式有：</p>
+<ul>
+<li><p>在Chrome菜单中选择 更多工具 &gt; 开发者工具</p>
+</li>
+<li><p>在页面元素上右键点击，选择 “检查”</p>
+</li>
+<li><p>使用 快捷键 Ctrl+Shift+I (Windows) 或 Cmd+Opt+I (Mac)。<a href="https://developers.google.com/web/tools/chrome-devtools/shortcuts" target="_blank" rel="external">更多快捷键https://developers.google.com/web/tools/chrome-devtools/shortcuts</a></p>
+</li>
+</ul>
+<p>Chrome 开发者工具主要包含以下10个部分：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/A3507E8156AE42F3B0326A495B226B5A?method=download&amp;shareKey=fb1e25c0af925091ccb34fff8a97b683" alt=""></p>
+<ol>
+<li>设备模式（device toolbar）</li>
+<li>元素面板（Elements）</li>
+<li>控制台面板（Console）</li>
+<li>源代码面板（Sources）</li>
+<li>网络面板（Network）</li>
+<li>性能面板（Performance）</li>
+<li>内存面板（Memory）</li>
+<li>应用面板（Application）</li>
+<li>安全面板（Security）</li>
+<li>主菜单（Customize and control DevTools）</li>
+</ol>
+<h2 id="设备模式（device-toolbar）"><a href="#设备模式（device-toolbar）" class="headerlink" title="设备模式（device toolbar）"></a>设备模式（device toolbar）</h2><p>使用 Chrome DevTools 的 Device Mode 打造移动设备优先的完全自适应式网站</p>
+<p><strong>该模式不可替代真实设备测试</strong></p>
+<p>切换 Device Mode 按钮可以打开或关闭 Device Mode</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/EDF0931D6DB7423D866BF122F117A639?method=download&amp;shareKey=7688496ec45127c6c8b99fd1f68624c3" alt=""></p>
+<h3 id="选择设备"><a href="#选择设备" class="headerlink" title="选择设备"></a>选择设备</h3><p><img src="https://note.youdao.com/yws/api/personal/file/FB2A0A3B05BA452DB7EB1C95808F1D45?method=download&amp;shareKey=92c69864753b36347c982806a3b6a67e" alt=""></p>
+<p>通过该视图控件，你可以设定下面两种模式：</p>
+<ol>
+<li><strong>自适应。</strong> 使视口可以通过任意一侧的大手柄随意调整大小</li>
+<li><strong>特定设备。</strong> 将视口锁定为特定设备确切的视口大小，并模拟特定设备特性</li>
+</ol>
+<h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>媒体查询是自适应网页设计的基本部分。要查看媒体查询检查器，请在三圆点菜单中点击 Show Media queries。DevTools会在样式表中检测媒体查询，并在顶端标尺中将它们显示为彩色条形</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/716BF54BAECF40E1BC4DEF2C56F7B978?method=download&amp;shareKey=c7afb145cdb82602ff3bac62a1f6e3fc" alt=""></p>
+<p>用彩色标记的媒体查询示例如下：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/94824373E3544D3FA75FF9135FA8BE49?method=download&amp;shareKey=eb20502260c81c624a3ae0dca96c332f" alt=""></p>
+<h4 id="快速预览媒体查询"><a href="#快速预览媒体查询" class="headerlink" title="快速预览媒体查询"></a>快速预览媒体查询</h4><p>点击媒体查询条形，调整视口大小和预览适合目标屏幕大小的样式</p>
+<h4 id="查看关联的-CSS"><a href="#查看关联的-CSS" class="headerlink" title="查看关联的 CSS"></a>查看关联的 CSS</h4><p>右键点击某个条形，查看媒体查询在 CSS 中何处定义并跳到源代码中的定义</p>
+<h2 id="元素面板（Elements）"><a href="#元素面板（Elements）" class="headerlink" title="元素面板（Elements）"></a>元素面板（Elements）</h2><p>使用元素面板可以自由的操作DOM和CSS来迭代布局和设计页面</p>
+<h3 id="编辑样式"><a href="#编辑样式" class="headerlink" title="编辑样式"></a>编辑样式</h3><p>使用 <code>Styles</code> 窗格可以修改与元素关联的 CSS 样式</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/53E83C3674354D5494A90A386B6D70AF?method=download&amp;shareKey=07dff0cd2fb67a1c0ed9c7b5ac01c648" alt=""></p>
+<h4 id="添加、启用和停用-CSS-类"><a href="#添加、启用和停用-CSS-类" class="headerlink" title="添加、启用和停用 CSS 类"></a>添加、启用和停用 CSS 类</h4><p>点击 .cls 按钮可以查看与当前选定元素关联的所有 CSS 类。 从这里，您可以执行以下操作：</p>
+<ul>
+<li>启用或停用当前与元素关联的类</li>
+<li>向元素添加新类</li>
+</ul>
+<p><img src="https://note.youdao.com/yws/api/personal/file/D1B7F21966AE4A1883A3F0BC1DF38B9A?method=download&amp;shareKey=17db9dccd10720dce30cafd97a7384e8" alt=""></p>
+<h4 id="添加或移除动态样式（伪类）"><a href="#添加或移除动态样式（伪类）" class="headerlink" title="添加或移除动态样式（伪类）"></a>添加或移除动态样式（伪类）</h4><p>您可以在元素上手动设置动态伪类选择器（例如 :active、:focus、:hover 和 :visited）</p>
+<p>可以通过两种方式在元素上设置动态状态：</p>
+<ul>
+<li>在 Elements 面板内右键点击某个元素，然后从菜单中选择目标伪类，将其启用或停用</li>
+</ul>
+<p><img src="https://note.youdao.com/yws/api/personal/file/E190B24D4A214F79818056B35EC9CAB2?method=download&amp;shareKey=6678a03492902606d711f925ca93a1d1" alt=""></p>
+<ul>
+<li>在 Elements 面板中选择元素，然后在 Styles 窗格中点击 :hov 按钮，使用复选框启用或停用当前选定元素的选择器</li>
+</ul>
+<p><img src="https://note.youdao.com/yws/api/personal/file/08E4B3CC1CA84D2AA49402B552B3EF37?method=download&amp;shareKey=ff0fbdc635e9006458f207d3d7f257a1" alt=""></p>
+<h4 id="快速向样式规则添加背景色或颜色"><a href="#快速向样式规则添加背景色或颜色" class="headerlink" title="快速向样式规则添加背景色或颜色"></a>快速向样式规则添加背景色或颜色</h4><p>Styles 窗格提供了一个用于向样式规则快速添加 text-shadow、box-shadow、color 和 background-color 声明的快捷方式</p>
+<p>样式规则的右下角有一个由三个点组成的图标。您需要将鼠标悬停到样式规则上才能看到这个图标</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/5BA97054797141AA978CB520E010A9D0?method=download&amp;shareKey=3f13bdd3f365f29bce3f2419b6a53aa2" alt=""></p>
+<p>将鼠标悬停到此图标上可以调出添加 text-shadow、box-shadow、color 和 background-color 声明的快捷方式。</p>
+<h4 id="使用-Color-Picker-修改颜色"><a href="#使用-Color-Picker-修改颜色" class="headerlink" title="使用 Color Picker 修改颜色"></a>使用 Color Picker 修改颜色</h4><p>要打开 Color Picker，请在 Styles 窗格中查找一个定义颜色的 CSS 声明（例如 color: blue）。 声明值的左侧有一个带颜色的小正方形。 正方形的颜色与声明值匹配。 点击小正方形可以打开 Color Picker</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/A8C2DF5F0B7F485C853A2B9FB9BDDF4D?method=download&amp;shareKey=a59bf457885410291ba06d7ff3a20ffb" alt=""></p>
+<p>您可以通过多种方式与 Color Picker 交互：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/523DAD97F8B24483973A4FB76521D4FC?method=download&amp;shareKey=f079b4ab7bafb670fa75808fcbcdec75" alt=""></p>
+<ol>
+<li><strong>取色器。</strong> 通过鼠标悬停到某种颜色上去获取颜色值。</li>
+<li><strong>当前颜色。</strong> 当前值的可视表示。</li>
+<li><strong>当前值。</strong> 当前颜色的十六进制、RGBA 或 HSL 表示。</li>
+<li><strong>调色板。</strong>  当前生成的几组颜色。</li>
+<li><strong>着色和阴影选择器。</strong></li>
+<li><strong>色调选择器。</strong></li>
+<li><strong>不透明度选择器。</strong></li>
+<li><strong>颜色值选择器。</strong> 点击可以在 RGBA、HSL 和十六进制之间切换。</li>
+<li><strong>调色板选择器。</strong> 点击可以选择不同的模板。</li>
+</ol>
+<h3 id="编辑-DOM"><a href="#编辑-DOM" class="headerlink" title="编辑 DOM"></a>编辑 DOM</h3><p>Elements 面板中的 DOM 树视图可以显示当前网页的 DOM 结构。通过 DOM 更新实时修改页面的内容和结构</p>
+<h4 id="隐藏-DOM"><a href="#隐藏-DOM" class="headerlink" title="隐藏 DOM"></a>隐藏 DOM</h4><p>两种方式：</p>
+<ul>
+<li>右键选择某个元素，然后选择 Hide element</li>
+<li>选中某个元素，然后使用快捷键 H</li>
+</ul>
+<h4 id="设置-DOM-断点"><a href="#设置-DOM-断点" class="headerlink" title="设置 DOM 断点"></a>设置 DOM 断点</h4><p>设置 DOM 断点以调试复杂的 JavaScript 应用。例如，如果您的 JavaScript 正在更改 DOM 元素的样式，请将 DOM 断点设置为在元素属性修改时触发。在发生以下一种 DOM 更改时触发断点：子树更改、属性更改、节点移除</p>
+<h5 id="子树修改"><a href="#子树修改" class="headerlink" title="子树修改"></a>子树修改</h5><p><strong>设置子树修改断点：右键选择某个元素，然后选择 Break on –&gt; subtree modifications</strong></p>
+<p>添加、移除或移动子元素时将触发子树修改断点。例如，如果您在 main-content 元素上设置子树修改，以下代码将触发断点：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">'main-content'</span>);</span><br><span class="line"><span class="comment">//modify the element's subtree.</span></span><br><span class="line"><span class="keyword">var</span> mySpan = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>);</span><br><span class="line">element.appendChild( mySpan );</span><br></pre></td></tr></table></figure>
+<h5 id="属性修改"><a href="#属性修改" class="headerlink" title="属性修改"></a>属性修改</h5><p><strong>设置属性修改断点：右键选择某个元素，然后选择 Break on –&gt; attribute modifications</strong></p>
+<p>动态更改元素的属性 (class, id, name) 时将发生属性修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">'main-content'</span>);</span><br><span class="line"><span class="comment">// class attribute of element has been modified.</span></span><br><span class="line">element.className = <span class="string">'active'</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="节点移除"><a href="#节点移除" class="headerlink" title="节点移除"></a>节点移除</h5><p><strong>设置节点移除断点：右键选择某个元素，然后选择 Break on –&gt; node removal</strong></p>
+<p>从 DOM 中移除有问题的节点时将触发节点移除修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'main-content'</span>).remove();</span><br></pre></td></tr></table></figure>
+<h4 id="查看元素事件侦听器"><a href="#查看元素事件侦听器" class="headerlink" title="查看元素事件侦听器"></a>查看元素事件侦听器</h4><p>在 Event Listeners 窗格中查看与 DOM 节点关联的 JavaScript 事件侦听器</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9784C48E065A411A85041341BEF879A7?method=download&amp;shareKey=11efaf78e720f0e52304e542af1e621b" alt=""></p>
+<p>启用 Ancestors 复选框时查看祖先实体事件侦听器，即除了当前选定节点的事件侦听器外，还会显示其祖先实体的事件侦听器</p>
+<p>启用 Framework listeners 复选框时查看框架侦听器，DevTools 会自动解析事件代码的框架或内容库封装部分，然后告诉您实际将事件绑定到代码中的位置</p>
+<h2 id="控制台面板（Console）"><a href="#控制台面板（Console）" class="headerlink" title="控制台面板（Console）"></a>控制台面板（Console）</h2><p>在开发期间，可以使用控制台面板记录诊断信息，或者使用它作为 shell 在页面上与 JavaScript 交互</p>
+<h3 id="消息堆叠"><a href="#消息堆叠" class="headerlink" title="消息堆叠"></a>消息堆叠</h3><p>如果一条消息连续重复，而不是在新行上输出每一个消息实例，控制台将“堆叠”消息并在左侧外边距显示一个数字。此数字表示该消息已重复的次数</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/514ACB057C6F448E8CF94380FDCEF313?method=download&amp;shareKey=45cb5734bfa539ac34133ef1f453687c" alt=""></p>
+<p>如果您倾向于为每一个日志使用一个独特的行条目，请在 DevTools 设置中启用 Show timestamps</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/AD03280DE3894ABD94DE845804A1E077?method=download&amp;shareKey=70fd7c89a2a987df82e0fadaa47e052f" alt=""></p>
+<p>由于每一条消息的时间戳均不同，因此，每一条消息都将显示在各自的行上</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/333619DF4A2F45EE81532AEFE1797A64?method=download&amp;shareKey=baa501a6dd8f113f613243dd83e2d4b7" alt=""></p>
+<h3 id="选择执行环境"><a href="#选择执行环境" class="headerlink" title="选择执行环境"></a>选择执行环境</h3><p>以下屏幕截图中以蓝色突出显示的下拉菜单称为 Execution Context Selector</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/7B55FBE6167742ADB8E0E9FA5C336AE8?method=download&amp;shareKey=6e91c61f6de8e96c94f2c938655a209c" alt=""></p>
+<p>通常，您会看到此环境设置为 top（页面的顶部框架）。</p>
+<p>其他框架和扩展程序在其自身的环境中运行。要使用这些其他环境，您需要从下拉菜单中选中它们。 例如，如果您要查看 <code>&lt;iframe&gt;</code> 元素的日志输出，并修改该环境中存在的某个变量，您需要从 Execution Context Selector 下拉菜单中选中该元素。</p>
+<p>控制台默认设置为 top 环境，除非您通过检查其他环境中的某个元素来访问 DevTools。 例如，如果您检查 <code>&lt;iframe&gt;</code> 中的一个 <code>&lt;p&gt;</code> 元素，那么，DevTools 将 Execution Context Selector 设置为该 <code>&lt;iframe&gt;</code> 的环境。</p>
+<p>当您在 top 以外的环境中操作时，DevTools 将 Execution Context Selector 突出显示为红色，如下面的屏幕截图中所示。 这是因为开发者很少需要在 top 以外的任意环境中操作。 输入一个变量，期待返回一个值，只是为了查看该变量是否为 undefined（因为该变量是在不同环境中定义的），这会非常令人困惑</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/00A3FA97CED8417EA908D072B7A2A515?method=download&amp;shareKey=752b3aa7d95f84b6ab13b98611d4255e" alt=""></p>
+<h2 id="源代码面板（Sources）"><a href="#源代码面板（Sources）" class="headerlink" title="源代码面板（Sources）"></a>源代码面板（Sources）</h2><p>在源代码面板中设置断点来调试 JavaScript ，或者通过Workspaces（工作区）连接本地文件来使用开发者工具的实时编辑器</p>
+<h3 id="格式化混淆代码"><a href="#格式化混淆代码" class="headerlink" title="格式化混淆代码"></a>格式化混淆代码</h3><p>在某些情况下，我们需要对混淆的代码做一定的调试，但这是我们看到的代码是乱成一团，毫无格式可言：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/D64ADB0B9ED940FFA6D7908F7C31F184?method=download&amp;shareKey=491d520e0575f8fcf3d03dee7d867762" alt=""></p>
+<p>那我们可以点击下方的格式化按钮对代码进行格式化：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/103EFD936A314671B320CB857D2CC91F?method=download&amp;shareKey=5eb272cff672ff0cf9a8119172050019" alt=""></p>
+<h3 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h3><h4 id="代码行断点"><a href="#代码行断点" class="headerlink" title="代码行断点"></a>代码行断点</h4><p>当我们知道需要调试的代码的确切位置的时候，使用代码行断点</p>
+<p>DevTools 设置代码行断点：</p>
+<ol>
+<li>点击 Sources 选项卡。</li>
+<li>打开包含您想要调试的代码行的文件。</li>
+<li>找到该代码行。</li>
+<li>点击左边的行号，这样一个蓝色图标就显示在行号上，表明该代码行设置好断点了。</li>
+</ol>
+<p><img src="https://note.youdao.com/yws/api/personal/file/B9691018FD19469EAD6817AF2CD66AA3?method=download&amp;shareKey=a73502c3d57fd2196b5444e90fecdf68" alt=""></p>
+<p>当然你也可以在代码中使用 debugger 来设置代码行断点，效果和在 DevTools 中设置是一样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b'</span>);</span><br><span class="line"><span class="keyword">debugger</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'c'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="条件代码行断点"><a href="#条件代码行断点" class="headerlink" title="条件代码行断点"></a>条件代码行断点</h4><p>当我们知道需要调试的代码的确切位置且在满足条件下才调试的时候，使用条件代码行断点</p>
+<p>设置条件的代码行断点：</p>
+<ol>
+<li>点击 Sources 选项卡。</li>
+<li>打开包含您想要调试的代码行的文件。</li>
+<li>找到该代码行。</li>
+<li>右键点击左边的行号。</li>
+<li>选择添加条件断点。代码行下面会显示一个对话框。</li>
+<li>在对话框中输入你的条件。</li>
+<li>按Enter激活断点。行号上出现橙色图标。</li>
+</ol>
+<p><img src="https://note.youdao.com/yws/api/personal/file/CE50541F35F2435485C192B28CE9CD13?method=download&amp;shareKey=e02a38e00d3970514be5b22eb071f012" alt=""></p>
+<h4 id="DOM更改断点"><a href="#DOM更改断点" class="headerlink" title="DOM更改断点"></a>DOM更改断点</h4><p>当您想要更改DOM节点或其子节点的代码时，使用DOM更改断点</p>
+<p>设置DOM更改断点：</p>
+<ol>
+<li>切换到 Elements 面板。</li>
+<li>找到您想设置断点的元素并右键单击该元素。</li>
+<li>将鼠标悬停在 Break on 上，然后选择 subtree modifications，attribute modifications或node removal。</li>
+</ol>
+<p><img src="https://note.youdao.com/yws/api/personal/file/E38D5ADD6B244D5F87E7D1025D34D315?method=download&amp;shareKey=eb47ffc051b5863913638e440471c46b" alt=""></p>
+<h4 id="XHR断点"><a href="#XHR断点" class="headerlink" title="XHR断点"></a>XHR断点</h4><p>当XHR的请求URL包含指定字符串时，如果要中断，使用XHR断点</p>
+<p>设置XHR断点：</p>
+<ol>
+<li>点击 Sources 选项卡。</li>
+<li>展开 XHR Breakpoints 窗格。</li>
+<li>点击添加断点。</li>
+<li>输入你想要打断的字符串。当此字符串出现在XHR的请求URL中的任何位置时，DevTools会暂停。</li>
+<li>按Enter确认。</li>
+</ol>
+<p><img src="https://note.youdao.com/yws/api/personal/file/E4E9CA6609B44D559BF670BAF2E44B89?method=download&amp;shareKey=83c6528bbabfc0abd57d3aff4d65eccf" alt=""></p>
+<h4 id="事件监听器断点"><a href="#事件监听器断点" class="headerlink" title="事件监听器断点"></a>事件监听器断点</h4><p>当想要暂停事件侦听器代码时，使用事件侦听器断点</p>
+<p>设置事件监听器断点：</p>
+<ol>
+<li>点击 Sources 选项卡。</li>
+<li>展开 “Event Listener Breakpoints” 窗格。DevTools显示事件类别的列表，例如动画。</li>
+<li>选中这些类别中的一个可以暂停该类别的任何事件，或者展开类别并检查特定事件。</li>
+</ol>
+<p><img src="https://note.youdao.com/yws/api/personal/file/505ADA0D26674FD5BE5C762F63CA0DC0?method=download&amp;shareKey=748383eaf1e4c8b3e9a3066b9aeca7c0" alt=""></p>
+<h4 id="异常断点"><a href="#异常断点" class="headerlink" title="异常断点"></a>异常断点</h4><p>当您想暂停引发捕获或未捕获异常的代码行时，使用异常断点</p>
+<p>设置异常断点：</p>
+<ol>
+<li>点击 Sources 选项卡。</li>
+<li>点击暂停<img src="https://note.youdao.com/yws/api/personal/file/DE496F99F3F744D385E57DC113013007?method=download&amp;shareKey=9d7a5c51b49dc4a0cb239991b70a6787" alt="">，启用后变成蓝色。</li>
+<li>（可选）如果除了未捕获的异常外，还想暂停捕获的异常，请选中 “Pause on caught exceptions” 复选框。</li>
+</ol>
+<p><img src="https://note.youdao.com/yws/api/personal/file/FAE89F85B4F64E558D014D77CEB878AF?method=download&amp;shareKey=2bd08698f74d1844d5e0b03a112be259" alt=""></p>
+<h4 id="功能断点"><a href="#功能断点" class="headerlink" title="功能断点"></a>功能断点</h4><p>调用 debug(functionName) 来给函数 functionName 进行断点调试</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = a + b; <span class="comment">// DevTools pauses on this line.</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">debug(sum); <span class="comment">// Pass the function object, not a string.</span></span><br><span class="line">sum();</span><br></pre></td></tr></table></figure>
+<h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developers.google.com/web/tools/chrome-devtools/" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/开发工具/" rel="tag">#开发工具</a>
+          
+            <a href="/tags/Chrome-DevTools/" rel="tag">#Chrome DevTools</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/08/JavaScript之正则表达式/" rel="next" title="JavaScript之正则表达式">
+                <i class="fa fa-chevron-left"></i> JavaScript之正则表达式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设备模式（device-toolbar）"><span class="nav-number">2.</span> <span class="nav-text">设备模式（device toolbar）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择设备"><span class="nav-number">2.1.</span> <span class="nav-text">选择设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#媒体查询"><span class="nav-number">2.2.</span> <span class="nav-text">媒体查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#快速预览媒体查询"><span class="nav-number">2.2.1.</span> <span class="nav-text">快速预览媒体查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看关联的-CSS"><span class="nav-number">2.2.2.</span> <span class="nav-text">查看关联的 CSS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素面板（Elements）"><span class="nav-number">3.</span> <span class="nav-text">元素面板（Elements）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑样式"><span class="nav-number">3.1.</span> <span class="nav-text">编辑样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加、启用和停用-CSS-类"><span class="nav-number">3.1.1.</span> <span class="nav-text">添加、启用和停用 CSS 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加或移除动态样式（伪类）"><span class="nav-number">3.1.2.</span> <span class="nav-text">添加或移除动态样式（伪类）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速向样式规则添加背景色或颜色"><span class="nav-number">3.1.3.</span> <span class="nav-text">快速向样式规则添加背景色或颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-Color-Picker-修改颜色"><span class="nav-number">3.1.4.</span> <span class="nav-text">使用 Color Picker 修改颜色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑-DOM"><span class="nav-number">3.2.</span> <span class="nav-text">编辑 DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏-DOM"><span class="nav-number">3.2.1.</span> <span class="nav-text">隐藏 DOM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置-DOM-断点"><span class="nav-number">3.2.2.</span> <span class="nav-text">设置 DOM 断点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子树修改"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">子树修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#属性修改"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">属性修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#节点移除"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">节点移除</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看元素事件侦听器"><span class="nav-number">3.2.3.</span> <span class="nav-text">查看元素事件侦听器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制台面板（Console）"><span class="nav-number">4.</span> <span class="nav-text">控制台面板（Console）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消息堆叠"><span class="nav-number">4.1.</span> <span class="nav-text">消息堆叠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择执行环境"><span class="nav-number">4.2.</span> <span class="nav-text">选择执行环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源代码面板（Sources）"><span class="nav-number">5.</span> <span class="nav-text">源代码面板（Sources）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化混淆代码"><span class="nav-number">5.1.</span> <span class="nav-text">格式化混淆代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断点调试"><span class="nav-number">5.2.</span> <span class="nav-text">断点调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码行断点"><span class="nav-number">5.2.1.</span> <span class="nav-text">代码行断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件代码行断点"><span class="nav-number">5.2.2.</span> <span class="nav-text">条件代码行断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM更改断点"><span class="nav-number">5.2.3.</span> <span class="nav-text">DOM更改断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XHR断点"><span class="nav-number">5.2.4.</span> <span class="nav-text">XHR断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件监听器断点"><span class="nav-number">5.2.5.</span> <span class="nav-text">事件监听器断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常断点"><span class="nav-number">5.2.6.</span> <span class="nav-text">异常断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#功能断点"><span class="nav-number">5.2.7.</span> <span class="nav-text">功能断点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待续…"><span class="nav-number">6.</span> <span class="nav-text">未完待续…</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

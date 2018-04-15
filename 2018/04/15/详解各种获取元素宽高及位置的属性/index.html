@@ -67,13 +67,18 @@
 <meta property="og:description" content="offsetWidth / offsetHeightoffsetWidthHTMLElement.offsetWidth 是一个只读属性，返回一个元素的布局宽度。一个典型的（各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(widt">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/3403949EF23A4165A295621E70E4AAEA?method=download&shareKey=cb35067568c854b1179977148689e8bb">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/9E5D8822E2EC4A58A60C17826387DBD2?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/12B3BC8C95E846E584CBC6703A0A8FBF?method=download&shareKey=cb35067568c854b1179977148689e8bb">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/970B96B99288400795E5D2CA5FBE6238?method=download&shareKey=cb35067568c854b1179977148689e8bb">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/C0AE3BA00BC0475986ABF42B4465696A?method=download&shareKey=cb35067568c854b1179977148689e8bb">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/667080A119BF4AE698BB5FEE8480C254?method=download&shareKey=cb35067568c854b1179977148689e8bb">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/15695A3728724754BF70BAC13CB50BF4?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/80D13E491CAE4D02BD499B98BAAA31AB?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/590E4CD6D5AD41ABA2689EC8D0B2C085?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/9BD9883353194171B51873913009ACB8?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/9BD9883353194171B51873913009ACB8?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/00A0FF820A354A6B8BE794656DA52A1A?method=download&shareKey=cb35067568c854b1179977148689e8bb">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/8367484635944936B19B91C796320E05?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/00A0FF820A354A6B8BE794656DA52A1A?method=download&shareKey=cb35067568c854b1179977148689e8bb">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/0F43C8692C024214BD2DA12C62CCC217?method=download&shareKey=cb35067568c854b1179977148689e8bb">
-<meta property="og:updated_time" content="2018-04-15T14:31:53.468Z">
+<meta property="og:updated_time" content="2018-04-15T14:51:44.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="详解各种获取元素宽高及位置的属性">
 <meta name="twitter:description" content="offsetWidth / offsetHeightoffsetWidthHTMLElement.offsetWidth 是一个只读属性，返回一个元素的布局宽度。一个典型的（各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(widt">
@@ -310,7 +315,8 @@
 <p>对于文档的body对象，它包括代替元素的CSS高度线性总含量高。浮动元素的向下延伸内容高度是被忽略的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> offsetHeight = element.offsetHeight;</span><br></pre></td></tr></table></figure>
 <p><img src="https://note.youdao.com/yws/api/personal/file/9E5D8822E2EC4A58A60C17826387DBD2?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
-<h2 id="offsetTop-offsetLeft"><a href="#offsetTop-offsetLeft" class="headerlink" title="offsetTop / offsetLeft"></a>offsetTop / offsetLeft</h2><p>介绍这两个属性之前，先介绍下 offsetParent 属性，这样有助于理解。</p>
+<h2 id="offsetTop-offsetLeft"><a href="#offsetTop-offsetLeft" class="headerlink" title="offsetTop / offsetLeft"></a>offsetTop / offsetLeft</h2><p><img src="https://note.youdao.com/yws/api/personal/file/12B3BC8C95E846E584CBC6703A0A8FBF?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<p>介绍这两个属性之前，先介绍下 offsetParent 属性，这样有助于理解。</p>
 <h3 id="offsetParent"><a href="#offsetParent" class="headerlink" title="offsetParent"></a>offsetParent</h3><p>HTMLElement.offsetParent 是一个只读属性，返回一个指向最近的（closest，指包含层级上的最近）包含该元素的定位元素。如果没有定位的元素，则 offsetParent 为最近的 table, table cell 或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 “none” 时，offsetParent 返回 null。</p>
 <p><strong>offsetParent 很有用，因为 offsetTop 和 offsetLeft 都是相对于其内边距边界的。</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> offsetParent = element.offsetParent;</span><br></pre></td></tr></table></figure>
@@ -329,19 +335,22 @@
 <p><img src="https://note.youdao.com/yws/api/personal/file/C0AE3BA00BC0475986ABF42B4465696A?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
 <h2 id="clientTop-clientLeft"><a href="#clientTop-clientLeft" class="headerlink" title="clientTop / clientLeft"></a>clientTop / clientLeft</h2><h3 id="clientTop"><a href="#clientTop" class="headerlink" title="clientTop"></a>clientTop</h3><p>Element.clientTop 是一个只读属性，表示一个元素顶部边框的宽度（以像素表示）。不包括顶部外边距或内边距。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clientTop = element.clientTop;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/80D13E491CAE4D02BD499B98BAAA31AB?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
 <h3 id="clientLeft"><a href="#clientLeft" class="headerlink" title="clientLeft"></a>clientLeft</h3><p>Element.clientLeft 是一个只读属性，表示一个元素的左边框的宽度，以像素表示。如果元素的文本方向是从右向左（RTL, right-to-left），并且由于内容溢出导致左边出现了一个垂直滚动条，则该属性包括滚动条的宽度。clientLeft 不包括左外边距和左内边距。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clientLeft = element.clientLeft;</span><br></pre></td></tr></table></figure>
-<h2 id="innerWidth-innerHeight"><a href="#innerWidth-innerHeight" class="headerlink" title="innerWidth / innerHeight"></a>innerWidth / innerHeight</h2><h3 id="innerWidth"><a href="#innerWidth" class="headerlink" title="innerWidth"></a>innerWidth</h3><p>window.innerWidth 是一个只读属性，表示浏览器视口（viewport）宽度（单位：像素），如果存在垂直滚动条则包括它。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/590E4CD6D5AD41ABA2689EC8D0B2C085?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h2 id="innerWidth-innerHeight"><a href="#innerWidth-innerHeight" class="headerlink" title="innerWidth / innerHeight"></a>innerWidth / innerHeight</h2><p><img src="https://note.youdao.com/yws/api/personal/file/9BD9883353194171B51873913009ACB8?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h3 id="innerWidth"><a href="#innerWidth" class="headerlink" title="innerWidth"></a>innerWidth</h3><p>window.innerWidth 是一个只读属性，表示浏览器视口（viewport）宽度（单位：像素），如果存在垂直滚动条则包括它。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> innerWidth = <span class="built_in">window</span>.innerWidth;</span><br></pre></td></tr></table></figure>
 <h3 id="innerHeight"><a href="#innerHeight" class="headerlink" title="innerHeight"></a>innerHeight</h3><p>window.innerHeight 是一个只读属性，表示浏览器窗口的视口（viewport）高度（以像素为单位），如果存在水平滚动条则包括它。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> innerHeight = <span class="built_in">window</span>.innerHeight;</span><br></pre></td></tr></table></figure>
-<p><img src="https://note.youdao.com/yws/api/personal/file/667080A119BF4AE698BB5FEE8480C254?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
-<h2 id="outerWidth-outerHeight"><a href="#outerWidth-outerHeight" class="headerlink" title="outerWidth / outerHeight"></a>outerWidth / outerHeight</h2><h3 id="outerWidth"><a href="#outerWidth" class="headerlink" title="outerWidth"></a>outerWidth</h3><p>Window.outerWidth 是一个只读属性，表示整个浏览器窗口的宽度，包括侧边栏（如果存在）、窗口镶边（window chrome）和调正窗口大小的边框（window resizing borders/handles）。</p>
+<h2 id="outerWidth-outerHeight"><a href="#outerWidth-outerHeight" class="headerlink" title="outerWidth / outerHeight"></a>outerWidth / outerHeight</h2><p><img src="https://note.youdao.com/yws/api/personal/file/9BD9883353194171B51873913009ACB8?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h3 id="outerWidth"><a href="#outerWidth" class="headerlink" title="outerWidth"></a>outerWidth</h3><p>Window.outerWidth 是一个只读属性，表示整个浏览器窗口的宽度，包括侧边栏（如果存在）、窗口镶边（window chrome）和调正窗口大小的边框（window resizing borders/handles）。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> outerWidth = <span class="built_in">window</span>.outerWidth;</span><br></pre></td></tr></table></figure>
 <h3 id="outerHeight"><a href="#outerHeight" class="headerlink" title="outerHeight"></a>outerHeight</h3><p>Window.outerHeight 是一个只读属性，表示获取整个浏览器窗口的高度（单位：像素），包括侧边栏（如果存在）、窗口镶边（window chrome）和窗口调正边框（window resizing borders/handles）。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> outerHeight = <span class="built_in">window</span>.outerHeight;</span><br></pre></td></tr></table></figure>
-<p><img src="https://note.youdao.com/yws/api/personal/file/15695A3728724754BF70BAC13CB50BF4?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
-<h2 id="scrollTop-scrollLeft"><a href="#scrollTop-scrollLeft" class="headerlink" title="scrollTop / scrollLeft"></a>scrollTop / scrollLeft</h2><h3 id="scrollTop"><a href="#scrollTop" class="headerlink" title="scrollTop"></a>scrollTop</h3><p>Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。</p>
+<h2 id="scrollTop-scrollLeft"><a href="#scrollTop-scrollLeft" class="headerlink" title="scrollTop / scrollLeft"></a>scrollTop / scrollLeft</h2><p><img src="https://note.youdao.com/yws/api/personal/file/00A0FF820A354A6B8BE794656DA52A1A?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h3 id="scrollTop"><a href="#scrollTop" class="headerlink" title="scrollTop"></a>scrollTop</h3><p>Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。</p>
 <p>一个元素的 scrollTop 值是这个元素的顶部到它的最顶部可见内容（的顶部）的距离的度量。当一个元素的内容没有产生垂直方向的滚动条，那么它的 scrollTop 值为0。</p>
 <p>scrollTop 可以被设置为任何整数值，同时注意：</p>
 <ul>
@@ -360,7 +369,8 @@
 <li>如果给scrollLeft 设置的值大于元素内容最大宽度，那么scrollLeft 的值将被设为元素最大宽度。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  scrollLeft = element.scrollLeft; <span class="comment">// 获取</span></span><br><span class="line">element.scrollLeft = intValue; <span class="comment">// 设置</span></span><br></pre></td></tr></table></figure>
-<h2 id="scrollWidth-scrollHeight"><a href="#scrollWidth-scrollHeight" class="headerlink" title="scrollWidth / scrollHeight"></a>scrollWidth / scrollHeight</h2><h3 id="scrollWidth"><a href="#scrollWidth" class="headerlink" title="scrollWidth"></a>scrollWidth</h3><p>Element.scrollWidth 是一个只读属性，以px为单位返回元素的内容区域宽度或元素的本身的宽度中更大的那个值。若元素的宽度大于其内容的区域（例如，元素存在滚动条时）, scrollWidth 的值要大于 clientWidth。</p>
+<h2 id="scrollWidth-scrollHeight"><a href="#scrollWidth-scrollHeight" class="headerlink" title="scrollWidth / scrollHeight"></a>scrollWidth / scrollHeight</h2><p><img src="https://note.youdao.com/yws/api/personal/file/00A0FF820A354A6B8BE794656DA52A1A?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h3 id="scrollWidth"><a href="#scrollWidth" class="headerlink" title="scrollWidth"></a>scrollWidth</h3><p>Element.scrollWidth 是一个只读属性，以px为单位返回元素的内容区域宽度或元素的本身的宽度中更大的那个值。若元素的宽度大于其内容的区域（例如，元素存在滚动条时）, scrollWidth 的值要大于 clientWidth。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollWidth = element.scrollWidth;</span><br></pre></td></tr></table></figure>
 <h3 id="scrollHeight"><a href="#scrollHeight" class="headerlink" title="scrollHeight"></a>scrollHeight</h3><p>Element.scrollHeight 是一个只读属性，它是一个元素内容高度的度量，包括由于溢出导致的视图中不可见内容。没有垂直滚动条的情况下，scrollHeight值与元素视图填充所有内容所需要的最小值clientHeight相同。包括元素的padding，但不包括元素的border和margin。scrollHeight也包括 ::before 和 ::after这样的伪元素。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollHeight = element.scrollHeight;</span><br></pre></td></tr></table></figure>

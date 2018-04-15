@@ -1,0 +1,986 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="offsetWidth / offsetHeightoffsetWidthHTMLElement.offsetWidth 是一个只读属性，返回一个元素的布局宽度。一个典型的（各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(widt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="详解各种获取元素宽高及位置的属性">
+<meta property="og:url" content="http://laixiangran.cn/2018/04/15/详解各种获取元素宽高及位置的属性/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="offsetWidth / offsetHeightoffsetWidthHTMLElement.offsetWidth 是一个只读属性，返回一个元素的布局宽度。一个典型的（各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(widt">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/3403949EF23A4165A295621E70E4AAEA?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/9E5D8822E2EC4A58A60C17826387DBD2?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/970B96B99288400795E5D2CA5FBE6238?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/C0AE3BA00BC0475986ABF42B4465696A?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/667080A119BF4AE698BB5FEE8480C254?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/15695A3728724754BF70BAC13CB50BF4?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/8367484635944936B19B91C796320E05?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/0F43C8692C024214BD2DA12C62CCC217?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:updated_time" content="2018-04-15T14:31:53.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="详解各种获取元素宽高及位置的属性">
+<meta name="twitter:description" content="offsetWidth / offsetHeightoffsetWidthHTMLElement.offsetWidth 是一个只读属性，返回一个元素的布局宽度。一个典型的（各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(widt">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/3403949EF23A4165A295621E70E4AAEA?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 详解各种获取元素宽高及位置的属性 | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                详解各种获取元素宽高及位置的属性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-15T22:30:32+08:00" content="2018-04-15">
+              2018-04-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/04/15/详解各种获取元素宽高及位置的属性/" class="leancloud_visitors" data-flag-title="详解各种获取元素宽高及位置的属性">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="offsetWidth-offsetHeight"><a href="#offsetWidth-offsetHeight" class="headerlink" title="offsetWidth / offsetHeight"></a>offsetWidth / offsetHeight</h2><h3 id="offsetWidth"><a href="#offsetWidth" class="headerlink" title="offsetWidth"></a>offsetWidth</h3><p>HTMLElement.offsetWidth 是一个只读属性，返回一个元素的布局宽度。一个典型的（各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(width)的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> offsetWidth = element.offsetWidth;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/3403949EF23A4165A295621E70E4AAEA?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h3 id="offsetHeight"><a href="#offsetHeight" class="headerlink" title="offsetHeight"></a>offsetHeight</h3><p>HTMLElement.offsetHeight 是一个只读属性，它返回该元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。</p>
+<p>通常，元素的offsetHeight是一种元素CSS高度的衡量标准，包括元素的边框、内边距和元素的水平滚动条（如果存在且渲染的话），不包含:before或:after等伪类元素的高度。</p>
+<p>对于文档的body对象，它包括代替元素的CSS高度线性总含量高。浮动元素的向下延伸内容高度是被忽略的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> offsetHeight = element.offsetHeight;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9E5D8822E2EC4A58A60C17826387DBD2?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h2 id="offsetTop-offsetLeft"><a href="#offsetTop-offsetLeft" class="headerlink" title="offsetTop / offsetLeft"></a>offsetTop / offsetLeft</h2><p>介绍这两个属性之前，先介绍下 offsetParent 属性，这样有助于理解。</p>
+<h3 id="offsetParent"><a href="#offsetParent" class="headerlink" title="offsetParent"></a>offsetParent</h3><p>HTMLElement.offsetParent 是一个只读属性，返回一个指向最近的（closest，指包含层级上的最近）包含该元素的定位元素。如果没有定位的元素，则 offsetParent 为最近的 table, table cell 或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 “none” 时，offsetParent 返回 null。</p>
+<p><strong>offsetParent 很有用，因为 offsetTop 和 offsetLeft 都是相对于其内边距边界的。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> offsetParent = element.offsetParent;</span><br></pre></td></tr></table></figure>
+<h3 id="offsetTop"><a href="#offsetTop" class="headerlink" title="offsetTop"></a>offsetTop</h3><p>HTMLElement.offsetTop 为只读属性，它返回当前元素相对于其 offsetParent 元素的顶部的距离。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> offsetTop = element.offsetTop;</span><br></pre></td></tr></table></figure>
+<h3 id="offsetLeft"><a href="#offsetLeft" class="headerlink" title="offsetLeft"></a>offsetLeft</h3><p>HTMLElement.offsetLeft 是一个只读属性，返回当前元素左上角相对于  HTMLElement.offsetParent 节点的左边界偏移的像素值。</p>
+<p>对块级元素来说，offsetTop、offsetLeft、offsetWidth 及 offsetHeight 描述了元素相对于 offsetParent 的边界框。</p>
+<p>然而，对于可被截断到下一行的行内元素（如 span），offsetTop 和 offsetLeft 描述的是第一个边界框的位置（使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getClientRects" target="_blank" rel="external">Element.getClientRects()</a> 来获取其宽度和高度），而 offsetWidth 和 offsetHeight 描述的是边界框的尺寸（使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="external">Element.getBoundingClientRect</a> 来获取其位置）。因此，使用 offsetLeft、offsetTop、offsetWidth、offsetHeight 来对应 left、top、width 和 height 的一个盒子将不会是文本容器 span 的盒子边界。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> offsetLeft = element.offsetLeft;</span><br></pre></td></tr></table></figure>
+<h2 id="clientWidth-clientHeight"><a href="#clientWidth-clientHeight" class="headerlink" title="clientWidth / clientHeight"></a>clientWidth / clientHeight</h2><h3 id="clientWidth"><a href="#clientWidth" class="headerlink" title="clientWidth"></a>clientWidth</h3><p>Element.clientWidth 是一个只读属性，返回元素的内部宽度，以像素计。该属性包括内边距，但不包括垂直滚动条（如果有）、边框和外边距。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clientWidth = element.clientWidth;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/970B96B99288400795E5D2CA5FBE6238?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h3 id="clientHeight"><a href="#clientHeight" class="headerlink" title="clientHeight"></a>clientHeight</h3><p>Element.clientWidth 是一个只读属性，对于没有定义 CSS 或者内联布局盒子的元素为0，同时它是元素内部的高度(单位像素)，包含内边距，但不包括水平滚动条、边框和外边距。</p>
+<p>clientHeight 可以通过 CSS height + CSS padding - 水平滚动条高度 (如果存在)来计算。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clientHeight = element.clientHeight;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/C0AE3BA00BC0475986ABF42B4465696A?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h2 id="clientTop-clientLeft"><a href="#clientTop-clientLeft" class="headerlink" title="clientTop / clientLeft"></a>clientTop / clientLeft</h2><h3 id="clientTop"><a href="#clientTop" class="headerlink" title="clientTop"></a>clientTop</h3><p>Element.clientTop 是一个只读属性，表示一个元素顶部边框的宽度（以像素表示）。不包括顶部外边距或内边距。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clientTop = element.clientTop;</span><br></pre></td></tr></table></figure>
+<h3 id="clientLeft"><a href="#clientLeft" class="headerlink" title="clientLeft"></a>clientLeft</h3><p>Element.clientLeft 是一个只读属性，表示一个元素的左边框的宽度，以像素表示。如果元素的文本方向是从右向左（RTL, right-to-left），并且由于内容溢出导致左边出现了一个垂直滚动条，则该属性包括滚动条的宽度。clientLeft 不包括左外边距和左内边距。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clientLeft = element.clientLeft;</span><br></pre></td></tr></table></figure>
+<h2 id="innerWidth-innerHeight"><a href="#innerWidth-innerHeight" class="headerlink" title="innerWidth / innerHeight"></a>innerWidth / innerHeight</h2><h3 id="innerWidth"><a href="#innerWidth" class="headerlink" title="innerWidth"></a>innerWidth</h3><p>window.innerWidth 是一个只读属性，表示浏览器视口（viewport）宽度（单位：像素），如果存在垂直滚动条则包括它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> innerWidth = <span class="built_in">window</span>.innerWidth;</span><br></pre></td></tr></table></figure>
+<h3 id="innerHeight"><a href="#innerHeight" class="headerlink" title="innerHeight"></a>innerHeight</h3><p>window.innerHeight 是一个只读属性，表示浏览器窗口的视口（viewport）高度（以像素为单位），如果存在水平滚动条则包括它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> innerHeight = <span class="built_in">window</span>.innerHeight;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/667080A119BF4AE698BB5FEE8480C254?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h2 id="outerWidth-outerHeight"><a href="#outerWidth-outerHeight" class="headerlink" title="outerWidth / outerHeight"></a>outerWidth / outerHeight</h2><h3 id="outerWidth"><a href="#outerWidth" class="headerlink" title="outerWidth"></a>outerWidth</h3><p>Window.outerWidth 是一个只读属性，表示整个浏览器窗口的宽度，包括侧边栏（如果存在）、窗口镶边（window chrome）和调正窗口大小的边框（window resizing borders/handles）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> outerWidth = <span class="built_in">window</span>.outerWidth;</span><br></pre></td></tr></table></figure>
+<h3 id="outerHeight"><a href="#outerHeight" class="headerlink" title="outerHeight"></a>outerHeight</h3><p>Window.outerHeight 是一个只读属性，表示获取整个浏览器窗口的高度（单位：像素），包括侧边栏（如果存在）、窗口镶边（window chrome）和窗口调正边框（window resizing borders/handles）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> outerHeight = <span class="built_in">window</span>.outerHeight;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/15695A3728724754BF70BAC13CB50BF4?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h2 id="scrollTop-scrollLeft"><a href="#scrollTop-scrollLeft" class="headerlink" title="scrollTop / scrollLeft"></a>scrollTop / scrollLeft</h2><h3 id="scrollTop"><a href="#scrollTop" class="headerlink" title="scrollTop"></a>scrollTop</h3><p>Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。</p>
+<p>一个元素的 scrollTop 值是这个元素的顶部到它的最顶部可见内容（的顶部）的距离的度量。当一个元素的内容没有产生垂直方向的滚动条，那么它的 scrollTop 值为0。</p>
+<p>scrollTop 可以被设置为任何整数值，同时注意：</p>
+<ul>
+<li>如果一个元素不能被滚动（例如，它没有溢出，或者这个元素有一个”non-scrollable”属性）， scrollTop将被设置为0。</li>
+<li>设置scrollTop的值小于0，scrollTop 被设为0</li>
+<li>如果设置了超出这个容器可滚动的值, scrollTop 会被设为最大值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  scrollTop = element.scrollTop; <span class="comment">// 获取</span></span><br><span class="line">element.scrollTop = intValue; <span class="comment">// 设置</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/8367484635944936B19B91C796320E05?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h3 id="scrollLeft"><a href="#scrollLeft" class="headerlink" title="scrollLeft"></a>scrollLeft</h3><p>Element.scrollLeft 属性可以读取或设置元素滚动条到元素左边的距离。</p>
+<p>注意如果这个元素的内容排列方向（direction） 是rtl (right-to-left) ，那么滚动条会位于最右侧（内容开始处），并且scrollLeft值为0。此时，当你从右到左拖动滚动条时，scrollLeft会从0变为负数（这个特性在chrome浏览器中不存在）。</p>
+<p>scrollLeft 可以是任意整数，然而：</p>
+<ul>
+<li>如果元素不能滚动（比如：元素没有溢出），那么scrollLeft 的值是0。</li>
+<li>如果给scrollLeft 设置的值小于0，那么scrollLeft 的值将变为0。</li>
+<li>如果给scrollLeft 设置的值大于元素内容最大宽度，那么scrollLeft 的值将被设为元素最大宽度。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  scrollLeft = element.scrollLeft; <span class="comment">// 获取</span></span><br><span class="line">element.scrollLeft = intValue; <span class="comment">// 设置</span></span><br></pre></td></tr></table></figure>
+<h2 id="scrollWidth-scrollHeight"><a href="#scrollWidth-scrollHeight" class="headerlink" title="scrollWidth / scrollHeight"></a>scrollWidth / scrollHeight</h2><h3 id="scrollWidth"><a href="#scrollWidth" class="headerlink" title="scrollWidth"></a>scrollWidth</h3><p>Element.scrollWidth 是一个只读属性，以px为单位返回元素的内容区域宽度或元素的本身的宽度中更大的那个值。若元素的宽度大于其内容的区域（例如，元素存在滚动条时）, scrollWidth 的值要大于 clientWidth。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollWidth = element.scrollWidth;</span><br></pre></td></tr></table></figure>
+<h3 id="scrollHeight"><a href="#scrollHeight" class="headerlink" title="scrollHeight"></a>scrollHeight</h3><p>Element.scrollHeight 是一个只读属性，它是一个元素内容高度的度量，包括由于溢出导致的视图中不可见内容。没有垂直滚动条的情况下，scrollHeight值与元素视图填充所有内容所需要的最小值clientHeight相同。包括元素的padding，但不包括元素的border和margin。scrollHeight也包括 ::before 和 ::after这样的伪元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollHeight = element.scrollHeight;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/api/personal/file/0F43C8692C024214BD2DA12C62CCC217?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h2 id="scrollX-scrollY"><a href="#scrollX-scrollY" class="headerlink" title="scrollX / scrollY"></a>scrollX / scrollY</h2><h3 id="scrollX"><a href="#scrollX" class="headerlink" title="scrollX"></a>scrollX</h3><p>返回文档/页面水平方向滚动的像素值，其中 pageXOffset 属性是 scrollY 属性的别名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollX = <span class="built_in">window</span>.scrollX;</span><br></pre></td></tr></table></figure>
+<p>完整的获取文档/页面在水平方向已滚动的像素值的兼容性代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = (<span class="built_in">window</span>.pageXOffset !== <span class="literal">undefined</span>) ? <span class="built_in">window</span>.pageXOffset : (<span class="built_in">document</span>.documentElement || <span class="built_in">document</span>.body.parentNode || <span class="built_in">document</span>.body).scrollLeft;</span><br></pre></td></tr></table></figure>
+<h3 id="scrollY"><a href="#scrollY" class="headerlink" title="scrollY"></a>scrollY</h3><p>返回文档/页面在垂直方向已滚动的像素值，其中 pageYOffset 属性是 scrollY 属性的别名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollX = <span class="built_in">window</span>.scrollY;</span><br></pre></td></tr></table></figure>
+<p>完整的获取文档/页面在垂直方向已滚动的像素值的兼容性代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> y = (<span class="built_in">window</span>.pageYOffset !== <span class="literal">undefined</span>) ? <span class="built_in">window</span>.pageYOffset : (<span class="built_in">document</span>.documentElement || <span class="built_in">document</span>.body.parentNode || <span class="built_in">document</span>.body).scrollTop;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/10/JavaScript之常用的正则表达式/" rel="next" title="JavaScript之常用的正则表达式">
+                <i class="fa fa-chevron-left"></i> JavaScript之常用的正则表达式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20180/04/10/前端开发必备之Chrome开发者工具（上篇）/" rel="prev" title="前端开发必备之Chrome开发者工具（上篇）">
+                前端开发必备之Chrome开发者工具（上篇） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#offsetWidth-offsetHeight"><span class="nav-number">1.</span> <span class="nav-text">offsetWidth / offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#offsetWidth"><span class="nav-number">1.1.</span> <span class="nav-text">offsetWidth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offsetHeight"><span class="nav-number">1.2.</span> <span class="nav-text">offsetHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#offsetTop-offsetLeft"><span class="nav-number">2.</span> <span class="nav-text">offsetTop / offsetLeft</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#offsetParent"><span class="nav-number">2.1.</span> <span class="nav-text">offsetParent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offsetTop"><span class="nav-number">2.2.</span> <span class="nav-text">offsetTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offsetLeft"><span class="nav-number">2.3.</span> <span class="nav-text">offsetLeft</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clientWidth-clientHeight"><span class="nav-number">3.</span> <span class="nav-text">clientWidth / clientHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#clientWidth"><span class="nav-number">3.1.</span> <span class="nav-text">clientWidth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clientHeight"><span class="nav-number">3.2.</span> <span class="nav-text">clientHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clientTop-clientLeft"><span class="nav-number">4.</span> <span class="nav-text">clientTop / clientLeft</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#clientTop"><span class="nav-number">4.1.</span> <span class="nav-text">clientTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clientLeft"><span class="nav-number">4.2.</span> <span class="nav-text">clientLeft</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#innerWidth-innerHeight"><span class="nav-number">5.</span> <span class="nav-text">innerWidth / innerHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#innerWidth"><span class="nav-number">5.1.</span> <span class="nav-text">innerWidth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#innerHeight"><span class="nav-number">5.2.</span> <span class="nav-text">innerHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#outerWidth-outerHeight"><span class="nav-number">6.</span> <span class="nav-text">outerWidth / outerHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#outerWidth"><span class="nav-number">6.1.</span> <span class="nav-text">outerWidth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outerHeight"><span class="nav-number">6.2.</span> <span class="nav-text">outerHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrollTop-scrollLeft"><span class="nav-number">7.</span> <span class="nav-text">scrollTop / scrollLeft</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollTop"><span class="nav-number">7.1.</span> <span class="nav-text">scrollTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollLeft"><span class="nav-number">7.2.</span> <span class="nav-text">scrollLeft</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrollWidth-scrollHeight"><span class="nav-number">8.</span> <span class="nav-text">scrollWidth / scrollHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollWidth"><span class="nav-number">8.1.</span> <span class="nav-text">scrollWidth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollHeight"><span class="nav-number">8.2.</span> <span class="nav-text">scrollHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrollX-scrollY"><span class="nav-number">9.</span> <span class="nav-text">scrollX / scrollY</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollX"><span class="nav-number">9.1.</span> <span class="nav-text">scrollX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollY"><span class="nav-number">9.2.</span> <span class="nav-text">scrollY</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

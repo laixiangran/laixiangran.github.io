@@ -1,0 +1,1009 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="心得体会," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="这篇文章收藏在笔记里面有几年了，原文作者无从考究了，侵删！最近再翻出来看，依然觉得受益匪浅。这次整理分享出来，希望对大家有所启示。
+
+背景如果你是刚进入WEB前端研发领域，想试试这潭水有多深，看这篇文章吧；
+如果你是做了两三年WEB产品前端研发，迷茫找不着提高之路，看这篇文章吧；
+如果你是四五年的前端开发高手，没有难题能难得住你的寂寞高手，来看这篇文章吧。
+前言所谓的天才，只不过是比平常人更快的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端工程师的进阶之路">
+<meta property="og:url" content="http://laixiangran.cn/2018/04/18/前端工程师的进阶之路/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="这篇文章收藏在笔记里面有几年了，原文作者无从考究了，侵删！最近再翻出来看，依然觉得受益匪浅。这次整理分享出来，希望对大家有所启示。
+
+背景如果你是刚进入WEB前端研发领域，想试试这潭水有多深，看这篇文章吧；
+如果你是做了两三年WEB产品前端研发，迷茫找不着提高之路，看这篇文章吧；
+如果你是四五年的前端开发高手，没有难题能难得住你的寂寞高手，来看这篇文章吧。
+前言所谓的天才，只不过是比平常人更快的">
+<meta property="og:updated_time" content="2018-04-18T10:27:45.235Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端工程师的进阶之路">
+<meta name="twitter:description" content="这篇文章收藏在笔记里面有几年了，原文作者无从考究了，侵删！最近再翻出来看，依然觉得受益匪浅。这次整理分享出来，希望对大家有所启示。
+
+背景如果你是刚进入WEB前端研发领域，想试试这潭水有多深，看这篇文章吧；
+如果你是做了两三年WEB产品前端研发，迷茫找不着提高之路，看这篇文章吧；
+如果你是四五年的前端开发高手，没有难题能难得住你的寂寞高手，来看这篇文章吧。
+前言所谓的天才，只不过是比平常人更快的">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 前端工程师的进阶之路 | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端工程师的进阶之路
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-18T18:30:00+08:00" content="2018-04-18">
+              2018-04-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/心得体会/" itemprop="url" rel="index">
+                    <span itemprop="name">心得体会</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/04/18/前端工程师的进阶之路/" class="leancloud_visitors" data-flag-title="前端工程师的进阶之路">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这篇文章收藏在笔记里面有几年了，原文作者无从考究了，侵删！<br>最近再翻出来看，依然觉得受益匪浅。这次整理分享出来，希望对大家有所启示。</p>
+</blockquote>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>如果你是刚进入WEB前端研发领域，想试试这潭水有多深，看这篇文章吧；</p>
+<p>如果你是做了两三年WEB产品前端研发，迷茫找不着提高之路，看这篇文章吧；</p>
+<p>如果你是四五年的前端开发高手，没有难题能难得住你的寂寞高手，来看这篇文章吧。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>所谓的天才，只不过是比平常人更快的掌握技能、完成工作罢了；只要你找到了正确的方向，并辅以足够的时间，你一样能够踏上成功彼岸。</p>
+<p>本文将WEB前端研发编程能力划分了八个等级，每个等级都列举出了对应的特征及破级提升之方法，希望每位在看本文的同学先准确定位自己的等级（不要以你目前能力的最高点，而是以你当前能力的中档与之等级作对比，以免多走弯路），参考突破之法破之。</p>
+<p>所谓的级别，只是你面对需求时的一种态度：能够完成、能够完美地完成、能够超出预期地完成。以追求完美的态度加以扎实的编程功力，那就是你的编程水平。</p>
+<p>切记心浮气燥，级别够了，那级别里的东西自然就懂了。悟了就是悟了，没悟也没关系，静下心来，投入时间而已。</p>
+<h2 id="（一）入门"><a href="#（一）入门" class="headerlink" title="（一）入门"></a>（一）入门</h2><p>能够解决一些问题的水平。有一定的基础（比如最常见的HTML标签及其属性、事件、方法；最常见的CSS属性；基础的JavaScript编程能力），能够完成一些简单的WEB前端研发需求。</p>
+<p>举个例子：删除一字符串中指定的字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"www.baidu.com/?page"</span>;</span><br><span class="line">str = str.replace(<span class="string">'?page'</span>, <span class="string">""</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br><span class="line">str = str.substring(<span class="number">0</span>, str.indexOf(<span class="string">"/"</span>));</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+<p>首先不要苛责代码的对错严谨，毕竟每个程序员都有这样的一个过程；</p>
+<p>其次，这两段代码在这个实例里没有什么大过错，可能会有瑕疵，但能够解决问题（删除指定的字符），这就是这个级别的特征。</p>
+<p>再举个例子：计算系统当前是星期几。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">var</span> week = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay();</span><br><span class="line"><span class="keyword">if</span> (week === <span class="number">0</span>) &#123;</span><br><span class="line">	str = <span class="string">"今天是星期日"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (week === <span class="number">1</span>) &#123;</span><br><span class="line">	str = <span class="string">"今天是星期一"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (week === <span class="number">2</span>) &#123;</span><br><span class="line">	str = <span class="string">"今天是星期二"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (week === <span class="number">3</span>) &#123;</span><br><span class="line">	str = <span class="string">"今天是星期三"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (week === <span class="number">4</span>) &#123;</span><br><span class="line">	str = <span class="string">"今天是星期四"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (week === <span class="number">5</span>) &#123;</span><br><span class="line">	str = <span class="string">"今天是星期五"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (week === <span class="number">6</span>) &#123;</span><br><span class="line">	str = <span class="string">"今天是星期六"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者更好一些</span></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">"今天是星期"</span>;</span><br><span class="line"><span class="keyword">var</span> week1 = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay();</span><br><span class="line"><span class="keyword">switch</span> (week1) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">0</span> :</span><br><span class="line">		str1 += <span class="string">"日"</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span> :</span><br><span class="line">		str1 += <span class="string">"一"</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span> :</span><br><span class="line">		str1 += <span class="string">"二"</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span> :</span><br><span class="line">		str1 += <span class="string">"三"</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span> :</span><br><span class="line">		str1 += <span class="string">"四"</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">5</span> :</span><br><span class="line">		str1 += <span class="string">"五"</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">6</span> :</span><br><span class="line">		str1 += <span class="string">"六"</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br><span class="line"><span class="built_in">console</span>.log(str1);</span><br></pre></td></tr></table></figure>
+<h3 id="进阶之路"><a href="#进阶之路" class="headerlink" title="进阶之路"></a>进阶之路</h3><p>将JavaScript、HTML、CSS之类的编码帮助手册里的每个方法/属性都通读几遍！只有将基础打好，以后的路才能走的顺畅。参考这些帮助文档，力争写出无瑕疵的代码。</p>
+<p>这些编码文档建议不仅是在入门提高期看，在你以后每个阶段破阶的时候都应该看看，最基础的东西往往也是最给力的东西，有时能够给你带来意想不到的收获。</p>
+<h2 id="（二）登堂"><a href="#（二）登堂" class="headerlink" title="（二）登堂"></a>（二）登堂</h2><p>能够正确地解决问题。不管你是通过搜索网络，或者通过改造某些成品代码（jQuery/Dojo/Ext/YUI）案例，只要能够无错地完成需求。</p>
+<p>同样以“删除指定字符串”为例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"www.baidu.com/?page"</span>;</span><br><span class="line">str = str.replace(<span class="regexp">/?page/</span>, <span class="string">""</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+<p>仅仅解决问题对于“登堂”阶段来说已经不是问题，这个级别所给出方案不能是漏洞百出。</p>
+<p>以上面这段代码为例：replace方法的第一个参数虽然可以支持字符串，但最佳的类型是正则表达式。</p>
+<p>再看看“今天是星期几”示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">"日"</span>, <span class="string">"一"</span>, <span class="string">"二"</span>, <span class="string">"三"</span>, <span class="string">"四"</span>, <span class="string">"五"</span>, <span class="string">"六"</span>];</span><br><span class="line"><span class="keyword">var</span> week = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay();</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"今天是星期"</span> + a[week];</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+<p>对比“入门级”的代码，不管是从代码量、代码效率、代码优美性、代码思路来说，“登堂”级的这个日期处理代码都要优秀很多。</p>
+<h3 id="进阶之路-1"><a href="#进阶之路-1" class="headerlink" title="进阶之路"></a>进阶之路</h3><p>这个阶段虽然能够给出正确的解题方案，但是不一定是最优秀的方案。如何才能得到最优秀的方案呢？首先就是积累各种能够解决需求的方案，然后再验证每个方案，在这些方案中选择最好的一种。因此该阶段的进阶之路就是“行万里路，看万卷书”，积累各个需求的各个解决方案。</p>
+<p>你可以扎身在专业论坛（蓝色理想、无忧、CSDN）里，通读所有的FAQ及帖子；你可以打开搜索引擎，穷举所有的搜索结果。自己建立测试环境一一验证这些代码：去揣摩每段代码的意图，去比较每段代码之间的差异。这两条路可以让你快速完成原始积累，当你再面对大多数需求时能够说这些问题我以前做过，那你就水到渠成地晋阶了。</p>
+<h2 id="（三）入室"><a href="#（三）入室" class="headerlink" title="（三）入室"></a>（三）入室</h2><p>最强代码，知道所有能够解决需求的各种方案，能够选择使用最优秀的方案满足需求。这个级别基本上产品开发编程中的代码主力。给出的一招一式，招招都是绝招。</p>
+<p>还以上面的那个例子为例，你能说出1、2、3之间的差别，以及适用于那种环境吗？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"www.baidu.com/?page"</span>;</span><br><span class="line"><span class="comment">// 1、字符串剪裁</span></span><br><span class="line">str.substring(<span class="number">0</span>, str.indexOf(<span class="string">"?page"</span>));</span><br><span class="line"><span class="comment">// 2、正则表达式</span></span><br><span class="line">str.replace(<span class="regexp">/?page/</span>, <span class="string">""</span>);</span><br><span class="line"><span class="comment">// 3、字符串分拆、合并</span></span><br><span class="line">str.split(<span class="string">"?page"</span>).join(<span class="string">""</span>);</span><br></pre></td></tr></table></figure>
+<p>能够解决问题的方法会有很多，但是对于程序员来说应该选择最优秀的。上面这段代码从代码量来说“正则表达式”最优秀；从代码执行效率来说： “字符 串剪裁”法最高（Chrome中“正则表达式”效率最高），split法最次；从可扩展性上来说，“正则表达式”法最优。具体使用那种方案视具体的需求环境而定。</p>
+<p>“入室”阶段，程序员应该能够肯定的回答：对于这个需求而言，我的代码就是最优秀的代码。</p>
+<p>再以“今天是星期几”为例，“登堂”级的代码你敢说是最优秀的代码了吗？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"今天是星期"</span> + <span class="string">"日一二三四五六"</span>.charAt(<span class="keyword">new</span> <span class="built_in">Date</span>().getDay());</span><br></pre></td></tr></table></figure>
+<p>对比“登堂”级的示例代码，上面这段代码给你什么感受？程序员追求的就是完美。“入室”级别追求的就是每一招每一式的完美无缺。</p>
+<p>从WEB前端编程来说，通过2年左右的努力，很多人能够达到这个水平，但是，很大一部分人的编程能力也就止步于此。或限于产品的需求单一性，或限于需求开发的时间紧迫性，或限于人的惰性，能够完美地解决当前的需求就够了。</p>
+<p>由于长期处于技术平台期，技术上得不到提高，通常这个级别的工程师会比较燥。技术上小有所成；或追求个人的突破；或追求产品差异性带来的新鲜感；或者只是想换个心情；因此很多此级别的工程师会经常换公司。</p>
+<p><strong>戒骄戒躁：</strong></p>
+<ul>
+<li>切勿以为自己能写一手漂亮的代码而自满；</li>
+<li>切莫以为别人“尊称”你一声“大侠”你就以 “大侠”自居；</li>
+<li>切莫以为自己积累了一些得意的代码就成了框架式开发。</li>
+</ul>
+<p>细节决定成败，优秀的方案并不能保证最终的成功。</p>
+<h3 id="进阶之路-2"><a href="#进阶之路-2" class="headerlink" title="进阶之路"></a>进阶之路</h3><p>此阶段进阶之路就是：</p>
+<ul>
+<li>切勿心浮气躁；你不再被需求牵着走，而是你牵着需求走。注重细节，注意那些当前需求里没有明文给出的细节：代码性能的差异、运行平台（浏览器）的差异、需求的隐性扩展、代码的向后兼容等等。</li>
+<li>再通读几遍HTML/CSS/JavaScript帮助文档。</li>
+</ul>
+<p>我建议这个级别的工程师做一做WebTreeView控件，要求总节点量一万左右操作流畅，你的晋升之路就在这个控件的编码过程中。</p>
+<h2 id="（四）入微"><a href="#（四）入微" class="headerlink" title="（四）入微"></a>（四）入微</h2><p>最强解决方案。你能够走在需求的前面，将当前需求里有的、没有直接提出来的、现在暂时没有但将来可能有的等等，及前端编程潜规则等各个方方面面都综合考虑，给出最优方案。以一招胜万招。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"http://www.xxx.com/?pn=0"</span>; <span class="comment">// 删除指定字符 pn=0</span></span><br></pre></td></tr></table></figure>
+<p>我将这个字符串里所可能想到的各种情况都列举出来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [</span><br><span class="line">    <span class="string">"http://www.xxx.com/VMpn=?pn=0"</span>, <span class="comment">// pn= 可能出现在 ? 前</span></span><br><span class="line">    <span class="string">"http://www.xxx.com/VMpn=?pn="</span>, <span class="comment">// URL里允许pn 值为空</span></span><br><span class="line">    <span class="string">"http://www.xxx.com/VMpn=?pn=0&amp;amp;a=1"</span>, <span class="comment">// URL 里可有多个字段</span></span><br><span class="line">    <span class="string">"http://www.xxx.com/VMpn=?a=1&amp;amp;pn=0"</span>, <span class="comment">// 可能排在最后</span></span><br><span class="line">    <span class="string">"http://www.xxx.com/VMpn=?a=1&amp;amp;pn=0&amp;amp;pn=1"</span>, <span class="comment">// 可能有多个 pn 字段</span></span><br><span class="line">    <span class="string">"http://www.xxx.com/VMpn=?a=1&amp;amp;pn=0&amp;amp;b=2"</span>, <span class="comment">// 可能在中间</span></span><br><span class="line">    <span class="string">"http://www.xxx.com/VMpn=?a=1&amp;amp;pn=0&amp;amp;pn=1&amp;amp;b=1"</span>, <span class="comment">// 可能在中间成组</span></span><br><span class="line">    <span class="string">"http://www.xxx.com/VMpn=?a=1&amp;amp;pn=0&amp;amp;b=1&amp;amp;pn=1"</span> <span class="comment">// 可能零星分布</span></span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/((?)(pn=[^&amp;amp;]*&amp;amp;)+(?!pn=))|(((?|&amp;amp;)pn=[^&amp;amp;]*)+$)|(&amp;amp;pn=[^&amp;amp;]*)/g</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; a.length; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a[i] + <span class="string">"n"</span> + a[i].replace(reg, <span class="string">"$2"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个阶段已经不再追求一招一式，对你来说不是使用什么创新绝招解决需求，而是给出成熟稳重的方案，从根上解决问题。针对某个当前需求你的代码可能不是最优，但是针对此类的需求你的代码却是最优秀的代码。</p>
+<h3 id="进阶之路-3"><a href="#进阶之路-3" class="headerlink" title="进阶之路"></a>进阶之路</h3><p>很多WEB前端研发工程师在做了3-4年之后就会进入一个瓶颈期：产品开发需求是小菜一碟，没有新鲜的可以挑战的东西；代码开发中的稀奇的解题方法 都已经尝试过。没有了可挑战的难题，失去了探索的激情，也就没有了再上升的动力，好不容易走过“入室”级别的人又会有八九成止步于此。或转做技术领导人， 或转到其它的领域，或换公司。</p>
+<p><strong>这些人的上升之路在哪里呢？</strong></p>
+<p>这个阶段单单依靠技巧和数量的累积已经没有什么效果了，突破之路在第5层《化蝶》里会详细说明，我建议你在这个阶段末尾着重关注编程理论：面向对象/过程、代码组织形式、编译、代码规范、其它的框架设计等等。</p>
+<p>我建议这个级别的工程师做一做WebEditor控件，不要求完整功能，但是该控件里的模块划分、代码组织、编程思想做到位，给出一个系统的解决方案。</p>
+<h2 id="（五）化蝶"><a href="#（五）化蝶" class="headerlink" title="（五）化蝶"></a>（五）化蝶</h2><p>破茧重生，这个层次关注的是编程语言本身，而不再关心产品需求。什么是茧？产品需求就是茧。当你一招胜万招，打遍天下需求之时，你如果还拘泥于需求开发，那就是你限于茧中而不自知。要么就在这个茧里默默地老去，要么就破开茧获得新生。</p>
+<p>还是以那个“字符串剪裁”的老例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">escapeReg</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"([.*+?^=!:x24&#123;&#125;()|[\]/\\])"</span>, <span class="string">"g"</span>), <span class="string">"\x241"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delUrlQuery</span>(<span class="params">url, key</span>) </span>&#123;</span><br><span class="line">    key = escapeReg(key);</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"((\?)("</span> + key + <span class="string">"=[^&amp;amp;]*&amp;amp;)+(?!"</span> + key + <span class="string">"=))|(((\?|&amp;amp;)"</span> + key + <span class="string">"=[^&amp;amp;]*)+$)|(&amp;amp;"</span> + key + <span class="string">"=[^&amp;amp;]*)"</span>, <span class="string">"g"</span>);</span><br><span class="line">    <span class="keyword">return</span> url.replace(reg, <span class="string">"x241"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应用实例</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"http://www.xxx.com/?pn=0"</span>; <span class="comment">// 删除指定字符 pn=0</span></span><br><span class="line">delUrlQuery(str, <span class="string">"pn"</span>);</span><br></pre></td></tr></table></figure>
+<p>这段代码相对于层次4《入微》有什么区别吗？从代码实现上来说没有太大的区别，但是从思路上来说却有着本质的区别：</p>
+<ol>
+<li>不再是就事论事，头疼医头，而是把一类问题抽象理论化，一招破万招；</li>
+<li>有封装的概念，不再是每次从零开始，而是站在半山腰开始爬。</li>
+</ol>
+<p>在WEB前端研发队伍里也有很大一部分人《入室》层次时就自我感觉良好，直接跨跃到《化蝶》，积累自己的代码库，抽象化问题。但没有基础，缺少强大 的后劲，即使能够破茧也经受不了风吹雨打。一份不成熟的架构设计对团队开发带来的危害远大于它带来的好处，这种例子在业界屡见不鲜。不要拔苗助长，不要不 会走就想着跑，夯实基础，水到渠成地成长，厚积薄发，强力地破茧而出。</p>
+<h3 id="进阶之路-4"><a href="#进阶之路-4" class="headerlink" title="进阶之路"></a>进阶之路</h3><p>你已经从原始积累，到厚积薄发，到破茧而出之后，你所关注的应该不再是一招一式、一个项目、一个模块，而应该是一种思路，一种理论。你可以做以下几 个步骤以突破到更高层次：</p>
+<ul>
+<li>再仔细看几遍HTML/CSS/JavaScript接口帮助文档；</li>
+<li>选择一门强语言（C++/C#/Java等）观察理解这些语 言的组织结构，语言设计；</li>
+<li>看看原型链，链式语法编程，泛型，接口编程，DOM遥控器等等；</li>
+<li>仔细阅读成熟的WEB前端开发框架的设计文档，看他们为什么要这样设计。</li>
+</ul>
+<h2 id="（六）大侠"><a href="#（六）大侠" class="headerlink" title="（六）大侠"></a>（六）大侠</h2><p>这里所说的大侠，不是大家互相吹捧的“大侠”，而是实至名归的高手。这个级别的人完全有能力写出不差于 Bindows/jQuery/Ext/YUI/Dojo 的同等级别规模的前端开发框架。应用成熟的开发框架指导、解决问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 库文件 /mz/string/escapeReg.js</span></span><br><span class="line">mz.string.escapeReg = <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"([.*+?^=!:x24&#123;&#125;()|[\]/\\])"</span>, <span class="string">"g"</span>), <span class="string">"\x241"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 库文件 /mz/url/delQuery.js</span></span><br><span class="line"><span class="comment">/// include mz.string.escapeReg;</span></span><br><span class="line">mz.url.delQuery = <span class="function"><span class="keyword">function</span> (<span class="params">url, key</span>) </span>&#123;</span><br><span class="line">    key = mz.string.escapeReg(key);</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"((\?)("</span> + key + <span class="string">"=[^&amp;amp;]*&amp;amp;)+(?!"</span> + key + <span class="string">"=))|(((\?|&amp;amp;)"</span> + key + <span class="string">"=[^&amp;amp;]*)+$)|(&amp;amp;"</span> + key + <span class="string">"=[^&amp;amp;]*)"</span>, <span class="string">"g"</span>);</span><br><span class="line">    <span class="keyword">return</span> url.replace(reg, <span class="string">"x241"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 应用实例</span></span><br><span class="line"><span class="comment">/// include mz.url.delQuery;</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"http://www.xxx.com/?pn=0"</span>; <span class="comment">// 删除指定字符 pn=0</span></span><br><span class="line">mz.url.delQuery(str, <span class="string">"pn"</span>);</span><br></pre></td></tr></table></figure>
+<p>自成体系，有基础，也有理论高度。知道为什么这样设计，也知道什么样的设计最好。比如这个例子可以有这样的封装：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 库文件 /mz/url/delQuery.js</span></span><br><span class="line"><span class="comment">/// include mz.string.escapeReg;</span></span><br><span class="line"><span class="built_in">String</span>.prototype.delQuery = <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">    key = mz.string.escapeReg(key);</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"((\?)("</span> + key + <span class="string">"=[^&amp;amp;]*&amp;amp;)+(?!"</span> + key + <span class="string">"=))|(((\?|&amp;amp;)"</span> + key + <span class="string">"=[^&amp;amp;]*)+$)|(&amp;amp;"</span> + key + <span class="string">"=[^&amp;amp;]*)"</span>, <span class="string">"g"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(reg, <span class="string">"x241"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应用实例</span></span><br><span class="line"><span class="comment">/// include mz.url.delQuery;</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"http://www.xxx.com/?pn=0"</span>; <span class="comment">// 删除指定字符 pn=0</span></span><br><span class="line">str.delQuery(<span class="string">"pn"</span>);</span><br></pre></td></tr></table></figure>
+<p>而为什么不采用下面的那种封装呢？经过了《知微》和《化蝶》你就懂了。</p>
+<h3 id="进阶出路"><a href="#进阶出路" class="headerlink" title="进阶出路"></a>进阶出路</h3><p>道法自然，从根上去寻找突破的契机。你可以研读HTML解析引擎设计与实现，JS解析引擎设计与实现，其它语言的代码解析与编译实现等等。<br>或者出些书。低级别的人写的书要么是一大抄，空无一物；要么是害人。</p>
+<h2 id="（七）宗师"><a href="#（七）宗师" class="headerlink" title="（七）宗师"></a>（七）宗师</h2><p>这个级别的人已然到了无招胜有招的境界。项目开发中的难题？没有难题！运行平台的差异？从根本上搞定！代码规范、开发模式，早已经被抛在身后。这个级别的人已经不再关注于某个前端开发框架，而是应对具体的环境给出最佳的理论指导。</p>
+<p>这个级别的人所注意的应该是以最合理的系统架构引领着整个团队的进步，在什么样的场景下该用什么样的架构设计。3个、10个、50个、100个人的团队最应该用哪种模式？等你到了宗师级别，你再来回答吧。</p>
+<h3 id="进阶出路-1"><a href="#进阶出路-1" class="headerlink" title="进阶出路"></a>进阶出路</h3><p>每一个宗师就是一个高山，就是一个领域里的神，但是你仅满足于在一群比你弱的群体展现你的强大吗？如果还你是止步原地，那总会有人乘着飞机、宇宙飞船从你的头领掠过，高处不胜寒！<br>要突破这片领域，那就必须跳出这片领域。要想突破WEB前端研发的宗师级，那就跳出WEB前端吧，上面还有WEB开发。即使你是WEB前端的宗师， 但没有快速的数据响应，没有高速的网络架构，没有优美的系统支持，你又能如何？所以突破之路就是把目光投到整条WEB开发的链条中去。</p>
+<h2 id="（八）飞升"><a href="#（八）飞升" class="headerlink" title="（八）飞升"></a>（八）飞升</h2><p>其实严格来说，飞升已经不是原领域的范围了。在WEB研发领域，对于这个层次的有一个很好听的称谓：架构师。当然那些“伪架构师”另当别论。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一法通，万法通。在其它的技术领域，也可以按照《入门》《登堂》《入室》《入微》《化蝶》《大侠》《宗师》来划分等级；一样也可以按照我这里所写的每个级别的【进阶之路】来快速提升。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/心得体会/" rel="tag">#心得体会</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/16/JavaScript之Event Loop/" rel="next" title="JavaScript之Event Loop">
+                <i class="fa fa-chevron-left"></i> JavaScript之Event Loop
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20180/04/10/前端开发必备之Chrome开发者工具（上篇）/" rel="prev" title="前端开发必备之Chrome开发者工具（上篇）">
+                前端开发必备之Chrome开发者工具（上篇） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）入门"><span class="nav-number">3.</span> <span class="nav-text">（一）入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶之路"><span class="nav-number">3.1.</span> <span class="nav-text">进阶之路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）登堂"><span class="nav-number">4.</span> <span class="nav-text">（二）登堂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶之路-1"><span class="nav-number">4.1.</span> <span class="nav-text">进阶之路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（三）入室"><span class="nav-number">5.</span> <span class="nav-text">（三）入室</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶之路-2"><span class="nav-number">5.1.</span> <span class="nav-text">进阶之路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（四）入微"><span class="nav-number">6.</span> <span class="nav-text">（四）入微</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶之路-3"><span class="nav-number">6.1.</span> <span class="nav-text">进阶之路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（五）化蝶"><span class="nav-number">7.</span> <span class="nav-text">（五）化蝶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶之路-4"><span class="nav-number">7.1.</span> <span class="nav-text">进阶之路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（六）大侠"><span class="nav-number">8.</span> <span class="nav-text">（六）大侠</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶出路"><span class="nav-number">8.1.</span> <span class="nav-text">进阶出路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（七）宗师"><span class="nav-number">9.</span> <span class="nav-text">（七）宗师</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶出路-1"><span class="nav-number">9.1.</span> <span class="nav-text">进阶出路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（八）飞升"><span class="nav-number">10.</span> <span class="nav-text">（八）飞升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">11.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

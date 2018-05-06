@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript,this," />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -59,20 +59,32 @@
 
 
 
-<meta name="description" content="JavaScript 是一种脚本语言，支持函数式编程、闭包、基于原型的继承等高级功能。JavaScript一开始看起来感觉会很容易入门，但是随着使用的深入，你会发JavaScript其实很难掌握，有些基本概念让人匪夷所思。其中JavaScript 中的 this 关键字，就是一个比较容易混乱的概念，在不同的场景下，this会化身不同的对象。有一种观点认为，只有正确掌握了 JavaScript 中的">
+<meta name="description" content="半透明边框实现效果：
+
+实现代码：
+123&amp;lt;div&amp;gt;你能看到半透明的边框吗？&amp;lt;/div&amp;gt;
+12345678910111213div &amp;#123;	/* 关键代码 */	border: 10px solid rgba(255,255,255,.5);	background: white;	background-clip: padding-box;	/* 其它样式 */	max">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图解javascript中this指向">
-<meta property="og:url" content="http://laixiangran.cn/2016/04/22/图解javascript中this指向/index.html">
+<meta property="og:title" content="CSS3实现多样的边框效果">
+<meta property="og:url" content="http://laixiangran.cn/2018/05/06/CSS3实现多样的边框效果/index.html">
 <meta property="og:site_name" content="技术之旅">
-<meta property="og:description" content="JavaScript 是一种脚本语言，支持函数式编程、闭包、基于原型的继承等高级功能。JavaScript一开始看起来感觉会很容易入门，但是随着使用的深入，你会发JavaScript其实很难掌握，有些基本概念让人匪夷所思。其中JavaScript 中的 this 关键字，就是一个比较容易混乱的概念，在不同的场景下，this会化身不同的对象。有一种观点认为，只有正确掌握了 JavaScript 中的">
-<meta property="og:image" content="http://www.laixiangran.cn/images/图解this1.jpg">
-<meta property="og:image" content="http://www.laixiangran.cn/images/图解this2.jpg">
-<meta property="og:image" content="http://www.laixiangran.cn/images/图解this3.jpg">
-<meta property="og:updated_time" content="2016-04-30T07:07:19.091Z">
+<meta property="og:description" content="半透明边框实现效果：
+
+实现代码：
+123&amp;lt;div&amp;gt;你能看到半透明的边框吗？&amp;lt;/div&amp;gt;
+12345678910111213div &amp;#123;	/* 关键代码 */	border: 10px solid rgba(255,255,255,.5);	background: white;	background-clip: padding-box;	/* 其它样式 */	max">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5ABB2565211A4895A86A790D1BAF6E8F?method=download&shareKey=adf96734e2f24ee661986322fb29f6a0">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/AF4ECF0A693F42D1AFEEDA7DC9F2EC03?method=download&shareKey=adf96734e2f24ee661986322fb29f6a0">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/893643A1DAEB481186D5BB2BDD705D52?method=download&shareKey=adf96734e2f24ee661986322fb29f6a0">
+<meta property="og:updated_time" content="2018-05-06T13:27:47.883Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图解javascript中this指向">
-<meta name="twitter:description" content="JavaScript 是一种脚本语言，支持函数式编程、闭包、基于原型的继承等高级功能。JavaScript一开始看起来感觉会很容易入门，但是随着使用的深入，你会发JavaScript其实很难掌握，有些基本概念让人匪夷所思。其中JavaScript 中的 this 关键字，就是一个比较容易混乱的概念，在不同的场景下，this会化身不同的对象。有一种观点认为，只有正确掌握了 JavaScript 中的">
-<meta name="twitter:image" content="http://www.laixiangran.cn/images/图解this1.jpg">
+<meta name="twitter:title" content="CSS3实现多样的边框效果">
+<meta name="twitter:description" content="半透明边框实现效果：
+
+实现代码：
+123&amp;lt;div&amp;gt;你能看到半透明的边框吗？&amp;lt;/div&amp;gt;
+12345678910111213div &amp;#123;	/* 关键代码 */	border: 10px solid rgba(255,255,255,.5);	background: white;	background-clip: padding-box;	/* 其它样式 */	max">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/5ABB2565211A4895A86A790D1BAF6E8F?method=download&shareKey=adf96734e2f24ee661986322fb29f6a0">
 
 
 
@@ -90,7 +102,7 @@
   };
 </script>
 
-  <title> 图解javascript中this指向 | 技术之旅 </title>
+  <title> CSS3实现多样的边框效果 | 技术之旅 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +242,7 @@
             
             
               
-                图解javascript中this指向
+                CSS3实现多样的边框效果
               
             
           </h1>
@@ -242,8 +254,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-22T23:38:32+08:00" content="2016-04-22">
-              2016-04-22
+            <time itemprop="dateCreated" datetime="2018-05-06T21:27:30+08:00" content="2018-05-06">
+              2018-05-06
             </time>
           </span>
 
@@ -256,8 +268,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
                   </a>
                 </span>
 
@@ -276,7 +288,7 @@
 
           
           
-             <span id="/2016/04/22/图解javascript中this指向/" class="leancloud_visitors" data-flag-title="图解javascript中this指向">
+             <span id="/2018/05/06/CSS3实现多样的边框效果/" class="leancloud_visitors" data-flag-title="CSS3实现多样的边框效果">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -297,82 +309,35 @@
       
 
       
-        <p>JavaScript 是一种脚本语言，支持函数式编程、闭包、基于原型的继承等高级功能。JavaScript一开始看起来感觉会很容易入门，但是随着使用的深入，你会发JavaScript其实很难掌握，有些基本概念让人匪夷所思。其中JavaScript 中的 this 关键字，就是一个比较容易混乱的概念，在不同的场景下，this会化身不同的对象。有一种观点认为，只有正确掌握了 JavaScript 中的 this 关键字，才算是迈入了 JavaScript 这门语言的门槛。在主流的面向对象的语言中（例如Java,C#等)，this 含义是明确且具体的，即指向当前对象。一般在编译期绑定。而 JavaScript 中this 在运行期进行绑定的，这是JavaScript 中this 关键字具备多重含义的本质原因。</p>
-<p>JavaScript由于其在运行期进行绑定的特性，JavaScript 中的 this 可以是全局对象、当前对象或者任意对象，这完全取决于函数的调用方式。JavaScript 中函数的调用有以下几种方式：</p>
-<ol>
-<li><p>作为对象方法调用；</p>
-</li>
-<li><p>作为函数调用；</p>
-</li>
-<li><p>作为构造函数调用；</p>
-</li>
-<li><p>使用 apply 或 call 调用。</p>
-</li>
-</ol>
-<p>常言道，字不如表，表不如图。为了让人更好的理解JavaScript this 到底指向什么？下面用一张图来进行解释：</p>
-<p><img src="http://www.laixiangran.cn/images/图解this1.jpg" alt="图解this"></p>
-<p>上图我称之为”JavaScript this决策树”（非严格模式下）。下面通过例子来说明这个图如何来帮助我们对this进行判断：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123; </span><br><span class="line">    x: <span class="number">0</span>, </span><br><span class="line">    y: <span class="number">0</span>, </span><br><span class="line">    moveTo: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = <span class="keyword">this</span>.x + x;</span><br><span class="line">        <span class="keyword">this</span>.y = <span class="keyword">this</span>.y + y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 决策树解释：point.moveTo(1,1)函数不是new进行调用，进入否决策，</span></span><br><span class="line"><span class="comment">// 是用dot(.)进行调用，则指向.moveTo之前的调用对象，即point</span></span><br><span class="line">point.moveTo(<span class="number">1</span>,<span class="number">1</span>); <span class="comment">// this 绑定到当前对象,即point对象</span></span><br></pre></td></tr></table></figure>
-<p>point.moveTo（）函数在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>point.moveTo函数调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>point.moveTo函数是用dot(.)进行调用的，即进入“是”分支，即这里的this指向point.moveTo中.之前的对象point。</p>
-</li>
-</ol>
-<p>图解point.moveTo函数的this指向什么的解析图如下图所示：</p>
-<p><img src="http://www.laixiangran.cn/images/图解this2.jpg" alt="图解this"></p>
-<p>再举例，看下面的代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; </span><br><span class="line">&#125; </span><br><span class="line">func(<span class="number">5</span>); <span class="comment">// this是全局对象window，x为全局变量</span></span><br><span class="line"><span class="comment">//决策树解析：func()函数是用new进行调用的么？为否，进入func()函数是用dot进行调用的么？为否，则 this指向全局对象window</span></span><br><span class="line">x; <span class="comment">// x =&gt; 5</span></span><br></pre></td></tr></table></figure>
-<p>func（）函数在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>func(5)函数调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>func(5)函数不是用dot(.)进行调用的，即进入“否”分支，即这里的this指向全局变量window，那么this.x实际上就是window.x。</p>
-</li>
-</ol>
-<p>图解func函数的this指向什么的解析图如下图所示：</p>
-<p><img src="http://www.laixiangran.cn/images/图解this3.jpg" alt="图解this"></p>
-<p>针对作为函数直接调用的方式，下面看一个复杂的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123; </span><br><span class="line">    x: <span class="number">0</span>, </span><br><span class="line">    y: <span class="number">0</span>, </span><br><span class="line">    moveTo: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">        <span class="comment">// 内部函数</span></span><br><span class="line">        <span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">            <span class="keyword">this</span>.x = x; <span class="comment">// this 指向什么？window</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 内部函数</span></span><br><span class="line">        <span class="keyword">var</span> moveY = <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123; </span><br><span class="line">            <span class="keyword">this</span>.y = y; <span class="comment">//this 指向什么？window</span></span><br><span class="line">        &#125;;</span><br><span class="line">         </span><br><span class="line">        moveX(x); </span><br><span class="line">        moveY(y); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">point.moveTo(<span class="number">1</span>,<span class="number">1</span>); </span><br><span class="line">point.x; <span class="comment">// =&gt;0 </span></span><br><span class="line">point.y; <span class="comment">// =&gt;0 </span></span><br><span class="line">x; <span class="comment">// =&gt;1 </span></span><br><span class="line">y; <span class="comment">// =&gt;1</span></span><br></pre></td></tr></table></figure>
-<p>point.moveTo(1,1)函数实际内部调用的是moveX()和moveY()函数, moveX()函数内部的this在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>moveX(1)函数调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>moveX(1)函数不是用dot(.)进行调用的，即进入“否”分支，即这里的this指向全局变量window，那么this.x实际上就是window.x。</p>
-</li>
-</ol>
-<p>下面看一下作为构造函数调用的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x,y</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; <span class="comment">// this ?</span></span><br><span class="line">    <span class="keyword">this</span>.y = y; <span class="comment">// this ?</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> np = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">np.x; <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">var</span> p = Point(<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">p.x; <span class="comment">// error, p是一个空对象undefined</span></span><br><span class="line"><span class="built_in">window</span>.x; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<p>Point(1,1)函数在var np=new Point(1,1)中的this在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>var np=new Point(1,1)调用是用new进行调用的么？这个明显是，进入“是”分支，即this指向np；</p>
-</li>
-<li><p>那么this.x=1，即np.x=1；</p>
-</li>
-</ol>
-<p>Point(2,2)函数在var p= Point(2,2)中的this在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<ol>
-<li><p>var p= Point(2,2)调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>Point(2,2)函数不是用dot(.)进行调用的？判定为否，即进入“否”分支，即这里的this指向全局变量window，那么this.x实际上就是window.x；</p>
-</li>
-<li><p>this.x=2即window.x=2。</p>
-</li>
-</ol>
-<p>最后看一下函数用 call 和 apply 进行调用的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; </span><br><span class="line">    <span class="keyword">this</span>.y = y; </span><br><span class="line">    <span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">        <span class="keyword">this</span>.x = x; </span><br><span class="line">        <span class="keyword">this</span>.y = y; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = &#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;;</span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]); <span class="comment">// apply 实际上为 p2.moveTo(10,10)</span></span><br><span class="line">p2.x <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
-<p>p1.moveTo.apply(p2,[10,10])函数在 “JavaScript this决策树”中进行判定的过程是这样的：</p>
-<p>我们知道，apply 和 call 这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。p1.moveTo.apply(p2,[10,10])实际上是p2.moveTo(10,10)。那么p2.moveTo(10,10)可解释为：</p>
-<ol>
-<li><p>p2.moveTo(10,10)函数调用是用new进行调用的么？这个明显不是，进入“否”分支，即函数是否用dot(.)进行调用？；</p>
-</li>
-<li><p>p2.moveTo(10,10)函数是用dot(.)进行调用的，即进入“是”分支，即这里的this指向p2.moveTo(10,10)中.之前的对象p2,所以p2.x=10。</p>
-</li>
-</ol>
-<p>关于JavaScript函数执行环境的过程，IBM developerworks文档库中的一段描述感觉很不错，摘抄如下：</p>
-<p><strong>“JavaScript 中的函数既可以被当作普通函数执行，也可以作为对象的方法执行，这是导致 this 含义如此丰富的主要原因。一个函数被执行时，会创建一个执行环境（ExecutionContext），函数的所有的行为均发生在此执行环境中，构建该执行环境时，JavaScript 首先会创建 arguments变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，首先初始化函数的形参表，值为 arguments变量中对应的值，如果 arguments变量中没有对应值，则该形参初始化为 undefined。如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ExecutionContext）创建成功后，函数执行时才会执行，这点对于我们理解 JavaScript 中的变量作用域非常重要，鉴于篇幅，我们先不在这里讨论这个话题。最后为 this变量赋值，如前所述，会根据函数调用方式的不同，赋给 this全局对象，当前对象等。至此函数的执行环境（ExecutionContext）创建成功，函数开始逐行执行，所需变量均从之前构建好的执行环境（ExecutionContext）中读取。” </strong></p>
-<p>理解这段话对于理解Javascript函数将大有好处。</p>
+        <h2 id="半透明边框"><a href="#半透明边框" class="headerlink" title="半透明边框"></a>半透明边框</h2><p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/5ABB2565211A4895A86A790D1BAF6E8F?method=download&amp;shareKey=adf96734e2f24ee661986322fb29f6a0" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">你能看到半透明的边框吗？</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 关键代码 */</span></span><br><span class="line">	<span class="attribute">border</span>: <span class="number">10px</span> solid <span class="built_in">rgba</span>(255,255,255,.5);</span><br><span class="line">	<span class="attribute">background</span>: white;</span><br><span class="line">	<span class="attribute">background-clip</span>: padding-box;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">max-width</span>: <span class="number">20em</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">2em</span>;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">2em</span> auto <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">font</span>: <span class="number">100%</span>/<span class="number">1.5</span> sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>设置边框为半透明，这是还看不到半透明边框，因为默认情况下，背景会延伸到边框所在的区域下层，也就是背景是被边框的外沿框裁切掉。</li>
+<li>通过设置 <code>background-clip: padding-box</code> （初始值是 border-box） 让背景不要延伸到边框所在的区域下层，也就是让内边距的外沿来裁切背景。</li>
+</ul>
+<h2 id="多重边框"><a href="#多重边框" class="headerlink" title="多重边框"></a>多重边框</h2><p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/AF4ECF0A693F42D1AFEEDA7DC9F2EC03?method=download&amp;shareKey=adf96734e2f24ee661986322fb29f6a0" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* box-shadow 实现方案 */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 关键代码 */</span></span><br><span class="line">	<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">#655</span>,</span><br><span class="line">            <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">15px</span> deeppink,</span><br><span class="line">            <span class="number">0</span> <span class="number">2px</span> <span class="number">5px</span> <span class="number">15px</span> <span class="built_in">rgba</span>(0,0,0,.6);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">25px</span>;</span><br><span class="line">	<span class="attribute">background</span>: yellowgreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* border/outline 实现方案 */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 关键代码 */</span></span><br><span class="line">	<span class="attribute">border</span>: <span class="number">10px</span> solid <span class="number">#655</span>;</span><br><span class="line">	<span class="attribute">outline</span>: <span class="number">5px</span> solid deeppink;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">25px</span>;</span><br><span class="line">	<span class="attribute">background</span>: yellowgreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li><code>box-shadow</code> 实现方案使用的是 box-shadow 的第四个参数（扩张半径）。一个正值的扩张半径加上两个为零的偏移量以及为零的模糊值，得到的“投影”其实就像一道实线边框。而借助 box-shadow 支持逗号分割语法，可创建任意数量的投影，因此我们就可实现多重边框效果。</li>
+<li><code>border/outline</code> 实现方案是使用 border 设置一层边框，再使用 outline 设置一层边框。这个方案可实现虚线边框，但它只能实现两层边框。</li>
+</ul>
+<h2 id="边框内圆角"><a href="#边框内圆角" class="headerlink" title="边框内圆角"></a>边框内圆角</h2><p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/893643A1DAEB481186D5BB2BDD705D52?method=download&amp;shareKey=adf96734e2f24ee661986322fb29f6a0" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>我有一个漂亮的内圆角<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">	<span class="attribute">outline</span>: .<span class="number">6em</span> solid <span class="number">#655</span>;</span><br><span class="line">	<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> .<span class="number">4em</span> <span class="number">#655</span>; <span class="comment">/* 关键代码 */</span></span><br><span class="line"></span><br><span class="line">	<span class="attribute">max-width</span>: <span class="number">10em</span>;</span><br><span class="line">	<span class="attribute">border-radius</span>: .<span class="number">8em</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">1em</span>;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">1em</span>;</span><br><span class="line">	<span class="attribute">background</span>: tan;</span><br><span class="line">	<span class="attribute">font</span>: <span class="number">100%</span>/<span class="number">1.5</span> sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>outline 不会跟着元素的圆角走（因而显示出直角），但 box-shadow 确实会的，因此，将两者叠加到一起，box-shadow（其扩张值大概等于 border-radius 值的一半） 会刚好填补 outline 和容器圆角之间的空隙，因此可达到我们想要的效果。</li>
+</ul>
 
       
     </div>
@@ -387,9 +352,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
-          
-            <a href="/tags/this/" rel="tag">#this</a>
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
           
         </div>
       
@@ -398,16 +361,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/22/JavaScript实现Base64/" rel="next" title="JavaScript实现Base64">
-                <i class="fa fa-chevron-left"></i> JavaScript实现Base64
+              <a href="/2018/04/30/CSS实现元素居中原理解析/" rel="next" title="CSS实现元素居中原理解析">
+                <i class="fa fa-chevron-left"></i> CSS实现元素居中原理解析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/07/JavaScript高阶函数的应用/" rel="prev" title="JavaScript高阶函数的应用">
-                JavaScript高阶函数的应用 <i class="fa fa-chevron-right"></i>
+              <a href="/20180/04/10/前端开发必备之Chrome开发者工具（上篇）/" rel="prev" title="前端开发必备之Chrome开发者工具（上篇）">
+                前端开发必备之Chrome开发者工具（上篇） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -588,7 +551,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#半透明边框"><span class="nav-number">1.</span> <span class="nav-text">半透明边框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重边框"><span class="nav-number">2.</span> <span class="nav-text">多重边框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边框内圆角"><span class="nav-number">3.</span> <span class="nav-text">边框内圆角</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

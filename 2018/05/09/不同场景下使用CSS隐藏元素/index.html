@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Angular,webpack," />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -59,32 +59,25 @@
 
 
 
-<meta name="description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
-那HMR是个什么东西呢？
-HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
-
-保留">
+<meta name="description" content="使用 CSS 让元素不可见的方法很多，剪裁、定位到屏幕外、明度变化等都是可以的。虽然它们都是肉眼不可见，但背后却在多个维度上都有差别。
+元素不可见，同时不占据空间、辅助设备无法访问、不渲染使用 script 标签隐。例如：
+123&amp;lt;script type=&quot;text/html&quot;&amp;gt;    &amp;lt;img src=&quot;1.jpg&quot;&amp;gt;&amp;lt;/script&amp;gt;
+此时，图片 1.jpg">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Angular开发实践（二）：HRM运行机制">
-<meta property="og:url" content="http://laixiangran.cn/2017/11/06/Angular开发实践（二）：HRM运行机制/index.html">
+<meta property="og:title" content="不同场景下使用CSS隐藏元素">
+<meta property="og:url" content="http://laixiangran.cn/2018/05/09/不同场景下使用CSS隐藏元素/index.html">
 <meta property="og:site_name" content="技术之旅">
-<meta property="og:description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
-那HMR是个什么东西呢？
-HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
-
-保留">
-<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr1.png">
-<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr2.png">
-<meta property="og:image" content="http://www.laixiangran.cn/images/angular/hmr3.png">
-<meta property="og:updated_time" content="2017-11-06T12:58:48.210Z">
+<meta property="og:description" content="使用 CSS 让元素不可见的方法很多，剪裁、定位到屏幕外、明度变化等都是可以的。虽然它们都是肉眼不可见，但背后却在多个维度上都有差别。
+元素不可见，同时不占据空间、辅助设备无法访问、不渲染使用 script 标签隐。例如：
+123&amp;lt;script type=&quot;text/html&quot;&amp;gt;    &amp;lt;img src=&quot;1.jpg&quot;&amp;gt;&amp;lt;/script&amp;gt;
+此时，图片 1.jpg">
+<meta property="og:updated_time" content="2018-05-09T13:19:18.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angular开发实践（二）：HRM运行机制">
-<meta name="twitter:description" content="引言在angular-start项目中启用了模块热替换(HMR - Hot Module Replacement)功能，关于如何在angular-cli启用HRM，请查看HRM配置
-那HMR是个什么东西呢？
-HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：
-
-保留">
-<meta name="twitter:image" content="http://www.laixiangran.cn/images/angular/hmr1.png">
+<meta name="twitter:title" content="不同场景下使用CSS隐藏元素">
+<meta name="twitter:description" content="使用 CSS 让元素不可见的方法很多，剪裁、定位到屏幕外、明度变化等都是可以的。虽然它们都是肉眼不可见，但背后却在多个维度上都有差别。
+元素不可见，同时不占据空间、辅助设备无法访问、不渲染使用 script 标签隐。例如：
+123&amp;lt;script type=&quot;text/html&quot;&amp;gt;    &amp;lt;img src=&quot;1.jpg&quot;&amp;gt;&amp;lt;/script&amp;gt;
+此时，图片 1.jpg">
 
 
 
@@ -102,7 +95,7 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
   };
 </script>
 
-  <title> Angular开发实践（二）：HRM运行机制 | 技术之旅 </title>
+  <title> 不同场景下使用CSS隐藏元素 | 技术之旅 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +235,7 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
             
             
               
-                Angular开发实践（二）：HRM运行机制
+                不同场景下使用CSS隐藏元素
               
             
           </h1>
@@ -254,8 +247,8 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-11-06T20:30:30+08:00" content="2017-11-06">
-              2017-11-06
+            <time itemprop="dateCreated" datetime="2018-05-09T21:00:00+08:00" content="2018-05-09">
+              2018-05-09
             </time>
           </span>
 
@@ -268,8 +261,8 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Angular/" itemprop="url" rel="index">
-                    <span itemprop="name">Angular</span>
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
                   </a>
                 </span>
 
@@ -288,7 +281,7 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
 
           
           
-             <span id="/2017/11/06/Angular开发实践（二）：HRM运行机制/" class="leancloud_visitors" data-flag-title="Angular开发实践（二）：HRM运行机制">
+             <span id="/2018/05/09/不同场景下使用CSS隐藏元素/" class="leancloud_visitors" data-flag-title="不同场景下使用CSS隐藏元素">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -309,43 +302,31 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
       
 
       
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在<a href="https://github.com/laixiangran/angular-start" target="_blank" rel="external">angular-start</a>项目中启用了<code>模块热替换(HMR - Hot Module Replacement)</code>功能，关于如何在<code>angular-cli</code>启用<code>HRM</code>，请查看<a href="https://github.com/angular/angular-cli/wiki/stories-configure-hmr" target="_blank" rel="external">HRM配置</a></p>
-<p>那<code>HMR</code>是个什么东西呢？</p>
-<p><code>HMR</code>是<code>webpack</code>提供的一个功能，<code>angular-cli</code>使用了它，它会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。主要是通过以下几种方式，来显著加快开发速度：</p>
-<ul>
-<li>保留在完全重新加载页面时丢失的应用程序状态</li>
-<li>只更新变更内容，以节省宝贵的开发时间</li>
-<li>调整样式更加快速 - 几乎相当于在浏览器调试器中更改样式</li>
-</ul>
-<h1 id="这一切是如何运行的？"><a href="#这一切是如何运行的？" class="headerlink" title="这一切是如何运行的？"></a>这一切是如何运行的？</h1><p>我们先看看具体的效果：</p>
-<p>1、启动<code>angular-start</code>项目，在控制台你可以看到<code>HRM</code>已经启用的消息：</p>
-<p><img src="http://www.laixiangran.cn/images/angular/hmr1.png" alt="image"></p>
-<p>2、然后通过浏览器控制台可以看到，第一次加载请求了所有的资源：</p>
-<p><img src="http://www.laixiangran.cn/images/angular/hmr2.png" alt="image"></p>
-<p>3、此时，修改一处代码保存，浏览器并未刷新就自动显示修改之后的效果，再看浏览器控制台只请求了新修改的js：</p>
-<p><img src="http://www.laixiangran.cn/images/angular/hmr3.png" alt="image"></p>
-<p>下面让我们从一些不同的角度观察，以了解<code>HMR</code>的工作原理……</p>
-<h1 id="在应用程序中"><a href="#在应用程序中" class="headerlink" title="在应用程序中"></a>在应用程序中</h1><p>通过以下步骤，可以做到在应用程序中置换(<code>swap in and out</code>)模块：</p>
-<ul>
-<li>应用程序代码要求 HMR runtime 检查更新</li>
-<li>HMR runtime（异步）下载更新，然后通知应用程序代码</li>
-<li>应用程序代码要求 HMR runtime 应用更新</li>
-<li>HMR runtime（异步）应用更新</li>
-</ul>
-<h1 id="在编译器中"><a href="#在编译器中" class="headerlink" title="在编译器中"></a>在编译器中</h1><p>除了普通资源，编译器(<code>compiler</code>)需要发出<code>update</code>，以允许更新之前的版本到新的版本。<code>update</code>由两部分组成：</p>
-<ul>
-<li>更新后的<code>manifest (JSON)</code></li>
-<li>一个或多个更新后的<code>chunk (JavaScript)</code></li>
-</ul>
-<p><code>manifest</code>包括新的编译<code>hash</code>和所有的待更新<code>chunk</code>目录。每个更新<code>chunk</code>都含有对应于此<code>chunk</code>的全部更新模块（或一个<code>flag</code>用于表明此模块要被移除）的代码。</p>
-<p>编译器确保模块<code>ID</code>和<code>chunk ID</code>在这些构建之间保持一致。通常将这些<code>ID</code>存储在内存中（例如，使用<code>webpack-dev-server</code>时），但是也可能将它们存储在一个<code>JSON</code>文件中。</p>
-<h1 id="在模块中"><a href="#在模块中" class="headerlink" title="在模块中"></a>在模块中</h1><p><code>HMR</code>是可选功能，只会影响包含<code>HMR</code>代码的模块。举个例子，通过<code>style-loader</code>为<code>style</code>样式追加补丁。为了运行追加补丁，<code>style-loader</code>实现了<code>HMR</code>接口；当它通过<code>HMR</code>接收到更新，它会使用新的样式替换旧的样式。</p>
-<p>类似的，当在一个模块中实现了<code>HMR</code>接口，你可以描述出当模块被更新后发生了什么。然而在多数情况下，不需要强制在每个模块中写入<code>HMR</code>代码。如果一个模块没<code>HMR</code>处理函数，更新就会冒泡。这意味着一个简单的处理函数能够对整个模块树<code>(complete module tree)</code>进行更新。如果在这个模块树中，一个单独的模块被更新，那么整组依赖模块都会被重新加载。</p>
-<p>有关 module.hot 接口的详细信息，请查看<a href="http://www.css88.com/doc/webpack/api/hot-module-replacement" target="_blank" rel="external">HMR API页面</a>。</p>
-<h1 id="在HMR-Runtime中"><a href="#在HMR-Runtime中" class="headerlink" title="在HMR Runtime中"></a>在HMR Runtime中</h1><p>对于模块系统的<code>runtime</code>，附加的代码被发送到<code>parents</code>和<code>children</code>跟踪模块。在管理方面，<code>runtime</code>支持两个方法<code>check</code>和<code>apply</code>。</p>
-<p><code>check</code>发送<code>HTTP</code>请求来更新<code>manifest</code>。如果请求失败，说明没有可用更新。如果请求成功，待更新<code>chunk</code>会和当前加载过的<code>chunk</code>进行比较。对每个加载过的<code>chunk</code>，会下载相对应的待更新<code>chunk</code>。当所有待更新<code>chunk</code>完成下载，就会准备切换到<code>ready</code>状态。</p>
-<p><code>apply</code>方法将所有被更新模块标记为无效。对于每个无效模块，都需要在模块中有一个更新处理函数，或者在它的父级模块们中有更新处理函数。否则，无效标记冒泡，并也使父级无效。每个冒泡继续直到到达应用程序入口起点，或者到达带有更新处理函数的模块（以最先到达为准）。如果它从入口起点开始冒泡，则此过程失败。</p>
-<p>之后，所有无效模块都被（通过<code>dispose</code>处理函数）处理和解除加载。然后更新当前<code>hash</code>，并且调用所有<code>accept</code>处理函数。<code>runtime</code>切换回闲置状态，一切照常继续。</p>
+        <p>使用 CSS 让元素不可见的方法很多，剪裁、定位到屏幕外、明度变化等都是可以的。虽然它们都是肉眼不可见，但背后却在多个维度上都有差别。</p>
+<h5 id="元素不可见，同时不占据空间、辅助设备无法访问、不渲染"><a href="#元素不可见，同时不占据空间、辅助设备无法访问、不渲染" class="headerlink" title="元素不可见，同时不占据空间、辅助设备无法访问、不渲染"></a>元素不可见，同时不占据空间、辅助设备无法访问、不渲染</h5><p>使用 script 标签隐。例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span>&gt;</span><span class="xml"></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.jpg"</span>&gt;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此时，图片 1.jpg 是不会有请求的。<code>&lt;script&gt;</code> 标签是不支持嵌套的，因此，如果希望在 <code>&lt;script&gt;</code> 标签中再放置其他不渲染的模板内容，可以试试使用 <code>&lt;textarea&gt;</code> 元素。例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span>&gt;</span><span class="xml"></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.jpg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">style</span>=<span class="string">"display: none;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"2.jpg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>同样 2.jpg 也是不会有请求的。<br>另外，<code>&lt;script&gt;</code> 标签隐藏内容获取使用 <code>script.innerHTML</code>，<code>&lt;textarea&gt;</code> 使用 <code>textarea.value</code>。</p>
+<h5 id="元素不可见，同时不占据空间、辅助设备无法访问，但资源有加载，DOM-可访问"><a href="#元素不可见，同时不占据空间、辅助设备无法访问，但资源有加载，DOM-可访问" class="headerlink" title="元素不可见，同时不占据空间、辅助设备无法访问，但资源有加载，DOM 可访问"></a>元素不可见，同时不占据空间、辅助设备无法访问，但资源有加载，DOM 可访问</h5><p>使用 <code>display: none</code> 隐藏。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dn</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="元素不可见，同时不占据空间、辅助设备无法访问，但显隐的时候可以有-transition-淡入淡出效果"><a href="#元素不可见，同时不占据空间、辅助设备无法访问，但显隐的时候可以有-transition-淡入淡出效果" class="headerlink" title="元素不可见，同时不占据空间、辅助设备无法访问，但显隐的时候可以有 transition 淡入淡出效果"></a>元素不可见，同时不占据空间、辅助设备无法访问，但显隐的时候可以有 <code>transition</code> 淡入淡出效果</h5><p>使用 <code>position: absolute</code> 和 <code>visibility: hidden;</code> 隐藏。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hidden</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="元素不可见，不能点击、辅助设备无法访问，但占据空间保留"><a href="#元素不可见，不能点击、辅助设备无法访问，但占据空间保留" class="headerlink" title="元素不可见，不能点击、辅助设备无法访问，但占据空间保留"></a>元素不可见，不能点击、辅助设备无法访问，但占据空间保留</h5><p>使用 <code>visibility: hidden;</code> 隐藏。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hn</span> &#123;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="元素不可见，不能点击、不占据空间，但键盘可访问"><a href="#元素不可见，不能点击、不占据空间，但键盘可访问" class="headerlink" title="元素不可见，不能点击、不占据空间，但键盘可访问"></a>元素不可见，不能点击、不占据空间，但键盘可访问</h5><p>使用 <code>clip</code> 裁剪 或者 <code>relative</code> 隐藏。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clip</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">clip</span>: <span class="built_in">rect</span>(0, 0, 0, 0)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.out</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">999em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="元素不可见，不能点击、但占据空间、键盘可访问"><a href="#元素不可见，不能点击、但占据空间、键盘可访问" class="headerlink" title="元素不可见，不能点击、但占据空间、键盘可访问"></a>元素不可见，不能点击、但占据空间、键盘可访问</h5><p>使用 <code>relative</code> 和 <code>z-index</code> 隐藏。例如，如果条件允许，也就是和层叠上下文之间存在设置了背景色的父元素，则也可以使用更友好的 <code>z-index</code> 负值隐藏。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lower</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="元素不可见，可以点击、不占据空间"><a href="#元素不可见，可以点击、不占据空间" class="headerlink" title="元素不可见，可以点击、不占据空间"></a>元素不可见，可以点击、不占据空间</h5><p>使用透明度隐藏。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lower</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">filter</span>: <span class="built_in">Alpha</span>(opacity=0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="元素不可见，可以点击、可以选择、占据空间"><a href="#元素不可见，可以点击、可以选择、占据空间" class="headerlink" title="元素不可见，可以点击、可以选择、占据空间"></a>元素不可见，可以点击、可以选择、占据空间</h5><p>使用透明度隐藏。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lower</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">filter</span>: <span class="built_in">Alpha</span>(opacity=0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>大家可以通过实际的隐藏场景选择合适的隐藏方法。</strong></p>
+<p><strong>实际开发场景千变万化，可能还有更多的隐藏方法，也欢迎大家积极留言探讨。</strong></p>
+<blockquote>
+<p>摘自：《CSS世界》第10章 元素的显示与隐藏</p>
+</blockquote>
 
       
     </div>
@@ -360,9 +341,7 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
       
         <div class="post-tags">
           
-            <a href="/tags/Angular/" rel="tag">#Angular</a>
-          
-            <a href="/tags/webpack/" rel="tag">#webpack</a>
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
           
         </div>
       
@@ -371,16 +350,16 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/22/Angular开发实践（一）：开发环境搭建/" rel="next" title="Angular开发实践（一）：环境准备及框架搭建">
-                <i class="fa fa-chevron-left"></i> Angular开发实践（一）：环境准备及框架搭建
+              <a href="/2018/05/06/CSS3实现多样的边框效果/" rel="next" title="CSS3实现多样的边框效果">
+                <i class="fa fa-chevron-left"></i> CSS3实现多样的边框效果
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/22/Angular开发实践（三）：剖析Angular Component/" rel="prev" title="Angular开发实践（三）：剖析Angular Component">
-                Angular开发实践（三）：剖析Angular Component <i class="fa fa-chevron-right"></i>
+              <a href="/20180/04/10/前端开发必备之Chrome开发者工具（上篇）/" rel="prev" title="前端开发必备之Chrome开发者工具（上篇）">
+                前端开发必备之Chrome开发者工具（上篇） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +540,7 @@ HMR是webpack提供的一个功能，angular-cli使用了它，它会在应用�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#这一切是如何运行的？"><span class="nav-number">2.</span> <span class="nav-text">这一切是如何运行的？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在应用程序中"><span class="nav-number">3.</span> <span class="nav-text">在应用程序中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在编译器中"><span class="nav-number">4.</span> <span class="nav-text">在编译器中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在模块中"><span class="nav-number">5.</span> <span class="nav-text">在模块中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在HMR-Runtime中"><span class="nav-number">6.</span> <span class="nav-text">在HMR Runtime中</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#元素不可见，同时不占据空间、辅助设备无法访问、不渲染"><span class="nav-number">1.</span> <span class="nav-text">元素不可见，同时不占据空间、辅助设备无法访问、不渲染</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素不可见，同时不占据空间、辅助设备无法访问，但资源有加载，DOM-可访问"><span class="nav-number">2.</span> <span class="nav-text">元素不可见，同时不占据空间、辅助设备无法访问，但资源有加载，DOM 可访问</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素不可见，同时不占据空间、辅助设备无法访问，但显隐的时候可以有-transition-淡入淡出效果"><span class="nav-number">3.</span> <span class="nav-text">元素不可见，同时不占据空间、辅助设备无法访问，但显隐的时候可以有 transition 淡入淡出效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素不可见，不能点击、辅助设备无法访问，但占据空间保留"><span class="nav-number">4.</span> <span class="nav-text">元素不可见，不能点击、辅助设备无法访问，但占据空间保留</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素不可见，不能点击、不占据空间，但键盘可访问"><span class="nav-number">5.</span> <span class="nav-text">元素不可见，不能点击、不占据空间，但键盘可访问</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素不可见，不能点击、但占据空间、键盘可访问"><span class="nav-number">6.</span> <span class="nav-text">元素不可见，不能点击、但占据空间、键盘可访问</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素不可见，可以点击、不占据空间"><span class="nav-number">7.</span> <span class="nav-text">元素不可见，可以点击、不占据空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素不可见，可以点击、可以选择、占据空间"><span class="nav-number">8.</span> <span class="nav-text">元素不可见，可以点击、可以选择、占据空间</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

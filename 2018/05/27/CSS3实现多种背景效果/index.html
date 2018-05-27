@@ -1,0 +1,1050 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="灵活的背景定位实现效果：
+将背景图定位到距离容器底边 10px 且距离右边 20px 的位置。
+
+background-position 方案
+实现代码：
+1&amp;lt;div&amp;gt;海盗密码&amp;lt;/div&amp;gt;
+12345678910111213div &amp;#123;    /* 关键样式 */	background: url(http://csssecrets.io/images/code-pi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3实现多种背景效果">
+<meta property="og:url" content="http://laixiangran.cn/2018/05/27/CSS3实现多种背景效果/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="灵活的背景定位实现效果：
+将背景图定位到距离容器底边 10px 且距离右边 20px 的位置。
+
+background-position 方案
+实现代码：
+1&amp;lt;div&amp;gt;海盗密码&amp;lt;/div&amp;gt;
+12345678910111213div &amp;#123;    /* 关键样式 */	background: url(http://csssecrets.io/images/code-pi">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/D01C512036A544BA9AD9189C91D629AB?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/D2319CE7251746F682F7ABDBD50A137A?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/43A0BCBCABCF4B299254512D09A69A84?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/7AA3A4ADC3BE4A769AED2266D60225C2?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/4894B8253C4E4C8B9A88361F051400DA?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/7AA3A4ADC3BE4A769AED2266D60225C2?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/8004C57452B0447FBE5889FF4826C25C?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/00F9FF37C3634BC0881F8E43B6453113?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/E74A470B70054080AF4965716B84FDA8?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/2C1034E6878043ABA73447A6EDCE6DC1?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+<meta property="og:updated_time" content="2018-05-27T11:50:21.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3实现多种背景效果">
+<meta name="twitter:description" content="灵活的背景定位实现效果：
+将背景图定位到距离容器底边 10px 且距离右边 20px 的位置。
+
+background-position 方案
+实现代码：
+1&amp;lt;div&amp;gt;海盗密码&amp;lt;/div&amp;gt;
+12345678910111213div &amp;#123;    /* 关键样式 */	background: url(http://csssecrets.io/images/code-pi">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/D01C512036A544BA9AD9189C91D629AB?method=download&shareKey=ee6c10554b504b741bd6a783a92cc9ba">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> CSS3实现多种背景效果 | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS3实现多种背景效果
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-27T19:30:00+08:00" content="2018-05-27">
+              2018-05-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/05/27/CSS3实现多种背景效果/" class="leancloud_visitors" data-flag-title="CSS3实现多种背景效果">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="灵活的背景定位"><a href="#灵活的背景定位" class="headerlink" title="灵活的背景定位"></a>灵活的背景定位</h2><p><strong>实现效果：</strong></p>
+<p>将背景图定位到距离容器底边 10px 且距离右边 20px 的位置。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/D01C512036A544BA9AD9189C91D629AB?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>background-position 方案</strong></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>海盗密码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">url</span>(http://csssecrets.io/images/code-pirate.svg)</span><br><span class="line">	            no-repeat bottom right <span class="number">#58a</span>;</span><br><span class="line">	<span class="attribute">background-position</span>: right <span class="number">20px</span> bottom <span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">max-width</span>: <span class="number">10em</span>;</span><br><span class="line">	<span class="attribute">min-height</span>: <span class="number">5em</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">color</span>: white;</span><br><span class="line">	<span class="attribute">font</span>: <span class="number">100%</span>/<span class="number">1</span> sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li><code>background-position</code> 允许我们指定背景图片距离任意角的偏移量，只要我们在偏移量前面指定关键字。本例就是设置背景图片离右边缘 20px，离底边 10px。</li>
+<li>为了兼容不支持 <code>background-position</code> 这种语法的浏览器，提供一个合适的回退方案，那就是使用 <code>background</code> 的 <code>bottom right</code> 来定位，虽然不能设置具体的偏移量。</li>
+</ul>
+<p><strong>background-origin 方案</strong></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>海盗密码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">url</span>(http://csssecrets.io/images/code-pirate.svg)</span><br><span class="line">	            no-repeat bottom right <span class="number">#58a</span>;</span><br><span class="line">	<span class="attribute">background-origin</span>: content-box;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">max-width</span>: <span class="number">10em</span>;</span><br><span class="line">	<span class="attribute">min-height</span>: <span class="number">5em</span>;</span><br><span class="line">	<span class="attribute">color</span>: white;</span><br><span class="line">	<span class="attribute">font</span>: <span class="number">100%</span>/<span class="number">1</span> sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li><code>background-origin</code> 默认值是 <code>padding-box</code>，也就说我们设置 <code>background</code> 为 <code>top left</code> 时左上角是 padding box（内边距的外沿框）的左上角。</li>
+<li>在本例中设置 <code>background-origin</code> 为 <code>content-box</code>，那么就相对于 content box（内容区的外沿框）的左上角，那么也就是背景图离容器的右边和底边的偏移量是跟着容器的 padding 值走了，那设置 <code>padding: 10px 20px;</code> 自然就可以实现本例的效果了。</li>
+</ul>
+<p><strong>calc() 方案</strong></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>海盗密码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">url</span>(http://csssecrets.io/images/code-pirate.svg)</span><br><span class="line">	            no-repeat bottom right <span class="number">#58a</span>;</span><br><span class="line">	<span class="attribute">background-position</span>: <span class="built_in">calc</span>(100% - 20px) <span class="built_in">calc</span>(100% - 10px);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">max-width</span>: <span class="number">10em</span>;</span><br><span class="line">	<span class="attribute">min-height</span>: <span class="number">5em</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">color</span>: white;</span><br><span class="line">	<span class="attribute">font</span>: <span class="number">100%</span>/<span class="number">1</span> sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>使用 <code>calc</code> 来动态计算使得背景图的左上角水平偏移 <code>100% - 20px</code>，垂直偏移 <code>100% - 10px</code>。</li>
+</ul>
+<h2 id="条纹背景"><a href="#条纹背景" class="headerlink" title="条纹背景"></a>条纹背景</h2><p><strong>水平条纹</strong></p>
+<p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/D2319CE7251746F682F7ABDBD50A137A?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(#fb3 50%, #58a 0);</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">30px</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>通过 <code>linear-gradient(#fb3 50%, #58a 0)</code> 生成一个背景图，该背景图分为上下不同实色的两部分，占满容器大小。</li>
+<li>然后通过 <code>background-size：100% 30px;</code> 设置该背景图的宽高（宽为容器宽度，高为30px），由于默认情况下背景是重复平铺的，这样整个容器就铺满高为 30px 的双色水平条纹。</li>
+</ul>
+<p><strong>垂直条纹</strong></p>
+<p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/43A0BCBCABCF4B299254512D09A69A84?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right, #fb3 50%, #58a 0);</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">30px</span> <span class="number">100%</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>通过 <code>linear-gradient(to right, #fb3 50%, #58a 0)</code> 生成一个背景图，该背景图分为左右不同实色的两部分（<code>to right</code> 改变渐变的方向，从上下该为左右），占满容器大小。</li>
+<li>然后通过 <code>background-size：30px 100%;</code> 设置该背景图的宽高（宽为 30px，高为容器高度），由于默认情况下背景是重复平铺的，这样整个容器就铺满宽为 30px 的双色水平垂直条纹。</li>
+</ul>
+<p><strong>斜向条纹</strong></p>
+<p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/7AA3A4ADC3BE4A769AED2266D60225C2?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(45deg,</span><br><span class="line">              #fb3 25%, #58a 0, #58a 50%,</span><br><span class="line">              #fb3 0, #fb3 75%, #58a 0);</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">42.4px</span> <span class="number">42.4px</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>通过 <code>linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%,#fb3 0, #fb3 75%, #58a 0)</code> 生成一个如下图的可重复铺设的背景图（重点是修改渐变方向为 45 度，四条条纹）。</li>
+</ul>
+<p><img src="https://note.youdao.com/yws/api/personal/file/4894B8253C4E4C8B9A88361F051400DA?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<ul>
+<li>然后通过 <code>background-size: 42.4px 42.4px;</code> 设置背景尺寸。<code>42.4px</code> 是通过勾股定理求得（在我们的斜向条纹中，背景尺寸指定的是直角三角形的斜边长度，但条纹的宽度实际上是直角三角形的高，所以要让条纹宽度为 15px，就必须近似设置背景尺寸为 42.4px）。</li>
+</ul>
+<p><strong>可灵活设置角度的斜向条纹</strong></p>
+<p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/7AA3A4ADC3BE4A769AED2266D60225C2?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">repeating-linear-gradient</span>(60deg,</span><br><span class="line">              #fb3, #fb3 15px,</span><br><span class="line">              #58a 0, #58a 30px);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li><code>repeating-linear-gradient</code> 生成色标是无限循环重复的，直到填满整个背景。不需要通过 <code>background-size</code> 设置背景尺寸，而且也不用考虑斜边的问题，因为在渐变轴设置的长度就是条纹的宽度。最重要的一点是可以灵活设置任意角度的条纹，只要修改一处角度就可以。</li>
+</ul>
+<h2 id="复杂的背景图案"><a href="#复杂的背景图案" class="headerlink" title="复杂的背景图案"></a>复杂的背景图案</h2><p><strong>网格</strong></p>
+<p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/8004C57452B0447FBE5889FF4826C25C?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#58a</span>;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(white 2px, transparent 0),</span><br><span class="line">                    <span class="built_in">linear-gradient</span>(90deg, white 2px, transparent 0),</span><br><span class="line">                    <span class="built_in">linear-gradient</span>(hsla(0,0%,100%,.3) <span class="number">1px</span>, transparent <span class="number">0</span>),</span><br><span class="line">                    <span class="built_in">linear-gradient</span>(90deg, hsla(0,0%,100%,.3) <span class="number">1px</span>, transparent <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">50px</span> <span class="number">50px</span>, <span class="number">50px</span> <span class="number">50px</span>,</span><br><span class="line">                    <span class="number">10px</span> <span class="number">10px</span>, <span class="number">10px</span> <span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>没有特殊的，看代码吧。</li>
+</ul>
+<p><strong>波点</strong></p>
+<p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/00F9FF37C3634BC0881F8E43B6453113?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#655</span>;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">radial-gradient</span>(tan 20%, transparent 0),</span><br><span class="line">                      <span class="built_in">radial-gradient</span>(tan 20%, transparent 0);</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">30px</span> <span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0</span>, <span class="number">15px</span> <span class="number">15px</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>使用径向渐变 <code>radial-gradient</code> 来创建圆形、椭圆，或者它们的一部分。本例使用它实现圆点的阵列。</li>
+<li>然后生成两层错开的圆点阵列错开叠加到一起，这样就实现波点图案效果了。</li>
+</ul>
+<p><strong>棋盘</strong></p>
+<p><strong>实现效果：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/E74A470B70054080AF4965716B84FDA8?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#eee</span>;</span><br><span class="line">    <span class="attribute">background-image</span>:</span><br><span class="line">    	<span class="built_in">linear-gradient</span>(45deg, rgba(0,0,0,.25) <span class="number">25%</span>, transparent <span class="number">0</span>, transparent <span class="number">75%</span>, <span class="built_in">rgba</span>(0,0,0,.25) <span class="number">0</span>),</span><br><span class="line">    	<span class="built_in">linear-gradient</span>(45deg, rgba(0,0,0,.25) <span class="number">25%</span>, transparent <span class="number">0</span>, transparent <span class="number">75%</span>, <span class="built_in">rgba</span>(0,0,0,.25) <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0</span>, <span class="number">15px</span> <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">30px</span> <span class="number">30px</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="伪随机背景"><a href="#伪随机背景" class="headerlink" title="伪随机背景"></a>伪随机背景</h2><p><strong>实现效果：</strong></p>
+<p>重复平铺的几何图案很美观，但看起来可能有一些呆板。其实自然界中的事物都不是以无限平铺的方式存在的。即使重复，也往往伴随着多样性和随机性。因此为了更自然一些，我们可能需要实现的背景随机一些，这样就显得自然一点。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/2C1034E6878043ABA73447A6EDCE6DC1?method=download&amp;shareKey=ee6c10554b504b741bd6a783a92cc9ba" alt=""></p>
+<p><strong>实现代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="comment">/* 关键样式 */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">hsl</span>(20, 40%, 90%);</span><br><span class="line">    <span class="attribute">background-image</span>:</span><br><span class="line">    	<span class="built_in">linear-gradient</span>(90deg, #fb3 11px, transparent 0),</span><br><span class="line">    	<span class="built_in">linear-gradient</span>(90deg, #ab4 23px, transparent 0),</span><br><span class="line">    	<span class="built_in">linear-gradient</span>(90deg, #655 23px, transparent 0);</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">83px</span> <span class="number">100%</span>, <span class="number">61px</span> <span class="number">100%</span>, <span class="number">41px</span> <span class="number">100%</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 其它样式 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现要点：</strong></p>
+<ul>
+<li>为了使得背景的重复性小一些，每组的条纹宽度都是质数。</li>
+</ul>
+<blockquote>
+<p>摘自：《CSS揭秘》 第 2 章 背景与边框</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/20/浏览器同源策略及跨域的解决方法/" rel="next" title="浏览器同源策略及跨域的解决方法">
+                <i class="fa fa-chevron-left"></i> 浏览器同源策略及跨域的解决方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20180/04/10/前端开发必备之Chrome开发者工具（上篇）/" rel="prev" title="前端开发必备之Chrome开发者工具（上篇）">
+                前端开发必备之Chrome开发者工具（上篇） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#灵活的背景定位"><span class="nav-number">1.</span> <span class="nav-text">灵活的背景定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条纹背景"><span class="nav-number">2.</span> <span class="nav-text">条纹背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂的背景图案"><span class="nav-number">3.</span> <span class="nav-text">复杂的背景图案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪随机背景"><span class="nav-number">4.</span> <span class="nav-text">伪随机背景</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

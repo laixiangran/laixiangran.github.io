@@ -1,0 +1,995 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="#" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,Ionic," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="技术之旅" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Ionic 介绍首先，Ionic 是什么。
+Ionic 是一款基于 Cordova 及 Angular 开发 Hybrid/Web APP 的前端框架，类似的其他框架有：Intel XDK等。
+简单来说就是可以将你的 Web 应用打包发布成 IOS/Android APP，并且提供了 Cordova 之外很多强大的服务和新的特性。
+听起来还是很诱人的，事实上这也是目前最火的一种 Hybrid AP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下Ionic 开发环境搭建">
+<meta property="og:url" content="http://laixiangran.cn/2018/07/08/Windows下Ionic 开发环境搭建/index.html">
+<meta property="og:site_name" content="技术之旅">
+<meta property="og:description" content="Ionic 介绍首先，Ionic 是什么。
+Ionic 是一款基于 Cordova 及 Angular 开发 Hybrid/Web APP 的前端框架，类似的其他框架有：Intel XDK等。
+简单来说就是可以将你的 Web 应用打包发布成 IOS/Android APP，并且提供了 Cordova 之外很多强大的服务和新的特性。
+听起来还是很诱人的，事实上这也是目前最火的一种 Hybrid AP">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/8D6BC7DE22124F6EB93E53D42BCD6F25?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+<meta property="og:updated_time" content="2018-07-08T03:35:45.855Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows下Ionic 开发环境搭建">
+<meta name="twitter:description" content="Ionic 介绍首先，Ionic 是什么。
+Ionic 是一款基于 Cordova 及 Angular 开发 Hybrid/Web APP 的前端框架，类似的其他框架有：Intel XDK等。
+简单来说就是可以将你的 Web 应用打包发布成 IOS/Android APP，并且提供了 Cordova 之外很多强大的服务和新的特性。
+听起来还是很诱人的，事实上这也是目前最火的一种 Hybrid AP">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/8D6BC7DE22124F6EB93E53D42BCD6F25?method=download&shareKey=cb35067568c854b1179977148689e8bb">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Windows下Ionic 开发环境搭建 | 技术之旅 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术之旅</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">摆脱懒惰，实现价值！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Windows下Ionic 开发环境搭建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-08T11:35:00+08:00" content="2018-07-08">
+              2018-07-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Ionic/" itemprop="url" rel="index">
+                    <span itemprop="name">Ionic</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/07/08/Windows下Ionic 开发环境搭建/" class="leancloud_visitors" data-flag-title="Windows下Ionic 开发环境搭建">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Ionic-介绍"><a href="#Ionic-介绍" class="headerlink" title="Ionic 介绍"></a>Ionic 介绍</h2><p>首先，Ionic 是什么。</p>
+<p>Ionic 是一款基于 Cordova 及 Angular 开发 Hybrid/Web APP 的前端框架，类似的其他框架有：Intel XDK等。</p>
+<p>简单来说就是可以将你的 Web 应用打包发布成 IOS/Android APP，并且提供了 Cordova 之外很多强大的服务和新的特性。</p>
+<p>听起来还是很诱人的，事实上这也是目前最火的一种 Hybrid APP 开发方式。</p>
+<p>接下来介绍如何在 Windows 下搭建 Ionic 开发环境。</p>
+<p>在开始之前我假设你已经了解了如下概念：</p>
+<ul>
+<li>Java JDK</li>
+<li>Apache Ant</li>
+<li>Android SDK</li>
+<li>NodeJS</li>
+</ul>
+<p><strong>以上名词这里就不赘述，如果有不清楚的可以自行查阅</strong></p>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><p>Ionic 官方教程：<a href="http://learn.ionicframework.com/videos/windows-android/" target="_blank" rel="external">http://learn.ionicframework.com/videos/windows-android/</a></p>
+<p>以下内容参考官方教程得出：</p>
+<h3 id="下载-JDK-并配置好-Java-运行环境"><a href="#下载-JDK-并配置好-Java-运行环境" class="headerlink" title="下载 JDK 并配置好 Java 运行环境"></a>下载 JDK 并配置好 Java 运行环境</h3><p>下载地址：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>（请注意选择您电脑的对应版本）</p>
+<p>Java 环境变量的配置：参看：<a href="http://zhidao.baidu.com/question/1366931535221381339.html" target="_blank" rel="external">http://zhidao.baidu.com/question/1366931535221381339.html</a></p>
+<h3 id="下载-Apache-Ant-并将其-bin-目录路径添加进-Path-路径"><a href="#下载-Apache-Ant-并将其-bin-目录路径添加进-Path-路径" class="headerlink" title="下载 Apache Ant 并将其 bin 目录路径添加进 Path 路径"></a>下载 Apache Ant 并将其 bin 目录路径添加进 Path 路径</h3><p>下载地址：<a href="http://mirror.tcpdiag.net/apache//ant/binaries/apache-ant-1.9.4-bin.zip" target="_blank" rel="external">http://mirror.tcpdiag.net/apache//ant/binaries/apache-ant-1.9.4-bin.zip</a></p>
+<p>下载完成后解压该文件至某个安全的目录下，然后将改文件夹内的bin文件夹路径添加至系统 Path 环境变量中，如存放在 C 盘 Program Files 目录下则 Path 中添加如下值 <code>C:\Program Files\apache-ant-1.9.4\bin;</code>（添加方法和 java 配置 path 变量是一样的，注意以;隔开每个环境变量的值）</p>
+<h3 id="下载-Android-SDK-并配置好-SDK-运行环境"><a href="#下载-Android-SDK-并配置好-SDK-运行环境" class="headerlink" title="下载 Android SDK 并配置好 SDK 运行环境"></a>下载 Android SDK 并配置好 SDK 运行环境</h3><p>下载地址：<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="external">http://developer.android.com/sdk/index.html</a></p>
+<p>这里可以只下载 Android SDK 不需要一并下载 Android Studio。</p>
+<p>下载完成并安装然后向系统Path环境变量中添加两个值。分别是 Android SDK 中 tools 目录的路径和 platform-tools 的路径。例如：</p>
+<ul>
+<li>C:\Program Files (x86)\Android\android-sdk\tools;</li>
+<li>C:\Program Files (x86)\Android\android-sdk\platform-tools;</li>
+</ul>
+<p>在这里我发现 Android SDK 安装目录中并没有<code>platform-tools</code>这个文件夹，运行 tools 目录下的 android.bat 文件，然后在出现的界面中勾选 Android SDK Platform-tools 然后安装。</p>
+<p>注意：这里我下载的纯净版 SDK 之前并没有任何 Android 系统在内，所以同 <code>Platform-tools</code> 一样需要在这里勾选需要的版本然后安装。这里至少需要有一个系统，否则无法创建虚拟机。当然，用真机调试的话可以不依赖。</p>
+<h3 id="配置-Gradle"><a href="#配置-Gradle" class="headerlink" title="配置 Gradle"></a>配置 Gradle</h3><p>下载地址：<a href="http://services.gradle.org/distributions/" target="_blank" rel="external">http://services.gradle.org/distributions/</a></p>
+<p>下载相应版本的 gradle（对应 cordova-android），然后解压放置在某个目录下，然后向系统 Path 环境变量中添加：</p>
+<ul>
+<li>D:\Program Files\gradle\gradle-3.3\bin</li>
+</ul>
+<h3 id="下载-Nodejs-for-Windows-并安装"><a href="#下载-Nodejs-for-Windows-并安装" class="headerlink" title="下载 Nodejs for Windows 并安装"></a>下载 Nodejs for Windows 并安装</h3><p>下载地址：<a href="https://nodejs.org/download/" target="_blank" rel="external">https://nodejs.org/download/</a></p>
+<p>Windows 下安装 Nodejs 环境很简单，在 Nodejs 官网下载正确版本后安装即可。</p>
+<h3 id="nmp-安装-Ionic-和-Cordova"><a href="#nmp-安装-Ionic-和-Cordova" class="headerlink" title="nmp 安装 Ionic 和 Cordova"></a>nmp 安装 Ionic 和 Cordova</h3><p>完成以上几步需要配置的环境就搭建完成了，接下来就只需要在控制台输入简单的几行命令就可以安装 Ionic 和 Cordova 啦。</p>
+<p>进入 cmd 窗口，输入如下指令：</p>
+<p><code>npm install -g cordova ionic</code></p>
+<p><strong>完成以上所有步骤，就可以开始利用 Ionic 快速开发 Android APP 啦</strong></p>
+<h2 id="创建并运行-ionic-app"><a href="#创建并运行-ionic-app" class="headerlink" title="创建并运行 ionic app"></a>创建并运行 ionic app</h2><h3 id="创建-APP"><a href="#创建-APP" class="headerlink" title="创建 APP"></a>创建 APP</h3><p>进入 cmd 窗口，输入如下指令：</p>
+<p><code>ionic start myapp</code></p>
+<p>这里的 myapp 是你的 APP 的名字</p>
+<h3 id="进入创建的-APP-目录"><a href="#进入创建的-APP-目录" class="headerlink" title="进入创建的 APP 目录"></a>进入创建的 APP 目录</h3><p><code>cd myapp</code></p>
+<h3 id="选择配置-Android-环境"><a href="#选择配置-Android-环境" class="headerlink" title="选择配置 Android 环境"></a>选择配置 Android 环境</h3><p><code>ionic platform add android</code></p>
+<h3 id="打包生成-APP"><a href="#打包生成-APP" class="headerlink" title="打包生成 APP"></a>打包生成 APP</h3><p><code>ionic build android</code></p>
+<h3 id="运行-APP"><a href="#运行-APP" class="headerlink" title="运行 APP"></a>运行 APP</h3><p>需要先新建虚拟机或者连接手机。</p>
+<ul>
+<li>新建虚拟机：打开 Android SDK 安装目录下的 AVD Manager.exe 选择新建</li>
+<li>连接手机：直接通过数据线连接真实设备</li>
+</ul>
+<p><code>ionic run android</code></p>
+<p>到这一步系统就会打开虚拟机或者在真实设备运行简单的示例 APP 了。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="–prod-的作用"><a href="#–prod-的作用" class="headerlink" title="–prod 的作用"></a>–prod 的作用</h3><p>在编译命令的最后加上 –prod 会让 app 的启动速度加快，但构建速度会变慢。</p>
+<p><code>ionic build android --release --prod</code></p>
+<p>无论是 debug 版本还是 release 版本都适用。</p>
+<h3 id="APP-签名"><a href="#APP-签名" class="headerlink" title="APP 签名"></a>APP 签名</h3><h4 id="生成签名文件"><a href="#生成签名文件" class="headerlink" title="生成签名文件"></a>生成签名文件</h4><p>生成签名文件需要用到 <code>keytool.exe</code> (位于 <code>jdk1.6.0_24\jre\bin</code> 目录下)，使用产生的 key 对 apk 签名用到的是 <code>jarsigner.exe</code> (位于 <code>jdk1.6.0_24\bin</code> 目录下)，把上两个软件所在的目录添加到环境变量path后，即可使用生成签名文件的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -keystore demo.jks -alias demo -keyalg RSA -keysize 2048 -validity 10000</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>-genkey：产生密钥</p>
+</li>
+<li><p>-keystore: 签名文件名称（这里是 <code>demo.jks</code>，<code>demo</code> 可以自定义，<code>jks</code> 是 Android studio 生成的签名文件的后缀）</p>
+</li>
+<li><p>-alias：签名文件的别名（这里是 <code>demo</code>，可自定义）</p>
+</li>
+<li><p>-keyalg：使用 RSA 算法对签名加密（默认 RSA ）</p>
+</li>
+<li><p>-validity 有效期限（这里是 10000 天，可自定义）</p>
+</li>
+</ul>
+<p>以上命令在 cmd 运行如下：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/8D6BC7DE22124F6EB93E53D42BCD6F25?method=download&amp;shareKey=cb35067568c854b1179977148689e8bb" alt=""></p>
+<h4 id="自动签名"><a href="#自动签名" class="headerlink" title="自动签名"></a>自动签名</h4><p>在工程目录 /platforms/android 目录新建名为 release-signing.properties 的文件，文件内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">storeFile=demo.jks</span><br><span class="line">keyAlias=demo</span><br><span class="line">storePassword=输入的密钥库口令</span><br><span class="line">keyPassword=输入的密钥口令</span><br></pre></td></tr></table></figure>
+<p>这样，使用 <code>ionic build android --release</code>编译即可，在 /platforms/android/build/outputs/apk 下就会生成已签名的安装包 android-release.apk</p>
+<p>在 windows 下 storeFile 文件路径应使用 Unix 下的目录分隔符 / 。</p>
+<p>了解更多可进入 Ionic 官网： <a href="http://ionicframework.com/" target="_blank" rel="external">http://ionicframework.com/</a> 进行拓展阅读。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/Ionic/" rel="tag">#Ionic</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/08/Ionic构建打包apk出现的问题集合/" rel="next" title="Ionic构建打包apk出现的问题集合">
+                <i class="fa fa-chevron-left"></i> Ionic构建打包apk出现的问题集合
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20180/04/10/前端开发必备之Chrome开发者工具（上篇）/" rel="prev" title="前端开发必备之Chrome开发者工具（上篇）">
+                前端开发必备之Chrome开发者工具（上篇） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" style="border-radius:50px" itemprop="image"
+               src="/images/avatar.JPG"
+               alt="赖祥燃" />
+          <p class="site-author-name" itemprop="name">赖祥燃</p>
+          <p class="site-description motion-element" itemprop="description">摆脱懒惰，实现价值！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-github"></i> gitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/laixiangran" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        <div>
+          <h3>订阅号</h3>
+          <p>
+            <img width="150" src="/images/subscription.jpg" alt="订阅号" />
+          </p>
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ionic-介绍"><span class="nav-number">1.</span> <span class="nav-text">Ionic 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装步骤"><span class="nav-number">2.</span> <span class="nav-text">安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-JDK-并配置好-Java-运行环境"><span class="nav-number">2.1.</span> <span class="nav-text">下载 JDK 并配置好 Java 运行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-Apache-Ant-并将其-bin-目录路径添加进-Path-路径"><span class="nav-number">2.2.</span> <span class="nav-text">下载 Apache Ant 并将其 bin 目录路径添加进 Path 路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-Android-SDK-并配置好-SDK-运行环境"><span class="nav-number">2.3.</span> <span class="nav-text">下载 Android SDK 并配置好 SDK 运行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Gradle"><span class="nav-number">2.4.</span> <span class="nav-text">配置 Gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-Nodejs-for-Windows-并安装"><span class="nav-number">2.5.</span> <span class="nav-text">下载 Nodejs for Windows 并安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nmp-安装-Ionic-和-Cordova"><span class="nav-number">2.6.</span> <span class="nav-text">nmp 安装 Ionic 和 Cordova</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建并运行-ionic-app"><span class="nav-number">3.</span> <span class="nav-text">创建并运行 ionic app</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-APP"><span class="nav-number">3.1.</span> <span class="nav-text">创建 APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入创建的-APP-目录"><span class="nav-number">3.2.</span> <span class="nav-text">进入创建的 APP 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择配置-Android-环境"><span class="nav-number">3.3.</span> <span class="nav-text">选择配置 Android 环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包生成-APP"><span class="nav-number">3.4.</span> <span class="nav-text">打包生成 APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行-APP"><span class="nav-number">3.5.</span> <span class="nav-text">运行 APP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">4.</span> <span class="nav-text">其它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#–prod-的作用"><span class="nav-number">4.1.</span> <span class="nav-text">–prod 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APP-签名"><span class="nav-number">4.2.</span> <span class="nav-text">APP 签名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成签名文件"><span class="nav-number">4.2.1.</span> <span class="nav-text">生成签名文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动签名"><span class="nav-number">4.2.2.</span> <span class="nav-text">自动签名</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赖祥燃</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6xJVpf5gTHLAExBtuOoLwLVd-gzGzoHsz", "H6gG2pBMb9d9EE3kWTW1pfMI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
